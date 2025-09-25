@@ -1,0 +1,394 @@
+<!doctype html>
+<html lang="vi">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Miho — Portfolio</title>
+    <meta name="color-scheme" content="light dark">
+    <style>
+        :root {
+            --bg: #fafafa;
+            --text: #0c0f14;
+            --muted: #5b6574;
+            --surface: #fff;
+            --border: #e6e8ec;
+            --accent: #2563eb;
+            --radius: 14px;
+            --container: min(1024px, 92vw);
+            --space: clamp(16px, 2.2vw, 28px);
+            --h1: clamp(28px, 4.5vw, 44px);
+            --h2: clamp(20px, 3vw, 28px);
+        }
+
+        @media(prefers-color-scheme:dark) {
+            :root {
+                --bg: #0b0d12;
+                --text: #e5e9f0;
+                --muted: #a3adbd;
+                --surface: #12161f;
+                --border: #202532;
+                --accent: #4f8cff;
+            }
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: var(--text);
+            font: 14px/1.6 ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+        }
+
+        .container {
+            width: var(--container);
+            margin-inline: auto
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            background: color-mix(in hsl, var(--bg)60%, transparent);
+            border-bottom: 1px solid var(--border);
+            backdrop-filter: blur(6px);
+        }
+
+        .brand {
+            font-weight: 700;
+            padding: 14px 0
+        }
+
+        h1 {
+            font-size: var(--h1);
+            margin: 0 0 10px
+        }
+
+        h2 {
+            font-size: var(--h2);
+            margin: 0 0 10px
+        }
+
+        p.sub {
+            color: var(--muted);
+            max-width: 58ch
+        }
+
+        .hero {
+            display: grid;
+            grid-template-columns: 1.1fr .9fr;
+            gap: var(--space);
+            padding: clamp(28px, 6vw, 72px) 0;
+            align-items: center
+        }
+
+        .avatar {
+            width: min(300px, 88%);
+            aspect-ratio: 1/1;
+            object-fit: cover;
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            margin-inline: auto
+        }
+
+        .cta {
+            display: flex;
+            gap: 10px;
+            margin-top: 14px
+        }
+
+        .btn {
+            padding: 10px 14px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            background: var(--surface);
+            text-decoration: none
+        }
+
+        .btn.primary {
+            background: var(--accent);
+            color: #fff;
+            border: 0;
+            font-weight: 600
+        }
+
+        section {
+            padding: clamp(24px, 5vw, 48px) 0;
+            border-top: 1px solid var(--border)
+        }
+
+        .muted {
+            color: var(--muted)
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--space);
+            margin-top: 10px
+        }
+
+        .stat {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 14px;
+            display: flex;
+            flex-direction: column;
+            gap: 4px
+        }
+
+        .stat .num {
+            font-weight: 800;
+            font-size: clamp(20px, 3vw, 32px)
+        }
+
+        .chips {
+            list-style: none;
+            padding: 0;
+            margin: 8px 0 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px
+        }
+
+        .chips li {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            padding: 8px 12px;
+            border-radius: 999px
+        }
+
+        .card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 16px;
+            margin-bottom: var(--space)
+        }
+
+        .badge {
+            font-size: 12px;
+            font-weight: 600;
+            padding: 2px 8px;
+            border-radius: 999px;
+            border: 1px solid var(--border);
+            color: var(--muted)
+        }
+
+        .tile {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            overflow: hidden
+        }
+
+        .tile img {
+            aspect-ratio: 16/9;
+            object-fit: cover;
+            background: color-mix(in hsl, var(--text)6%, transparent)
+        }
+
+        .tile .body {
+            padding: 14px
+        }
+
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 18px 0;
+            text-align: center;
+            color: var(--muted);
+            font-size: 13px
+        }
+
+        @media(max-width:900px) {
+            .hero {
+                grid-template-columns: 1fr;
+                text-align: center
+            }
+
+            .stats {
+                grid-template-columns: 1fr
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <section class="container hero">
+            <div>
+                <h1>Miho — Full Stack Developer</h1>
+                <p class="sub">HỌC IT NHƯNG GHÉT TOÁN LÝ HÓA, Fan cứng của Orangestar và Guiano, gu âm nhạc hơi cổ đại
+                    một xíu. Là con trai nhưng tiêu thụ trà sữa nhiều hơn con gái.</p>
+                <div class="cta">
+                    <a class="btn primary" href="#projects">Xem dự án</a>
+                    <a class="btn" href="#contact">Liên hệ</a>
+                </div>
+                <ul class="meta">
+                    <li>📍 TP.HCM</li>
+                    <li>✉️ wanghien.miho.dev@gmail.com</li>
+                    <li>🔗 github.com/Miho1254</li>
+                </ul>
+            </div>
+            <div><img class="avatar" src="https://bucket.worldlotho.com/staffs/Miho/profile.webp" alt=""></div>
+        </section>
+
+        <section id="about">
+            <div class="container">
+                <h2>Giới thiệu</h2>
+                <p class="muted">Mình thích trải nghiệm số tinh gọn, chú trọng hiệu năng, accessibility. Thành thạo JS
+                    và PHP.</p>
+                <div class="stats">
+                    <div class="stat"><span class="num">3+</span><span class="muted">năm viết code</span></div>
+                    <div class="stat"><span class="num">3</span><span class="muted">dự án đã thương mại hóa</span></div>
+                    <div class="stat"><span class="num">3+</span><span class="muted">Giải thưởng chuyên ngành</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="education">
+            <div class="container">
+                <h2>Học vấn</h2>
+                <div class="card">
+                    <h3>ĐH Thủy Lợi - Phân hiệu TP.HCM <span class="badge">2025 - Hiện tại</span></h3>
+                    <p class="muted">Chuyên ngành Công nghệ thông tin</p>
+                </div>
+                <div class="card">
+                    <h3>Trung cấp nghề Nhân Đạo <span class="badge">2022 - 2024</span></h3>
+                    <p class="muted">Hệ trung cấp ngành Kỹ thuật máy tính</p>
+                    <p class="muted">GPA: 3.8 / 4</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="awards">
+            <div class="container">
+                <h2>Giải thưởng</h2>
+                <div class="card">
+                    <h3>🏆 Giải Nhì, Hội thi Kỹ năng Sinh viên TP. Hồ Chí Minh</h3>
+                    <p class="muted">2024 — Đoàn Thanh niên Cộng sản Hồ Chí Minh TP. Hồ Chí Minh</p>
+                </div>
+                <div class="card">
+                    <h3>💡 Giải Khuyến khích, Kỳ thi Phát triển Web TP. Hồ Chí Minh</h3>
+                    <p class="muted">2023 — Sở Giáo dục & Đào tạo TP. Hồ Chí Minh</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills">
+            <div class="container">
+                <h2>Kỹ năng</h2>
+                <ul class="chips">
+                    <li>HTML5</li>
+                    <li>CSS3</li>
+                    <li>TypeScript</li>
+                    <li>React</li>
+                    <li>Node.js</li>
+                    <li>PHP</li>
+                    <li>Linux</li>
+                    <li>Cloudflare</li>
+                </ul>
+                </ul>
+                </ul>
+                </ul>
+            </div>
+        </section>
+
+        <section id="experience">
+            <div class="container">
+                <h2>Kinh nghiệm</h2>
+                <div class="card">
+                    <h3>World Lọt Hố<span class="badge">2023—Nay</span></h3>
+                    <p class="muted">IT Specialist</p>
+                    <ul>
+                        <li>Phát triển và duy trì nhiều hệ thống để hỗ trợ các hoạt động của đội nhóm.</li>
+                        <li>Xây dựng ứng dụng quản lý kinh doanh và hệ thống quản lý sự kiện cho các sự kiện offline.
+                        </li>
+                        <li>Triển khai các dự án web nhằm cải thiện hình ảnh công chúng và quy trình làm việc nội bộ.
+                        </li>
+                        <li>Chịu trách nhiệm toàn bộ cho mọi công việc kỹ thuật.</li>
+                    </ul>
+
+                </div>
+            </div>
+        </section>
+
+        <section id="projects">
+            <div class="container">
+                <h2>Dự án</h2>
+                <div class="tile">
+                    <div class="body">
+                        <h4>Hệ thống quản lý và soát vé đa sự kiện</h4>
+                        <a href="https://www.facebook.com/share/p/17KFWRUQa4/" target="_blank" rel="noopener">
+                            (Xem demo)
+                        </a>
+                        <ul>
+                            <li>Thiết kế và triển khai hệ thống bán vé và check-in đạt chuẩn chuyên nghiệp cho một sự
+                                kiện do
+                                cộng đồng tổ chức.</li>
+                            <li>Phát triển hệ thống full-stack cho việc bán và xác thực vé, có khả năng xử lý hơn 400+
+                                vé và tạo
+                                doanh thu 50 triệu VND (~2000 USD).</li>
+                            <li>Tích hợp tính năng gửi email tự động kèm mã QR riêng biệt cho từng vé.</li>
+                            <li>Xây dựng dashboard check-in thời gian thực, giúp ban tổ chức xác thực người tham dự hiệu
+                                quả.
+                            </li>
+                            <li>Đảm bảo khả năng mở rộng, chịu tải tốt trong giai đoạn cao điểm bán vé.</li>
+                        </ul>
+
+                    </div>
+                </div>
+
+
+                <div class="tile">
+                    <div class="body">
+                        <h4>Hệ thống Quản lý Thành viên tích hợp NFC</h4>
+                        <a href="https://worldlotho.com/staff" target="_blank" rel="noopener">
+                            (Xem demo)
+                        </a>
+                        <ul>
+                            <li>Phát triển hệ thống liên kết mỗi thẻ NFC với một website cá nhân riêng biệt.</li>
+                            <li>Giúp các thành viên sử dụng thẻ để xác minh danh tính nhanh chóng và an toàn.</li>
+                            <li>Xây dựng dashboard thân thiện để quản lý thẻ, hỗ trợ đội ngũ làm việc hiệu quả hơn và
+                                nâng cao tính chuyên nghiệp.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="tile">
+                    <div class="body">
+                        <h4>Hệ thống Quản lý Thành viên tích hợp NFC</h4>
+                        <a href="https://worldlotho.com/staff" target="_blank" rel="noopener">
+                            (Xem demo)
+                        </a>
+                        <ul>
+                            <li>Phát triển hệ thống liên kết mỗi thẻ NFC với một website cá nhân riêng biệt.</li>
+                            <li>Giúp các thành viên sử dụng thẻ để xác minh danh tính nhanh chóng và an toàn.</li>
+                            <li>Xây dựng dashboard thân thiện để quản lý thẻ, hỗ trợ đội ngũ làm việc hiệu quả hơn và
+                                nâng cao tính chuyên nghiệp.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <div class="container">
+                <h2>Liên hệ</h2>
+                <p class="muted">Email: <a href="mailto:you@example.com">wanghien.miho.dev@gmail.com</a></p>
+                <p class="muted">Facebook: <a href="https://www.facebook.com/WangHien.1254">Quang Hiểnメへ</a></p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        © <span id="y"></span> Made by Miho
+    </footer>
+    <script>document.getElementById('y').textContent = new Date().getFullYear()</script>
+</body>
+
+</html>
