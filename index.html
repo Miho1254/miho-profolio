@@ -66,6 +66,7 @@
             justify-content: space-between;
             padding: 12px 0;
             gap: 18px;
+            position: relative;
         }
 
         .brand {
@@ -91,6 +92,9 @@
             padding: 8px 10px;
             border-radius: 999px;
             transition: background .2s ease, color .2s ease;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
         }
 
         nav a:hover,
@@ -168,6 +172,27 @@
             display: flex;
             gap: 10px;
             margin-top: 14px
+        }
+
+        .menu-toggle {
+            display: none;
+            align-items: center;
+            gap: 8px;
+            border: 1px solid var(--border);
+            background: var(--surface);
+            color: inherit;
+            font-weight: 600;
+            border-radius: 999px;
+            padding: 8px 14px;
+            cursor: pointer;
+            font-size: 13px;
+            transition: background .2s ease, color .2s ease, border .2s ease;
+        }
+
+        .menu-toggle:focus-visible,
+        .menu-toggle:hover {
+            border-color: color-mix(in srgb, var(--border)55%, var(--accent)45%);
+            color: var(--accent);
         }
 
         .btn {
@@ -366,19 +391,39 @@
         @media(max-width:900px) {
             .hero {
                 grid-template-columns: 1fr;
-                text-align: center
             }
 
             .cta {
-                justify-content: center;
+                flex-wrap: wrap;
+                justify-content: flex-start;
             }
 
-            .meta {
-                margin-inline: auto;
+            .menu-toggle {
+                display: inline-flex;
             }
 
             nav {
+                position: absolute;
+                right: 0;
+                top: calc(100% + 12px);
+                flex-direction: column;
+                align-items: stretch;
+                padding: 14px;
+                border-radius: var(--radius);
+                border: 1px solid var(--border);
+                background: color-mix(in srgb, var(--surface)92%, transparent);
+                box-shadow: 0 16px 35px -24px rgba(12, 15, 20, .35);
                 display: none;
+                min-width: max(220px, 60vw);
+                gap: 8px;
+            }
+
+            nav.open {
+                display: flex;
+            }
+
+            nav a {
+                width: 100%;
             }
         }
 
@@ -393,6 +438,53 @@
                 grid-template-columns: 1fr;
             }
         }
+
+        @media(max-width:600px) {
+            header {
+                position: sticky;
+            }
+
+            .bar {
+                align-items: flex-start;
+            }
+
+            .hero {
+                justify-items: stretch;
+                row-gap: 32px;
+            }
+
+            .hero>div:first-child {
+                order: 2;
+                text-align: left;
+            }
+
+            .hero>div:last-child {
+                order: 1;
+                justify-self: center;
+            }
+
+            .cta {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .cta .btn {
+                text-align: center;
+            }
+
+            .meta {
+                width: 100%;
+                margin-inline: 0;
+            }
+
+            section {
+                padding: 32px 0;
+            }
+
+            .tile .body {
+                padding: 16px;
+            }
+        }
     </style>
 </head>
 
@@ -400,7 +492,11 @@
     <header>
         <div class="container bar">
             <a class="brand" href="#">Miho</a>
-            <nav>
+            <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+                <span aria-hidden="true">☰</span>
+                Menu
+            </button>
+            <nav id="site-nav">
                 <a href="#about">Giới thiệu</a>
                 <a href="#education">Học vấn</a>
                 <a href="#projects">Dự án</a>
@@ -597,7 +693,44 @@
     <footer>
         © <span id="y"></span> Made by Miho
     </footer>
-    <script>document.getElementById('y').textContent = new Date().getFullYear()</script>
+    <script>
+        const yearEl = document.getElementById('y');
+        if (yearEl) {
+            yearEl.textContent = new Date().getFullYear();
+        }
+
+        const toggle = document.querySelector('.menu-toggle');
+        const nav = document.getElementById('site-nav');
+        const mq = window.matchMedia('(max-width: 900px)');
+
+        const closeMenu = () => {
+            nav?.classList.remove('open');
+            toggle?.setAttribute('aria-expanded', 'false');
+        };
+
+        toggle?.addEventListener('click', () => {
+            const isOpen = nav?.classList.toggle('open');
+            if (isOpen !== undefined) {
+                toggle.setAttribute('aria-expanded', String(isOpen));
+            }
+        });
+
+        nav?.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => closeMenu());
+        });
+
+        const handleMqChange = event => {
+            if (!event.matches) {
+                closeMenu();
+            }
+        };
+
+        if (mq.addEventListener) {
+            mq.addEventListener('change', handleMqChange);
+        } else if (mq.addListener) {
+            mq.addListener(handleMqChange);
+        }
+    </script>
 </body>
 
 </html>
