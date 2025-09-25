@@ -324,6 +324,18 @@
             margin: 6px 0 0;
         }
 
+        .card-title {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 6px;
+            margin: 0 0 12px;
+        }
+
+        .card-title .badge {
+            margin: 0;
+        }
+
         .tile {
             background: var(--surface);
             border: 1px solid var(--border);
@@ -544,11 +556,11 @@
             <div class="container">
                 <h2 class="section-title">Học vấn</h2>
                 <div class="card">
-                    <h3>ĐH Thủy Lợi - Phân hiệu TP.HCM <span class="badge">2025 - Hiện tại</span></h3>
+                    <h3 class="card-title">ĐH Thủy Lợi - Phân hiệu TP.HCM <span class="badge">2025 - Hiện tại</span></h3>
                     <p class="muted">Chuyên ngành Công nghệ thông tin</p>
                 </div>
                 <div class="card">
-                    <h3>Trung cấp nghề Nhân Đạo <span class="badge">2022 - 2024</span></h3>
+                    <h3 class="card-title">Trung cấp nghề Nhân Đạo <span class="badge">2022 - 2024</span></h3>
                     <p class="muted">Hệ trung cấp ngành Kỹ thuật máy tính</p>
                     <p class="muted">GPA: 3.8 / 4</p>
                 </div>
@@ -591,7 +603,7 @@
             <div class="container">
                 <h2 class="section-title">Kinh nghiệm</h2>
                 <div class="card">
-                    <h3>World Lọt Hố <span class="badge">2023 — Nay</span></h3>
+                    <h3 class="card-title">World Lọt Hố <span class="badge">2023 — Nay</span></h3>
                     <p class="muted">IT Specialist</p>
                     <ul>
                         <li>Phát triển và duy trì nhiều hệ thống để hỗ trợ các hoạt động của đội nhóm.</li>
