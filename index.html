@@ -385,6 +385,33 @@
             color: var(--muted);
         }
 
+        .highlights {
+            display: grid;
+            gap: 12px;
+            margin-top: 16px;
+            padding-left: 18px;
+            border-left: 2px solid color-mix(in srgb, var(--border)70%, var(--accent)30%);
+        }
+
+        .highlight {
+            position: relative;
+            margin: 0;
+            padding-left: 18px;
+            color: var(--muted);
+        }
+
+        .highlight::before {
+            content: "";
+            position: absolute;
+            left: -18px;
+            top: 8px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--accent);
+            box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent)25%, transparent);
+        }
+
         .section-title {
             display: inline-flex;
             align-items: center;
@@ -613,14 +640,12 @@
                 <div class="card">
                     <h3 class="card-title">World Lọt Hố <span class="badge">2023 — Nay</span></h3>
                     <p class="muted">IT Specialist</p>
-                    <ul>
-                        <li>Phát triển và duy trì nhiều hệ thống để hỗ trợ các hoạt động của đội nhóm.</li>
-                        <li>Xây dựng ứng dụng quản lý kinh doanh và hệ thống quản lý sự kiện cho các sự kiện offline.
-                        </li>
-                        <li>Triển khai các dự án web nhằm cải thiện hình ảnh công chúng và quy trình làm việc nội bộ.
-                        </li>
-                        <li>Chịu trách nhiệm toàn bộ cho mọi công việc kỹ thuật.</li>
-                    </ul>
+                    <div class="highlights">
+                        <p class="highlight">Phát triển và duy trì nhiều hệ thống để hỗ trợ các hoạt động của đội nhóm.</p>
+                        <p class="highlight">Xây dựng ứng dụng quản lý kinh doanh và hệ thống quản lý sự kiện cho các sự kiện offline.</p>
+                        <p class="highlight">Triển khai các dự án web nhằm cải thiện hình ảnh công chúng và quy trình làm việc nội bộ.</p>
+                        <p class="highlight">Chịu trách nhiệm toàn bộ cho mọi công việc kỹ thuật.</p>
+                    </div>
 
                 </div>
             </div>
