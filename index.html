@@ -1,1074 +1,1377 @@
 <!doctype html>
 <html lang="vi">
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Miho — Portfolio</title>
-    <meta name="color-scheme" content="light dark">
-    <style>
-        :root {
-            --bg: #fafafa;
-            --text: #0c0f14;
-            --muted: #5b6574;
-            --surface: #fff;
-            --border: #e6e8ec;
-            --accent: #2563eb;
-            --accent-soft: color-mix(in srgb, var(--accent) 15%, transparent);
-            --accent-2: #f59e0b;
-            --radius: 14px;
-            --container: min(1024px, 92vw);
-            --space: clamp(16px, 2.2vw, 28px);
-            --space-tight: clamp(12px, 1.8vw, 22px);
-            --h1: clamp(28px, 4.5vw, 44px);
-            --h2: clamp(20px, 3vw, 28px);
-            --shadow: 0 18px 45px -35px rgba(37, 99, 235, .8);
-        }
-
-        @media(prefers-color-scheme:dark) {
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <title>Miho — Portfolio</title>
+        <meta name="color-scheme" content="light dark" />
+        <style>
             :root {
-                --bg: #0b0d12;
-                --text: #e5e9f0;
-                --muted: #a3adbd;
-                --surface: #12161f;
-                --border: #202532;
-                --accent: #4f8cff;
-                --accent-soft: color-mix(in srgb, var(--accent) 20%, transparent);
-                --accent-2: #f4b86d;
-                --shadow: 0 18px 45px -35px rgba(79, 140, 255, .7);
-            }
-        }
-
-        * {
-            box-sizing: border-box
-        }
-
-        body {
-            margin: 0;
-            background: var(--bg);
-            color: var(--text);
-            font: 14px/1.6 ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
-            scroll-behavior: smooth;
-        }
-
-        .container {
-            width: var(--container);
-            margin-inline: auto
-        }
-
-        header {
-            position: sticky;
-            top: 0;
-            background: color-mix(in hsl, var(--bg)60%, transparent);
-            border-bottom: 1px solid var(--border);
-            backdrop-filter: blur(6px);
-            z-index: 10;
-        }
-
-        .bar {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 12px 0;
-            gap: 18px;
-            position: relative;
-        }
-
-        .brand {
-            font-weight: 700;
-            font-size: 18px;
-            letter-spacing: .08em;
-            text-transform: uppercase;
-            text-decoration: none;
-            color: inherit;
-        }
-
-        nav {
-            display: flex;
-            gap: 16px;
-            align-items: center;
-        }
-
-        nav a {
-            color: var(--muted);
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 13px;
-            padding: 8px 10px;
-            border-radius: 999px;
-            transition: background .2s ease, color .2s ease;
-            display: inline-flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        nav a:hover,
-        nav a:focus-visible {
-            background: var(--accent-soft);
-            color: var(--accent);
-        }
-
-        main {
-            padding-block: clamp(12px, 4vw, 36px);
-        }
-
-        h1 {
-            font-size: var(--h1);
-            margin: 0 0 10px
-        }
-
-        h2 {
-            font-size: var(--h2);
-            margin: 0 0 10px
-        }
-
-        p.sub {
-            color: var(--muted);
-            max-width: 58ch
-        }
-
-        .hero {
-            position: relative;
-            display: grid;
-            grid-template-columns: 1.1fr .9fr;
-            gap: var(--space);
-            padding: clamp(48px, 8vw, 96px) 0;
-            align-items: center;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: "";
-            position: absolute;
-            inset: 12%;
-            background: radial-gradient(circle at 15% 20%, color-mix(in srgb, var(--accent)35%, transparent) 0, transparent 65%), radial-gradient(circle at 90% 80%, color-mix(in srgb, var(--accent)28%, transparent) 0, transparent 60%);
-            z-index: -1;
-        }
-
-        .avatar {
-            width: min(300px, 88%);
-            aspect-ratio: 1/1;
-            object-fit: cover;
-            border-radius: 16px;
-            border: 1px solid var(--border);
-            margin-inline: auto;
-            box-shadow: 0 24px 55px -30px rgba(37, 99, 235, .45);
-        }
-
-        .tagline {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 6px 12px;
-            border-radius: 999px;
-            background: color-mix(in srgb, var(--accent)12%, transparent);
-            color: var(--accent);
-            font-weight: 600;
-            font-size: 13px;
-            letter-spacing: .05em;
-            text-transform: uppercase;
-        }
-
-        .accent {
-            color: var(--accent);
-        }
-
-        .cta {
-            display: flex;
-            gap: 10px;
-            margin-top: 14px
-        }
-
-        .menu-toggle {
-            display: none;
-            align-items: center;
-            gap: 8px;
-            border: 1px solid var(--border);
-            background: var(--surface);
-            color: inherit;
-            font-weight: 600;
-            border-radius: 999px;
-            padding: 8px 14px;
-            cursor: pointer;
-            font-size: 13px;
-            transition: background .2s ease, color .2s ease, border .2s ease;
-        }
-
-        .menu-toggle:focus-visible,
-        .menu-toggle:hover {
-            border-color: color-mix(in srgb, var(--border)55%, var(--accent)45%);
-            color: var(--accent);
-        }
-
-        .btn {
-            padding: 10px 18px;
-            border-radius: 12px;
-            border: 1px solid var(--border);
-            background: var(--surface);
-            text-decoration: none;
-            font-weight: 600;
-            letter-spacing: .01em;
-            transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            color: inherit;
-        }
-
-        .btn.primary {
-            background: linear-gradient(135deg, var(--accent), color-mix(in srgb, var(--accent-2) 35%, var(--accent)));
-            color: #fff;
-            border: 0;
-            box-shadow: 0 18px 25px -20px color-mix(in srgb, var(--accent) 55%, transparent);
-        }
-
-        .btn.secondary {
-            border-color: color-mix(in srgb, var(--border) 55%, var(--accent-2) 45%);
-            background: color-mix(in srgb, var(--accent-2) 12%, transparent);
-            color: color-mix(in srgb, var(--accent-2) 75%, var(--text));
-        }
-
-        .btn:hover,
-        .btn:focus-visible {
-            transform: translateY(-1px);
-            box-shadow: 0 16px 28px -24px color-mix(in srgb, var(--accent) 50%, transparent);
-        }
-
-        section {
-            padding: clamp(24px, 4.5vw, 52px) 0;
-            scroll-margin-top: 90px;
-        }
-
-        section:not(.hero) {
-            border-top: 1px solid var(--border);
-        }
-
-        .muted {
-            color: var(--muted)
-        }
-
-        .meta {
-            list-style: none;
-            padding: 14px 18px;
-            margin: 18px 0 0;
-            border-radius: var(--radius);
-            background: color-mix(in srgb, var(--surface) 85%, var(--accent) 15%);
-            border: 1px solid color-mix(in srgb, var(--border) 55%, var(--accent) 45%);
-            display: grid;
-            gap: 8px;
-            font-size: 15px;
-            box-shadow: var(--shadow);
-            max-width: 420px;
-        }
-
-        .meta a {
-            color: inherit;
-            text-decoration: none;
-            font-weight: 600;
-        }
-
-        .meta a:hover,
-        .meta a:focus-visible {
-            color: var(--accent);
-        }
-
-        .stats {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: var(--space);
-            margin-top: 10px
-        }
-
-        .stat {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            padding: 14px;
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .stat::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            border-radius: inherit;
-            background: linear-gradient(135deg, color-mix(in srgb, var(--accent)18%, transparent), transparent 65%);
-            opacity: .22;
-            pointer-events: none;
-        }
-
-        .stat .num {
-            font-weight: 800;
-            font-size: clamp(20px, 3vw, 32px)
-        }
-
-        #education .card {
-            margin-bottom: var(--space-tight);
-        }
-
-        .skills-grid {
-            display: grid;
-            gap: var(--space-tight);
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-        }
-
-        .skill-group {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            padding: 16px 18px;
-            display: grid;
-            gap: 12px;
-            box-shadow: 0 18px 30px -38px rgba(12, 15, 20, .5);
-        }
-
-        .skill-group h3 {
-            margin: 0;
-            font-size: clamp(16px, 2vw, 18px);
-        }
-
-        .skill-list {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        .skill-item {
-            display: grid;
-            grid-template-columns: 28px 1fr;
-            align-items: center;
-            gap: 10px;
-            font-weight: 600;
-            color: inherit;
-        }
-
-        .skill-item img {
-            width: 28px;
-            height: 28px;
-            object-fit: contain;
-        }
-
-        .skill-item span {
-            color: var(--text);
-        }
-
-        .skill-item .icon-fallback {
-            width: 28px;
-            height: 28px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 8px;
-            background: color-mix(in srgb, var(--accent) 12%, transparent);
-            color: var(--accent);
-            font-size: 12px;
-            font-weight: 700;
-            text-transform: uppercase;
-        }
-
-        .card {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            padding: 18px;
-            margin-bottom: calc(var(--space) - 8px);
-            box-shadow: 0 28px 35px -40px rgba(12, 15, 20, .45);
-        }
-
-        .card:last-child {
-            margin-bottom: 0;
-        }
-
-        .badge {
-            font-size: 12px;
-            font-weight: 600;
-            padding: 2px 8px;
-            border-radius: 999px;
-            border: 1px solid color-mix(in srgb, var(--border)60%, var(--accent)40%);
-            color: var(--accent);
-            background: color-mix(in srgb, var(--accent)12%, transparent);
-        }
-
-        .badges {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin: 6px 0 0;
-        }
-
-        .card-title {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 6px;
-            margin: 0 0 12px;
-        }
-
-        .card-title .badge {
-            margin: 0;
-        }
-
-        @media (min-width: 768px) {
-            .card-title {
-                flex-direction: row;
-                align-items: center;
-                gap: 10px;
-            }
-        }
-      
-        .tile {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            overflow: hidden;
-            box-shadow: 0 28px 35px -40px rgba(12, 15, 20, .4);
-            display: flex;
-            flex-direction: column;
-        }
-
-        .tile figure {
-            margin: 0;
-            position: relative;
-            overflow: hidden;
-            flex-shrink: 0;
-        }
-
-        .tile img {
-            width: 100%;
-            aspect-ratio: 16/9;
-            object-fit: cover;
-            display: block;
-            background: color-mix(in hsl, var(--text)6%, transparent)
-        }
-
-        .tile .body {
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 12px;
-            flex: 1;
-            width: 100%;
-        }
-
-        .tile h4 {
-            margin: 0;
-            font-size: clamp(18px, 2.4vw, 22px);
-        }
-
-        .tile a {
-            font-weight: 600;
-            color: var(--accent);
-        }
-
-        .projects {
-            display: grid;
-            gap: var(--space);
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            align-items: stretch;
-            grid-auto-rows: 1fr;
-        }
-
-        .projects ul {
-            margin: 0;
-            padding-left: 18px;
-            color: var(--muted);
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-
-        .highlights {
-            display: grid;
-            gap: 12px;
-            margin-top: 16px;
-            padding-left: 18px;
-            border-left: 2px solid color-mix(in srgb, var(--border)70%, var(--accent)30%);
-        }
-
-        .highlight {
-            position: relative;
-            margin: 0;
-            padding-left: 18px;
-            color: var(--muted);
-        }
-
-        .highlight::before {
-            content: "";
-            position: absolute;
-            left: -18px;
-            top: 8px;
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background: var(--accent);
-            box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent)25%, transparent);
-        }
-
-        .section-title {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 18px;
-        }
-
-        .section-title::before {
-            content: "";
-            width: 38px;
-            height: 4px;
-            border-radius: 999px;
-            background: linear-gradient(90deg, var(--accent) 0%, color-mix(in srgb, var(--accent-2) 55%, var(--accent)) 100%);
-        }
-
-        footer {
-            border-top: 1px solid var(--border);
-            padding: 18px 0;
-            text-align: center;
-            color: var(--muted);
-            font-size: 13px
-        }
-
-        .tech-icons {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-top: 10px;
-        }
-
-        .tile .body .tech-icons {
-            margin-top: auto;
-        }
-
-        .tech-icon {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            padding: 6px 10px;
-            border-radius: 999px;
-            border: 1px solid color-mix(in srgb, var(--border) 60%, var(--accent) 40%);
-            background: color-mix(in srgb, var(--accent) 10%, transparent);
-            font-size: 13px;
-            font-weight: 600;
-            color: var(--accent);
-        }
-
-        .tech-icon img {
-            width: 18px;
-            height: 18px;
-            object-fit: contain;
-        }
-
-        .tech-icon .icon-fallback {
-            width: 18px;
-            height: 18px;
-            border-radius: 6px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            background: color-mix(in srgb, var(--accent) 18%, transparent);
-            color: var(--surface);
-            font-size: 10px;
-            font-weight: 700;
-        }
-
-        .contact-panel {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            padding: clamp(24px, 4vw, 32px);
-            display: grid;
-            gap: 18px;
-            justify-items: center;
-            text-align: center;
-            box-shadow: 0 28px 35px -40px rgba(12, 15, 20, .45);
-            margin-inline: auto;
-            max-width: 640px;
-        }
-
-        .contact-panel h3 {
-            margin: 0;
-            font-size: clamp(18px, 2.2vw, 22px);
-        }
-
-        .contact-note {
-            margin: 0;
-            color: var(--muted);
-            max-width: 52ch;
-        }
-
-        .contact-links {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-            justify-content: center;
-        }
-
-        .contact-chip {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 10px 16px;
-            border-radius: 999px;
-            border: 1px solid color-mix(in srgb, var(--border) 60%, var(--accent) 40%);
-            color: var(--accent);
-            text-decoration: none;
-            background: color-mix(in srgb, var(--accent) 12%, transparent);
-            font-weight: 600;
-        }
-
-        .contact-chip span {
-            font-size: 18px;
-        }
-
-        .contact-actions {
-            display: flex;
-            justify-content: center;
-        }
-
-        .contact-actions .btn {
-            min-width: 180px;
-        }
-
-        @media(max-width:900px) {
-            .hero {
-                grid-template-columns: 1fr;
+                --bg: #fafafa;
+                --text: #0c0f14;
+                --muted: #5b6574;
+                --surface: #fff;
+                --border: #e6e8ec;
+                --accent: #2563eb;
+                --accent-soft: color-mix(
+                    in srgb,
+                    var(--accent) 15%,
+                    transparent
+                );
+                --accent-2: #f59e0b;
+                --radius: 14px;
+                --container: min(1024px, 92vw);
+                --space: clamp(16px, 2.2vw, 28px);
+                --space-tight: clamp(12px, 1.8vw, 22px);
+                --h1: clamp(28px, 4.5vw, 44px);
+                --h2: clamp(20px, 3vw, 28px);
+                --shadow: 0 18px 45px -35px rgba(37, 99, 235, 0.8);
             }
 
-            .cta {
-                flex-wrap: wrap;
-                justify-content: flex-start;
+            @media (prefers-color-scheme: dark) {
+                :root {
+                    --bg: #0b0d12;
+                    --text: #e5e9f0;
+                    --muted: #a3adbd;
+                    --surface: #12161f;
+                    --border: #202532;
+                    --accent: #4f8cff;
+                    --accent-soft: color-mix(
+                        in srgb,
+                        var(--accent) 20%,
+                        transparent
+                    );
+                    --accent-2: #f4b86d;
+                    --shadow: 0 18px 45px -35px rgba(79, 140, 255, 0.7);
+                }
             }
 
-            .menu-toggle {
-                display: inline-flex;
+            * {
+                box-sizing: border-box;
             }
 
-            nav {
-                position: absolute;
-                right: 0;
-                top: calc(100% + 12px);
-                flex-direction: column;
-                align-items: stretch;
-                padding: 14px;
-                border-radius: var(--radius);
-                border: 1px solid var(--border);
-                background: color-mix(in srgb, var(--surface)92%, transparent);
-                box-shadow: 0 16px 35px -24px rgba(12, 15, 20, .35);
-                display: none;
-                min-width: max(220px, 60vw);
-                gap: 8px;
+            body {
+                margin: 0;
+                background: var(--bg);
+                color: var(--text);
+                font:
+                    14px/1.6 ui-sans-serif,
+                    system-ui,
+                    -apple-system,
+                    Segoe UI,
+                    Roboto,
+                    Helvetica,
+                    Arial;
+                scroll-behavior: smooth;
             }
 
-            nav.open {
-                display: flex;
+            .container {
+                width: var(--container);
+                margin-inline: auto;
             }
 
-            nav a {
-                width: 100%;
-            }
-        }
-
-        @media(max-width:640px) {
-            .stats {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media(max-width:520px) {
-            .stats {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media(max-width:600px) {
             header {
                 position: sticky;
+                top: 0;
+                background: color-mix(in hsl, var(--bg) 60%, transparent);
+                border-bottom: 1px solid var(--border);
+                backdrop-filter: blur(6px);
+                z-index: 10;
             }
 
             .bar {
-                align-items: flex-start;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 12px 0;
+                gap: 18px;
+                position: relative;
+            }
+
+            .brand {
+                font-weight: 700;
+                font-size: 18px;
+                letter-spacing: 0.08em;
+                text-transform: uppercase;
+                text-decoration: none;
+                color: inherit;
+            }
+
+            nav {
+                display: flex;
+                gap: 16px;
+                align-items: center;
+            }
+
+            nav a {
+                color: var(--muted);
+                text-decoration: none;
+                font-weight: 600;
+                font-size: 13px;
+                padding: 8px 10px;
+                border-radius: 999px;
+                transition:
+                    background 0.2s ease,
+                    color 0.2s ease;
+                display: inline-flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            nav a:hover,
+            nav a:focus-visible {
+                background: var(--accent-soft);
+                color: var(--accent);
+            }
+
+            main {
+                padding-block: clamp(12px, 4vw, 36px);
+            }
+
+            h1 {
+                font-size: var(--h1);
+                margin: 0 0 10px;
+            }
+
+            h2 {
+                font-size: var(--h2);
+                margin: 0 0 10px;
+            }
+
+            p.sub {
+                color: var(--muted);
+                max-width: 58ch;
             }
 
             .hero {
-                justify-items: stretch;
-                row-gap: 32px;
+                position: relative;
+                display: grid;
+                grid-template-columns: 1.1fr 0.9fr;
+                gap: var(--space);
+                padding: clamp(48px, 8vw, 96px) 0;
+                align-items: center;
+                overflow: hidden;
             }
 
-            .hero>div:first-child {
-                order: 2;
-                text-align: left;
+            .hero::before {
+                content: "";
+                position: absolute;
+                inset: 12%;
+                background:
+                    radial-gradient(
+                        circle at 15% 20%,
+                        color-mix(in srgb, var(--accent) 35%, transparent) 0,
+                        transparent 65%
+                    ),
+                    radial-gradient(
+                        circle at 90% 80%,
+                        color-mix(in srgb, var(--accent) 28%, transparent) 0,
+                        transparent 60%
+                    );
+                z-index: -1;
             }
 
-            .hero>div:last-child {
-                order: 1;
-                justify-self: center;
+            .avatar {
+                width: min(300px, 88%);
+                aspect-ratio: 1/1;
+                object-fit: cover;
+                border-radius: 16px;
+                border: 1px solid var(--border);
+                margin-inline: auto;
+                box-shadow: 0 24px 55px -30px rgba(37, 99, 235, 0.45);
+            }
+
+            .tagline {
+                display: inline-flex;
+                align-items: center;
+                gap: 8px;
+                padding: 6px 12px;
+                border-radius: 999px;
+                background: color-mix(in srgb, var(--accent) 12%, transparent);
+                color: var(--accent);
+                font-weight: 600;
+                font-size: 13px;
+                letter-spacing: 0.05em;
+                text-transform: uppercase;
+            }
+
+            .accent {
+                color: var(--accent);
             }
 
             .cta {
+                display: flex;
+                gap: 10px;
+                margin-top: 14px;
+            }
+
+            .menu-toggle {
+                display: none;
+                align-items: center;
+                gap: 8px;
+                border: 1px solid var(--border);
+                background: var(--surface);
+                color: inherit;
+                font-weight: 600;
+                border-radius: 999px;
+                padding: 8px 14px;
+                cursor: pointer;
+                font-size: 13px;
+                transition:
+                    background 0.2s ease,
+                    color 0.2s ease,
+                    border 0.2s ease;
+            }
+
+            .menu-toggle:focus-visible,
+            .menu-toggle:hover {
+                border-color: color-mix(
+                    in srgb,
+                    var(--border) 55%,
+                    var(--accent) 45%
+                );
+                color: var(--accent);
+            }
+
+            .btn {
+                padding: 10px 18px;
+                border-radius: 12px;
+                border: 1px solid var(--border);
+                background: var(--surface);
+                text-decoration: none;
+                font-weight: 600;
+                letter-spacing: 0.01em;
+                transition:
+                    transform 0.2s ease,
+                    box-shadow 0.2s ease,
+                    background 0.2s ease;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                gap: 8px;
+                color: inherit;
+            }
+
+            .btn.primary {
+                background: linear-gradient(
+                    135deg,
+                    var(--accent),
+                    color-mix(in srgb, var(--accent-2) 35%, var(--accent))
+                );
+                color: #fff;
+                border: 0;
+                box-shadow: 0 18px 25px -20px
+                    color-mix(in srgb, var(--accent) 55%, transparent);
+            }
+
+            .btn.secondary {
+                border-color: color-mix(
+                    in srgb,
+                    var(--border) 55%,
+                    var(--accent-2) 45%
+                );
+                background: color-mix(
+                    in srgb,
+                    var(--accent-2) 12%,
+                    transparent
+                );
+                color: color-mix(in srgb, var(--accent-2) 75%, var(--text));
+            }
+
+            .btn:hover,
+            .btn:focus-visible {
+                transform: translateY(-1px);
+                box-shadow: 0 16px 28px -24px
+                    color-mix(in srgb, var(--accent) 50%, transparent);
+            }
+
+            section {
+                padding: clamp(24px, 4.5vw, 52px) 0;
+                scroll-margin-top: 90px;
+            }
+
+            section:not(.hero) {
+                border-top: 1px solid var(--border);
+            }
+
+            .muted {
+                color: var(--muted);
+            }
+
+            .meta {
+                list-style: none;
+                padding: 14px 18px;
+                margin: 18px 0 0;
+                border-radius: var(--radius);
+                background: color-mix(
+                    in srgb,
+                    var(--surface) 85%,
+                    var(--accent) 15%
+                );
+                border: 1px solid
+                    color-mix(in srgb, var(--border) 55%, var(--accent) 45%);
+                display: grid;
+                gap: 8px;
+                font-size: 15px;
+                box-shadow: var(--shadow);
+                max-width: 420px;
+            }
+
+            .meta a {
+                color: inherit;
+                text-decoration: none;
+                font-weight: 600;
+            }
+
+            .meta a:hover,
+            .meta a:focus-visible {
+                color: var(--accent);
+            }
+
+            .stats {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: var(--space);
+                margin-top: 10px;
+            }
+
+            .stat {
+                background: var(--surface);
+                border: 1px solid var(--border);
+                border-radius: var(--radius);
+                padding: 14px;
+                display: flex;
                 flex-direction: column;
-                align-items: stretch;
+                gap: 4px;
+                position: relative;
+                overflow: hidden;
             }
 
-            .cta .btn {
-                text-align: center;
+            .stat::before {
+                content: "";
+                position: absolute;
+                inset: 0;
+                border-radius: inherit;
+                background: linear-gradient(
+                    135deg,
+                    color-mix(in srgb, var(--accent) 18%, transparent),
+                    transparent 65%
+                );
+                opacity: 0.22;
+                pointer-events: none;
             }
 
-            #education .card h3 {
+            .stat .num {
+                font-weight: 800;
+                font-size: clamp(20px, 3vw, 32px);
+            }
+
+            #education .card {
+                margin-bottom: var(--space-tight);
+            }
+
+            .skills-grid {
+                display: grid;
+                gap: var(--space-tight);
+                grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            }
+
+            .skill-group {
+                background: var(--surface);
+                border: 1px solid var(--border);
+                border-radius: var(--radius);
+                padding: 16px 18px;
+                display: grid;
+                gap: 12px;
+                box-shadow: 0 18px 30px -38px rgba(12, 15, 20, 0.5);
+            }
+
+            .skill-group h3 {
+                margin: 0;
+                font-size: clamp(16px, 2vw, 18px);
+            }
+
+            .skill-list {
+                list-style: none;
+                margin: 0;
+                padding: 0;
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .skill-item {
+                display: grid;
+                grid-template-columns: 28px 1fr;
+                align-items: center;
+                gap: 10px;
+                font-weight: 600;
+                color: inherit;
+            }
+
+            .skill-item img {
+                width: 28px;
+                height: 28px;
+                object-fit: contain;
+            }
+
+            .skill-item span {
+                color: var(--text);
+            }
+
+            .skill-item .icon-fallback {
+                width: 28px;
+                height: 28px;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 8px;
+                background: color-mix(in srgb, var(--accent) 12%, transparent);
+                color: var(--accent);
+                font-size: 12px;
+                font-weight: 700;
+                text-transform: uppercase;
+            }
+
+            .card {
+                background: var(--surface);
+                border: 1px solid var(--border);
+                border-radius: var(--radius);
+                padding: 18px;
+                margin-bottom: calc(var(--space) - 8px);
+                box-shadow: 0 28px 35px -40px rgba(12, 15, 20, 0.45);
+            }
+
+            .card:last-child {
+                margin-bottom: 0;
+            }
+
+            .badge {
+                font-size: 12px;
+                font-weight: 600;
+                padding: 2px 8px;
+                border-radius: 999px;
+                border: 1px solid
+                    color-mix(in srgb, var(--border) 60%, var(--accent) 40%);
+                color: var(--accent);
+                background: color-mix(in srgb, var(--accent) 12%, transparent);
+            }
+
+            .badges {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 8px;
+                margin: 6px 0 0;
+            }
+
+            .card-title {
                 display: flex;
                 flex-direction: column;
                 align-items: flex-start;
                 gap: 6px;
+                margin: 0 0 12px;
             }
 
-            #education .card h3 .badge {
+            .card-title .badge {
                 margin: 0;
             }
 
-            .meta {
-                width: 100%;
-                margin-inline: 0;
+            @media (min-width: 768px) {
+                .card-title {
+                    flex-direction: row;
+                    align-items: center;
+                    gap: 10px;
+                }
             }
 
-            section {
-                padding: 32px 0;
+            .tile {
+                background: var(--surface);
+                border: 1px solid var(--border);
+                border-radius: var(--radius);
+                overflow: hidden;
+                box-shadow: 0 28px 35px -40px rgba(12, 15, 20, 0.4);
+                display: flex;
+                flex-direction: column;
+            }
+
+            .tile figure {
+                margin: 0;
+                position: relative;
+                overflow: hidden;
+                flex-shrink: 0;
+            }
+
+            .tile img {
+                width: 100%;
+                aspect-ratio: 16/9;
+                object-fit: cover;
+                display: block;
+                background: color-mix(in hsl, var(--text) 6%, transparent);
             }
 
             .tile .body {
-                padding: 16px;
+                padding: 20px;
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 12px;
+                flex: 1;
+                width: 100%;
             }
-        }
-    </style>
-</head>
 
-<body>
-    <header>
-        <div class="container bar">
-            <a class="brand" href="#">Miho</a>
-            <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
-                <span aria-hidden="true">☰</span>
-                Menu
-            </button>
-            <nav id="site-nav">
-                <a href="#about">Giới thiệu</a>
-                <a href="#education">Học vấn</a>
-                <a href="#projects">Dự án</a>
-                <a href="#contact">Liên hệ</a>
-            </nav>
-        </div>
-    </header>
-    <main>
-        <section class="container hero">
-            <div>
-                <span class="tagline">Sáng tạo và nỗ lực không ngừng</span>
-                <h1>Miho — <span class="accent">Full Stack Developer</span></h1>
-                <p class="sub">HỌC IT NHƯNG GHÉT TOÁN LÝ HÓA, Fan cứng của Orangestar và Guiano, gu âm nhạc hơi cổ đại
-                    một xíu. Là con trai nhưng tiêu thụ trà sữa nhiều hơn con gái.</p>
-                <div class="cta">
-                    <a class="btn primary" href="#projects">Xem dự án</a>
-                    <a class="btn secondary" href="#contact">Liên hệ</a>
-                </div>
-                <ul class="meta">
-                    <li>📍 TP.HCM</li>
-                    <li>✉️ <a href="mailto:wanghien.miho.dev@gmail.com">wanghien.miho.dev@gmail.com</a></li>
-                    <li>🔗 <a href="https://github.com/Miho1254" target="_blank" rel="noopener">github.com/Miho1254</a>
-                    </li>
-                </ul>
+            .tile h4 {
+                margin: 0;
+                font-size: clamp(18px, 2.4vw, 22px);
+            }
+
+            .tile a {
+                font-weight: 600;
+                color: var(--accent);
+            }
+
+            .projects {
+                display: grid;
+                gap: var(--space);
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                align-items: stretch;
+                grid-auto-rows: 1fr;
+            }
+
+            .projects ul {
+                margin: 0;
+                padding-left: 18px;
+                color: var(--muted);
+                display: flex;
+                flex-direction: column;
+                gap: 8px;
+            }
+
+            .highlights {
+                display: grid;
+                gap: 12px;
+                margin-top: 16px;
+                padding-left: 18px;
+                border-left: 2px solid
+                    color-mix(in srgb, var(--border) 70%, var(--accent) 30%);
+            }
+
+            .highlight {
+                position: relative;
+                margin: 0;
+                padding-left: 18px;
+                color: var(--muted);
+            }
+
+            .highlight::before {
+                content: "";
+                position: absolute;
+                left: -18px;
+                top: 8px;
+                width: 10px;
+                height: 10px;
+                border-radius: 50%;
+                background: var(--accent);
+                box-shadow: 0 0 0 3px
+                    color-mix(in srgb, var(--accent) 25%, transparent);
+            }
+
+            .section-title {
+                display: inline-flex;
+                align-items: center;
+                gap: 10px;
+                margin-bottom: 18px;
+            }
+
+            .section-title::before {
+                content: "";
+                width: 38px;
+                height: 4px;
+                border-radius: 999px;
+                background: linear-gradient(
+                    90deg,
+                    var(--accent) 0%,
+                    color-mix(in srgb, var(--accent-2) 55%, var(--accent)) 100%
+                );
+            }
+
+            footer {
+                border-top: 1px solid var(--border);
+                padding: 18px 0;
+                text-align: center;
+                color: var(--muted);
+                font-size: 13px;
+            }
+
+            .tech-icons {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 10px;
+                margin-top: 10px;
+            }
+
+            .tile .body .tech-icons {
+                margin-top: auto;
+            }
+
+            .tech-icon {
+                display: inline-flex;
+                align-items: center;
+                gap: 6px;
+                padding: 6px 10px;
+                border-radius: 999px;
+                border: 1px solid
+                    color-mix(in srgb, var(--border) 60%, var(--accent) 40%);
+                background: color-mix(in srgb, var(--accent) 10%, transparent);
+                font-size: 13px;
+                font-weight: 600;
+                color: var(--accent);
+            }
+
+            .tech-icon img {
+                width: 18px;
+                height: 18px;
+                object-fit: contain;
+            }
+
+            .tech-icon .icon-fallback {
+                width: 18px;
+                height: 18px;
+                border-radius: 6px;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                background: color-mix(in srgb, var(--accent) 18%, transparent);
+                color: var(--surface);
+                font-size: 10px;
+                font-weight: 700;
+            }
+
+            .contact-panel {
+                background: var(--surface);
+                border: 1px solid var(--border);
+                border-radius: var(--radius);
+                padding: clamp(24px, 4vw, 32px);
+                display: grid;
+                gap: 18px;
+                justify-items: center;
+                text-align: center;
+                box-shadow: 0 28px 35px -40px rgba(12, 15, 20, 0.45);
+                margin-inline: auto;
+                max-width: 640px;
+            }
+
+            .contact-panel h3 {
+                margin: 0;
+                font-size: clamp(18px, 2.2vw, 22px);
+            }
+
+            .contact-note {
+                margin: 0;
+                color: var(--muted);
+                max-width: 52ch;
+            }
+
+            .contact-links {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 12px;
+                justify-content: center;
+            }
+
+            .contact-chip {
+                display: inline-flex;
+                align-items: center;
+                gap: 8px;
+                padding: 10px 16px;
+                border-radius: 999px;
+                border: 1px solid
+                    color-mix(in srgb, var(--border) 60%, var(--accent) 40%);
+                color: var(--accent);
+                text-decoration: none;
+                background: color-mix(in srgb, var(--accent) 12%, transparent);
+                font-weight: 600;
+            }
+
+            .contact-chip span {
+                font-size: 18px;
+            }
+
+            .contact-actions {
+                display: flex;
+                justify-content: center;
+            }
+
+            .contact-actions .btn {
+                min-width: 180px;
+            }
+
+            @media (max-width: 900px) {
+                .hero {
+                    grid-template-columns: 1fr;
+                }
+
+                .cta {
+                    flex-wrap: wrap;
+                    justify-content: flex-start;
+                }
+
+                .menu-toggle {
+                    display: inline-flex;
+                }
+
+                nav {
+                    position: absolute;
+                    right: 0;
+                    top: calc(100% + 12px);
+                    flex-direction: column;
+                    align-items: stretch;
+                    padding: 14px;
+                    border-radius: var(--radius);
+                    border: 1px solid var(--border);
+                    background: color-mix(
+                        in srgb,
+                        var(--surface) 92%,
+                        transparent
+                    );
+                    box-shadow: 0 16px 35px -24px rgba(12, 15, 20, 0.35);
+                    display: none;
+                    min-width: max(220px, 60vw);
+                    gap: 8px;
+                }
+
+                nav.open {
+                    display: flex;
+                }
+
+                nav a {
+                    width: 100%;
+                }
+            }
+
+            @media (max-width: 640px) {
+                .stats {
+                    grid-template-columns: repeat(2, 1fr);
+                }
+            }
+
+            @media (max-width: 520px) {
+                .stats {
+                    grid-template-columns: 1fr;
+                }
+            }
+
+            @media (max-width: 600px) {
+                header {
+                    position: sticky;
+                }
+
+                .bar {
+                    align-items: flex-start;
+                }
+
+                .hero {
+                    justify-items: stretch;
+                    row-gap: 32px;
+                }
+
+                .hero > div:first-child {
+                    order: 2;
+                    text-align: left;
+                }
+
+                .hero > div:last-child {
+                    order: 1;
+                    justify-self: center;
+                }
+
+                .cta {
+                    flex-direction: column;
+                    align-items: stretch;
+                }
+
+                .cta .btn {
+                    text-align: center;
+                }
+
+                #education .card h3 {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: flex-start;
+                    gap: 6px;
+                }
+
+                #education .card h3 .badge {
+                    margin: 0;
+                }
+
+                .meta {
+                    width: 100%;
+                    margin-inline: 0;
+                }
+
+                section {
+                    padding: 32px 0;
+                }
+
+                .tile .body {
+                    padding: 16px;
+                }
+            }
+        </style>
+    </head>
+
+    <body>
+        <header>
+            <div class="container bar">
+                <a class="brand" href="#">Miho</a>
+                <button
+                    class="menu-toggle"
+                    type="button"
+                    aria-expanded="false"
+                    aria-controls="site-nav"
+                >
+                    <span aria-hidden="true">☰</span>
+                    Menu
+                </button>
+                <nav id="site-nav">
+                    <a href="#about">Giới thiệu</a>
+                    <a href="#education">Học vấn</a>
+                    <a href="#projects">Dự án</a>
+                    <a href="#contact">Liên hệ</a>
+                </nav>
             </div>
-            <div><img class="avatar" src="https://bucket.worldlotho.com/staffs/Miho/profile.webp"
-                    alt="Ảnh chân dung Miho"></div>
-        </section>
-
-        <section id="about">
-            <div class="container">
-                <h2 class="section-title">Giới thiệu</h2>
-                <p class="muted">Mình thích trải nghiệm số tinh gọn, chú trọng hiệu năng, accessibility. Thành thạo JS
-                    và PHP.</p>
-                <div class="stats">
-                    <div class="stat"><span class="num">3+</span><span class="muted">năm viết code</span></div>
-                    <div class="stat"><span class="num">3</span><span class="muted">dự án đã thương mại hóa</span></div>
-                    <div class="stat"><span class="num">3+</span><span class="muted">giải thưởng chuyên ngành</span>
+        </header>
+        <main>
+            <section class="container hero">
+                <div>
+                    <span class="tagline">Sáng tạo và nỗ lực không ngừng</span>
+                    <h1>
+                        Miho — <span class="accent">Full Stack Developer</span>
+                    </h1>
+                    <p class="sub">
+                        HỌC IT NHƯNG GHÉT TOÁN LÝ HÓA, Fan cứng của Orangestar
+                        và Guiano, gu âm nhạc hơi cổ đại một xíu. Là con trai
+                        nhưng tiêu thụ trà sữa nhiều hơn con gái.
+                    </p>
+                    <div class="cta">
+                        <a class="btn primary" href="#projects">Xem dự án</a>
+                        <a class="btn secondary" href="#contact">Liên hệ</a>
                     </div>
+                    <ul class="meta">
+                        <li>📍 TP.HCM</li>
+                        <li>
+                            ✉️
+                            <a href="mailto:wanghien.miho.dev@gmail.com"
+                                >wanghien.miho.dev@gmail.com</a
+                            >
+                        </li>
+                        <li>
+                            🔗
+                            <a
+                                href="https://github.com/Miho1254"
+                                target="_blank"
+                                rel="noopener"
+                                >github.com/Miho1254</a
+                            >
+                        </li>
+                    </ul>
                 </div>
-            </div>
-        </section>
-
-        <section id="education">
-            <div class="container">
-                <h2 class="section-title">Học vấn</h2>
-                <div class="card">
-                    <h3>ĐH Thủy Lợi – Phân hiệu TP.HCM <span class="badge">2025 – Hiện tại</span></h3>
-                    <p class="muted">Chuyên ngành: Công nghệ thông tin</p>
+                <div>
+                    <img
+                        class="avatar"
+                        src="https://bucket.worldlotho.com/staffs/Miho/profile.webp"
+                        alt="Ảnh chân dung Miho"
+                    />
                 </div>
-                <div class="card">
-                    <h3>Trung cấp nghề Nhân Đạo <span class="badge">2022 – 2024</span></h3>
-                    <p class="muted">Ngành: Kỹ thuật máy tính | GPA: 3.8/4</p>
-                </div>
-            </div>
-        </section>
+            </section>
 
-        <section id="awards">
-            <div class="container">
-                <h2 class="section-title">Giải thưởng</h2>
-                <div class="card">
-                    <h3>🏆 Giải Nhì, Hội thi Kỹ năng Sinh viên TP. Hồ Chí Minh</h3>
-                    <p class="muted">2024 — Đoàn Thanh niên Cộng sản Hồ Chí Minh TP. Hồ Chí Minh</p>
-                </div>
-                <div class="card">
-                    <h3>💡 Giải Khuyến khích, Kỳ thi Phát triển Web TP. Hồ Chí Minh</h3>
-                    <p class="muted">2023 — Sở Giáo dục & Đào tạo TP. Hồ Chí Minh</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="skills">
-            <div class="container">
-                <h2 class="section-title">Kỹ năng</h2>
-                <div class="skills-grid">
-                    <div class="skill-group">
-                        <h3>Ngôn ngữ &amp; libraries</h3>
-                        <ul class="skill-list">
-                            <li class="skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-plain.svg"
-                                    alt="HTML5"><span>HTML5</span></li>
-                            <li class="skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-plain.svg"
-                                    alt="CSS3"><span>CSS3</span></li>
-                            <li class="skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-plain.svg"
-                                    alt="TypeScript"><span>TypeScript</span></li>
-                            <li class="skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-plain.svg"
-                                    alt="PHP"><span>PHP</span></li>
-                        </ul>
-                    </div>
-                    <div class="skill-group">
-                        <h3>Framework &amp; runtime</h3>
-                        <ul class="skill-list">
-                            <li class="skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg"
-                                    alt="React"><span>React</span></li>
-                            <li class="skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-plain.svg"
-                                    alt="Node.js"><span>Node.js</span></li>
-                            <li class="skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/denojs/denojs-original.svg"
-                                    alt="Deno"><span>Deno</span></li>
-                        </ul>
-                    </div>
-                    <div class="skill-group">
-                        <h3>DevOps &amp; công cụ</h3>
-                        <ul class="skill-list">
-                            <li class="skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-plain.svg"
-                                    alt="Docker"><span>Docker</span></li>
-                            <li class="skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cloudflare/cloudflare-original.svg"
-                                    alt="Cloudflare"><span>Cloudflare</span></li>
-                            <li class="skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg"
-                                    alt="Linux"><span>Linux</span></li>
-                        </ul>
-                    </div>
-                    <div class="skill-group">
-                        <h3>Cơ sở dữ liệu</h3>
-                        <ul class="skill-list">
-                            <li class="skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-plain.svg"
-                                    alt="PostgreSQL"><span>PostgreSQL</span></li>
-                            <li class="skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/prisma/prisma-original.svg"
-                                    alt="Prisma ORM"><span>Prisma ORM</span></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="experience">
-            <div class="container">
-                <h2 class="section-title">Kinh nghiệm</h2>
-                <div class="card">
-                    <h3 class="card-title">World Lọt Hố <span class="badge">2023 — Nay</span></h3>
-                    <p class="muted">IT Specialist</p>
-                    <div class="highlights">
-                        <p class="highlight">Phát triển và duy trì nhiều hệ thống để hỗ trợ các hoạt động của đội nhóm.</p>
-                        <p class="highlight">Xây dựng ứng dụng quản lý kinh doanh và hệ thống quản lý sự kiện cho các sự kiện offline.</p>
-                        <p class="highlight">Triển khai các dự án web nhằm cải thiện hình ảnh công chúng và quy trình làm việc nội bộ.</p>
-                        <p class="highlight">Chịu trách nhiệm toàn bộ cho mọi công việc kỹ thuật.</p>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
-        <section id="projects">
-            <div class="container">
-                <h2 class="section-title">Dự án</h2>
-                <div class="projects">
-                    <div class="tile">
-                        <figure>
-                            <img src="https://images.unsplash.com/photo-1483478550801-ceba5fe50e8e?auto=format&fit=crop&w=1080&q=80"
-                                alt="Giao diện bảng điều khiển bán vé sự kiện" loading="lazy">
-                        </figure>
-                        <div class="body">
-                            <h4>Hệ thống quản lý và soát vé đa sự kiện</h4>
-                            <a href="https://www.facebook.com/share/p/17KFWRUQa4/" target="_blank" rel="noopener">
-                                (Xem demo)
-                            </a>
-                            <ul>
-                                <li>Thiết kế và triển khai hệ thống bán vé và check-in đạt chuẩn chuyên nghiệp cho sự
-                                    kiện
-                                    cộng đồng quy mô lớn.</li>
-                                <li>Vận hành quy trình full-stack xử lý hơn 400+ vé, mang về doanh thu 50 triệu VND
-                                    (~2000 USD).
-                                </li>
-                                <li>Tự động gửi email cùng mã QR duy nhất cho từng vé và dashboard check-in thời gian
-                                    thực.</li>
-                            </ul>
-                            <div class="tech-icons">
-                                <span class="tech-icon"><img
-                                        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/prisma/prisma-original.svg"
-                                        alt="Prisma"><span>Prisma</span></span>
-                                <span class="tech-icon"><img
-                                        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-plain.svg"
-                                        alt="PostgreSQL"><span>PostgreSQL</span></span>
-                                <span class="tech-icon"><img
-                                        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-plain.svg"
-                                        alt="Node.js"><span>Node.js</span></span>
-                                <span class="tech-icon"><span class="icon-fallback">RA</span><span>React Admin</span></span>
-                                <span class="tech-icon"><img
-                                        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/denojs/denojs-original.svg"
-                                        alt="Deno"><span>Deno</span></span>
-                                <span class="tech-icon"><img
-                                        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cloudflare/cloudflare-original.svg"
-                                        alt="Cloudflare"><span>Cloudflare</span></span>
-                            </div>
-
+            <section id="about">
+                <div class="container">
+                    <h2 class="section-title">Giới thiệu</h2>
+                    <p class="muted">
+                        Mình thích trải nghiệm số tinh gọn, chú trọng hiệu năng,
+                        accessibility. Thành thạo JS và PHP.
+                    </p>
+                    <div class="stats">
+                        <div class="stat">
+                            <span class="num">3+</span
+                            ><span class="muted">năm viết code</span>
+                        </div>
+                        <div class="stat">
+                            <span class="num">3</span
+                            ><span class="muted">dự án đã thương mại hóa</span>
+                        </div>
+                        <div class="stat">
+                            <span class="num">3+</span
+                            ><span class="muted">giải thưởng chuyên ngành</span>
                         </div>
                     </div>
-                    <div class="tile">
-                        <figure>
-                            <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1080&q=80"
-                                alt="Màn hình quản lý thành viên với biểu đồ" loading="lazy">
-                        </figure>
-                        <div class="body">
-                            <h4>Hệ thống Quản lý Thành viên tích hợp NFC</h4>
-                            <a href="https://worldlotho.com/staff" target="_blank" rel="noopener">
-                                (Xem demo)
-                            </a>
-                            <ul>
-                                <li>Liên kết mỗi thẻ NFC với một trang hồ sơ cá nhân trực tuyến để xác thực tức thời.
-                                </li>
-                                <li>Thiết kế dashboard quản trị thân thiện giúp đội ngũ quản lý dữ liệu thành viên nhanh
-                                    chóng.</li>
-                                <li>Bảo đảm an toàn dữ liệu và phân quyền truy cập linh hoạt cho nhân sự nội bộ.</li>
-                            </ul>
-                            <div class="tech-icons">
-                                <span class="tech-icon"><span class="icon-fallback">SJ</span><span>SonicJS</span></span>
-                                <span class="tech-icon"><img
-                                        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-plain.svg"
-                                        alt="Node.js"><span>Node.js</span></span>
-                                <span class="tech-icon"><img
-                                        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cloudflare/cloudflare-original.svg"
-                                        alt="Cloudflare"><span>Cloudflare</span></span>
-                                <span class="tech-icon"><img
+                </div>
+            </section>
+
+            <section id="education">
+                <div class="container">
+                    <h2 class="section-title">Học vấn</h2>
+                    <div class="card">
+                        <h3>
+                            ĐH Thủy Lợi – Phân hiệu TP.HCM
+                            <span class="badge">2025 – Hiện tại</span>
+                        </h3>
+                        <p class="muted">Chuyên ngành: Công nghệ thông tin</p>
+                    </div>
+                    <div class="card">
+                        <h3>
+                            Trung cấp nghề Nhân Đạo
+                            <span class="badge">2022 – 2024</span>
+                        </h3>
+                        <p class="muted">
+                            Ngành: Kỹ thuật máy tính | GPA: 3.8/4
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="awards">
+                <div class="container">
+                    <h2 class="section-title">Giải thưởng</h2>
+                    <div class="card">
+                        <h3>
+                            🏆 Giải Nhì, Hội thi Kỹ năng Sinh viên TP. Hồ Chí
+                            Minh
+                        </h3>
+                        <p class="muted">
+                            2024 — Đoàn Thanh niên Cộng sản Hồ Chí Minh TP. Hồ
+                            Chí Minh
+                        </p>
+                    </div>
+                    <div class="card">
+                        <h3>
+                            💡 Giải Khuyến khích, Kỳ thi Phát triển Web TP. Hồ
+                            Chí Minh
+                        </h3>
+                        <p class="muted">
+                            2023 — Sở Giáo dục & Đào tạo TP. Hồ Chí Minh
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="skills">
+                <div class="container">
+                    <h2 class="section-title">Kỹ năng</h2>
+                    <div class="skills-grid">
+                        <div class="skill-group">
+                            <h3>Ngôn ngữ &amp; libraries</h3>
+                            <ul class="skill-list">
+                                <li class="skill-item">
+                                    <img
                                         src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-plain.svg"
-                                        alt="HTML"><span>HTML</span></span>
-                                <span class="tech-icon"><img
+                                        alt="HTML5"
+                                    /><span>HTML5</span>
+                                </li>
+                                <li class="skill-item">
+                                    <img
                                         src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-plain.svg"
-                                        alt="CSS"><span>CSS</span></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tile">
-                        <figure>
-                            <img src="https://images.unsplash.com/photo-1523475472560-d2df97ec485c?auto=format&fit=crop&w=1080&q=80"
-                                alt="Landing page giới thiệu thương hiệu" loading="lazy">
-                        </figure>
-                        <div class="body">
-                            <h4>Website giới thiệu World Lọt Hố</h4>
-                            <a href="https://worldlotho.com" target="_blank" rel="noopener">
-                                (Xem live)
-                            </a>
-
-                            <ul>
-                                <li>Xây dựng giao diện landing page chuyển đổi cao với các khối nội dung rõ ràng.</li>
-                                <li>Tối ưu tốc độ tải trang, đạt điểm Lighthouse &gt; 90 cho cả desktop và mobile.</li>
-                                <li>Tích hợp biểu mẫu liên hệ, giúp tự động hóa quy trình tiếp nhận đối tác &amp; cộng
-                                    đồng.</li>
+                                        alt="CSS3"
+                                    /><span>CSS3</span>
+                                </li>
+                                <li class="skill-item">
+                                    <img
+                                        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-plain.svg"
+                                        alt="TypeScript"
+                                    /><span>TypeScript</span>
+                                </li>
+                                <li class="skill-item">
+                                    <img
+                                        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-plain.svg"
+                                        alt="PHP"
+                                    /><span>PHP</span>
+                                </li>
                             </ul>
-                            <div class="tech-icons">
-                                <span class="tech-icon"><img
-                                        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-plain.svg"
-                                        alt="CSS thuần"><span>Vanilla CSS</span></span>
+                        </div>
+                        <div class="skill-group">
+                            <h3>Framework &amp; runtime</h3>
+                            <ul class="skill-list">
+                                <li class="skill-item">
+                                    <img
+                                        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg"
+                                        alt="React"
+                                    /><span>React</span>
+                                </li>
+                                <li class="skill-item">
+                                    <img
+                                        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-plain.svg"
+                                        alt="Node.js"
+                                    /><span>Node.js</span>
+                                </li>
+                                <li class="skill-item">
+                                    <img
+                                        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/denojs/denojs-original.svg"
+                                        alt="Deno"
+                                    /><span>Deno</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="skill-group">
+                            <h3>DevOps &amp; công cụ</h3>
+                            <ul class="skill-list">
+                                <li class="skill-item">
+                                    <img
+                                        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-plain.svg"
+                                        alt="Docker"
+                                    /><span>Docker</span>
+                                </li>
+                                <li class="skill-item">
+                                    <img
+                                        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cloudflare/cloudflare-original.svg"
+                                        alt="Cloudflare"
+                                    /><span>Cloudflare</span>
+                                </li>
+                                <li class="skill-item">
+                                    <img
+                                        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg"
+                                        alt="Linux"
+                                    /><span>Linux</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="skill-group">
+                            <h3>Cơ sở dữ liệu</h3>
+                            <ul class="skill-list">
+                                <li class="skill-item">
+                                    <img
+                                        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-plain.svg"
+                                        alt="PostgreSQL"
+                                    /><span>PostgreSQL</span>
+                                </li>
+                                <li class="skill-item">
+                                    <img
+                                        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/prisma/prisma-original.svg"
+                                        alt="Prisma ORM"
+                                    /><span>Prisma ORM</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="experience">
+                <div class="container">
+                    <h2 class="section-title">Kinh nghiệm</h2>
+                    <div class="card">
+                        <h3 class="card-title">
+                            World Lọt Hố <span class="badge">2023 — Nay</span>
+                        </h3>
+                        <p class="muted">IT Specialist</p>
+                        <div class="highlights">
+                            <p class="highlight">
+                                Phát triển và duy trì nhiều hệ thống để hỗ trợ
+                                các hoạt động của đội nhóm.
+                            </p>
+                            <p class="highlight">
+                                Xây dựng ứng dụng quản lý kinh doanh và hệ thống
+                                quản lý sự kiện cho các sự kiện offline.
+                            </p>
+                            <p class="highlight">
+                                Triển khai các dự án web nhằm cải thiện hình ảnh
+                                công chúng và quy trình làm việc nội bộ.
+                            </p>
+                            <p class="highlight">
+                                Chịu trách nhiệm toàn bộ cho mọi công việc kỹ
+                                thuật.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="projects">
+                <div class="container">
+                    <h2 class="section-title">Dự án</h2>
+                    <div class="projects">
+                        <div class="tile">
+                            <figure>
+                                <img
+                                    src="/assets/images/wlh-office.webp"
+                                    alt="Giao diện bảng điều khiển bán vé sự kiện"
+                                    loading="lazy"
+                                />
+                            </figure>
+                            <div class="body">
+                                <h4>Hệ thống quản lý và soát vé đa sự kiện</h4>
+                                <a
+                                    href="https://www.facebook.com/share/p/17KFWRUQa4/"
+                                    target="_blank"
+                                    rel="noopener"
+                                >
+                                    (Xem demo)
+                                </a>
+                                <ul>
+                                    <li>
+                                        Thiết kế và triển khai hệ thống bán vé
+                                        và check-in đạt chuẩn chuyên nghiệp cho
+                                        sự kiện cộng đồng quy mô lớn.
+                                    </li>
+                                    <li>
+                                        Vận hành quy trình full-stack xử lý hơn
+                                        400+ vé, mang về doanh thu 50 triệu VND
+                                        (~2000 USD).
+                                    </li>
+                                    <li>
+                                        Tự động gửi email cùng mã QR duy nhất
+                                        cho từng vé và dashboard check-in thời
+                                        gian thực.
+                                    </li>
+                                </ul>
+                                <div class="tech-icons">
+                                    <span class="tech-icon"
+                                        ><img
+                                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/prisma/prisma-original.svg"
+                                            alt="Prisma"
+                                        /><span>Prisma</span></span
+                                    >
+                                    <span class="tech-icon"
+                                        ><img
+                                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-plain.svg"
+                                            alt="PostgreSQL"
+                                        /><span>PostgreSQL</span></span
+                                    >
+                                    <span class="tech-icon"
+                                        ><img
+                                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-plain.svg"
+                                            alt="Node.js"
+                                        /><span>Node.js</span></span
+                                    >
+                                    <span class="tech-icon"
+                                        ><span class="icon-fallback">RA</span
+                                        ><span>React Admin</span></span
+                                    >
+                                    <span class="tech-icon"
+                                        ><img
+                                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/denojs/denojs-original.svg"
+                                            alt="Deno"
+                                        /><span>Deno</span></span
+                                    >
+                                    <span class="tech-icon"
+                                        ><img
+                                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cloudflare/cloudflare-original.svg"
+                                            alt="Cloudflare"
+                                        /><span>Cloudflare</span></span
+                                    >
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tile">
+                            <figure>
+                                <img
+                                    src="/assets/images/wlh-staff.webp"
+                                    alt="Màn hình quản lý thành viên với biểu đồ"
+                                    loading="lazy"
+                                />
+                            </figure>
+                            <div class="body">
+                                <h4>
+                                    Hệ thống Quản lý Thành viên tích hợp NFC
+                                </h4>
+                                <a
+                                    href="https://worldlotho.com/staff"
+                                    target="_blank"
+                                    rel="noopener"
+                                >
+                                    (Xem demo)
+                                </a>
+                                <ul>
+                                    <li>
+                                        Liên kết mỗi thẻ NFC với một trang hồ sơ
+                                        cá nhân trực tuyến để xác thực tức thời.
+                                    </li>
+                                    <li>
+                                        Thiết kế dashboard quản trị thân thiện
+                                        giúp đội ngũ quản lý dữ liệu thành viên
+                                        nhanh chóng.
+                                    </li>
+                                    <li>
+                                        Quản lý thông tin hơn 40 thành viên, bảo
+                                        đảm an toàn dữ liệu và phân quyền truy
+                                        cập linh hoạt cho nhân sự nội bộ.
+                                    </li>
+                                </ul>
+                                <div class="tech-icons">
+                                    <span class="tech-icon"
+                                        ><span class="icon-fallback">SJ</span
+                                        ><span>SonicJS</span></span
+                                    >
+                                    <span class="tech-icon"
+                                        ><img
+                                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-plain.svg"
+                                            alt="Node.js"
+                                        /><span>Node.js</span></span
+                                    >
+                                    <span class="tech-icon"
+                                        ><img
+                                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cloudflare/cloudflare-original.svg"
+                                            alt="Cloudflare"
+                                        /><span>Cloudflare</span></span
+                                    >
+                                    <span class="tech-icon"
+                                        ><img
+                                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-plain.svg"
+                                            alt="HTML"
+                                        /><span>HTML</span></span
+                                    >
+                                    <span class="tech-icon"
+                                        ><img
+                                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-plain.svg"
+                                            alt="CSS"
+                                        /><span>CSS</span></span
+                                    >
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tile">
+                            <figure>
+                                <img
+                                    src="/assets/images/wlh-web.webp"
+                                    alt="Landing page giới thiệu thương hiệu"
+                                    loading="lazy"
+                                />
+                            </figure>
+                            <div class="body">
+                                <h4>Website giới thiệu World Lọt Hố</h4>
+                                <a
+                                    href="https://worldlotho.com"
+                                    target="_blank"
+                                    rel="noopener"
+                                >
+                                    (Xem live)
+                                </a>
+
+                                <ul>
+                                    <li>
+                                        Xây dựng giao diện landing page chuyển
+                                        đổi cao với các khối nội dung rõ ràng.
+                                    </li>
+                                    <li>
+                                        Tối ưu tốc độ tải trang, đạt điểm
+                                        Lighthouse &gt; 90 cho cả desktop và
+                                        mobile.
+                                    </li>
+                                    <li>
+                                        Tích hợp biểu mẫu liên hệ, giúp tự động
+                                        hóa quy trình tiếp nhận đối tác &amp;
+                                        cộng đồng.
+                                    </li>
+                                </ul>
+                                <div class="tech-icons">
+                                    <span class="tech-icon"
+                                        ><img
+                                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-plain.svg"
+                                            alt="CSS thuần"
+                                        /><span>Vanilla CSS</span></span
+                                    >
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
 
-        <section id="contact">
-            <div class="container">
-                <h2 class="section-title">Liên hệ</h2>
-                <div class="contact-panel">
-                    <h3>Luôn sẵn sàng kết nối</h3>
-                    <p class="contact-note">Hãy ưu tiên gửi email hoặc nhắn qua các nền tảng dưới đây. Mình sẽ phản hồi trong
-                        vòng 24 giờ.</p>
-                    <div class="contact-links">
-                        <a class="contact-chip" href="mailto:wanghien.miho.dev@gmail.com"><span>📧</span>Email</a>
-                        <a class="contact-chip" href="https://t.me/miho1254" target="_blank" rel="noopener"><span>✈️</span>Telegram</a>
-                        <a class="contact-chip" href="https://www.facebook.com/WangHien.1254" target="_blank"
-                            rel="noopener"><span>📱</span>Facebook</a>
-                        <a class="contact-chip" href="https://www.linkedin.com/in/hienmiho" target="_blank"
-                            rel="noopener"><span>💼</span>LinkedIn</a>
-                        <a class="contact-chip" href="https://github.com/Miho1254" target="_blank" rel="noopener"><span>💻</span>GitHub</a>
-                        <a class="contact-chip" href="https://worldlotho.com" target="_blank" rel="noopener"><span>🌐</span>Website khác</a>
-                    </div>
-                    <div class="contact-actions">
-                        <a class="btn primary" href="mailto:wanghien.miho.dev@gmail.com">Gửi email ngay</a>
+            <section id="contact">
+                <div class="container">
+                    <h2 class="section-title">Liên hệ</h2>
+                    <div class="contact-panel">
+                        <h3>Luôn sẵn sàng kết nối</h3>
+                        <p class="contact-note">
+                            Hãy ưu tiên gửi email hoặc nhắn qua các nền tảng
+                            dưới đây. Mình sẽ phản hồi trong vòng 24 giờ.
+                        </p>
+                        <div class="contact-links">
+                            <a
+                                class="contact-chip"
+                                href="mailto:wanghien.miho.dev@gmail.com"
+                                ><span>📧</span>Email</a
+                            >
+                            <a
+                                class="contact-chip"
+                                href="https://t.me/Miho1011"
+                                target="_blank"
+                                rel="noopener"
+                                ><span>✈️</span>Telegram</a
+                            >
+                            <a
+                                class="contact-chip"
+                                href="https://www.facebook.com/WangHien.1254"
+                                target="_blank"
+                                rel="noopener"
+                                ><span>📱</span>Facebook</a
+                            >
+                            <a
+                                class="contact-chip"
+                                href="www.linkedin.com/in/miho1254"
+                                target="_blank"
+                                rel="noopener"
+                                ><span>💼</span>LinkedIn</a
+                            >
+                            <a
+                                class="contact-chip"
+                                href="https://github.com/Miho1254"
+                                target="_blank"
+                                rel="noopener"
+                                ><span>💻</span>GitHub</a
+                            >
+                        </div>
+                        <div class="contact-actions">
+                            <a
+                                class="btn primary"
+                                href="mailto:wanghien.miho.dev@gmail.com"
+                                >Gửi email ngay</a
+                            >
+                        </div>
                     </div>
                 </div>
-            </div>
-        </section>
-    </main>
-    <script>
-        const yearEl = document.getElementById('y');
-        if (yearEl) {
-            yearEl.textContent = new Date().getFullYear();
-        }
-
-        const toggle = document.querySelector('.menu-toggle');
-        const nav = document.getElementById('site-nav');
-        const mq = window.matchMedia('(max-width: 900px)');
-
-        const closeMenu = () => {
-            nav?.classList.remove('open');
-            toggle?.setAttribute('aria-expanded', 'false');
-        };
-
-        toggle?.addEventListener('click', () => {
-            const isOpen = nav?.classList.toggle('open');
-            if (isOpen !== undefined) {
-                toggle.setAttribute('aria-expanded', String(isOpen));
+            </section>
+        </main>
+        <script>
+            const yearEl = document.getElementById("y");
+            if (yearEl) {
+                yearEl.textContent = new Date().getFullYear();
             }
-        });
 
-        nav?.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => closeMenu());
-        });
+            const toggle = document.querySelector(".menu-toggle");
+            const nav = document.getElementById("site-nav");
+            const mq = window.matchMedia("(max-width: 900px)");
 
-        const handleMqChange = event => {
-            if (!event.matches) {
-                closeMenu();
+            const closeMenu = () => {
+                nav?.classList.remove("open");
+                toggle?.setAttribute("aria-expanded", "false");
+            };
+
+            toggle?.addEventListener("click", () => {
+                const isOpen = nav?.classList.toggle("open");
+                if (isOpen !== undefined) {
+                    toggle.setAttribute("aria-expanded", String(isOpen));
+                }
+            });
+
+            nav?.querySelectorAll("a").forEach((link) => {
+                link.addEventListener("click", () => closeMenu());
+            });
+
+            const handleMqChange = (event) => {
+                if (!event.matches) {
+                    closeMenu();
+                }
+            };
+
+            if (mq.addEventListener) {
+                mq.addEventListener("change", handleMqChange);
+            } else if (mq.addListener) {
+                mq.addListener(handleMqChange);
             }
-        };
-
-        if (mq.addEventListener) {
-            mq.addEventListener('change', handleMqChange);
-        } else if (mq.addListener) {
-            mq.addListener(handleMqChange);
-        }
-    </script>
+        </script>
         <footer>
-        © <span id="y"></span> Full-stack = chatGPT cho frontend!
-    </footer>
-</body>
-
+            © <span id="y"></span> Full-stack = chatGPT cho frontend!
+        </footer>
+    </body>
 </html>
