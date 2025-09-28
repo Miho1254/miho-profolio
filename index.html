@@ -313,7 +313,7 @@
 
         .skills-grid {
             display: grid;
-            gap: var(--space);
+            gap: var(--space-tight);
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
         }
 
@@ -321,7 +321,7 @@
             background: var(--surface);
             border: 1px solid var(--border);
             border-radius: var(--radius);
-            padding: 18px;
+            padding: 16px 18px;
             display: grid;
             gap: 12px;
             box-shadow: 0 18px 30px -38px rgba(12, 15, 20, .5);
@@ -332,29 +332,44 @@
             font-size: clamp(16px, 2vw, 18px);
         }
 
-        .skill-group ul {
+        .skill-list {
             list-style: none;
-            padding: 0;
             margin: 0;
+            padding: 0;
             display: grid;
             gap: 10px;
         }
 
-        .skill-group li {
+        .skill-item {
             display: flex;
             align-items: center;
             gap: 10px;
-            padding: 6px 0;
-            color: var(--muted);
+            font-weight: 600;
+            color: inherit;
         }
 
-        .skill-group li::before {
-            content: "";
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: var(--accent);
-            box-shadow: 0 0 0 3px var(--accent-soft);
+        .skill-item img {
+            width: 28px;
+            height: 28px;
+            object-fit: contain;
+        }
+
+        .skill-item span {
+            color: var(--text);
+        }
+
+        .skill-item .icon-fallback {
+            width: 28px;
+            height: 28px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            background: color-mix(in srgb, var(--accent) 12%, transparent);
+            color: var(--accent);
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
         }
 
         .card {
@@ -508,114 +523,101 @@
             font-size: 13px
         }
 
-        .contact-grid {
-            display: grid;
-            gap: var(--space);
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            align-items: start;
-        }
-
-        .contact-card {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            padding: 22px;
-            display: grid;
-            gap: var(--space-tight);
-            box-shadow: 0 28px 35px -40px rgba(12, 15, 20, .45);
-        }
-
-        .contact-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            display: grid;
-            gap: 12px;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 12px 14px;
-            border-radius: 12px;
-            background: var(--accent-soft);
-        }
-
-        .contact-item span {
-            font-size: 20px;
-        }
-
-        .contact-item a {
-            color: inherit;
-            font-weight: 600;
-        }
-
-        .socials {
+        .tech-icons {
             display: flex;
             flex-wrap: wrap;
             gap: 10px;
+            margin-top: 10px;
         }
 
-        .socials a {
+        .tech-icon {
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            padding: 8px 12px;
+            padding: 6px 10px;
             border-radius: 999px;
-            border: 1px solid color-mix(in srgb, var(--border) 55%, var(--accent) 45%);
-            color: var(--accent);
-            text-decoration: none;
+            border: 1px solid color-mix(in srgb, var(--border) 60%, var(--accent) 40%);
             background: color-mix(in srgb, var(--accent) 10%, transparent);
             font-size: 13px;
+            font-weight: 600;
+            color: var(--accent);
         }
 
-        .contact-form {
+        .tech-icon img {
+            width: 18px;
+            height: 18px;
+            object-fit: contain;
+        }
+
+        .tech-icon .icon-fallback {
+            width: 18px;
+            height: 18px;
+            border-radius: 6px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: color-mix(in srgb, var(--accent) 18%, transparent);
+            color: var(--surface);
+            font-size: 10px;
+            font-weight: 700;
+        }
+
+        .contact-panel {
             background: var(--surface);
             border: 1px solid var(--border);
             border-radius: var(--radius);
-            padding: 22px;
+            padding: clamp(24px, 4vw, 32px);
             display: grid;
-            gap: 14px;
+            gap: 18px;
+            justify-items: center;
+            text-align: center;
             box-shadow: 0 28px 35px -40px rgba(12, 15, 20, .45);
+            margin-inline: auto;
+            max-width: 640px;
         }
 
-        .contact-form label {
+        .contact-panel h3 {
+            margin: 0;
+            font-size: clamp(18px, 2.2vw, 22px);
+        }
+
+        .contact-note {
+            margin: 0;
+            color: var(--muted);
+            max-width: 52ch;
+        }
+
+        .contact-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+        }
+
+        .contact-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 16px;
+            border-radius: 999px;
+            border: 1px solid color-mix(in srgb, var(--border) 60%, var(--accent) 40%);
+            color: var(--accent);
+            text-decoration: none;
+            background: color-mix(in srgb, var(--accent) 12%, transparent);
             font-weight: 600;
-            font-size: 13px;
         }
 
-        .contact-form input,
-        .contact-form textarea {
-            width: 100%;
-            border-radius: 10px;
-            border: 1px solid color-mix(in srgb, var(--border) 70%, var(--accent) 30%);
-            padding: 10px 12px;
-            font: inherit;
-            background: color-mix(in srgb, var(--surface) 90%, transparent);
-            color: inherit;
-            transition: border .2s ease, box-shadow .2s ease;
-        }
-
-        .contact-form input:focus-visible,
-        .contact-form textarea:focus-visible {
-            outline: none;
-            border-color: var(--accent);
-            box-shadow: 0 0 0 3px var(--accent-soft);
-        }
-
-        .contact-form textarea {
-            min-height: 120px;
-            resize: vertical;
+        .contact-chip span {
+            font-size: 18px;
         }
 
         .contact-actions {
             display: flex;
-            justify-content: flex-end;
+            justify-content: center;
         }
 
         .contact-actions .btn {
-            min-width: 140px;
+            min-width: 180px;
         }
 
         @media(max-width:900px) {
@@ -815,34 +817,46 @@
                 <div class="skills-grid">
                     <div class="skill-group">
                         <h3>Ngôn ngữ &amp; libraries</h3>
-                        <ul>
-                            <li>HTML5</li>
-                            <li>CSS3</li>
-                            <li>TypeScript</li>
-                            <li>PHP</li>
+                        <ul class="skill-list">
+                            <li class="skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-plain.svg"
+                                    alt="HTML5"><span>HTML5</span></li>
+                            <li class="skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-plain.svg"
+                                    alt="CSS3"><span>CSS3</span></li>
+                            <li class="skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-plain.svg"
+                                    alt="TypeScript"><span>TypeScript</span></li>
+                            <li class="skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-plain.svg"
+                                    alt="PHP"><span>PHP</span></li>
                         </ul>
                     </div>
                     <div class="skill-group">
                         <h3>Framework &amp; runtime</h3>
-                        <ul>
-                            <li>React</li>
-                            <li>Node.js</li>
-                            <li>Deno</li>
+                        <ul class="skill-list">
+                            <li class="skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg"
+                                    alt="React"><span>React</span></li>
+                            <li class="skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-plain.svg"
+                                    alt="Node.js"><span>Node.js</span></li>
+                            <li class="skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/denojs/denojs-original.svg"
+                                    alt="Deno"><span>Deno</span></li>
                         </ul>
                     </div>
                     <div class="skill-group">
                         <h3>DevOps &amp; công cụ</h3>
-                        <ul>
-                            <li>Docker</li>
-                            <li>Cloudflare</li>
-                            <li>Linux</li>
+                        <ul class="skill-list">
+                            <li class="skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-plain.svg"
+                                    alt="Docker"><span>Docker</span></li>
+                            <li class="skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cloudflare/cloudflare-original.svg"
+                                    alt="Cloudflare"><span>Cloudflare</span></li>
+                            <li class="skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg"
+                                    alt="Linux"><span>Linux</span></li>
                         </ul>
                     </div>
                     <div class="skill-group">
                         <h3>Cơ sở dữ liệu</h3>
-                        <ul>
-                            <li>PostgreSQL</li>
-                            <li>Prisma ORM</li>
+                        <ul class="skill-list">
+                            <li class="skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-plain.svg"
+                                    alt="PostgreSQL"><span>PostgreSQL</span></li>
+                            <li class="skill-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/prisma/prisma-original.svg"
+                                    alt="Prisma ORM"><span>Prisma ORM</span></li>
                         </ul>
                     </div>
                 </div>
@@ -890,13 +904,23 @@
                                 <li>Tự động gửi email cùng mã QR duy nhất cho từng vé và dashboard check-in thời gian
                                     thực.</li>
                             </ul>
-                            <div class="badges">
-                                <span class="badge">Prisma</span>
-                                <span class="badge">PostgreSQL</span>
-                                <span class="badge">Node.js</span>
-                                <span class="badge">React Admin</span>
-                                <span class="badge">Deno</span>
-                                <span class="badge">Cloudflare</span>
+                            <div class="tech-icons">
+                                <span class="tech-icon"><img
+                                        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/prisma/prisma-original.svg"
+                                        alt="Prisma"><span>Prisma</span></span>
+                                <span class="tech-icon"><img
+                                        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-plain.svg"
+                                        alt="PostgreSQL"><span>PostgreSQL</span></span>
+                                <span class="tech-icon"><img
+                                        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-plain.svg"
+                                        alt="Node.js"><span>Node.js</span></span>
+                                <span class="tech-icon"><span class="icon-fallback">RA</span><span>React Admin</span></span>
+                                <span class="tech-icon"><img
+                                        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/denojs/denojs-original.svg"
+                                        alt="Deno"><span>Deno</span></span>
+                                <span class="tech-icon"><img
+                                        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cloudflare/cloudflare-original.svg"
+                                        alt="Cloudflare"><span>Cloudflare</span></span>
                             </div>
 
                         </div>
@@ -918,12 +942,20 @@
                                     chóng.</li>
                                 <li>Bảo đảm an toàn dữ liệu và phân quyền truy cập linh hoạt cho nhân sự nội bộ.</li>
                             </ul>
-                            <div class="badges">
-                                <span class="badge">SonicJS</span>
-                                <span class="badge">Node.js</span>
-                                <span class="badge">Cloudflare</span>
-                                <span class="badge">HTML</span>
-                                <span class="badge">CSS</span>
+                            <div class="tech-icons">
+                                <span class="tech-icon"><span class="icon-fallback">SJ</span><span>SonicJS</span></span>
+                                <span class="tech-icon"><img
+                                        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-plain.svg"
+                                        alt="Node.js"><span>Node.js</span></span>
+                                <span class="tech-icon"><img
+                                        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cloudflare/cloudflare-original.svg"
+                                        alt="Cloudflare"><span>Cloudflare</span></span>
+                                <span class="tech-icon"><img
+                                        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-plain.svg"
+                                        alt="HTML"><span>HTML</span></span>
+                                <span class="tech-icon"><img
+                                        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-plain.svg"
+                                        alt="CSS"><span>CSS</span></span>
                             </div>
                         </div>
                     </div>
@@ -944,8 +976,10 @@
                                 <li>Tích hợp biểu mẫu liên hệ, giúp tự động hóa quy trình tiếp nhận đối tác &amp; cộng
                                     đồng.</li>
                             </ul>
-                            <div class="badges">
-                                <span class="badge">Vanilla CSS</span>
+                            <div class="tech-icons">
+                                <span class="tech-icon"><img
+                                        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-plain.svg"
+                                        alt="CSS thuần"><span>Vanilla CSS</span></span>
                             </div>
                         </div>
                     </div>
@@ -956,42 +990,23 @@
         <section id="contact">
             <div class="container">
                 <h2 class="section-title">Liên hệ</h2>
-                <div class="contact-grid">
-                    <div class="contact-card">
-                        <h3>Kết nối trực tiếp</h3>
-                        <ul class="contact-list">
-                            <li class="contact-item"><span>📧</span><a
-                                    href="mailto:wanghien.miho.dev@gmail.com">wanghien.miho.dev@gmail.com</a></li>
-                            <li class="contact-item"><span>📱</span><a
-                                    href="https://www.facebook.com/WangHien.1254" target="_blank" rel="noopener">Facebook</a>
-                            </li>
-                            <li class="contact-item"><span>💼</span><a href="https://www.linkedin.com/in/hienmiho"
-                                    target="_blank" rel="noopener">LinkedIn</a></li>
-                            <li class="contact-item"><span>💻</span><a href="https://github.com/Miho1254" target="_blank"
-                                    rel="noopener">GitHub</a></li>
-                        </ul>
-                        <div class="socials">
-                            <a href="https://worldlotho.com" target="_blank" rel="noopener">🌐 Portfolio khác</a>
-                            <a href="https://t.me/miho1254" target="_blank" rel="noopener">✈️ Telegram</a>
-                        </div>
+                <div class="contact-panel">
+                    <h3>Luôn sẵn sàng kết nối</h3>
+                    <p class="contact-note">Hãy ưu tiên gửi email hoặc nhắn qua các nền tảng dưới đây. Mình sẽ phản hồi trong
+                        vòng 24 giờ.</p>
+                    <div class="contact-links">
+                        <a class="contact-chip" href="mailto:wanghien.miho.dev@gmail.com"><span>📧</span>Email</a>
+                        <a class="contact-chip" href="https://t.me/miho1254" target="_blank" rel="noopener"><span>✈️</span>Telegram</a>
+                        <a class="contact-chip" href="https://www.facebook.com/WangHien.1254" target="_blank"
+                            rel="noopener"><span>📱</span>Facebook</a>
+                        <a class="contact-chip" href="https://www.linkedin.com/in/hienmiho" target="_blank"
+                            rel="noopener"><span>💼</span>LinkedIn</a>
+                        <a class="contact-chip" href="https://github.com/Miho1254" target="_blank" rel="noopener"><span>💻</span>GitHub</a>
+                        <a class="contact-chip" href="https://worldlotho.com" target="_blank" rel="noopener"><span>🌐</span>Website khác</a>
                     </div>
-                    <form class="contact-form" action="https://formspree.io/f/moqgpqzv" method="post">
-                        <div>
-                            <label for="name">Tên của bạn</label>
-                            <input id="name" name="name" type="text" placeholder="VD: Nguyễn Văn A" required>
-                        </div>
-                        <div>
-                            <label for="email">Email</label>
-                            <input id="email" name="email" type="email" placeholder="ban@example.com" required>
-                        </div>
-                        <div>
-                            <label for="message">Nội dung</label>
-                            <textarea id="message" name="message" placeholder="Bạn muốn trao đổi điều gì?" required></textarea>
-                        </div>
-                        <div class="contact-actions">
-                            <button class="btn primary" type="submit">Gửi lời nhắn</button>
-                        </div>
-                    </form>
+                    <div class="contact-actions">
+                        <a class="btn primary" href="mailto:wanghien.miho.dev@gmail.com">Gửi email ngay</a>
+                    </div>
                 </div>
             </div>
         </section>
