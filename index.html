@@ -464,6 +464,29 @@
                 margin: 6px 0 0;
             }
 
+            .award-meta {
+                list-style: none;
+                margin: 12px 0 0;
+                padding: 0;
+                display: grid;
+                gap: 8px;
+            }
+
+            .award-meta li {
+                display: flex;
+                align-items: center;
+                flex-wrap: wrap;
+                gap: 8px;
+                color: var(--muted);
+                font-size: 13px;
+                font-weight: 600;
+            }
+
+            .award-meta li strong {
+                color: var(--text);
+                font-weight: 700;
+            }
+
             .card-title {
                 display: flex;
                 flex-direction: column;
@@ -934,6 +957,19 @@
             <section id="awards">
                 <div class="container">
                     <h2 class="section-title">Giải thưởng</h2>
+                    <div class="card">
+                        <h3>🥇 ICPC Vietnam 2025 Regional Contest</h3>
+                        <p class="muted">TLU.ThiNghe1st · Đại Học Thủy Lợi</p>
+                        <ul class="award-meta">
+                            <li><span class="badge">Miền Bắc</span><strong>Hạng 181</strong></li>
+                            <li><span class="badge">Miền Trung</span><strong>Hạng 414</strong></li>
+                            <li><span class="badge">Miền Nam</span><strong>Hạng 653</strong></li>
+                            <li>
+                                <span class="badge">Đại Học Thủy Lợi</span
+                                ><strong>Top 4 Đại Học Thủy Lợi</strong>
+                            </li>
+                        </ul>
+                    </div>
                     <div class="card">
                         <h3>
                             🏆 Giải Nhì, Hội thi Kỹ năng Sinh viên TP. Hồ Chí
