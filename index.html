@@ -5,6 +5,16 @@
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>Miho | Full Stack Developer</title>
+    <meta name="description"
+        content="Portfolio of Miho - Full Stack Developer specializing in React, Node.js, and modern web technologies. Explore projects like Agri-Loop and Event Solutions." />
+    <meta name="author" content="Miho" />
+    <meta property="og:title" content="Miho | Full Stack Developer" />
+    <meta property="og:description"
+        content="Portfolio of Miho - Full Stack Developer specializing in React, Node.js, and modern web technologies." />
+    <meta property="og:image" content="assets/images/logo.webp" />
+    <meta property="og:url" content="https://miho.worldsimp.com" />
+    <meta property="og:type" content="website" />
+    <link rel="icon" type="image/webp" href="assets/images/logo.webp" />
     <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
     <link href="https://fonts.googleapis.com" rel="preconnect" />
@@ -162,6 +172,9 @@
 
 <body
     class="bg-white dark:bg-brand-darkBg text-brand-dark dark:text-slate-100 font-sans antialiased selection:bg-brand-accent selection:text-white relative">
+    <a href="#main-content"
+        class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 z-[100] px-4 py-2 bg-brand-accent text-white rounded-lg font-bold shadow-lg">Skip
+        to content</a>
     <!-- Modern Tech Grid Background -->
     <div
         class="fixed inset-0 -z-50 h-full w-full bg-white dark:bg-brand-darkBg bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,#ffffff08_1px,transparent_1px),linear-gradient(to_bottom,#ffffff08_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none">
@@ -177,7 +190,7 @@
         id="navbar">
         <div class="max-w-7xl mx-auto px-6 h-24 flex items-center justify-between">
             <div class="flex-shrink-0">
-                <a class="flex items-center gap-2 group" href="#">
+                <a class="flex items-center gap-2 group" href="#" aria-label="Back to Top">
                     <img src="assets/images/logo.webp" alt="Logo"
                         class="h-14 w-auto object-contain group-hover:scale-105 transition-transform duration-300">
                 </a>
@@ -269,7 +282,7 @@
         </div>
     </nav>
 
-    <main class="w-full pt-32 overflow-hidden">
+    <main id="main-content" class="w-full pt-32 overflow-hidden">
         <section class="max-w-7xl mx-auto px-6 sm:px-12 relative min-h-[85vh] flex items-center" id="intro">
             <!-- Background accents -->
             <div class="absolute right-[5%] top-[10%] -z-10 grid grid-cols-6 gap-4 opacity-30">
@@ -760,6 +773,7 @@
                                         Agri-Loop</h3>
                                 </div>
                                 <a href="https://github.com/Miho1254/delta-next-ydcc2025" target="_blank"
+                                    aria-label="View Source on Github"
                                     class="w-10 h-10 rounded-full bg-slate-50 dark:bg-white/5 flex items-center justify-center text-slate-600 dark:text-slate-300 hover:bg-brand-dark dark:hover:bg-brand-accent hover:text-white dark:hover:text-brand-dark transition-all">
                                     <i class="fab fa-github"></i>
                                 </a>
@@ -962,13 +976,13 @@
                     </div>
                 </div>
                 <div class="flex justify-center gap-6 mt-8">
-                    <a href="https://t.me/Miho1011" target="_blank"
+                    <a href="https://t.me/Miho1011" target="_blank" aria-label="Telegram"
                         class="text-brand-muted hover:text-brand-accent text-3xl transition-colors"><i
                             class="fab fa-telegram"></i></a>
-                    <a href="https://www.facebook.com/WangHien.1254" target="_blank"
+                    <a href="https://www.facebook.com/WangHien.1254" target="_blank" aria-label="Facebook"
                         class="text-brand-muted hover:text-brand-accent text-3xl transition-colors"><i
                             class="fab fa-facebook"></i></a>
-                    <a href="https://www.linkedin.com/in/miho1254" target="_blank"
+                    <a href="https://www.linkedin.com/in/miho1254" target="_blank" aria-label="LinkedIn"
                         class="text-brand-muted hover:text-brand-accent text-3xl transition-colors"><i
                             class="fab fa-linkedin"></i></a>
                 </div>
@@ -985,10 +999,10 @@
                 </div>
                 <div class="flex gap-6 text-brand-muted">
                     <!-- Footer links redundant with contact section but nice to have -->
-                    <a class="hover:text-brand-accent transition-colors" href="https://github.com/Miho1254"><i
-                            class="fab fa-github text-xl"></i></a>
-                    <a class="hover:text-brand-accent transition-colors"
-                        href="https://www.facebook.com/WangHien.1254"><i class="fab fa-facebook text-xl"></i></a>
+                    <a class="hover:text-brand-accent transition-colors" href="https://github.com/Miho1254"
+                        aria-label="Github"><i class="fab fa-github text-xl"></i></a>
+                    <a class="hover:text-brand-accent transition-colors" href="https://www.facebook.com/WangHien.1254"
+                        aria-label="Facebook"><i class="fab fa-facebook text-xl"></i></a>
                 </div>
             </div>
         </footer>
