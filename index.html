@@ -1,1413 +1,890 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="vi">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width,initial-scale=1" />
-        <title>Miho — Portfolio</title>
-        <meta name="color-scheme" content="light dark" />
-        <style>
-            :root {
-                --bg: #fafafa;
-                --text: #0c0f14;
-                --muted: #5b6574;
-                --surface: #fff;
-                --border: #e6e8ec;
-                --accent: #2563eb;
-                --accent-soft: color-mix(
-                    in srgb,
-                    var(--accent) 15%,
-                    transparent
-                );
-                --accent-2: #f59e0b;
-                --radius: 14px;
-                --container: min(1024px, 92vw);
-                --space: clamp(16px, 2.2vw, 28px);
-                --space-tight: clamp(12px, 1.8vw, 22px);
-                --h1: clamp(28px, 4.5vw, 44px);
-                --h2: clamp(20px, 3vw, 28px);
-                --shadow: 0 18px 45px -35px rgba(37, 99, 235, 0.8);
-            }
-
-            @media (prefers-color-scheme: dark) {
-                :root {
-                    --bg: #0b0d12;
-                    --text: #e5e9f0;
-                    --muted: #a3adbd;
-                    --surface: #12161f;
-                    --border: #202532;
-                    --accent: #4f8cff;
-                    --accent-soft: color-mix(
-                        in srgb,
-                        var(--accent) 20%,
-                        transparent
-                    );
-                    --accent-2: #f4b86d;
-                    --shadow: 0 18px 45px -35px rgba(79, 140, 255, 0.7);
-                }
-            }
-
-            * {
-                box-sizing: border-box;
-            }
-
-            body {
-                margin: 0;
-                background: var(--bg);
-                color: var(--text);
-                font:
-                    14px/1.6 ui-sans-serif,
-                    system-ui,
-                    -apple-system,
-                    Segoe UI,
-                    Roboto,
-                    Helvetica,
-                    Arial;
-                scroll-behavior: smooth;
-            }
-
-            .container {
-                width: var(--container);
-                margin-inline: auto;
-            }
-
-            header {
-                position: sticky;
-                top: 0;
-                background: color-mix(in hsl, var(--bg) 60%, transparent);
-                border-bottom: 1px solid var(--border);
-                backdrop-filter: blur(6px);
-                z-index: 10;
-            }
-
-            .bar {
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-                padding: 12px 0;
-                gap: 18px;
-                position: relative;
-            }
-
-            .brand {
-                font-weight: 700;
-                font-size: 18px;
-                letter-spacing: 0.08em;
-                text-transform: uppercase;
-                text-decoration: none;
-                color: inherit;
-            }
-
-            nav {
-                display: flex;
-                gap: 16px;
-                align-items: center;
-            }
-
-            nav a {
-                color: var(--muted);
-                text-decoration: none;
-                font-weight: 600;
-                font-size: 13px;
-                padding: 8px 10px;
-                border-radius: 999px;
-                transition:
-                    background 0.2s ease,
-                    color 0.2s ease;
-                display: inline-flex;
-                justify-content: center;
-                align-items: center;
-            }
-
-            nav a:hover,
-            nav a:focus-visible {
-                background: var(--accent-soft);
-                color: var(--accent);
-            }
-
-            main {
-                padding-block: clamp(12px, 4vw, 36px);
-            }
-
-            h1 {
-                font-size: var(--h1);
-                margin: 0 0 10px;
-            }
-
-            h2 {
-                font-size: var(--h2);
-                margin: 0 0 10px;
-            }
-
-            p.sub {
-                color: var(--muted);
-                max-width: 58ch;
-            }
-
-            .hero {
-                position: relative;
-                display: grid;
-                grid-template-columns: 1.1fr 0.9fr;
-                gap: var(--space);
-                padding: clamp(48px, 8vw, 96px) 0;
-                align-items: center;
-                overflow: hidden;
-            }
-
-            .hero::before {
-                content: "";
-                position: absolute;
-                inset: 12%;
-                background:
-                    radial-gradient(
-                        circle at 15% 20%,
-                        color-mix(in srgb, var(--accent) 35%, transparent) 0,
-                        transparent 65%
-                    ),
-                    radial-gradient(
-                        circle at 90% 80%,
-                        color-mix(in srgb, var(--accent) 28%, transparent) 0,
-                        transparent 60%
-                    );
-                z-index: -1;
-            }
-
-            .avatar {
-                width: min(300px, 88%);
-                aspect-ratio: 1/1;
-                object-fit: cover;
-                border-radius: 16px;
-                border: 1px solid var(--border);
-                margin-inline: auto;
-                box-shadow: 0 24px 55px -30px rgba(37, 99, 235, 0.45);
-            }
-
-            .tagline {
-                display: inline-flex;
-                align-items: center;
-                gap: 8px;
-                padding: 6px 12px;
-                border-radius: 999px;
-                background: color-mix(in srgb, var(--accent) 12%, transparent);
-                color: var(--accent);
-                font-weight: 600;
-                font-size: 13px;
-                letter-spacing: 0.05em;
-                text-transform: uppercase;
-            }
-
-            .accent {
-                color: var(--accent);
-            }
-
-            .cta {
-                display: flex;
-                gap: 10px;
-                margin-top: 14px;
-            }
-
-            .menu-toggle {
-                display: none;
-                align-items: center;
-                gap: 8px;
-                border: 1px solid var(--border);
-                background: var(--surface);
-                color: inherit;
-                font-weight: 600;
-                border-radius: 999px;
-                padding: 8px 14px;
-                cursor: pointer;
-                font-size: 13px;
-                transition:
-                    background 0.2s ease,
-                    color 0.2s ease,
-                    border 0.2s ease;
-            }
-
-            .menu-toggle:focus-visible,
-            .menu-toggle:hover {
-                border-color: color-mix(
-                    in srgb,
-                    var(--border) 55%,
-                    var(--accent) 45%
-                );
-                color: var(--accent);
-            }
-
-            .btn {
-                padding: 10px 18px;
-                border-radius: 12px;
-                border: 1px solid var(--border);
-                background: var(--surface);
-                text-decoration: none;
-                font-weight: 600;
-                letter-spacing: 0.01em;
-                transition:
-                    transform 0.2s ease,
-                    box-shadow 0.2s ease,
-                    background 0.2s ease;
-                display: inline-flex;
-                align-items: center;
-                justify-content: center;
-                gap: 8px;
-                color: inherit;
-            }
-
-            .btn.primary {
-                background: linear-gradient(
-                    135deg,
-                    var(--accent),
-                    color-mix(in srgb, var(--accent-2) 35%, var(--accent))
-                );
-                color: #fff;
-                border: 0;
-                box-shadow: 0 18px 25px -20px
-                    color-mix(in srgb, var(--accent) 55%, transparent);
-            }
-
-            .btn.secondary {
-                border-color: color-mix(
-                    in srgb,
-                    var(--border) 55%,
-                    var(--accent-2) 45%
-                );
-                background: color-mix(
-                    in srgb,
-                    var(--accent-2) 12%,
-                    transparent
-                );
-                color: color-mix(in srgb, var(--accent-2) 75%, var(--text));
-            }
-
-            .btn:hover,
-            .btn:focus-visible {
-                transform: translateY(-1px);
-                box-shadow: 0 16px 28px -24px
-                    color-mix(in srgb, var(--accent) 50%, transparent);
-            }
-
-            section {
-                padding: clamp(24px, 4.5vw, 52px) 0;
-                scroll-margin-top: 90px;
-            }
-
-            section:not(.hero) {
-                border-top: 1px solid var(--border);
-            }
-
-            .muted {
-                color: var(--muted);
-            }
-
-            .meta {
-                list-style: none;
-                padding: 14px 18px;
-                margin: 18px 0 0;
-                border-radius: var(--radius);
-                background: color-mix(
-                    in srgb,
-                    var(--surface) 85%,
-                    var(--accent) 15%
-                );
-                border: 1px solid
-                    color-mix(in srgb, var(--border) 55%, var(--accent) 45%);
-                display: grid;
-                gap: 8px;
-                font-size: 15px;
-                box-shadow: var(--shadow);
-                max-width: 420px;
-            }
-
-            .meta a {
-                color: inherit;
-                text-decoration: none;
-                font-weight: 600;
-            }
-
-            .meta a:hover,
-            .meta a:focus-visible {
-                color: var(--accent);
-            }
-
-            .stats {
-                display: grid;
-                grid-template-columns: repeat(3, 1fr);
-                gap: var(--space);
-                margin-top: 10px;
-            }
-
-            .stat {
-                background: var(--surface);
-                border: 1px solid var(--border);
-                border-radius: var(--radius);
-                padding: 14px;
-                display: flex;
-                flex-direction: column;
-                gap: 4px;
-                position: relative;
-                overflow: hidden;
-            }
-
-            .stat::before {
-                content: "";
-                position: absolute;
-                inset: 0;
-                border-radius: inherit;
-                background: linear-gradient(
-                    135deg,
-                    color-mix(in srgb, var(--accent) 18%, transparent),
-                    transparent 65%
-                );
-                opacity: 0.22;
-                pointer-events: none;
-            }
-
-            .stat .num {
-                font-weight: 800;
-                font-size: clamp(20px, 3vw, 32px);
-            }
-
-            #education .card {
-                margin-bottom: var(--space-tight);
-            }
-
-            .skills-grid {
-                display: grid;
-                gap: var(--space-tight);
-                grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            }
-
-            .skill-group {
-                background: var(--surface);
-                border: 1px solid var(--border);
-                border-radius: var(--radius);
-                padding: 16px 18px;
-                display: grid;
-                gap: 12px;
-                box-shadow: 0 18px 30px -38px rgba(12, 15, 20, 0.5);
-            }
-
-            .skill-group h3 {
-                margin: 0;
-                font-size: clamp(16px, 2vw, 18px);
-            }
-
-            .skill-list {
-                list-style: none;
-                margin: 0;
-                padding: 0;
-                display: flex;
-                flex-direction: column;
-                gap: 10px;
-            }
-
-            .skill-item {
-                display: grid;
-                grid-template-columns: 28px 1fr;
-                align-items: center;
-                gap: 10px;
-                font-weight: 600;
-                color: inherit;
-            }
-
-            .skill-item img {
-                width: 28px;
-                height: 28px;
-                object-fit: contain;
-            }
-
-            .skill-item span {
-                color: var(--text);
-            }
-
-            .skill-item .icon-fallback {
-                width: 28px;
-                height: 28px;
-                display: inline-flex;
-                align-items: center;
-                justify-content: center;
-                border-radius: 8px;
-                background: color-mix(in srgb, var(--accent) 12%, transparent);
-                color: var(--accent);
-                font-size: 12px;
-                font-weight: 700;
-                text-transform: uppercase;
-            }
-
-            .card {
-                background: var(--surface);
-                border: 1px solid var(--border);
-                border-radius: var(--radius);
-                padding: 18px;
-                margin-bottom: calc(var(--space) - 8px);
-                box-shadow: 0 28px 35px -40px rgba(12, 15, 20, 0.45);
-            }
-
-            .card:last-child {
-                margin-bottom: 0;
-            }
-
-            .badge {
-                font-size: 12px;
-                font-weight: 600;
-                padding: 2px 8px;
-                border-radius: 999px;
-                border: 1px solid
-                    color-mix(in srgb, var(--border) 60%, var(--accent) 40%);
-                color: var(--accent);
-                background: color-mix(in srgb, var(--accent) 12%, transparent);
-            }
-
-            .badges {
-                display: flex;
-                flex-wrap: wrap;
-                gap: 8px;
-                margin: 6px 0 0;
-            }
-
-            .award-meta {
-                list-style: none;
-                margin: 12px 0 0;
-                padding: 0;
-                display: grid;
-                gap: 8px;
-            }
-
-            .award-meta li {
-                display: flex;
-                align-items: center;
-                flex-wrap: wrap;
-                gap: 8px;
-                color: var(--muted);
-                font-size: 13px;
-                font-weight: 600;
-            }
-
-            .award-meta li strong {
-                color: var(--text);
-                font-weight: 700;
-            }
-
-            .card-title {
-                display: flex;
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 6px;
-                margin: 0 0 12px;
-            }
-
-            .card-title .badge {
-                margin: 0;
-            }
-
-            @media (min-width: 768px) {
-                .card-title {
-                    flex-direction: row;
-                    align-items: center;
-                    gap: 10px;
-                }
-            }
-
-            .tile {
-                background: var(--surface);
-                border: 1px solid var(--border);
-                border-radius: var(--radius);
-                overflow: hidden;
-                box-shadow: 0 28px 35px -40px rgba(12, 15, 20, 0.4);
-                display: flex;
-                flex-direction: column;
-            }
-
-            .tile figure {
-                margin: 0;
-                position: relative;
-                overflow: hidden;
-                flex-shrink: 0;
-            }
-
-            .tile img {
-                width: 100%;
-                aspect-ratio: 16/9;
-                object-fit: cover;
-                display: block;
-                background: color-mix(in hsl, var(--text) 6%, transparent);
-            }
-
-            .tile .body {
-                padding: 20px;
-                display: flex;
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 12px;
-                flex: 1;
-                width: 100%;
-            }
-
-            .tile h4 {
-                margin: 0;
-                font-size: clamp(18px, 2.4vw, 22px);
-            }
-
-            .tile a {
-                font-weight: 600;
-                color: var(--accent);
-            }
-
-            .projects {
-                display: grid;
-                gap: var(--space);
-                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-                align-items: stretch;
-                grid-auto-rows: 1fr;
-            }
-
-            .projects ul {
-                margin: 0;
-                padding-left: 18px;
-                color: var(--muted);
-                display: flex;
-                flex-direction: column;
-                gap: 8px;
-            }
-
-            .highlights {
-                display: grid;
-                gap: 12px;
-                margin-top: 16px;
-                padding-left: 18px;
-                border-left: 2px solid
-                    color-mix(in srgb, var(--border) 70%, var(--accent) 30%);
-            }
-
-            .highlight {
-                position: relative;
-                margin: 0;
-                padding-left: 18px;
-                color: var(--muted);
-            }
-
-            .highlight::before {
-                content: "";
-                position: absolute;
-                left: -18px;
-                top: 8px;
-                width: 10px;
-                height: 10px;
-                border-radius: 50%;
-                background: var(--accent);
-                box-shadow: 0 0 0 3px
-                    color-mix(in srgb, var(--accent) 25%, transparent);
-            }
-
-            .section-title {
-                display: inline-flex;
-                align-items: center;
-                gap: 10px;
-                margin-bottom: 18px;
-            }
-
-            .section-title::before {
-                content: "";
-                width: 38px;
-                height: 4px;
-                border-radius: 999px;
-                background: linear-gradient(
-                    90deg,
-                    var(--accent) 0%,
-                    color-mix(in srgb, var(--accent-2) 55%, var(--accent)) 100%
-                );
-            }
-
-            footer {
-                border-top: 1px solid var(--border);
-                padding: 18px 0;
-                text-align: center;
-                color: var(--muted);
-                font-size: 13px;
-            }
-
-            .tech-icons {
-                display: flex;
-                flex-wrap: wrap;
-                gap: 10px;
-                margin-top: 10px;
-            }
-
-            .tile .body .tech-icons {
-                margin-top: auto;
-            }
-
-            .tech-icon {
-                display: inline-flex;
-                align-items: center;
-                gap: 6px;
-                padding: 6px 10px;
-                border-radius: 999px;
-                border: 1px solid
-                    color-mix(in srgb, var(--border) 60%, var(--accent) 40%);
-                background: color-mix(in srgb, var(--accent) 10%, transparent);
-                font-size: 13px;
-                font-weight: 600;
-                color: var(--accent);
-            }
-
-            .tech-icon img {
-                width: 18px;
-                height: 18px;
-                object-fit: contain;
-            }
-
-            .tech-icon .icon-fallback {
-                width: 18px;
-                height: 18px;
-                border-radius: 6px;
-                display: inline-flex;
-                align-items: center;
-                justify-content: center;
-                background: color-mix(in srgb, var(--accent) 18%, transparent);
-                color: var(--surface);
-                font-size: 10px;
-                font-weight: 700;
-            }
-
-            .contact-panel {
-                background: var(--surface);
-                border: 1px solid var(--border);
-                border-radius: var(--radius);
-                padding: clamp(24px, 4vw, 32px);
-                display: grid;
-                gap: 18px;
-                justify-items: center;
-                text-align: center;
-                box-shadow: 0 28px 35px -40px rgba(12, 15, 20, 0.45);
-                margin-inline: auto;
-                max-width: 640px;
-            }
-
-            .contact-panel h3 {
-                margin: 0;
-                font-size: clamp(18px, 2.2vw, 22px);
-            }
-
-            .contact-note {
-                margin: 0;
-                color: var(--muted);
-                max-width: 52ch;
-            }
-
-            .contact-links {
-                display: flex;
-                flex-wrap: wrap;
-                gap: 12px;
-                justify-content: center;
-            }
-
-            .contact-chip {
-                display: inline-flex;
-                align-items: center;
-                gap: 8px;
-                padding: 10px 16px;
-                border-radius: 999px;
-                border: 1px solid
-                    color-mix(in srgb, var(--border) 60%, var(--accent) 40%);
-                color: var(--accent);
-                text-decoration: none;
-                background: color-mix(in srgb, var(--accent) 12%, transparent);
-                font-weight: 600;
-            }
-
-            .contact-chip span {
-                font-size: 18px;
-            }
-
-            .contact-actions {
-                display: flex;
-                justify-content: center;
-            }
-
-            .contact-actions .btn {
-                min-width: 180px;
-            }
-
-            @media (max-width: 900px) {
-                .hero {
-                    grid-template-columns: 1fr;
-                }
-
-                .cta {
-                    flex-wrap: wrap;
-                    justify-content: flex-start;
-                }
-
-                .menu-toggle {
-                    display: inline-flex;
-                }
-
-                nav {
-                    position: absolute;
-                    right: 0;
-                    top: calc(100% + 12px);
-                    flex-direction: column;
-                    align-items: stretch;
-                    padding: 14px;
-                    border-radius: var(--radius);
-                    border: 1px solid var(--border);
-                    background: color-mix(
-                        in srgb,
-                        var(--surface) 92%,
-                        transparent
-                    );
-                    box-shadow: 0 16px 35px -24px rgba(12, 15, 20, 0.35);
-                    display: none;
-                    min-width: max(220px, 60vw);
-                    gap: 8px;
-                }
-
-                nav.open {
-                    display: flex;
-                }
-
-                nav a {
-                    width: 100%;
-                }
-            }
-
-            @media (max-width: 640px) {
-                .stats {
-                    grid-template-columns: repeat(2, 1fr);
-                }
-            }
-
-            @media (max-width: 520px) {
-                .stats {
-                    grid-template-columns: 1fr;
-                }
-            }
-
-            @media (max-width: 600px) {
-                header {
-                    position: sticky;
-                }
-
-                .bar {
-                    align-items: flex-start;
-                }
-
-                .hero {
-                    justify-items: stretch;
-                    row-gap: 32px;
-                }
-
-                .hero > div:first-child {
-                    order: 2;
-                    text-align: left;
-                }
-
-                .hero > div:last-child {
-                    order: 1;
-                    justify-self: center;
-                }
-
-                .cta {
-                    flex-direction: column;
-                    align-items: stretch;
-                }
-
-                .cta .btn {
-                    text-align: center;
-                }
-
-                #education .card h3 {
-                    display: flex;
-                    flex-direction: column;
-                    align-items: flex-start;
-                    gap: 6px;
-                }
-
-                #education .card h3 .badge {
-                    margin: 0;
-                }
-
-                .meta {
-                    width: 100%;
-                    margin-inline: 0;
-                }
-
-                section {
-                    padding: 32px 0;
-                }
-
-                .tile .body {
-                    padding: 16px;
-                }
-            }
-        </style>
-    </head>
 
-    <body>
-        <header>
-            <div class="container bar">
-                <a class="brand" href="#">Miho</a>
-                <button
-                    class="menu-toggle"
-                    type="button"
-                    aria-expanded="false"
-                    aria-controls="site-nav"
-                >
-                    <span aria-hidden="true">☰</span>
-                    Menu
-                </button>
-                <nav id="site-nav">
-                    <a href="#about">Giới thiệu</a>
-                    <a href="#education">Học vấn</a>
-                    <a href="#projects">Dự án</a>
-                    <a href="#contact">Liên hệ</a>
-                </nav>
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Miho | Full Stack Developer</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=Space+Grotesk:wght@500;700&amp;family=Fira+Code:wght@400;600&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            dark: "#0F172A", // Deep Navy for text/buttons
+                            primary: "#1E293B", // Slightly lighter navy
+                            accent: "#38BDF8", // Light Blue for accents/buttons
+                            soft: "#F8FAFC", // Very light background
+                            muted: "#64748B", // Gray for body text
+                        }
+                    },
+                    fontFamily: {
+                        display: ['"Space Grotesk"', 'sans-serif'],
+                        sans: ['"Inter"', 'sans-serif'],
+                        mono: ['"Fira Code"', 'monospace'],
+                    },
+                    borderRadius: {
+                        'xl': '1rem',
+                        '2xl': '1.5rem',
+                    },
+                },
+            },
+        };
+    </script>
+    <style>
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #F8FAFC;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #CBD5E1;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94A3B8;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .timeline-line::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 15px;
+            height: 100%;
+            width: 2px;
+            background: #E2E8F0;
+        }
+
+        @keyframes blob {
+            0% {
+                transform: translate(0px, 0px) scale(1);
+            }
+
+            33% {
+                transform: translate(30px, -50px) scale(1.1);
+            }
+
+            66% {
+                transform: translate(-20px, 20px) scale(0.9);
+            }
+
+            100% {
+                transform: translate(0px, 0px) scale(1);
+            }
+        }
+
+        .animate-blob {
+            animation: blob 7s infinite;
+        }
+
+        .animation-delay-2000 {
+            animation-delay: 2s;
+        }
+
+        .animation-delay-4000 {
+            animation-delay: 4s;
+        }
+    </style>
+</head>
+
+<body class="bg-white text-brand-dark font-sans antialiased selection:bg-brand-accent selection:text-white">
+    <nav class="fixed w-full z-50 top-0 bg-white/90 backdrop-blur-md transition-all duration-300 border-b border-transparent"
+        id="navbar">
+        <div class="max-w-7xl mx-auto px-6 h-24 flex items-center justify-between">
+            <div class="flex-shrink-0">
+                <a class="flex items-center gap-2 group" href="#">
+                    <span
+                        class="text-2xl text-yellow-400 group-hover:rotate-12 transition-transform duration-300">👋</span>
+                    <span class="font-display font-bold text-xl tracking-tight">Miho.</span>
+                </a>
             </div>
-        </header>
-        <main>
-            <section class="container hero">
-                <div>
-                    <span class="tagline">Sáng tạo và nỗ lực không ngừng</span>
-                    <h1>
-                        Miho — <span class="accent">Full Stack Developer</span>
+            <div class="hidden md:flex items-center space-x-10 font-medium text-sm">
+                <a class="text-brand-primary hover:text-brand-accent transition-colors" href="#intro">Giới thiệu</a>
+                <a class="text-brand-primary hover:text-brand-accent transition-colors" href="#skills">Kỹ năng</a>
+                <a class="text-brand-primary hover:text-brand-accent transition-colors" href="#experience">Kinh
+                    nghiệm</a>
+                <a class="text-brand-primary hover:text-brand-accent transition-colors" href="#projects">Dự án</a>
+                <a class="px-6 py-3 bg-brand-dark text-white rounded-lg hover:bg-brand-accent transition-all shadow-lg shadow-brand-dark/20 hover:shadow-brand-accent/30 font-bold tracking-wide"
+                    href="#contact">
+                    Liên hệ
+                </a>
+            </div>
+            <div class="md:hidden flex items-center">
+                <button class="text-brand-dark focus:outline-none menu-toggle">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div class="md:hidden hidden bg-white border-t border-slate-100 absolute w-full left-0 top-full shadow-lg p-6 flex-col gap-4"
+            id="mobile-menu">
+            <a class="text-brand-primary hover:text-brand-accent font-medium" href="#intro" onclick="closeMenu()">Giới
+                thiệu</a>
+            <a class="text-brand-primary hover:text-brand-accent font-medium" href="#skills" onclick="closeMenu()">Kỹ
+                năng</a>
+            <a class="text-brand-primary hover:text-brand-accent font-medium" href="#experience"
+                onclick="closeMenu()">Kinh nghiệm</a>
+            <a class="text-brand-primary hover:text-brand-accent font-medium" href="#projects" onclick="closeMenu()">Dự
+                án</a>
+            <a class="text-brand-accent font-bold" href="#contact" onclick="closeMenu()">Liên hệ</a>
+        </div>
+    </nav>
+
+    <main class="w-full pt-32 overflow-hidden">
+        <section class="max-w-7xl mx-auto px-6 sm:px-12 relative min-h-[85vh] flex items-center" id="intro">
+            <!-- Background accents -->
+            <div class="absolute right-[5%] top-[10%] -z-10 grid grid-cols-6 gap-4 opacity-30">
+                <div class="w-1.5 h-1.5 rounded-full bg-brand-accent"></div>
+                <div class="w-1.5 h-1.5 rounded-full bg-brand-accent"></div>
+                <div class="w-1.5 h-1.5 rounded-full bg-brand-accent"></div>
+                <div class="w-1.5 h-1.5 rounded-full bg-brand-accent"></div>
+                <div class="w-1.5 h-1.5 rounded-full bg-brand-accent"></div>
+                <div class="w-1.5 h-1.5 rounded-full bg-brand-accent"></div>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 w-full items-center">
+                <div class="order-2 lg:order-1 reveal active">
+                    <div
+                        class="flex items-center gap-2 mb-6 text-brand-muted font-medium uppercase tracking-wider text-sm">
+                        <i class="fas fa-location-arrow text-brand-accent"></i> TP.HCM, VN
+                    </div>
+                    <h1
+                        class="text-5xl sm:text-6xl md:text-7xl font-bold text-brand-dark leading-[1.1] mb-6 font-display">
+                        Sáng tạo và<br />
+                        <span class="text-brand-accent">nỗ lực không ngừng</span>
                     </h1>
-                    <p class="sub">
-                        HỌC IT NHƯNG GHÉT TOÁN LÝ HÓA, Fan cứng của Orangestar
-                        và Guiano, gu âm nhạc hơi cổ đại một xíu. Là con trai
-                        nhưng tiêu thụ trà sữa nhiều hơn con gái.
+                    <h2 class="text-3xl sm:text-4xl font-semibold text-brand-primary mb-6">
+                        Miho — Full Stack Developer
+                    </h2>
+                    <p class="text-lg text-brand-muted leading-relaxed max-w-lg mb-10">
+                        HỌC IT NHƯNG GHÉT TOÁN LÝ HÓA, Fan cứng của Orangestar và Guiano, gu âm nhạc hơi cổ đại một xíu.
+                        Là con trai nhưng tiêu thụ trà sữa nhiều hơn con gái.
                     </p>
-                    <div class="cta">
-                        <a class="btn primary" href="#projects">Xem dự án</a>
-                        <a class="btn secondary" href="#contact">Liên hệ</a>
+                    <div class="flex flex-wrap gap-4">
+                        <a class="px-8 py-4 bg-brand-dark text-white rounded-lg font-semibold hover:bg-brand-primary transition-colors shadow-lg shadow-brand-dark/20"
+                            href="#projects">
+                            Xem dự án
+                        </a>
+                        <a class="px-8 py-4 bg-brand-accent text-white rounded-lg font-semibold hover:bg-sky-400 transition-colors shadow-lg shadow-brand-accent/20"
+                            href="#contact">
+                            Liên hệ
+                        </a>
                     </div>
-                    <ul class="meta">
-                        <li>📍 TP.HCM</li>
-                        <li>
-                            ✉️
-                            <a href="mailto:wanghien.miho.dev@gmail.com"
-                                >wanghien.miho.dev@gmail.com</a
-                            >
-                        </li>
-                        <li>
-                            🔗
-                            <a
-                                href="https://github.com/Miho1254"
-                                target="_blank"
-                                rel="noopener"
-                                >github.com/Miho1254</a
-                            >
-                        </li>
-                    </ul>
-                </div>
-                <div>
-                    <img
-                        class="avatar"
-                        src="https://bucket.worldsimp.com/staffs/Miho/profile.webp"
-                        alt="Ảnh chân dung Miho"
-                    />
-                </div>
-            </section>
-
-            <section id="about">
-                <div class="container">
-                    <h2 class="section-title">Giới thiệu</h2>
-                    <p class="muted">
-                        Mình thích trải nghiệm số tinh gọn, chú trọng hiệu năng,
-                        accessibility. Thành thạo JS và PHP.
-                    </p>
-                    <div class="stats">
-                        <div class="stat">
-                            <span class="num">3+</span
-                            ><span class="muted">năm viết code</span>
-                        </div>
-                        <div class="stat">
-                            <span class="num">3</span
-                            ><span class="muted">dự án đã thương mại hóa</span>
-                        </div>
-                        <div class="stat">
-                            <span class="num">3+</span
-                            ><span class="muted">giải thưởng chuyên ngành</span>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section id="education">
-                <div class="container">
-                    <h2 class="section-title">Học vấn</h2>
-                    <div class="card">
-                        <h3>
-                            ĐH Thủy Lợi – Phân hiệu TP.HCM
-                            <span class="badge">2025 – Hiện tại</span>
-                        </h3>
-                        <p class="muted">Chuyên ngành: Công nghệ thông tin</p>
-                    </div>
-                    <div class="card">
-                        <h3>
-                            Trung cấp nghề Nhân Đạo
-                            <span class="badge">2022 – 2024</span>
-                        </h3>
-                        <p class="muted">
-                            Ngành: Kỹ thuật máy tính | GPA: 3.8/4
-                        </p>
-                    </div>
-                </div>
-            </section>
-
-            <section id="awards">
-                <div class="container">
-                    <h2 class="section-title">Giải thưởng</h2>
-                    <div class="card">
-                        <h3>🥇 ICPC Vietnam 2025 Regional Contest</h3>
-                        <p class="muted">TLU.ThiNghe1st · Đại Học Thủy Lợi</p>
-                        <ul class="award-meta">
-                            <li><span class="badge">Miền Bắc</span><strong>Hạng 181</strong></li>
-                            <li><span class="badge">Miền Trung</span><strong>Hạng 414</strong></li>
-                            <li><span class="badge">Miền Nam</span><strong>Hạng 653</strong></li>
-                            <li>
-                                <span class="badge">Đại Học Thủy Lợi</span
-                                ><strong>Top 4 Đại Học Thủy Lợi</strong>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="card">
-                        <h3>
-                            🏆 Giải Nhì, Hội thi Kỹ năng Sinh viên TP. Hồ Chí
-                            Minh
-                        </h3>
-                        <p class="muted">
-                            2024 — Đoàn Thanh niên Cộng sản Hồ Chí Minh TP. Hồ
-                            Chí Minh
-                        </p>
-                    </div>
-                    <div class="card">
-                        <h3>
-                            💡 Giải Khuyến khích, Kỳ thi Phát triển Web TP. Hồ
-                            Chí Minh
-                        </h3>
-                        <p class="muted">
-                            2023 — Sở Giáo dục & Đào tạo TP. Hồ Chí Minh
-                        </p>
-                    </div>
-                </div>
-            </section>
-
-            <section id="skills">
-                <div class="container">
-                    <h2 class="section-title">Kỹ năng</h2>
-                    <div class="skills-grid">
-                        <div class="skill-group">
-                            <h3>Ngôn ngữ &amp; libraries</h3>
-                            <ul class="skill-list">
-                                <li class="skill-item">
-                                    <img
-                                        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-plain.svg"
-                                        alt="HTML5"
-                                    /><span>HTML5</span>
-                                </li>
-                                <li class="skill-item">
-                                    <img
-                                        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-plain.svg"
-                                        alt="CSS3"
-                                    /><span>CSS3</span>
-                                </li>
-                                <li class="skill-item">
-                                    <img
-                                        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-plain.svg"
-                                        alt="TypeScript"
-                                    /><span>TypeScript</span>
-                                </li>
-                                <li class="skill-item">
-                                    <img
-                                        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-plain.svg"
-                                        alt="PHP"
-                                    /><span>PHP</span>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="skill-group">
-                            <h3>Framework &amp; runtime</h3>
-                            <ul class="skill-list">
-                                <li class="skill-item">
-                                    <img
-                                        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg"
-                                        alt="React"
-                                    /><span>React</span>
-                                </li>
-                                <li class="skill-item">
-                                    <img
-                                        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-plain.svg"
-                                        alt="Node.js"
-                                    /><span>Node.js</span>
-                                </li>
-                                <li class="skill-item">
-                                    <img
-                                        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/denojs/denojs-original.svg"
-                                        alt="Deno"
-                                    /><span>Deno</span>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="skill-group">
-                            <h3>DevOps &amp; công cụ</h3>
-                            <ul class="skill-list">
-                                <li class="skill-item">
-                                    <img
-                                        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-plain.svg"
-                                        alt="Docker"
-                                    /><span>Docker</span>
-                                </li>
-                                <li class="skill-item">
-                                    <img
-                                        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cloudflare/cloudflare-original.svg"
-                                        alt="Cloudflare"
-                                    /><span>Cloudflare</span>
-                                </li>
-                                <li class="skill-item">
-                                    <img
-                                        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg"
-                                        alt="Linux"
-                                    /><span>Linux</span>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="skill-group">
-                            <h3>Cơ sở dữ liệu</h3>
-                            <ul class="skill-list">
-                                <li class="skill-item">
-                                    <img
-                                        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-plain.svg"
-                                        alt="PostgreSQL"
-                                    /><span>PostgreSQL</span>
-                                </li>
-                                <li class="skill-item">
-                                    <img
-                                        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/prisma/prisma-original.svg"
-                                        alt="Prisma ORM"
-                                    /><span>Prisma ORM</span>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section id="experience">
-                <div class="container">
-                    <h2 class="section-title">Kinh nghiệm</h2>
-                    <div class="card">
-                        <h3 class="card-title">
-                            World Lọt Hố <span class="badge">2023 — Nay</span>
-                        </h3>
-                        <p class="muted">IT Specialist</p>
-                        <div class="highlights">
-                            <p class="highlight">
-                                Phát triển và duy trì nhiều hệ thống để hỗ trợ
-                                các hoạt động của đội nhóm.
-                            </p>
-                            <p class="highlight">
-                                Xây dựng ứng dụng quản lý kinh doanh và hệ thống
-                                quản lý sự kiện cho các sự kiện offline.
-                            </p>
-                            <p class="highlight">
-                                Triển khai các dự án web nhằm cải thiện hình ảnh
-                                công chúng và quy trình làm việc nội bộ.
-                            </p>
-                            <p class="highlight">
-                                Chịu trách nhiệm toàn bộ cho mọi công việc kỹ
-                                thuật.
+                    <div class="mt-16 pt-10 border-t border-slate-100 flex flex-col md:flex-row gap-8">
+                        <div class="flex-1">
+                            <p class="text-brand-muted text-sm leading-relaxed italic">
+                                "Full-stack = chatGPT cho frontend!"
                             </p>
                         </div>
+                        <div class="flex gap-8">
+                            <div>
+                                <span class="block text-2xl font-bold text-brand-dark font-display">3+</span>
+                                <span class="text-xs text-brand-muted uppercase tracking-wide">Năm Kinh Nghiệm</span>
+                            </div>
+                            <div>
+                                <span class="block text-2xl font-bold text-brand-dark font-display">3</span>
+                                <span class="text-xs text-brand-muted uppercase tracking-wide">Dự Án Lớn</span>
+                            </div>
+                            <div>
+                                <span class="block text-2xl font-bold text-brand-dark font-display">3+</span>
+                                <span class="text-xs text-brand-muted uppercase tracking-wide">Giải Thưởng</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </section>
+                <div class="order-1 lg:order-2 reveal relative flex justify-center lg:justify-end">
+                    <div class="relative w-full max-w-md aspect-square">
+                        <!-- Decorative blobs -->
+                        <div
+                            class="absolute top-0 right-0 w-64 h-64 bg-brand-accent/20 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob">
+                        </div>
+                        <div
+                            class="absolute -bottom-8 left-20 w-72 h-72 bg-purple-300/30 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob animation-delay-2000">
+                        </div>
+                        <div
+                            class="absolute -bottom-8 -right-8 w-64 h-64 bg-yellow-200/30 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob animation-delay-4000">
+                        </div>
 
-            <section id="projects">
-                <div class="container">
-                    <h2 class="section-title">Dự án</h2>
-                    <div class="projects">
-                        <div class="tile">
-                            <figure>
-                                <img
-                                    src="/assets/images/wlh-office.webp"
-                                    alt="Giao diện bảng điều khiển bán vé sự kiện"
-                                    loading="lazy"
-                                />
-                            </figure>
-                            <div class="body">
-                                <h4>Hệ thống quản lý và soát vé đa sự kiện</h4>
-                                <a
-                                    href="https://www.facebook.com/share/p/17KFWRUQa4/"
-                                    target="_blank"
-                                    rel="noopener"
-                                >
-                                    (Xem demo)
-                                </a>
-                                <ul>
-                                    <li>
-                                        Thiết kế và triển khai hệ thống bán vé
-                                        và check-in đạt chuẩn chuyên nghiệp cho
-                                        sự kiện cộng đồng quy mô lớn.
-                                    </li>
-                                    <li>
-                                        Vận hành quy trình full-stack xử lý hơn
-                                        400+ vé, mang về doanh thu 50 triệu VND
-                                        (~2000 USD).
-                                    </li>
-                                    <li>
-                                        Tự động gửi email cùng mã QR duy nhất
-                                        cho từng vé và dashboard check-in thời
-                                        gian thực.
-                                    </li>
-                                </ul>
-                                <div class="tech-icons">
-                                    <span class="tech-icon"
-                                        ><img
-                                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/prisma/prisma-original.svg"
-                                            alt="Prisma"
-                                        /><span>Prisma</span></span
-                                    >
-                                    <span class="tech-icon"
-                                        ><img
-                                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-plain.svg"
-                                            alt="PostgreSQL"
-                                        /><span>PostgreSQL</span></span
-                                    >
-                                    <span class="tech-icon"
-                                        ><img
-                                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-plain.svg"
-                                            alt="Node.js"
-                                        /><span>Node.js</span></span
-                                    >
-                                    <span class="tech-icon"
-                                        ><span class="icon-fallback">RA</span
-                                        ><span>React Admin</span></span
-                                    >
-                                    <span class="tech-icon"
-                                        ><img
-                                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/denojs/denojs-original.svg"
-                                            alt="Deno"
-                                        /><span>Deno</span></span
-                                    >
-                                    <span class="tech-icon"
-                                        ><img
-                                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cloudflare/cloudflare-original.svg"
-                                            alt="Cloudflare"
-                                        /><span>Cloudflare</span></span
-                                    >
+                        <div
+                            class="w-full h-full relative z-10 overflow-hidden transform hover:scale-105 transition-transform duration-700">
+                            <!-- Custom gradient background for the cutout -->
+                            <div
+                                class="absolute inset-0 bg-gradient-to-b from-transparent via-sky-50 to-brand-accent/10 rounded-full">
+                            </div>
+                            <img alt="Miho Portrait" class="w-full h-full object-contain object-bottom relative z-10"
+                                src="assets/images/miho-no-bg.png" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-24 bg-brand-soft" id="education-awards">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="grid lg:grid-cols-2 gap-16">
+                    <!-- Education -->
+                    <div class="reveal">
+                        <h3 class="text-3xl font-bold text-brand-dark font-display mb-10 flex items-center gap-3">
+                            <span class="material-symbols-outlined text-brand-accent text-4xl">school</span>
+                            Học Vấn
+                        </h3>
+                        <div class="space-y-6">
+                            <div
+                                class="bg-white p-6 rounded-xl border border-slate-100 shadow-sm hover:shadow-md transition-all">
+                                <div class="flex justify-between items-start mb-2">
+                                    <h4 class="text-xl font-bold text-brand-dark">ĐH Thủy Lợi – Phân hiệu TP.HCM</h4>
+                                    <span class="text-sm font-mono text-brand-accent bg-sky-50 px-2 py-1 rounded">2025 -
+                                        Hiện tại</span>
+                                </div>
+                                <p class="text-brand-muted mb-2">Chuyên ngành: Công nghệ thông tin</p>
+                                <!-- GPA not specified in old file for Uni -->
+                            </div>
+                            <div
+                                class="bg-white p-6 rounded-xl border border-slate-100 shadow-sm hover:shadow-md transition-all">
+                                <div class="flex justify-between items-start mb-2">
+                                    <h4 class="text-xl font-bold text-brand-dark">Trung cấp nghề Nhân Đạo</h4>
+                                    <span class="text-sm font-mono text-brand-accent bg-sky-50 px-2 py-1 rounded">2022 -
+                                        2024</span>
+                                </div>
+                                <p class="text-brand-muted mb-2">Ngành: Kỹ thuật máy tính</p>
+                                <div class="flex items-center gap-2 text-sm text-slate-500">
+                                    <i class="fas fa-star text-yellow-400"></i> GPA: 3.8/4
                                 </div>
                             </div>
                         </div>
-                        <div class="tile">
-                            <figure>
-                                <img
-                                    src="/assets/images/wlh-staff.webp"
-                                    alt="Màn hình quản lý thành viên với biểu đồ"
-                                    loading="lazy"
-                                />
-                            </figure>
-                            <div class="body">
-                                <h4>
-                                    Hệ thống Quản lý Thành viên tích hợp NFC
+                    </div>
+
+                    <!-- Awards -->
+                    <!-- Awards with adjusted spacing -->
+                    <div class="reveal" style="transition-delay: 100ms;">
+                        <h3 class="text-3xl font-bold text-brand-dark font-display mb-10 flex items-center gap-3">
+                            <span class="material-symbols-outlined text-brand-accent text-4xl">emoji_events</span>
+                            Giải Thưởng
+                        </h3>
+                        <!-- Changed pl-4 to pl-6 for container, pl-8 to pl-12 for items -->
+                        <div class="relative timeline-line pl-6 space-y-10">
+                            <!-- YDCC 2025 -->
+                            <div class="relative pl-12">
+                                <div
+                                    class="absolute left-0 top-1 w-8 h-8 bg-white rounded-full border-2 border-brand-accent flex items-center justify-center z-10">
+                                    <i class="fas fa-trophy text-yellow-500 text-xs"></i>
+                                </div>
+                                <h4 class="text-xl font-bold text-brand-dark">Top 10 Finalist - YDCC Hackathon 2025</h4>
+                                <p class="text-sm text-brand-accent mb-1 font-mono">2025 • Youth Digital Citizen
+                                    Challenge (UNDP, UEH & MUFG Bank)</p>
+                                <p class="text-brand-muted text-sm">Phát triển dự án "Agri-Loop" - Giải pháp nông nghiệp
+                                    bền vững giải quyết vấn đề bằng công nghệ AI.</p>
+                            </div>
+                            <div class="relative pl-12">
+                                <div
+                                    class="absolute left-0 top-1 w-8 h-8 bg-white rounded-full border-2 border-brand-accent flex items-center justify-center z-10">
+                                    <i class="fas fa-trophy text-yellow-500 text-xs"></i>
+                                </div>
+                                <h4 class="text-xl font-bold text-brand-dark">ICPC Vietnam 2025 Regional Contest</h4>
+                                <p class="text-sm text-brand-accent mb-1 font-mono">2025 • TLU.ThiNghe1st</p>
+                                <p class="text-brand-muted text-sm">Top 4 Đại Học Thủy Lợi. Hạng 181 Miền Bắc, Hạng 414
+                                    Miền Trung, Hạng 653 Miền Nam.</p>
+                            </div>
+                            <div class="relative pl-12">
+                                <div
+                                    class="absolute left-0 top-1 w-8 h-8 bg-white rounded-full border-2 border-slate-300 flex items-center justify-center z-10">
+                                    <i class="fas fa-medal text-slate-400 text-xs"></i>
+                                </div>
+                                <h4 class="text-xl font-bold text-brand-dark">Giải Nhì, Hội thi Kỹ năng Sinh viên TP.HCM
                                 </h4>
-                                <a
-                                    href="https://worldlotho.com/staff"
-                                    target="_blank"
-                                    rel="noopener"
-                                >
-                                    (Xem demo)
-                                </a>
-                                <ul>
-                                    <li>
-                                        Liên kết mỗi thẻ NFC với một trang hồ sơ
-                                        cá nhân trực tuyến để xác thực tức thời.
-                                    </li>
-                                    <li>
-                                        Thiết kế dashboard quản trị thân thiện
-                                        giúp đội ngũ quản lý dữ liệu thành viên
-                                        nhanh chóng.
-                                    </li>
-                                    <li>
-                                        Quản lý thông tin hơn 40 thành viên, bảo
-                                        đảm an toàn dữ liệu và phân quyền truy
-                                        cập linh hoạt cho nhân sự nội bộ.
-                                    </li>
-                                </ul>
-                                <div class="tech-icons">
-                                    <span class="tech-icon"
-                                        ><span class="icon-fallback">SJ</span
-                                        ><span>SonicJS</span></span
-                                    >
-                                    <span class="tech-icon"
-                                        ><img
-                                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-plain.svg"
-                                            alt="Node.js"
-                                        /><span>Node.js</span></span
-                                    >
-                                    <span class="tech-icon"
-                                        ><img
-                                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cloudflare/cloudflare-original.svg"
-                                            alt="Cloudflare"
-                                        /><span>Cloudflare</span></span
-                                    >
-                                    <span class="tech-icon"
-                                        ><img
-                                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-plain.svg"
-                                            alt="HTML"
-                                        /><span>HTML</span></span
-                                    >
-                                    <span class="tech-icon"
-                                        ><img
-                                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-plain.svg"
-                                            alt="CSS"
-                                        /><span>CSS</span></span
-                                    >
-                                </div>
+                                <p class="text-sm text-brand-accent mb-1 font-mono">2024 • City Level</p>
+                                <p class="text-brand-muted text-sm">Đoàn Thanh niên Cộng sản Hồ Chí Minh TP. Hồ Chí
+                                    Minh.</p>
                             </div>
-                        </div>
-                        <div class="tile">
-                            <figure>
-                                <img
-                                    src="/assets/images/wlh-web.webp"
-                                    alt="Landing page giới thiệu thương hiệu"
-                                    loading="lazy"
-                                />
-                            </figure>
-                            <div class="body">
-                                <h4>Website giới thiệu World Lọt Hố</h4>
-                                <a
-                                    href="https://worldlotho.com"
-                                    target="_blank"
-                                    rel="noopener"
-                                >
-                                    (Xem live)
-                                </a>
-
-                                <ul>
-                                    <li>
-                                        Xây dựng giao diện landing page chuyển
-                                        đổi cao với các khối nội dung rõ ràng.
-                                    </li>
-                                    <li>
-                                        Tối ưu tốc độ tải trang, đạt điểm
-                                        Lighthouse &gt; 90 cho cả desktop và
-                                        mobile.
-                                    </li>
-                                    <li>
-                                        Tích hợp biểu mẫu liên hệ, giúp tự động
-                                        hóa quy trình tiếp nhận đối tác &amp;
-                                        cộng đồng.
-                                    </li>
-                                </ul>
-                                <div class="tech-icons">
-                                    <span class="tech-icon"
-                                        ><img
-                                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-plain.svg"
-                                            alt="CSS thuần"
-                                        /><span>Vanilla CSS</span></span
-                                    >
+                            <div class="relative pl-12">
+                                <div
+                                    class="absolute left-0 top-1 w-8 h-8 bg-white rounded-full border-2 border-slate-300 flex items-center justify-center z-10">
+                                    <i class="fas fa-award text-brand-accent text-xs"></i>
                                 </div>
+                                <h4 class="text-xl font-bold text-brand-dark">Giải Khuyến khích, Kỳ thi Phát triển Web
+                                </h4>
+                                <p class="text-sm text-brand-accent mb-1 font-mono">2023 • TP. Hồ Chí Minh</p>
+                                <p class="text-brand-muted text-sm">Sở Giáo dục & Đào tạo TP. Hồ Chí Minh.</p>
                             </div>
                         </div>
                     </div>
                 </div>
-            </section>
+            </div>
+        </section>
 
-            <section id="contact">
-                <div class="container">
-                    <h2 class="section-title">Liên hệ</h2>
-                    <div class="contact-panel">
-                        <h3>Luôn sẵn sàng kết nối</h3>
-                        <p class="contact-note">
-                            Hãy ưu tiên gửi email hoặc nhắn qua các nền tảng
-                            dưới đây. Mình sẽ phản hồi trong vòng 24 giờ.
-                        </p>
-                        <div class="contact-links">
-                            <a
-                                class="contact-chip"
-                                href="mailto:wanghien.miho.dev@gmail.com"
-                                ><span>📧</span>Email</a
-                            >
-                            <a
-                                class="contact-chip"
-                                href="https://t.me/Miho1011"
-                                target="_blank"
-                                rel="noopener"
-                                ><span>✈️</span>Telegram</a
-                            >
-                            <a
-                                class="contact-chip"
-                                href="https://www.facebook.com/WangHien.1254"
-                                target="_blank"
-                                rel="noopener"
-                                ><span>📱</span>Facebook</a
-                            >
-                            <a
-                                class="contact-chip"
-                                href="www.linkedin.com/in/miho1254"
-                                target="_blank"
-                                rel="noopener"
-                                ><span>💼</span>LinkedIn</a
-                            >
-                            <a
-                                class="contact-chip"
-                                href="https://github.com/Miho1254"
-                                target="_blank"
-                                rel="noopener"
-                                ><span>💻</span>GitHub</a
-                            >
+        <section class="py-24 bg-white" id="skills">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="text-center mb-16 reveal">
+                    <span class="text-brand-accent font-bold tracking-widest uppercase text-sm mb-2 block">Tech
+                        Stack</span>
+                    <h2 class="text-4xl font-bold text-brand-dark font-display">Kỹ Năng Chuyên Môn</h2>
+                </div>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <!-- Languages -->
+                    <div
+                        class="p-8 rounded-2xl bg-brand-soft border border-slate-100 reveal hover:border-brand-accent/30 transition-colors">
+                        <div
+                            class="w-12 h-12 bg-white rounded-lg flex items-center justify-center shadow-sm mb-6 text-brand-accent">
+                            <span class="material-symbols-outlined text-3xl">code</span>
                         </div>
-                        <div class="contact-actions">
-                            <a
-                                class="btn primary"
-                                href="mailto:wanghien.miho.dev@gmail.com"
-                                >Gửi email ngay</a
-                            >
+                        <h3 class="text-xl font-bold text-brand-dark mb-6">Languages</h3>
+                        <div class="flex flex-wrap gap-3">
+                            <span
+                                class="px-3 py-2 bg-white rounded border border-slate-200 text-sm font-medium text-slate-600 flex items-center gap-2">
+                                <i class="devicon-html5-plain text-orange-500"></i> HTML5
+                            </span>
+                            <span
+                                class="px-3 py-2 bg-white rounded border border-slate-200 text-sm font-medium text-slate-600 flex items-center gap-2">
+                                <i class="devicon-css3-plain text-blue-500"></i> CSS3
+                            </span>
+                            <span
+                                class="px-3 py-2 bg-white rounded border border-slate-200 text-sm font-medium text-slate-600 flex items-center gap-2">
+                                <i class="devicon-typescript-plain colored"></i> TypeScript
+                            </span>
+                            <span
+                                class="px-3 py-2 bg-white rounded border border-slate-200 text-sm font-medium text-slate-600 flex items-center gap-2">
+                                <i class="devicon-javascript-plain text-yellow-400"></i> JavaScript
+                            </span>
+                            <span
+                                class="px-3 py-2 bg-white rounded border border-slate-200 text-sm font-medium text-slate-600 flex items-center gap-2">
+                                <i class="devicon-php-plain text-indigo-500"></i> PHP
+                            </span>
+                        </div>
+                    </div>
+                    <!-- Frameworks -->
+                    <div class="p-8 rounded-2xl bg-brand-soft border border-slate-100 reveal hover:border-brand-accent/30 transition-colors"
+                        style="transition-delay: 100ms;">
+                        <div
+                            class="w-12 h-12 bg-white rounded-lg flex items-center justify-center shadow-sm mb-6 text-brand-accent">
+                            <span class="material-symbols-outlined text-3xl">layers</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-brand-dark mb-6">Frameworks</h3>
+                        <div class="flex flex-wrap gap-3">
+                            <span
+                                class="px-3 py-2 bg-white rounded border border-slate-200 text-sm font-medium text-slate-600 flex items-center gap-2">
+                                <i class="devicon-react-original text-sky-400"></i> React
+                            </span>
+                            <span
+                                class="px-3 py-2 bg-white rounded border border-slate-200 text-sm font-medium text-slate-600 flex items-center gap-2">
+                                <i class="devicon-nodejs-plain text-green-500"></i> Node.js
+                            </span>
+                            <span
+                                class="px-3 py-2 bg-white rounded border border-slate-200 text-sm font-medium text-slate-600 flex items-center gap-2">
+                                <i class="devicon-denojs-original text-white bg-black rounded-full p-0.5"></i> Deno
+                            </span>
+                            <span
+                                class="px-3 py-2 bg-white rounded border border-slate-200 text-sm font-medium text-slate-600 flex items-center gap-2">
+                                <i class="devicon-tailwindcss-original text-sky-400"></i> Tailwind
+                            </span>
+                        </div>
+                    </div>
+                    <!-- Tools/DB -->
+                    <div class="p-8 rounded-2xl bg-brand-soft border border-slate-100 reveal hover:border-brand-accent/30 transition-colors"
+                        style="transition-delay: 200ms;">
+                        <div
+                            class="w-12 h-12 bg-white rounded-lg flex items-center justify-center shadow-sm mb-6 text-brand-accent">
+                            <span class="material-symbols-outlined text-3xl">build</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-brand-dark mb-6">Tools & DB</h3>
+                        <div class="flex flex-wrap gap-3">
+                            <span
+                                class="px-3 py-2 bg-white rounded border border-slate-200 text-sm font-medium text-slate-600 flex items-center gap-2">
+                                <i class="devicon-docker-plain text-blue-500"></i> Docker
+                            </span>
+                            <span
+                                class="px-3 py-2 bg-white rounded border border-slate-200 text-sm font-medium text-slate-600 flex items-center gap-2">
+                                <i class="devicon-git-plain text-orange-600"></i> Git
+                            </span>
+                            <span
+                                class="px-3 py-2 bg-white rounded border border-slate-200 text-sm font-medium text-slate-600 flex items-center gap-2">
+                                <i class="devicon-cloudflare-plain text-orange-400"></i> Cloudflare
+                            </span>
+                            <span
+                                class="px-3 py-2 bg-white rounded border border-slate-200 text-sm font-medium text-slate-600 flex items-center gap-2">
+                                <i class="devicon-postgresql-plain text-blue-700"></i> PostgreSQL
+                            </span>
+                            <span
+                                class="px-3 py-2 bg-white rounded border border-slate-200 text-sm font-medium text-slate-600 flex items-center gap-2">
+                                <i class="devicon-prisma-original text-slate-700"></i> Prisma
+                            </span>
+                            <span
+                                class="px-3 py-2 bg-white rounded border border-slate-200 text-sm font-medium text-slate-600 flex items-center gap-2">
+                                <i class="devicon-linux-plain text-slate-700"></i> Linux
+                            </span>
                         </div>
                     </div>
                 </div>
-            </section>
-        </main>
-        <script>
-            const yearEl = document.getElementById("y");
-            if (yearEl) {
-                yearEl.textContent = new Date().getFullYear();
-            }
+            </div>
+        </section>
 
-            const toggle = document.querySelector(".menu-toggle");
-            const nav = document.getElementById("site-nav");
-            const mq = window.matchMedia("(max-width: 900px)");
+        <section class="py-24 bg-brand-soft" id="experience">
+            <div class="max-w-6xl mx-auto px-6">
+                <!-- Clean / Light Design for Experience -->
+                <div class="text-center mb-12 reveal">
+                    <span class="text-brand-accent font-bold tracking-widest uppercase text-sm mb-2 block">Career
+                        Journey</span>
+                    <h2 class="text-4xl font-bold text-brand-dark font-display">Kinh Nghiệm Làm Việc</h2>
+                </div>
 
-            const closeMenu = () => {
-                nav?.classList.remove("open");
-                toggle?.setAttribute("aria-expanded", "false");
-            };
 
-            toggle?.addEventListener("click", () => {
-                const isOpen = nav?.classList.toggle("open");
-                if (isOpen !== undefined) {
-                    toggle.setAttribute("aria-expanded", String(isOpen));
-                }
-            });
+                <div class="reveal max-w-5xl mx-auto">
+                    <!-- Main Role Container -->
+                    <div class="flex flex-col md:flex-row items-baseline gap-4 mb-8 border-b border-slate-200 pb-4">
+                        <h3 class="text-3xl font-bold text-brand-dark">IT Specialist</h3>
+                        <span class="text-2xl text-brand-muted font-light">at</span>
+                        <h4 class="text-xl font-semibold text-brand-accent flex items-center gap-2 flex-wrap">
+                            World Simp & Friends
+                            <span
+                                class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-medium bg-amber-50 text-amber-700 border border-amber-100 uppercase tracking-wide">Community
+                                Project</span>
+                        </h4>
+                        <div
+                            class="ml-auto flex items-center gap-2 text-sm font-mono text-slate-500 bg-white px-3 py-1 rounded-full border border-slate-200 shadow-sm">
+                            <i class="far fa-calendar-alt"></i> 2023 - Nay
+                        </div>
+                    </div>
 
-            nav?.querySelectorAll("a").forEach((link) => {
-                link.addEventListener("click", () => closeMenu());
-            });
+                    <p class="text-lg text-slate-600 mb-10 max-w-3xl leading-relaxed">
+                        Chịu trách nhiệm toàn bộ hạ tầng kỹ thuật, từ phát triển hệ thống nội bộ đến triển khai các giải
+                        pháp công nghệ cho sự kiện.
+                    </p>
 
-            const handleMqChange = (event) => {
-                if (!event.matches) {
-                    closeMenu();
-                }
-            };
+                    <!-- 4 Column Focus Grid (Clean Cards) -->
+                    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+                        <!-- Internal Systems -->
+                        <div
+                            class="bg-white p-6 rounded-xl border border-slate-100 hover:border-blue-200 hover:shadow-lg transition-all group">
+                            <div
+                                class="w-12 h-12 bg-blue-50 rounded-lg flex items-center justify-center text-blue-600 mb-4 group-hover:scale-110 transition-transform">
+                                <span class="material-symbols-outlined">dataset</span>
+                            </div>
+                            <h5 class="font-bold text-brand-dark mb-2">Hệ Thống Nội Bộ</h5>
+                            <p class="text-sm text-brand-muted leading-relaxed">Phát triển và duy trì nhiều hệ thống để
+                                hỗ trợ các hoạt động của đội nhóm.</p>
+                        </div>
+                        <!-- Event Tech -->
+                        <div
+                            class="bg-white p-6 rounded-xl border border-slate-100 hover:border-orange-200 hover:shadow-lg transition-all group">
+                            <div
+                                class="w-12 h-12 bg-orange-50 rounded-lg flex items-center justify-center text-orange-600 mb-4 group-hover:scale-110 transition-transform">
+                                <span class="material-symbols-outlined">event</span>
+                            </div>
+                            <h5 class="font-bold text-brand-dark mb-2">Event Solutions</h5>
+                            <p class="text-sm text-brand-muted leading-relaxed">Xây dựng ứng dụng quản lý kinh doanh và
+                                hệ thống quản lý sự kiện cho các sự kiện offline.</p>
+                        </div>
+                        <!-- Web Perf -->
+                        <div
+                            class="bg-white p-6 rounded-xl border border-slate-100 hover:border-green-200 hover:shadow-lg transition-all group">
+                            <div
+                                class="w-12 h-12 bg-green-50 rounded-lg flex items-center justify-center text-green-600 mb-4 group-hover:scale-110 transition-transform">
+                                <span class="material-symbols-outlined">rocket_launch</span>
+                            </div>
+                            <h5 class="font-bold text-brand-dark mb-2">Web Projects</h5>
+                            <p class="text-sm text-brand-muted leading-relaxed">Triển khai các dự án web nhằm cải thiện
+                                hình ảnh công chúng và quy trình làm việc nội bộ.</p>
+                        </div>
+                        <!-- Mentorship -->
+                        <div
+                            class="bg-white p-6 rounded-xl border border-slate-100 hover:border-purple-200 hover:shadow-lg transition-all group">
+                            <div
+                                class="w-12 h-12 bg-purple-50 rounded-lg flex items-center justify-center text-purple-600 mb-4 group-hover:scale-110 transition-transform">
+                                <span class="material-symbols-outlined">engineering</span>
+                            </div>
+                            <h5 class="font-bold text-brand-dark mb-2">Technical Lead</h5>
+                            <p class="text-sm text-brand-muted leading-relaxed">Chịu trách nhiệm toàn bộ cho mọi công
+                                việc kỹ thuật.</p>
+                        </div>
+                    </div>
 
-            if (mq.addEventListener) {
-                mq.addEventListener("change", handleMqChange);
-            } else if (mq.addListener) {
-                mq.addListener(handleMqChange);
-            }
-        </script>
-        <footer>
-            © <span id="y"></span> Full-stack = chatGPT cho frontend!
+                    <!-- Tech Stack Chips -->
+                    <div class="flex flex-wrap items-center gap-3">
+                        <span class="text-sm font-bold text-brand-primary uppercase tracking-wider mr-2">Tech
+                            Stack:</span>
+                        <span
+                            class="px-3 py-1 bg-white border border-slate-200 text-slate-600 rounded-lg text-sm font-medium hover:border-brand-accent transition-colors">React</span>
+                        <span
+                            class="px-3 py-1 bg-white border border-slate-200 text-slate-600 rounded-lg text-sm font-medium hover:border-brand-accent transition-colors">Node.js</span>
+                        <span
+                            class="px-3 py-1 bg-white border border-slate-200 text-slate-600 rounded-lg text-sm font-medium hover:border-brand-accent transition-colors">PostgreSQL</span>
+                        <span
+                            class="px-3 py-1 bg-white border border-slate-200 text-slate-600 rounded-lg text-sm font-medium hover:border-brand-accent transition-colors">Docker</span>
+                        <span
+                            class="px-3 py-1 bg-white border border-slate-200 text-slate-600 rounded-lg text-sm font-medium hover:border-brand-accent transition-colors">Cloudflare
+                            Workers</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section class="py-24 bg-white" id="projects">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="flex flex-col md:flex-row justify-between items-end mb-16 reveal">
+                    <div>
+                        <span
+                            class="text-brand-accent font-bold tracking-widest uppercase text-sm mb-2 block">Portfolio</span>
+                        <h2 class="text-4xl md:text-5xl font-bold text-brand-dark font-display">Dự Án Tiêu Biểu</h2>
+                    </div>
+                    <div class="hidden md:block">
+                        <a class="text-brand-dark hover:text-brand-accent font-medium flex items-center gap-2 transition-colors"
+                            href="https://github.com/Miho1254">
+                            Xem Github <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="grid lg:grid-cols-2 gap-10">
+                    <!-- Project Agri-Loop (Hackathon) -->
+                    <div
+                        class="group bg-white rounded-2xl p-8 shadow-sm border border-slate-100 hover:shadow-xl transition-all duration-300 reveal">
+                        <div class="relative overflow-hidden rounded-xl mb-8 aspect-video bg-slate-100 group">
+                            <!-- Gradient Overlay -->
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-60 z-10">
+                            </div>
+
+                            <!-- Badges -->
+                            <div class="absolute top-4 left-4 z-20 flex flex-wrap gap-2">
+                                <span
+                                    class="px-3 py-1 bg-purple-600 text-white text-xs font-bold rounded-full shadow-lg border border-white/20 uppercase tracking-wider backdrop-blur-md">
+                                    <i class="fas fa-trophy mr-1"></i> Hackathon
+                                </span>
+                                <span
+                                    class="px-3 py-1 bg-blue-500 text-white text-xs font-bold rounded-full shadow-lg border border-white/20 backdrop-blur-md">
+                                    <i class="fas fa-mobile-alt mr-1"></i> Mobile
+                                </span>
+                            </div>
+
+                            <img alt="Agri-Loop Hackathon Project"
+                                class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
+                                src="assets/images/ydcc2025.png"
+                                onerror="this.src='https://ui-avatars.com/api/?name=Agri+Loop&background=random&size=512'" />
+
+                            <!-- AI Badge Bottom -->
+                            <div class="absolute bottom-4 left-4 z-20">
+                                <span
+                                    class="px-3 py-1 bg-white/90 text-brand-dark text-xs font-bold rounded-full shadow-lg backdrop-blur flex items-center gap-1">
+                                    <span
+                                        class="material-symbols-outlined text-sm text-brand-accent">auto_awesome</span>
+                                    Powered by Gemini 2.5 Flash
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- Content -->
+                        <div class="mb-6">
+                            <div class="flex justify-between items-start mb-4">
+                                <div>
+                                    <span
+                                        class="text-xs font-bold text-brand-accent uppercase tracking-widest mb-1 block">YDCC
+                                        2025 Submission</span>
+                                    <h3
+                                        class="text-2xl font-bold text-brand-dark group-hover:text-brand-primary transition-colors">
+                                        Agri-Loop</h3>
+                                </div>
+                                <a href="https://github.com/Miho1254/delta-next-ydcc2025" target="_blank"
+                                    class="w-10 h-10 rounded-full bg-slate-50 flex items-center justify-center text-slate-600 hover:bg-brand-dark hover:text-white transition-all">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                            </div>
+                            <p class="text-slate-600 leading-relaxed mb-6">
+                                Giải pháp Xử lý Phụ phẩm Nông nghiệp bằng AI cho nông dân ĐBSCL. Sử dụng <strong>Gemini
+                                    2.5 Flash</strong> để phân tích hình ảnh đống ủ và đưa ra phác đồ xử lý, kết hợp
+                                tương tác giọng nói giúp nông dân dễ dàng tiếp cận công nghệ.
+                            </p>
+
+                            <!-- Tech Stack -->
+                            <div class="flex flex-wrap gap-2 mb-6">
+                                <span
+                                    class="px-3 py-1 bg-slate-50 text-slate-600 rounded-lg text-xs font-medium border border-slate-100">React
+                                    Native</span>
+                                <span
+                                    class="px-3 py-1 bg-slate-50 text-slate-600 rounded-lg text-xs font-medium border border-slate-100">Expo</span>
+                                <span
+                                    class="px-3 py-1 bg-slate-50 text-slate-600 rounded-lg text-xs font-medium border border-slate-100">Supabase</span>
+                                <span
+                                    class="px-3 py-1 bg-slate-50 text-slate-600 rounded-lg text-xs font-medium border border-slate-100">Gemini
+                                    AI</span>
+                            </div>
+
+                            <!-- Hackathon Disclaimer -->
+                            <div class="bg-amber-50 border border-amber-100 rounded-lg p-3 flex items-start gap-3">
+                                <span class="material-symbols-outlined text-amber-600 mt-0.5 text-lg">warning</span>
+                                <div>
+                                    <p class="text-xs font-bold text-amber-800 uppercase mb-0.5">Hackathon Prototype</p>
+                                    <p class="text-xs text-amber-700 leading-tight">Dự án được xây dựng trong khuôn khổ
+                                        cuộc thi Hackathon. Đang trong giai đoạn phát triển ý tưởng (Prototype), chưa có
+                                        MVP hoàn chỉnh.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Project 1 -->
+                    <div
+                        class="group bg-white rounded-2xl p-8 shadow-sm border border-slate-100 hover:shadow-xl transition-all duration-300 reveal">
+                        <div class="relative overflow-hidden rounded-xl mb-8 aspect-video bg-slate-100">
+                            <div
+                                class="absolute inset-0 bg-brand-dark/0 group-hover:bg-brand-dark/10 transition-colors duration-300 z-10">
+                            </div>
+                            <img alt="Ticket Management System Preview"
+                                class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
+                                src="assets/images/wlh-office.webp" />
+                        </div>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 bg-sky-50 text-brand-accent text-xs font-semibold rounded-full">React
+                                Admin</span>
+                            <span
+                                class="px-3 py-1 bg-sky-50 text-brand-accent text-xs font-semibold rounded-full">Deno</span>
+                            <span
+                                class="px-3 py-1 bg-sky-50 text-brand-accent text-xs font-semibold rounded-full">Prisma</span>
+                            <span
+                                class="px-3 py-1 bg-sky-50 text-brand-accent text-xs font-semibold rounded-full">PostgreSQL</span>
+                        </div>
+                        <h3
+                            class="text-2xl font-bold text-brand-dark mb-3 group-hover:text-brand-accent transition-colors">
+                            Hệ thống quản lý và soát vé</h3>
+                        <div class="text-brand-muted mb-6 text-sm">
+                            <ul class="list-disc pl-5 space-y-1">
+                                <li>Thiết kế hệ thống bán vé và check-in cho sự kiện quy mô lớn.</li>
+                                <li>Xử lý 400+ vé, doanh thu ~50 triệu VND.</li>
+                                <li>Tự động gửi email QR và dashboard real-time.</li>
+                            </ul>
+                        </div>
+                        <a class="inline-flex items-center text-brand-dark font-semibold group-hover:translate-x-2 transition-transform"
+                            href="https://www.facebook.com/share/p/17KFWRUQa4/" target="_blank">
+                            Xem Demo <i class="fas fa-external-link-alt ml-2 text-xs"></i>
+                        </a>
+                    </div>
+
+                    <!-- Project 2 -->
+                    <div class="group bg-white rounded-2xl p-8 shadow-sm border border-slate-100 hover:shadow-xl transition-all duration-300 reveal"
+                        style="transition-delay: 100ms;">
+                        <div class="relative overflow-hidden rounded-xl mb-8 aspect-video bg-slate-100">
+                            <div
+                                class="absolute inset-0 bg-brand-dark/0 group-hover:bg-brand-dark/10 transition-colors duration-300 z-10">
+                            </div>
+                            <img alt="NFC Member System Preview"
+                                class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
+                                src="assets/images/wlh-staff.webp" />
+                        </div>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span
+                                class="px-3 py-1 bg-sky-50 text-brand-accent text-xs font-semibold rounded-full">IoT</span>
+                            <span
+                                class="px-3 py-1 bg-sky-50 text-brand-accent text-xs font-semibold rounded-full">SonicJS</span>
+                            <span
+                                class="px-3 py-1 bg-sky-50 text-brand-accent text-xs font-semibold rounded-full">Cloudflare</span>
+                        </div>
+                        <h3
+                            class="text-2xl font-bold text-brand-dark mb-3 group-hover:text-brand-accent transition-colors">
+                            Hệ thống Quản lý Thành viên NFC</h3>
+                        <div class="text-brand-muted mb-6 text-sm">
+                            <ul class="list-disc pl-5 space-y-1">
+                                <li>Liên kết thẻ NFC với hồ sơ trực tuyến.</li>
+                                <li>Dashboard quản trị dữ liệu thành viên.</li>
+                                <li>Quản lý thông tin 40+ thành viên, phân quyền linh hoạt.</li>
+                            </ul>
+                        </div>
+                        <a class="inline-flex items-center text-brand-dark font-semibold group-hover:translate-x-2 transition-transform"
+                            href="https://worldlotho.com/staff" target="_blank">
+                            Xem Demo <i class="fas fa-external-link-alt ml-2 text-xs"></i>
+                        </a>
+                    </div>
+
+                    <!-- Project 3 -->
+                    <div class="group bg-white rounded-2xl p-8 shadow-sm border border-slate-100 hover:shadow-xl transition-all duration-300 reveal"
+                        style="transition-delay: 200ms;">
+                        <div class="relative overflow-hidden rounded-xl mb-8 aspect-video bg-slate-100">
+                            <div
+                                class="absolute inset-0 bg-brand-dark/0 group-hover:bg-brand-dark/10 transition-colors duration-300 z-10">
+                            </div>
+                            <img alt="World Lọt Hố Website Preview"
+                                class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
+                                src="assets/images/wlh-web.webp" />
+                        </div>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span
+                                class="px-3 py-1 bg-sky-50 text-brand-accent text-xs font-semibold rounded-full">Vanilla
+                                CSS</span>
+                            <span
+                                class="px-3 py-1 bg-sky-50 text-brand-accent text-xs font-semibold rounded-full">HTML5</span>
+                            <span
+                                class="px-3 py-1 bg-sky-50 text-brand-accent text-xs font-semibold rounded-full">Performance</span>
+                        </div>
+                        <h3
+                            class="text-2xl font-bold text-brand-dark mb-3 group-hover:text-brand-accent transition-colors">
+                            Website giới thiệu World Lọt Hố</h3>
+                        <div class="text-brand-muted mb-6 text-sm">
+                            <ul class="list-disc pl-5 space-y-1">
+                                <li>Landing page chuyển đổi cao.</li>
+                                <li>Tối ưu tốc độ tải trang, Lighthouse > 90.</li>
+                                <li>Tích hợp biểu mẫu liên hệ tự động.</li>
+                            </ul>
+                        </div>
+                        <a class="inline-flex items-center text-brand-dark font-semibold group-hover:translate-x-2 transition-transform"
+                            href="https://worldlotho.com" target="_blank">
+                            Xem Live <i class="fas fa-external-link-alt ml-2 text-xs"></i>
+                        </a>
+                    </div>
+
+                </div>
+                <div class="mt-12 text-center md:hidden">
+                    <a class="text-brand-dark hover:text-brand-accent font-medium inline-flex items-center gap-2 transition-colors"
+                        href="https://github.com/Miho1254">
+                        Xem tất cả dự án <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-32 bg-brand-soft relative overflow-hidden" id="contact">
+            <div class="absolute left-0 bottom-0 -z-0 grid grid-cols-4 gap-4 opacity-20 p-10">
+                <div class="w-2 h-2 rounded-full bg-brand-accent"></div>
+                <div class="w-2 h-2 rounded-full bg-brand-accent"></div>
+                <div class="w-2 h-2 rounded-full bg-brand-accent"></div>
+                <div class="w-2 h-2 rounded-full bg-brand-accent"></div>
+                <div class="w-2 h-2 rounded-full bg-brand-accent"></div>
+                <div class="w-2 h-2 rounded-full bg-brand-accent"></div>
+                <div class="w-2 h-2 rounded-full bg-brand-accent"></div>
+                <div class="w-2 h-2 rounded-full bg-brand-accent"></div>
+            </div>
+            <div class="max-w-4xl mx-auto px-6 text-center reveal">
+                <h2 class="text-4xl md:text-5xl font-bold text-brand-dark mb-8 font-display">Sẵn sàng hợp tác?</h2>
+                <p class="text-xl text-brand-muted mb-12 leading-relaxed">
+                    Cho dù bạn có thắc mắc về các dự án của tôi, muốn thảo luận về công nghệ, hay chỉ đơn giản là muốn
+                    nói "Xin chào", tôi sẽ cố gắng phản hồi sớm nhất có thể!
+                </p>
+                <div class="grid md:grid-cols-3 gap-6 mb-12">
+                    <a class="flex flex-col items-center justify-center p-8 bg-white rounded-2xl border border-slate-100 hover:shadow-lg hover:-translate-y-1 transition-all group"
+                        href="mailto:wanghien.miho.dev@gmail.com">
+                        <span
+                            class="material-symbols-outlined text-4xl text-brand-accent mb-4 group-hover:scale-110 transition-transform">mail</span>
+                        <h3 class="text-lg font-bold text-brand-dark">Email Me</h3>
+                        <p class="text-brand-muted text-sm mt-1">wanghien.miho.dev...</p>
+                    </a>
+                    <a class="flex flex-col items-center justify-center p-8 bg-white rounded-2xl border border-slate-100 hover:shadow-lg hover:-translate-y-1 transition-all group"
+                        href="https://github.com/Miho1254" target="_blank">
+                        <i
+                            class="fab fa-github text-4xl text-brand-dark mb-4 group-hover:scale-110 transition-transform"></i>
+                        <h3 class="text-lg font-bold text-brand-dark">Github</h3>
+                        <p class="text-brand-muted text-sm mt-1">Explore my code</p>
+                    </a>
+                    <div
+                        class="flex flex-col items-center justify-center p-8 bg-white rounded-2xl border border-slate-100 hover:shadow-lg hover:-translate-y-1 transition-all group">
+                        <span
+                            class="material-symbols-outlined text-4xl text-red-500 mb-4 group-hover:scale-110 transition-transform">location_on</span>
+                        <h3 class="text-lg font-bold text-brand-dark">Location</h3>
+                        <p class="text-brand-muted text-sm mt-1">TP. Hồ Chí Minh, VN</p>
+                    </div>
+                </div>
+                <div class="flex justify-center gap-6 mt-8">
+                    <a href="https://t.me/Miho1011" target="_blank"
+                        class="text-brand-muted hover:text-brand-accent text-3xl transition-colors"><i
+                            class="fab fa-telegram"></i></a>
+                    <a href="https://www.facebook.com/WangHien.1254" target="_blank"
+                        class="text-brand-muted hover:text-brand-accent text-3xl transition-colors"><i
+                            class="fab fa-facebook"></i></a>
+                    <a href="https://www.linkedin.com/in/miho1254" target="_blank"
+                        class="text-brand-muted hover:text-brand-accent text-3xl transition-colors"><i
+                            class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </section>
+
+        <footer class="bg-white py-12 border-t border-slate-200">
+            <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
+                <div class="text-brand-dark font-bold font-display text-xl">
+                    Miho.
+                </div>
+                <div class="text-sm text-brand-muted text-center">
+                    <p>© 2026 Miho Portfolio. Designed & Built in TP.HCM.</p>
+                </div>
+                <div class="flex gap-6 text-brand-muted">
+                    <!-- Footer links redundant with contact section but nice to have -->
+                    <a class="hover:text-brand-accent transition-colors" href="https://github.com/Miho1254"><i
+                            class="fab fa-github text-xl"></i></a>
+                    <a class="hover:text-brand-accent transition-colors"
+                        href="https://www.facebook.com/WangHien.1254"><i class="fab fa-facebook text-xl"></i></a>
+                </div>
+            </div>
         </footer>
-    </body>
+    </main>
+    <script>
+        // Reveal animation
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 100;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+        window.addEventListener("scroll", reveal);
+        reveal();
+
+        // Navbar scroll effect
+        var prevScrollpos = window.pageYOffset;
+        window.onscroll = function () {
+            var currentScrollPos = window.pageYOffset;
+            reveal();
+            var navbar = document.getElementById("navbar");
+            if (prevScrollpos > currentScrollPos) {
+                navbar.style.top = "0";
+                if (currentScrollPos > 50) {
+                    navbar.classList.add("shadow-sm", "border-slate-100");
+                    navbar.classList.remove("border-transparent");
+                } else {
+                    navbar.classList.remove("shadow-sm", "border-slate-100");
+                    navbar.classList.add("border-transparent");
+                }
+            } else {
+                navbar.style.top = "-100px";
+            }
+            prevScrollpos = currentScrollPos;
+        }
+
+        // Mobile Menu
+        const toggle = document.querySelector(".menu-toggle");
+        const menu = document.getElementById("mobile-menu");
+
+        toggle.addEventListener("click", () => {
+            menu.classList.toggle("hidden");
+            menu.classList.toggle("flex");
+        });
+
+        function closeMenu() {
+            menu.classList.add("hidden");
+            menu.classList.remove("flex");
+        }
+    </script>
+</body>
+
 </html>
