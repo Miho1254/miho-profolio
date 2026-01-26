@@ -1,0 +1,108 @@
+{
+    "nav": {
+        "intro": "Giới thiệu",
+        "skills": "Kỹ năng",
+        "experience": "Kinh nghiệm",
+        "projects": "Dự án",
+        "contact": "Liên hệ"
+    },
+    "hero": {
+        "location": "TP.HCM, VN",
+        "title_1": "Sáng tạo và",
+        "title_2": "nỗ lực không ngừng",
+        "subtitle": "Miho — Full Stack Developer",
+        "description": "HỌC IT NHƯNG GHÉT TOÁN LÝ HÓA, Fan cứng của Orangestar và Guiano, gu âm nhạc hơi cổ đại một xíu. Là con trai nhưng tiêu thụ trà sữa nhiều hơn con gái.",
+        "btn_projects": "Xem dự án",
+        "btn_contact": "Liên hệ",
+        "quote": "\"Full-stack = chatGPT cho frontend!\"",
+        "stats_exp": "Năm Kinh Nghiệm",
+        "stats_projects": "Dự Án Lớn",
+        "stats_awards": "Giải Thưởng"
+    },
+    "education": {
+        "title": "Học Vấn",
+        "tlu_name": "ĐH Thủy Lợi – Phân hiệu TP.HCM",
+        "tlu_time": "2025 - Hiện tại",
+        "tlu_major": "Chuyên ngành: Công nghệ thông tin",
+        "nd_name": "Trung cấp nghề Nhân Đạo",
+        "nd_time": "2022 - 2024",
+        "nd_major": "Ngành: Kỹ thuật máy tính",
+        "nd_gpa": "GPA: 3.8/4"
+    },
+    "awards": {
+        "title": "Giải Thưởng",
+        "ydcc_title": "Top 10 Finalist - YDCC Hackathon 2025",
+        "ydcc_org": "2025 • Chương trình Phát triển Liên Hợp Quốc (UNDP), Đại học Kinh tế TP.HCM (UEH) , Ngân hàng MUFG",
+        "ydcc_desc": "Phát triển dự án \"Agri-Loop\" - Giải pháp nông nghiệp bền vững giải quyết vấn đề bằng công nghệ AI.",
+        "icpc_title": "ICPC Vietnam 2025 Regional Contest",
+        "icpc_org": "2025 • TLU.ThiNghe1st",
+        "icpc_desc": "Top 4 Đại Học Thủy Lợi. Hạng 181 Miền Bắc, Hạng 414 Miền Trung, Hạng 653 Miền Nam.",
+        "city_title": "Giải Nhì, Hội thi Kỹ năng Sinh viên TP.HCM",
+        "city_org": "2024 • Cấp Thành phố",
+        "city_desc": "Đoàn Thanh niên Cộng sản Hồ Chí Minh TP. Hồ Chí Minh.",
+        "web_title": "Giải Khuyến khích, Kỳ thi Phát triển Web",
+        "web_org": "2023 • TP. Hồ Chí Minh",
+        "web_desc": "Sở Giáo dục & Đào tạo TP. Hồ Chí Minh."
+    },
+    "skills": {
+        "subtitle": "Tech Stack",
+        "title": "Kỹ Năng Chuyên Môn",
+        "cat_lang": "Languages",
+        "cat_frameworks": "Frameworks",
+        "cat_tools": "Tools & DB"
+    },
+    "experience": {
+        "subtitle": "Hành trình sự nghiệp",
+        "title": "Kinh Nghiệm Làm Việc",
+        "role": "IT Specialist",
+        "at": "tại",
+        "company": "World Simp & Friends",
+        "type": "Dự án cộng đồng",
+        "time": "2023 - Nay",
+        "desc": "Chịu trách nhiệm toàn bộ hạ tầng kỹ thuật, từ phát triển hệ thống nội bộ đến triển khai các giải pháp công nghệ cho sự kiện.",
+        "card_internal": "Hệ Thống Nội Bộ",
+        "desc_internal": "Phát triển và duy trì nhiều hệ thống để hỗ trợ các hoạt động của đội nhóm.",
+        "card_event": "Giải pháp Sự kiện",
+        "desc_event": "Xây dựng ứng dụng quản lý kinh doanh và hệ thống quản lý sự kiện cho các sự kiện offline.",
+        "card_web": "Dự án Web",
+        "desc_web": "Triển khai các dự án web nhằm cải thiện hình ảnh công chúng và quy trình làm việc nội bộ.",
+        "card_lead": "Trưởng Nhóm Kỹ Thuật",
+        "desc_lead": "Chịu trách nhiệm toàn bộ cho mọi công việc kỹ thuật."
+    },
+    "projects": {
+        "subtitle": "Portfolio",
+        "title": "Dự Án Tiêu Biểu",
+        "view_github": "Xem Github",
+        "view_all": "Xem tất cả dự án",
+        "hackathon_badge": "Hackathon Prototype",
+        "hackathon_warn": "Dự án được xây dựng trong khuôn khổ cuộc thi Hackathon. Đang trong giai đoạn phát triển ý tưởng (Prototype), chưa có MVP hoàn chỉnh.",
+        "agri_desc": "Giải pháp Xử lý Phụ phẩm Nông nghiệp bằng AI cho nông dân ĐBSCL. Sử dụng <strong>Gemini 2.5 Flash</strong> để phân tích hình ảnh đống ủ và đưa ra phác đồ xử lý, kết hợp tương tác giọng nói giúp nông dân dễ dàng tiếp cận công nghệ.",
+        "ticket_title": "Hệ thống quản lý và soát vé",
+        "ticket_li_1": "Thiết kế hệ thống bán vé và check-in cho sự kiện quy mô lớn.",
+        "ticket_li_2": "Xử lý 400+ vé, doanh thu ~50 triệu VND.",
+        "ticket_li_3": "Tự động gửi email QR và dashboard real-time.",
+        "view_demo": "Xem Demo",
+        "nfc_title": "Hệ thống Quản lý Thành viên NFC",
+        "nfc_li_1": "Liên kết thẻ NFC với hồ sơ trực tuyến.",
+        "nfc_li_2": "Dashboard quản trị dữ liệu thành viên.",
+        "nfc_li_3": "Quản lý thông tin 40+ thành viên, phân quyền linh hoạt.",
+        "web_title": "Website giới thiệu World Lọt Hố",
+        "web_li_1": "Landing page chuyển đổi cao.",
+        "web_li_2": "Tối ưu tốc độ tải trang, Lighthouse > 90.",
+        "web_li_3": "Tích hợp biểu mẫu liên hệ tự động.",
+        "view_live": "Xem Live"
+    },
+    "contact": {
+        "title": "Sẵn sàng hợp tác?",
+        "desc": "Cho dù bạn có thắc mắc về các dự án của tôi, muốn thảo luận về công nghệ, hay chỉ đơn giản là muốn nói \"Xin chào\", tôi sẽ cố gắng phản hồi sớm nhất có thể!",
+        "email_title": "Email",
+        "email_desc": "wanghien.miho.dev...",
+        "github_title": "Github",
+        "github_desc": "Khám phá mã nguồn",
+        "location_title": "Địa điểm",
+        "location_desc": "TP. Hồ Chí Minh, VN"
+    },
+    "footer": {
+        "copyright": "© 2026 Miho Portfolio. Thiết kế & Xây dựng tại TP.HCM."
+    }
+}

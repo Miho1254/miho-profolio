@@ -1,0 +1,108 @@
+{
+    "nav": {
+        "intro": "About",
+        "skills": "Skills",
+        "experience": "Experience",
+        "projects": "Projects",
+        "contact": "Contact"
+    },
+    "hero": {
+        "location": "HCMC, VN",
+        "title_1": "Creativity and",
+        "title_2": "Relentless Effort",
+        "subtitle": "Miho — Full Stack Developer",
+        "description": "IT STUDENT WHO HATES PHYSICS & MATH. Hardcore fan of Orangestar and Guiano, with slightly ancient music taste. A guy who consumes more bubble tea than girls.",
+        "btn_projects": "View Projects",
+        "btn_contact": "Contact Me",
+        "quote": "\"Full-stack = chatGPT for frontend!\"",
+        "stats_exp": "Years Experience",
+        "stats_projects": "Major Projects",
+        "stats_awards": "Awards Won"
+    },
+    "education": {
+        "title": "Education",
+        "tlu_name": "Thuy Loi University - HCMC Campus",
+        "tlu_time": "2025 - Present",
+        "tlu_major": "Major: Information Technology",
+        "nd_name": "Nhan Dao Vocational School",
+        "nd_time": "2022 - 2024",
+        "nd_major": "Major: Computer Engineering",
+        "nd_gpa": "GPA: 3.8/4"
+    },
+    "awards": {
+        "title": "Awards",
+        "ydcc_title": "Top 10 Finalist - YDCC Hackathon 2025",
+        "ydcc_org": "2025 • UNDP, UEH & MUFG Bank",
+        "ydcc_desc": "Developed \"Agri-Loop\" - A sustainable agricultural solution solving problems with AI technology.",
+        "icpc_title": "ICPC Vietnam 2025 Regional Contest",
+        "icpc_org": "2025 • TLU.ThiNghe1st",
+        "icpc_desc": "Top 4 Thuy Loi University. Ranked 181 North, 414 Central, 653 South.",
+        "city_title": "Second Prize, HCMC Student Skills Contest",
+        "city_org": "2024 • City Level",
+        "city_desc": "Ho Chi Minh Communist Youth Union.",
+        "web_title": "Consolation Prize, Web Development Contest",
+        "web_org": "2023 • Ho Chi Minh City",
+        "web_desc": "HCMC Department of Education & Training."
+    },
+    "skills": {
+        "subtitle": "Tech Stack",
+        "title": "Professional Skills",
+        "cat_lang": "Languages",
+        "cat_frameworks": "Frameworks",
+        "cat_tools": "Tools & DB"
+    },
+    "experience": {
+        "subtitle": "Career Journey",
+        "title": "Work Experience",
+        "role": "IT Specialist",
+        "at": "at",
+        "company": "World Simp & Friends",
+        "type": "Community Project",
+        "time": "2023 - Present",
+        "desc": "Responsible for entire technical infrastructure, from developing internal systems to deploying event technology solutions.",
+        "card_internal": "Internal Systems",
+        "desc_internal": "Developed and maintained multiple systems to support team operations.",
+        "card_event": "Event Solutions",
+        "desc_event": "Built business management apps and event management systems for offline events.",
+        "card_web": "Web Projects",
+        "desc_web": "Deployed web projects to improve public image and internal workflows.",
+        "card_lead": "Technical Lead",
+        "desc_lead": "Fully responsible for all technical tasks."
+    },
+    "projects": {
+        "subtitle": "Portfolio",
+        "title": "Featured Projects",
+        "view_github": "View Github",
+        "view_all": "View All Projects",
+        "hackathon_badge": "Hackathon Prototype",
+        "hackathon_warn": "Project built during a Hackathon. Currently in Prototype phase, not a complete MVP.",
+        "agri_desc": "AI Agricultural By-product Treatment Solution for Mekong Delta farmers. Uses <strong>Gemini 2.5 Flash</strong> to analyze compost piles and suggest treatment protocols, combined with voice interaction for easy access.",
+        "ticket_title": "Ticket Management System",
+        "ticket_li_1": "Designed ticketing and check-in system for large-scale events.",
+        "ticket_li_2": "Processed 400+ tickets, revenue ~50M VND.",
+        "ticket_li_3": "Automated QR emails and real-time dashboard.",
+        "view_demo": "View Demo",
+        "nfc_title": "NFC Member Management System",
+        "nfc_li_1": "Linked NFC cards with online profiles.",
+        "nfc_li_2": "Member data administration dashboard.",
+        "nfc_li_3": "Managed 40+ members with flexible permissions.",
+        "web_title": "World Lot Ho Introduction Website",
+        "web_li_1": "High-conversion landing page.",
+        "web_li_2": "Optimized performance, Lighthouse > 90.",
+        "web_li_3": "Integrated automatic contact forms.",
+        "view_live": "View Live"
+    },
+    "contact": {
+        "title": "Ready to collaborate?",
+        "desc": "Whether you have questions about my projects, want to discuss tech, or just want to say \"Hello\", I'll try to respond as soon as possible!",
+        "email_title": "Email",
+        "email_desc": "wanghien.miho.dev...",
+        "github_title": "Github",
+        "github_desc": "Explore my code",
+        "location_title": "Location",
+        "location_desc": "Ho Chi Minh City, VN"
+    },
+    "footer": {
+        "copyright": "© 2026 Miho Portfolio. Designed & Built in HCMC."
+    }
+}

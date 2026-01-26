@@ -1,0 +1,108 @@
+{
+    "nav": {
+        "intro": "自己紹介",
+        "skills": "スキル",
+        "experience": "経歴",
+        "projects": "プロジェクト",
+        "contact": "お問い合わせ"
+    },
+    "hero": {
+        "location": "ベトナム、ホーチミン市",
+        "title_1": "創造性と",
+        "title_2": "絶え間ない努力",
+        "subtitle": "Miho — フルスタック開発者",
+        "description": "IT専攻ですが、数学・物理・化学は大嫌いです。OrangestarとGuianoの大ファンで、音楽の趣味は少し古風です。男の子ですが、女の子よりもタピオカミルクティーを消費しています。",
+        "btn_projects": "プロジェクトを見る",
+        "btn_contact": "お問い合わせ",
+        "quote": "「フルスタック ＝ フロントエンドのためのChatGPT！」",
+        "stats_exp": "年の経験",
+        "stats_projects": "主要プロジェクト",
+        "stats_awards": "受賞歴"
+    },
+    "education": {
+        "title": "学歴",
+        "tlu_name": "トゥイロイ大学 - ホーチミンキャンパス",
+        "tlu_time": "2025年 - 現在",
+        "tlu_major": "専攻：情報技術（IT）",
+        "nd_name": "ニャンダオ職業訓練校",
+        "nd_time": "2022年 - 2024年",
+        "nd_major": "専攻：コンピュータ工学",
+        "nd_gpa": "GPA: 3.8/4"
+    },
+    "awards": {
+        "title": "受賞歴",
+        "ydcc_title": "YDCCハッカソン2025 - トップ10ファイナリスト",
+        "ydcc_org": "2025年 • 国連開発計画 (UNDP), ホーチミン経済大学 (UEH) , 三菱UFJ銀行 (MUFG)",
+        "ydcc_desc": "「Agri-Loop」を開発 - AI技術を活用した持続可能な農業ソリューション。",
+        "icpc_title": "ICPCベトナム2025地域コンテスト",
+        "icpc_org": "2025年 • TLU.ThiNghe1st",
+        "icpc_desc": "トゥイロイ大学トップ4。北部181位、中部414位、南部653位。",
+        "city_title": "ホーチミン市学生スキルコンテスト - 準優勝",
+        "city_org": "2024年 • 市レベル",
+        "city_desc": "ホーチミン共産青年同盟。",
+        "web_title": "ウェブ開発コンテスト - 奨励賞",
+        "web_org": "2023年 • ホーチミン市",
+        "web_desc": "ホーチミン市教育訓練局主催。"
+    },
+    "skills": {
+        "subtitle": "技術スタック",
+        "title": "専門スキル",
+        "cat_lang": "言語",
+        "cat_frameworks": "フレームワーク",
+        "cat_tools": "ツール & DB"
+    },
+    "experience": {
+        "subtitle": "キャリアの歩み",
+        "title": "実務経験",
+        "role": "ITスペシャリスト",
+        "at": "@",
+        "company": "World Simp & Friends",
+        "type": "コミュニティプロジェクト",
+        "time": "2023年 - 現在",
+        "desc": "内部システムの開発からイベント技術ソリューションの導入まで、技術インフラ全体を担当。",
+        "card_internal": "内部システム",
+        "desc_internal": "チームの運営をサポートするために複数のシステムを開発・保守。",
+        "card_event": "イベントソリューション",
+        "desc_event": "オフラインイベント向けのビジネス管理アプリとイベント管理システムを構築。",
+        "card_web": "Webプロジェクト",
+        "desc_web": "広報活動および内部ワークフロー改善のためのWebプロジェクトを展開。",
+        "card_lead": "テクニカルリーダー",
+        "desc_lead": "すべての技術業務を統括・担当。"
+    },
+    "projects": {
+        "subtitle": "ポートフォリオ",
+        "title": "主なプロジェクト",
+        "view_github": "Githubを見る",
+        "view_all": "すべてのプロジェクト",
+        "hackathon_badge": "ハッカソン・プロトタイプ",
+        "hackathon_warn": "ハッカソンで開発されたプロジェクトです。現在プロトタイプ段階であり、完成版MVPではありません。",
+        "agri_desc": "メコンデルタの農家向けAI農業副産物処理ソリューション。<strong>Gemini 2.5 Flash</strong>を使用して堆肥の山を画像解析し、処理プロトコルを提案。音声対話を組み合わせて農家が技術にアクセスしやすくしました。",
+        "ticket_title": "チケット管理・改札システム",
+        "ticket_li_1": "大規模イベント向けのチケット販売およびチェックインシステムを設計。",
+        "ticket_li_2": "400枚以上のチケットを処理、売上約5000万ドン。",
+        "ticket_li_3": "QRコード付きメールの自動送信とリアルタイムダッシュボード。",
+        "view_demo": "デモを見る",
+        "nfc_title": "NFCメンバー管理システム",
+        "nfc_li_1": "NFCカードとオンラインプロフィールを連携。",
+        "nfc_li_2": "メンバーデータ管理ダッシュボード。",
+        "nfc_li_3": "40名以上のメンバー情報を管理、柔軟な権限設定。",
+        "web_title": "World Lọt Hố 紹介ウェブサイト",
+        "web_li_1": "コンバージョン率の高いランディングページ。",
+        "web_li_2": "ページ読み込み速度を最適化、Lighthouseスコア90以上。",
+        "web_li_3": "自動化された問い合わせフォームを統合。",
+        "view_live": "サイトを見る"
+    },
+    "contact": {
+        "title": "お問い合わせはこちら",
+        "desc": "プロジェクトに関するご質問、技術的なディスカッション、あるいは単なるご挨拶でも、できるだけ早くお返事いたします！",
+        "email_title": "メール",
+        "email_desc": "wanghien.miho.dev...",
+        "github_title": "Github",
+        "github_desc": "コードを見る",
+        "location_title": "所在地",
+        "location_desc": "ベトナム、ホーチミン市"
+    },
+    "footer": {
+        "copyright": "© 2026 Miho Portfolio. Designed & Built in HCMC."
+    }
+}
