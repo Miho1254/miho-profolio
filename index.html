@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="vi" class="scroll-smooth">
 
 <head>
     <meta charset="utf-8" />
@@ -159,8 +159,53 @@
             transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
             transition-duration: 300ms;
         }
+
+        /* Skeleton Loading */
+        .skele-loading {
+            background: #cbd5e1;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .dark .skele-loading {
+            background: #334155;
+        }
+
+        .skele-loading::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            transform: translateX(-100%);
+            background-image: linear-gradient(90deg,
+                    rgba(255, 255, 255, 0) 0,
+                    rgba(255, 255, 255, 0.2) 20%,
+                    rgba(255, 255, 255, 0.5) 60%,
+                    rgba(255, 255, 255, 0));
+            animation: shimmer 2s infinite;
+        }
+
+        .dark .skele-loading::after {
+            background-image: linear-gradient(90deg,
+                    rgba(255, 255, 255, 0) 0,
+                    rgba(255, 255, 255, 0.05) 20%,
+                    rgba(255, 255, 255, 0.1) 60%,
+                    rgba(255, 255, 255, 0));
+        }
+
+        @keyframes shimmer {
+            100% {
+                transform: translateX(100%);
+            }
+        }
     </style>
     <script>
+        function handleImageLoad(img) {
+            img.classList.remove('skele-loading');
+            img.classList.add('opacity-100'); // Ensure image fades in if needed
+        }
         // Check local storage or system preference on load
         if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
             document.documentElement.classList.add('dark')
@@ -374,8 +419,9 @@
                             <div
                                 class="absolute inset-0 bg-gradient-to-tr from-brand-accent/20 via-violet-500/10 to-transparent rounded-full mix-blend-screen opacity-50">
                             </div>
-                            <img alt="Miho Portrait" class="w-full h-full object-contain object-bottom relative z-10"
-                                src="assets/images/miho-no-bg.webp" />
+                            <img alt="Miho Portrait"
+                                class="w-full h-full object-contain object-bottom relative z-10 skele-loading transition-opacity duration-500"
+                                src="assets/images/miho-no-bg.webp" onload="handleImageLoad(this)" />
                         </div>
                     </div>
                 </div>
@@ -746,8 +792,8 @@
                             </div>
 
                             <img alt="Agri-Loop Hackathon Project"
-                                class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
-                                src="assets/images/ydcc2025.webp"
+                                class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 skele-loading transition-opacity duration-500"
+                                src="assets/images/ydcc2025.webp" onload="handleImageLoad(this)"
                                 onerror="this.src='https://ui-avatars.com/api/?name=Agri+Loop&background=random&size=512'" />
 
                             <!-- AI Badge Bottom -->
@@ -822,8 +868,8 @@
                                 class="absolute inset-0 bg-brand-dark/0 group-hover:bg-brand-dark/10 transition-colors duration-300 z-10">
                             </div>
                             <img alt="Ticket Management System Preview"
-                                class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
-                                src="assets/images/wlh-office.webp" />
+                                class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500 skele-loading transition-opacity duration-500"
+                                src="assets/images/wlh-office.webp" onload="handleImageLoad(this)" />
                         </div>
                         <div class="flex flex-wrap gap-2 mb-4">
                             <span
@@ -860,8 +906,8 @@
                                 class="absolute inset-0 bg-brand-dark/0 group-hover:bg-brand-dark/10 transition-colors duration-300 z-10">
                             </div>
                             <img alt="NFC Member System Preview"
-                                class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
-                                src="assets/images/wlh-staff.webp" />
+                                class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500 skele-loading transition-opacity duration-500"
+                                src="assets/images/wlh-staff.webp" onload="handleImageLoad(this)" />
                         </div>
                         <div class="flex flex-wrap gap-2 mb-4">
                             <span
