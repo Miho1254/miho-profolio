@@ -285,64 +285,65 @@
                 </button>
             </div>
         </div>
-        <!-- Mobile Menu Overlay -->
-        <div class="md:hidden fixed inset-0 z-[60] bg-white/90 dark:bg-brand-darkBg/95 backdrop-blur-2xl transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] translate-x-full opacity-0 flex flex-col justify-center items-center gap-8"
-            id="mobile-menu">
-            <button
-                class="absolute top-6 right-6 p-4 text-brand-muted hover:text-brand-dark transition-colors focus:outline-none"
-                onclick="toggleMenu()">
-                <span class="material-symbols-outlined text-4xl">close</span>
-            </button>
+    </nav>
+    <!-- Mobile Menu Overlay -->
+    <div class="md:hidden fixed inset-0 z-[60] bg-white/90 dark:bg-brand-darkBg/95 backdrop-blur-2xl transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] translate-x-full opacity-0 flex flex-col justify-center items-center gap-8"
+        id="mobile-menu">
+        <button
+            class="absolute top-6 right-6 p-4 text-brand-muted hover:text-brand-dark transition-colors focus:outline-none"
+            onclick="toggleMenu()">
+            <span class="material-symbols-outlined text-4xl">close</span>
+        </button>
 
-            <div class="flex flex-col gap-8 text-center">
-                <a class="group text-3xl font-display font-bold text-brand-dark dark:text-slate-100 hover:text-brand-accent dark:hover:text-brand-accent transition-colors flex items-center justify-center gap-4"
-                    href="#intro" onclick="toggleMenu()">
-                    <span
-                        class="w-10 h-10 rounded-full bg-slate-50 dark:bg-slate-800 flex items-center justify-center text-brand-muted dark:text-slate-400 group-hover:bg-brand-accent group-hover:text-white transition-all">
-                        <span class="material-symbols-outlined text-xl">person</span>
-                    </span>
-                    <span data-i18n="nav.intro">Giới thiệu</span>
-                </a>
-                <a class="group text-3xl font-display font-bold text-brand-dark dark:text-slate-100 hover:text-brand-accent dark:hover:text-brand-accent transition-colors flex items-center justify-center gap-4"
-                    href="#skills" onclick="toggleMenu()">
-                    <span
-                        class="w-10 h-10 rounded-full bg-slate-50 dark:bg-slate-800 flex items-center justify-center text-brand-muted dark:text-slate-400 group-hover:bg-brand-accent group-hover:text-white transition-all">
-                        <span class="material-symbols-outlined text-xl">code</span>
-                    </span>
-                    <span data-i18n="nav.skills">Kỹ năng</span>
-                </a>
-                <a class="group text-3xl font-display font-bold text-brand-dark dark:text-slate-100 hover:text-brand-accent dark:hover:text-brand-accent transition-colors flex items-center justify-center gap-4"
-                    href="#experience" onclick="toggleMenu()">
-                    <span
-                        class="w-10 h-10 rounded-full bg-slate-50 dark:bg-slate-800 flex items-center justify-center text-brand-muted dark:text-slate-400 group-hover:bg-brand-accent group-hover:text-white transition-all">
-                        <span class="material-symbols-outlined text-xl">work</span>
-                    </span>
-                    <span data-i18n="nav.experience">Kinh nghiệm</span>
-                </a>
-                <a class="group text-3xl font-display font-bold text-brand-dark dark:text-slate-100 hover:text-brand-accent dark:hover:text-brand-accent transition-colors flex items-center justify-center gap-4"
-                    href="#projects" onclick="toggleMenu()">
-                    <span
-                        class="w-10 h-10 rounded-full bg-slate-50 dark:bg-slate-800 flex items-center justify-center text-brand-muted dark:text-slate-400 group-hover:bg-brand-accent group-hover:text-white transition-all">
-                        <span class="material-symbols-outlined text-xl">rocket_launch</span>
-                    </span>
-                    <span data-i18n="nav.projects">Dự án</span>
-                </a>
-            </div>
-
-            <!-- Language Switcher Mobile -->
-            <div class="flex items-center gap-6 mt-4 text-xl font-bold">
-                <button class="lang-btn hover:text-brand-accent transition-colors" data-lang="vi">VI</button>
-                <button class="lang-btn hover:text-brand-accent transition-colors" data-lang="en">EN</button>
-                <button class="lang-btn hover:text-brand-accent transition-colors" data-lang="ja">JA</button>
-            </div>
-
-            <a class="mt-8 px-10 py-4 bg-brand-dark text-white rounded-full hover:bg-brand-accent transition-all shadow-xl shadow-brand-dark/20 text-lg font-bold tracking-wide flex items-center gap-3"
-                href="#contact" onclick="toggleMenu()">
-                <span class="material-symbols-outlined">mail</span>
-                <span data-i18n="nav.contact">Liên hệ ngay</span>
+        <div class="flex flex-col gap-8 text-center">
+            <a class="group text-3xl font-display font-bold text-brand-dark dark:text-slate-100 hover:text-brand-accent dark:hover:text-brand-accent transition-colors flex items-center justify-center gap-4"
+                href="#intro" onclick="toggleMenu()">
+                <span
+                    class="w-10 h-10 rounded-full bg-slate-50 dark:bg-slate-800 flex items-center justify-center text-brand-muted dark:text-slate-400 group-hover:bg-brand-accent group-hover:text-white transition-all">
+                    <span class="material-symbols-outlined text-xl">person</span>
+                </span>
+                <span data-i18n="nav.intro">Giới thiệu</span>
+            </a>
+            <a class="group text-3xl font-display font-bold text-brand-dark dark:text-slate-100 hover:text-brand-accent dark:hover:text-brand-accent transition-colors flex items-center justify-center gap-4"
+                href="#skills" onclick="toggleMenu()">
+                <span
+                    class="w-10 h-10 rounded-full bg-slate-50 dark:bg-slate-800 flex items-center justify-center text-brand-muted dark:text-slate-400 group-hover:bg-brand-accent group-hover:text-white transition-all">
+                    <span class="material-symbols-outlined text-xl">code</span>
+                </span>
+                <span data-i18n="nav.skills">Kỹ năng</span>
+            </a>
+            <a class="group text-3xl font-display font-bold text-brand-dark dark:text-slate-100 hover:text-brand-accent dark:hover:text-brand-accent transition-colors flex items-center justify-center gap-4"
+                href="#experience" onclick="toggleMenu()">
+                <span
+                    class="w-10 h-10 rounded-full bg-slate-50 dark:bg-slate-800 flex items-center justify-center text-brand-muted dark:text-slate-400 group-hover:bg-brand-accent group-hover:text-white transition-all">
+                    <span class="material-symbols-outlined text-xl">work</span>
+                </span>
+                <span data-i18n="nav.experience">Kinh nghiệm</span>
+            </a>
+            <a class="group text-3xl font-display font-bold text-brand-dark dark:text-slate-100 hover:text-brand-accent dark:hover:text-brand-accent transition-colors flex items-center justify-center gap-4"
+                href="#projects" onclick="toggleMenu()">
+                <span
+                    class="w-10 h-10 rounded-full bg-slate-50 dark:bg-slate-800 flex items-center justify-center text-brand-muted dark:text-slate-400 group-hover:bg-brand-accent group-hover:text-white transition-all">
+                    <span class="material-symbols-outlined text-xl">rocket_launch</span>
+                </span>
+                <span data-i18n="nav.projects">Dự án</span>
             </a>
         </div>
-    </nav>
+
+        <!-- Language Switcher Mobile -->
+        <div class="flex items-center gap-6 mt-4 text-xl font-bold">
+            <button class="lang-btn hover:text-brand-accent transition-colors" data-lang="vi">VI</button>
+            <button class="lang-btn hover:text-brand-accent transition-colors" data-lang="en">EN</button>
+            <button class="lang-btn hover:text-brand-accent transition-colors" data-lang="ja">JA</button>
+        </div>
+
+        <a class="mt-8 px-10 py-4 bg-brand-dark text-white rounded-full hover:bg-brand-accent transition-all shadow-xl shadow-brand-dark/20 text-lg font-bold tracking-wide flex items-center gap-3"
+            href="#contact" onclick="toggleMenu()">
+            <span class="material-symbols-outlined">mail</span>
+            <span data-i18n="nav.contact">Liên hệ ngay</span>
+        </a>
+    </div>
+
 
     <main id="main-content" class="w-full pt-32 overflow-hidden">
         <section class="max-w-7xl mx-auto px-6 sm:px-12 relative min-h-[85vh] flex items-center" id="intro">
