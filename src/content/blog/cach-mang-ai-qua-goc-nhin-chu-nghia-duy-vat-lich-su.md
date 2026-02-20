@@ -60,7 +60,7 @@ Hóa ra, cách mạng không phải là sự thay thế con người, mà là s�
 Tiếng súng ở Schlesien năm 1844 đã tắt, nhưng nỗi bất lực của những người thợ năm ấy dường như đang tái hiện trong cái click chuột của những họa sĩ, những nhà thiết kế hôm nay. Họ không chỉ đang đối đầu với một phần mềm; họ đang đối đầu với một hệ thống đang tìm cách vô hiệu hóa chính họ.
 
 ### Cuộc "Tích lũy nguyên thủy" và nghịch lý của sự sáng tạo
-Trong chủ nghĩa duy vật lịch sử, "Tích lũy nguyên thủy" là giai đoạn kẻ mạnh dùng quyền lực để tước đoạt tư liệu sản xuất của người yếu (như rào dậu cướp đất rừng của nông dân).
+Trong chủ nghĩa duy vật lịch sử, <abbr title="Giai đoạn tước đoạt một lượng lớn tư liệu sản xuất từ người lao động sang tay thiểu số tư bản">Tích lũy nguyên thủy</abbr> là giai đoạn kẻ mạnh dùng quyền lực để tước đoạt tư liệu sản xuất của người yếu (như rào dậu cướp đất rừng của nông dân).
 
 Ngày nay, một cuộc "cướp đất" tương tự đang diễn ra trên không gian số. Những cỗ máy AI như Midjourney không tự nhiên mà thông minh; chúng "giỏi" lên nhờ hấp thụ hàng tỷ bức tranh — kết quả của hàng đời nghệ sĩ chắt chiu sáng tạo.
 
