@@ -1,9 +1,9 @@
 # build output
-dist
+dist/
+.astro/
 
 # dependencies
 node_modules/
-.snowpack/
 
 # logs
 npm-debug.log*
@@ -14,9 +14,13 @@ yarn-error.log*
 .env
 .env.production
 
+# local env files
+.env.local
+.env.*.local
+
 # macOS-specific files
 .DS_Store
 
-#cypress
+# cypress
 cypress/videos
 cypress/screenshots

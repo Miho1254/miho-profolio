@@ -1,5 +1,5 @@
 {
-  "name": "astro-theme-creek",
+  "name": "miho-blog",
   "version": "1.0.0",
   "private": true,
   "scripts": {
@@ -10,18 +10,19 @@
     "preview": "astro preview"
   },
   "devDependencies": {
-
-    "astro": "^4.16.8",
+    "astro": "^5.17.3",
     "globby": "^14.0.1",
     "mark.js": "^8.11.1",
     "sass": "^1.77.8",
     "tailwindcss": "^3.4.14"
   },
   "dependencies": {
-    "@astrojs/rss": "^4.0.5",
-    "@astrojs/sitemap": "^3.2.0",
+    "@astrojs/mdx": "^4.3.13",
+    "@astrojs/rss": "^4.0.15",
+    "@astrojs/sitemap": "^3.7.0",
     "autoprefixer": "^10.4.19",
     "dayjs": "^1.11.12",
+    "gray-matter": "^4.0.3",
     "lunr": "^2.3.9",
     "sitemap": "^7.1.1"
   }

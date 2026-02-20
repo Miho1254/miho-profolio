@@ -1,0 +1,1282 @@
+<!DOCTYPE html>
+<html lang="vi" class="scroll-smooth">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Miho | Full Stack Developer</title>
+    <meta name="description"
+        content="Portfolio of Miho - Full Stack Developer specializing in React, Node.js, and modern web technologies. Explore projects like Agri-Loop and Event Solutions." />
+    <meta name="author" content="Miho" />
+    <meta property="og:title" content="Miho | Full Stack Developer" />
+    <meta property="og:description"
+        content="Portfolio of Miho - Full Stack Developer specializing in React, Node.js, and modern web technologies." />
+    <meta property="og:image" content="assets/images/logo.webp" />
+    <meta property="og:url" content="https://miho.worldsimp.com" />
+    <meta property="og:type" content="website" />
+    <link rel="icon" type="image/webp" href="assets/images/logo.webp" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=Space+Grotesk:wght@500;700&amp;family=Fira+Code:wght@400;600&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script>
+        tailwind.config = {
+            darkMode: 'class', // Enable manual dark mode toggle
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            dark: "#0F172A", // Deep Navy for text/buttons
+                            primary: "#1E293B", // Slightly lighter navy
+                            accent: "#38BDF8", // Light Blue for accents/buttons
+                            soft: "#F8FAFC", // Very light background
+                            muted: "#64748B", // Gray for body text
+                            // Dark mode specifics
+                            darkBg: "#020617", // Deep Space Slate
+                            darkCard: "#0F172A", // Card bg in dark mode
+                            darkBorder: "#1E293B", // Border in dark mode
+                        }
+                    },
+                    fontFamily: {
+                        display: ['"Space Grotesk"', 'sans-serif'],
+                        sans: ['"Inter"', 'sans-serif'],
+                        mono: ['"Fira Code"', 'monospace'],
+                    },
+                    borderRadius: {
+                        'xl': '1rem',
+                        '2xl': '1.5rem',
+                        '3xl': '2rem',
+                    },
+                },
+            },
+        };
+    </script>
+    <style>
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #F8FAFC;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #CBD5E1;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94A3B8;
+        }
+
+        .dark ::-webkit-scrollbar-track {
+            background: #020617;
+        }
+
+        .dark ::-webkit-scrollbar-thumb {
+            background: #334155;
+        }
+
+        .dark ::-webkit-scrollbar-thumb:hover {
+            background: #475569;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .timeline-line::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 15px;
+            height: 100%;
+            width: 2px;
+            background: #E2E8F0;
+        }
+
+        .dark .timeline-line::before {
+            background: #1e293b;
+        }
+
+        @keyframes blob {
+            0% {
+                transform: translate(0px, 0px) scale(1);
+            }
+
+            33% {
+                transform: translate(30px, -50px) scale(1.1);
+            }
+
+            66% {
+                transform: translate(-20px, 20px) scale(0.9);
+            }
+
+            100% {
+                transform: translate(0px, 0px) scale(1);
+            }
+        }
+
+        .animate-blob {
+            animation: blob 7s infinite;
+        }
+
+        .animation-delay-2000 {
+            animation-delay: 2s;
+        }
+
+        .animation-delay-4000 {
+            animation-delay: 4s;
+        }
+
+        /* Smooth theme transition */
+        body,
+        div,
+        nav,
+        section,
+        h1,
+        h2,
+        h3,
+        p,
+        a,
+        button,
+        span {
+            transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+            transition-duration: 300ms;
+        }
+
+        /* Skeleton Loading */
+        .skele-loading {
+            background: #cbd5e1;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .dark .skele-loading {
+            background: #334155;
+        }
+
+        .skele-loading::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            transform: translateX(-100%);
+            background-image: linear-gradient(90deg,
+                    rgba(255, 255, 255, 0) 0,
+                    rgba(255, 255, 255, 0.2) 20%,
+                    rgba(255, 255, 255, 0.5) 60%,
+                    rgba(255, 255, 255, 0));
+            animation: shimmer 2s infinite;
+        }
+
+        .dark .skele-loading::after {
+            background-image: linear-gradient(90deg,
+                    rgba(255, 255, 255, 0) 0,
+                    rgba(255, 255, 255, 0.05) 20%,
+                    rgba(255, 255, 255, 0.1) 60%,
+                    rgba(255, 255, 255, 0));
+        }
+
+        @keyframes shimmer {
+            100% {
+                transform: translateX(100%);
+            }
+        }
+    </style>
+    <script>
+        function handleImageLoad(img) {
+            img.classList.remove('skele-loading');
+            img.classList.add('opacity-100'); // Ensure image fades in if needed
+        }
+        // Check local storage or system preference on load
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage))) {
+            document.documentElement.classList.add('dark')
+        } else {
+            document.documentElement.classList.remove('dark')
+        }
+    </script>
+</head>
+
+<body
+    class="bg-white dark:bg-brand-darkBg text-brand-dark dark:text-slate-100 font-sans antialiased selection:bg-brand-accent selection:text-white relative">
+    <a href="#main-content"
+        class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 z-[100] px-4 py-2 bg-brand-accent text-white rounded-lg font-bold shadow-lg">Skip
+        to content</a>
+    <!-- Modern Tech Grid Background -->
+    <div
+        class="fixed inset-0 -z-50 h-full w-full bg-white dark:bg-brand-darkBg bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,#ffffff08_1px,transparent_1px),linear-gradient(to_bottom,#ffffff08_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none">
+        <!-- Radial Gradient for Spotlight Effect -->
+        <div
+            class="absolute inset-0 bg-transparent dark:bg-[radial-gradient(ellipse_80%_50%_at_50%_0%,rgba(0,163,255,0.15),transparent)]">
+        </div>
+        <div
+            class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-white/80 dark:to-brand-darkBg/90">
+        </div>
+    </div>
+    <nav class="fixed w-full z-50 top-0 bg-white/90 dark:bg-brand-darkBg/90 backdrop-blur-md transition-all duration-300 border-b border-transparent"
+        id="navbar">
+        <div class="max-w-7xl mx-auto px-6 h-24 flex items-center justify-between">
+            <div class="flex-shrink-0">
+                <a class="flex items-center gap-2 group" href="#" aria-label="Back to Top">
+                    <img src="assets/images/logo.webp" alt="Logo"
+                        class="h-14 w-auto object-contain group-hover:scale-105 transition-transform duration-300">
+                </a>
+            </div>
+            <div class="hidden md:flex items-center space-x-10 font-medium text-sm">
+                <a class="text-brand-primary hover:text-brand-accent transition-colors dark:text-slate-300 dark:hover:text-brand-accent"
+                    href="#intro" data-i18n="nav.intro">Giới thiệu</a>
+                <a class="text-brand-primary hover:text-brand-accent transition-colors dark:text-slate-300 dark:hover:text-brand-accent"
+                    href="#skills" data-i18n="nav.skills">Kỹ năng</a>
+                <a class="text-brand-primary hover:text-brand-accent transition-colors dark:text-slate-300 dark:hover:text-brand-accent"
+                    href="#experience" data-i18n="nav.experience">Kinh
+                    nghiệm</a>
+                <a class="text-brand-primary hover:text-brand-accent transition-colors dark:text-slate-300 dark:hover:text-brand-accent"
+                    href="#projects" data-i18n="nav.projects">Dự án</a>
+                <a class="text-brand-primary hover:text-brand-accent transition-colors dark:text-slate-300 dark:hover:text-brand-accent"
+                    href="/blogs">Blog</a>
+
+                <!-- Language Switcher Desktop -->
+                <div
+                    class="flex items-center gap-2 text-sm font-medium border-l border-slate-200 dark:border-white/10 pl-6">
+                    <button class="lang-btn hover:text-brand-accent transition-colors" data-lang="vi">VI</button>
+                    <span class="text-slate-300 dark:text-slate-700">/</span>
+                    <button class="lang-btn hover:text-brand-accent transition-colors" data-lang="en">EN</button>
+                    <span class="text-slate-300 dark:text-slate-700">/</span>
+                    <button class="lang-btn hover:text-brand-accent transition-colors" data-lang="ja">JA</button>
+                </div>
+                <button
+                    class="text-brand-primary hover:text-brand-accent transition-colors focus:outline-none dark:text-slate-300 dark:hover:text-yellow-400"
+                    onclick="toggleTheme()" title="Toggle Dark Mode">
+                    <span class="material-symbols-outlined text-xl align-middle dark:hidden">dark_mode</span>
+                    <span class="material-symbols-outlined text-xl align-middle hidden dark:inline">light_mode</span>
+                </button>
+                <a class="px-6 py-3 bg-brand-dark text-white rounded-lg hover:bg-brand-accent transition-all shadow-lg shadow-brand-dark/20 hover:shadow-brand-accent/30 font-bold tracking-wide dark:bg-brand-accent dark:hover:bg-sky-400 dark:text-brand-dark"
+                    href="#contact" data-i18n="nav.contact">
+                    Liên hệ
+                </a>
+            </div>
+            <div class="md:hidden flex items-center">
+                <button
+                    class="text-brand-dark dark:text-slate-200 hover:text-brand-accent transition-colors mr-4 focus:outline-none"
+                    onclick="toggleTheme()" title="Toggle Dark Mode">
+                    <span class="material-symbols-outlined text-2xl dark:hidden">dark_mode</span>
+                    <span
+                        class="material-symbols-outlined text-2xl hidden dark:inline text-yellow-400">light_mode</span>
+                </button>
+                <button class="text-brand-dark dark:text-slate-200 focus:outline-none menu-toggle p-2"
+                    onclick="toggleMenu()">
+                    <span class="material-symbols-outlined text-3xl">menu</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+    <!-- Mobile Menu Overlay -->
+    <div class="md:hidden fixed inset-0 z-[60] bg-white/90 dark:bg-brand-darkBg/95 backdrop-blur-2xl transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] translate-x-full opacity-0 flex flex-col justify-center items-center gap-8"
+        id="mobile-menu">
+        <button
+            class="absolute top-6 right-6 p-4 text-brand-muted hover:text-brand-dark transition-colors focus:outline-none"
+            onclick="toggleMenu()">
+            <span class="material-symbols-outlined text-4xl">close</span>
+        </button>
+
+        <div class="flex flex-col gap-8 text-center">
+            <a class="group text-3xl font-display font-bold text-brand-dark dark:text-slate-100 hover:text-brand-accent dark:hover:text-brand-accent transition-colors flex items-center justify-center gap-4"
+                href="#intro" onclick="toggleMenu()">
+                <span
+                    class="w-10 h-10 rounded-full bg-slate-50 dark:bg-slate-800 flex items-center justify-center text-brand-muted dark:text-slate-400 group-hover:bg-brand-accent group-hover:text-white transition-all">
+                    <span class="material-symbols-outlined text-xl">person</span>
+                </span>
+                <span data-i18n="nav.intro">Giới thiệu</span>
+            </a>
+            <a class="group text-3xl font-display font-bold text-brand-dark dark:text-slate-100 hover:text-brand-accent dark:hover:text-brand-accent transition-colors flex items-center justify-center gap-4"
+                href="#skills" onclick="toggleMenu()">
+                <span
+                    class="w-10 h-10 rounded-full bg-slate-50 dark:bg-slate-800 flex items-center justify-center text-brand-muted dark:text-slate-400 group-hover:bg-brand-accent group-hover:text-white transition-all">
+                    <span class="material-symbols-outlined text-xl">code</span>
+                </span>
+                <span data-i18n="nav.skills">Kỹ năng</span>
+            </a>
+            <a class="group text-3xl font-display font-bold text-brand-dark dark:text-slate-100 hover:text-brand-accent dark:hover:text-brand-accent transition-colors flex items-center justify-center gap-4"
+                href="#experience" onclick="toggleMenu()">
+                <span
+                    class="w-10 h-10 rounded-full bg-slate-50 dark:bg-slate-800 flex items-center justify-center text-brand-muted dark:text-slate-400 group-hover:bg-brand-accent group-hover:text-white transition-all">
+                    <span class="material-symbols-outlined text-xl">work</span>
+                </span>
+                <span data-i18n="nav.experience">Kinh nghiệm</span>
+            </a>
+            <a class="group text-3xl font-display font-bold text-brand-dark dark:text-slate-100 hover:text-brand-accent dark:hover:text-brand-accent transition-colors flex items-center justify-center gap-4"
+                href="#projects" onclick="toggleMenu()">
+                <span
+                    class="w-10 h-10 rounded-full bg-slate-50 dark:bg-slate-800 flex items-center justify-center text-brand-muted dark:text-slate-400 group-hover:bg-brand-accent group-hover:text-white transition-all">
+                    <span class="material-symbols-outlined text-xl">rocket_launch</span>
+                </span>
+                <span data-i18n="nav.projects">Dự án</span>
+            </a>
+        </div>
+
+        <!-- Language Switcher Mobile -->
+        <div class="flex items-center gap-6 mt-4 text-xl font-bold">
+            <button class="lang-btn hover:text-brand-accent transition-colors" data-lang="vi">VI</button>
+            <button class="lang-btn hover:text-brand-accent transition-colors" data-lang="en">EN</button>
+            <button class="lang-btn hover:text-brand-accent transition-colors" data-lang="ja">JA</button>
+        </div>
+
+        <a class="mt-8 px-10 py-4 bg-brand-dark text-white rounded-full hover:bg-brand-accent transition-all shadow-xl shadow-brand-dark/20 text-lg font-bold tracking-wide flex items-center gap-3"
+            href="#contact" onclick="toggleMenu()">
+            <span class="material-symbols-outlined">mail</span>
+            <span data-i18n="nav.contact">Liên hệ ngay</span>
+        </a>
+    </div>
+
+
+    <main id="main-content" class="w-full pt-32 overflow-hidden">
+        <section class="max-w-7xl mx-auto px-6 sm:px-12 relative min-h-[85vh] flex items-center" id="intro">
+            <!-- Background accents -->
+            <div class="absolute right-[5%] top-[10%] -z-10 grid grid-cols-6 gap-4 opacity-30">
+                <div class="w-1.5 h-1.5 rounded-full bg-brand-accent"></div>
+                <div class="w-1.5 h-1.5 rounded-full bg-brand-accent"></div>
+                <div class="w-1.5 h-1.5 rounded-full bg-brand-accent"></div>
+                <div class="w-1.5 h-1.5 rounded-full bg-brand-accent"></div>
+                <div class="w-1.5 h-1.5 rounded-full bg-brand-accent"></div>
+                <div class="w-1.5 h-1.5 rounded-full bg-brand-accent"></div>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 w-full items-center">
+                <div class="order-1 lg:order-1 reveal active text-center lg:text-left pt-10 lg:pt-0">
+                    <div
+                        class="inline-flex items-center gap-2 mb-6 px-4 py-2 bg-slate-50 dark:bg-white/5 rounded-full text-brand-muted dark:text-slate-300 font-medium uppercase tracking-wider text-xs sm:text-sm border border-slate-100 dark:border-white/5">
+                        <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+                        <i class="fas fa-location-arrow text-brand-accent ml-1"></i> <span
+                            data-i18n="hero.location">TP.HCM, VN</span>
+                    </div>
+                    <h1
+                        class="text-4xl sm:text-5xl md:text-7xl font-bold text-brand-dark dark:text-white leading-[1.1] mb-6 font-display tracking-tight min-h-[3.3em]">
+                        <span id="hero-title-1"></span><br />
+                        <span
+                            class="text-brand-accent bg-clip-text text-transparent bg-gradient-to-r from-brand-accent to-sky-400"
+                            id="hero-title-2"></span>
+                        <span class="animate-pulse text-brand-accent">|</span>
+                    </h1>
+                    <h2 class="text-xl sm:text-2xl md:text-4xl font-semibold text-brand-primary dark:text-slate-200 mb-6"
+                        data-i18n="hero.subtitle">
+                        Miho — Full Stack Developer
+                    </h2>
+                    <p class="text-base sm:text-lg text-brand-muted dark:text-slate-400 leading-relaxed max-w-lg mb-10 mx-auto lg:mx-0"
+                        data-i18n="hero.description">
+                        HỌC IT NHƯNG GHÉT TOÁN LÝ HÓA, Fan cứng của Orangestar và Guiano, gu âm nhạc hơi cổ đại một xíu.
+                        Là con trai nhưng tiêu thụ trà sữa nhiều hơn con gái.
+                    </p>
+                    <div class="flex flex-wrap justify-center lg:justify-start gap-4">
+                        <a class="px-8 py-4 bg-brand-dark text-white rounded-lg font-semibold hover:bg-brand-primary transition-colors shadow-lg shadow-brand-dark/20"
+                            href="#projects" data-i18n="hero.btn_projects">
+                            Xem dự án
+                        </a>
+                        <a class="px-8 py-4 bg-brand-accent text-white rounded-lg font-semibold hover:bg-sky-400 transition-colors shadow-lg shadow-brand-accent/20"
+                            href="#contact" data-i18n="hero.btn_contact">
+                            Liên hệ
+                        </a>
+                    </div>
+                    <div
+                        class="mt-16 pt-10 border-t border-slate-100 dark:border-white/10 flex flex-col md:flex-row gap-8">
+                        <div class="flex-1">
+                            <p class="text-brand-muted dark:text-slate-400 text-sm leading-relaxed italic"
+                                data-i18n="hero.quote">
+                                "Full-stack = chatGPT cho frontend!"
+                            </p>
+                        </div>
+                        <div class="flex gap-8">
+                            <div>
+                                <span
+                                    class="block text-2xl font-bold text-brand-dark dark:text-white font-display">3+</span>
+                                <span class="text-xs text-brand-muted dark:text-slate-500 uppercase tracking-wide"
+                                    data-i18n="hero.stats_exp">Năm
+                                    Kinh Nghiệm</span>
+                            </div>
+                            <div>
+                                <span
+                                    class="block text-2xl font-bold text-brand-dark dark:text-white font-display">3</span>
+                                <span class="text-xs text-brand-muted dark:text-slate-500 uppercase tracking-wide"
+                                    data-i18n="hero.stats_projects">Dự Án
+                                    Lớn</span>
+                            </div>
+                            <div>
+                                <span
+                                    class="block text-2xl font-bold text-brand-dark dark:text-white font-display">3+</span>
+                                <span class="text-xs text-brand-muted dark:text-slate-500 uppercase tracking-wide"
+                                    data-i18n="hero.stats_awards">Giải
+                                    Thưởng</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="order-2 lg:order-2 reveal relative flex justify-center lg:justify-end pb-10 lg:pb-0">
+                    <div class="relative w-full max-w-md aspect-square">
+                        <!-- Decorative blobs -->
+                        <div
+                            class="absolute top-0 right-0 w-64 h-64 bg-brand-accent/20 rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-3xl opacity-70 dark:opacity-20 animate-blob">
+                        </div>
+                        <div
+                            class="absolute -bottom-8 left-20 w-72 h-72 bg-purple-300/30 rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-3xl opacity-70 dark:opacity-20 animate-blob animation-delay-2000">
+                        </div>
+                        <div
+                            class="absolute -bottom-8 -right-8 w-64 h-64 bg-yellow-200/30 rounded-full mix-blend-multiply dark:mix-blend-screen filter blur-3xl opacity-70 dark:opacity-20 animate-blob animation-delay-4000">
+                        </div>
+
+                        <div
+                            class="w-full h-full relative z-10 overflow-hidden transform hover:scale-105 transition-transform duration-700">
+                            <div
+                                class="absolute inset-0 bg-gradient-to-tr from-brand-accent/20 via-violet-500/10 to-transparent rounded-full mix-blend-screen opacity-50">
+                            </div>
+                            <img alt="Miho Portrait"
+                                class="w-full h-full object-contain object-bottom relative z-10 skele-loading transition-opacity duration-500"
+                                src="assets/images/miho-no-bg.webp" onload="handleImageLoad(this)" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-16 md:py-24 border-y border-slate-100 dark:border-white/5" id="education-awards">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="grid lg:grid-cols-2 gap-16">
+                    <!-- Education -->
+                    <div class="reveal">
+                        <h3
+                            class="text-3xl font-bold text-brand-dark dark:text-white font-display mb-10 flex items-center gap-3">
+                            <span class="material-symbols-outlined text-brand-accent text-4xl">school</span>
+                            <span data-i18n="education.title">Học Vấn</span>
+                        </h3>
+                        <div class="space-y-6">
+                            <div
+                                class="bg-white dark:bg-slate-800/40 p-6 rounded-xl border border-slate-100 dark:border-white/5 shadow-sm hover:shadow-md transition-all">
+                                <div
+                                    class="flex flex-col items-start sm:flex-row sm:justify-between sm:items-start gap-2 mb-2">
+                                    <h4 class="text-xl font-bold text-brand-dark dark:text-white"
+                                        data-i18n="education.tlu_name">ĐH Thủy Lợi – Phân
+                                        hiệu TP.HCM</h4>
+                                    <span
+                                        class="text-xs sm:text-sm font-mono text-brand-accent bg-sky-50 dark:bg-sky-500/10 px-2 py-1 rounded whitespace-nowrap"
+                                        data-i18n="education.tlu_time">2025
+                                        -
+                                        Hiện tại</span>
+                                </div>
+                                <p class="text-brand-muted dark:text-slate-400 mb-2" data-i18n="education.tlu_major">
+                                    Chuyên ngành: Công nghệ thông tin
+                                </p>
+                                <!-- GPA not specified in old file for Uni -->
+                            </div>
+                            <div
+                                class="bg-white dark:bg-slate-800/40 p-6 rounded-xl border border-slate-100 dark:border-white/5 shadow-sm hover:shadow-md transition-all">
+                                <div
+                                    class="flex flex-col items-start sm:flex-row sm:justify-between sm:items-start gap-2 mb-2">
+                                    <h4 class="text-xl font-bold text-brand-dark dark:text-white"
+                                        data-i18n="education.nd_name">Trung cấp nghề Nhân
+                                        Đạo</h4>
+                                    <span
+                                        class="text-xs sm:text-sm font-mono text-brand-accent bg-sky-50 dark:bg-sky-500/10 px-2 py-1 rounded whitespace-nowrap"
+                                        data-i18n="education.nd_time">2022
+                                        -
+                                        2024</span>
+                                </div>
+                                <p class="text-brand-muted dark:text-slate-400 mb-2" data-i18n="education.nd_major">
+                                    Ngành: Kỹ thuật máy tính</p>
+                                <div class="flex items-center gap-2 text-sm text-slate-500 dark:text-slate-400">
+                                    <i class="fas fa-star text-yellow-400"></i> <span data-i18n="education.nd_gpa">GPA:
+                                        3.8/4</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Awards -->
+                    <!-- Awards with adjusted spacing -->
+                    <div class="reveal" style="transition-delay: 100ms;">
+                        <h3
+                            class="text-3xl font-bold text-brand-dark dark:text-white font-display mb-10 flex items-center gap-3">
+                            <span class="material-symbols-outlined text-brand-accent text-4xl">emoji_events</span>
+                            <span data-i18n="awards.title">Giải Thưởng</span>
+                        </h3>
+                        <!-- Changed pl-4 to pl-6 for container, pl-8 to pl-12 for items -->
+                        <div class="relative timeline-line pl-2 sm:pl-6 space-y-10">
+                            <!-- YDCC 2025 -->
+                            <div class="relative pl-12">
+                                <div
+                                    class="absolute left-0 top-1 w-8 h-8 bg-white dark:bg-slate-800 rounded-full border-2 border-brand-accent flex items-center justify-center z-10">
+                                    <i class="fas fa-trophy text-yellow-500 text-xs"></i>
+                                </div>
+                                <h4 class="text-xl font-bold text-brand-dark dark:text-white"
+                                    data-i18n="awards.ydcc_title">Top 10 Finalist - YDCC
+                                    Hackathon 2025</h4>
+                                <p class="text-sm text-brand-accent mb-1 font-mono" data-i18n="awards.ydcc_org">2025 •
+                                    Chương trình Phát triển Liên
+                                    Hợp Quốc (UNDP), Đại học Kinh tế TP.HCM (UEH) , Ngân hàng MUFG</p>
+                                <p class="text-brand-muted dark:text-slate-400 text-sm" data-i18n="awards.ydcc_desc">Dự
+                                    án "Agri-Loop" -
+                                    Giải pháp nông nghiệp
+                                    bền vững giải quyết vấn đề bằng công nghệ AI.</p>
+                            </div>
+                            <div class="relative pl-12">
+                                <div
+                                    class="absolute left-0 top-1 w-8 h-8 bg-white dark:bg-slate-800 rounded-full border-2 border-brand-accent flex items-center justify-center z-10">
+                                    <i class="fas fa-trophy text-yellow-500 text-xs"></i>
+                                </div>
+                                <h4 class="text-xl font-bold text-brand-dark dark:text-white"
+                                    data-i18n="awards.icpc_title">ICPC Vietnam 2025 Regional Contest</h4>
+                                <p class="text-sm text-brand-accent mb-1 font-mono" data-i18n="awards.icpc_org">2025 •
+                                    TLU.ThiNghe1st</p>
+                                <p class="text-brand-muted dark:text-slate-400 text-sm" data-i18n="awards.icpc_desc">Top
+                                    4 Đại Học Thủy Lợi. Hạng 181 Miền Bắc, Hạng 414
+                                    Miền Trung, Hạng 653 Miền Nam.</p>
+                            </div>
+                            <div class="relative pl-12">
+                                <div
+                                    class="absolute left-0 top-1 w-8 h-8 bg-white dark:bg-slate-800 rounded-full border-2 border-slate-300 dark:border-slate-700 flex items-center justify-center z-10">
+                                    <i class="fas fa-medal text-slate-400 text-xs"></i>
+                                </div>
+                                <h4 class="text-xl font-bold text-brand-dark dark:text-white"
+                                    data-i18n="awards.city_title">Giải Nhì, Hội thi Kỹ năng
+                                    Sinh viên TP.HCM
+                                </h4>
+                                <p class="text-sm text-brand-accent mb-1 font-mono" data-i18n="awards.city_org">2024 •
+                                    Cấp Thành phố</p>
+                                <p class="text-brand-muted dark:text-slate-400 text-sm" data-i18n="awards.city_desc">
+                                    Đoàn Thanh niên Cộng sản Hồ Chí
+                                    Minh TP. Hồ Chí
+                                    Minh.</p>
+                            </div>
+                            <div class="relative pl-12">
+                                <div
+                                    class="absolute left-0 top-1 w-8 h-8 bg-white dark:bg-slate-800 rounded-full border-2 border-slate-300 dark:border-slate-700 flex items-center justify-center z-10">
+                                    <i class="fas fa-award text-brand-accent text-xs"></i>
+                                </div>
+                                <h4 class="text-xl font-bold text-brand-dark dark:text-white"
+                                    data-i18n="awards.web_title">Giải Khuyến khích, Kỳ thi
+                                    Phát triển Web
+                                </h4>
+                                <p class="text-sm text-brand-accent mb-1 font-mono" data-i18n="awards.web_org">2023 •
+                                    TP. Hồ Chí Minh</p>
+                                <p class="text-brand-muted dark:text-slate-400 text-sm" data-i18n="awards.web_desc">Sở
+                                    Giáo dục & Đào tạo TP. Hồ Chí
+                                    Minh.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section
+            class="py-16 md:py-24 bg-white/50 dark:bg-brand-darkBg/50 border-y border-slate-100 dark:border-white/5"
+            id="skills">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="text-center mb-16 reveal">
+                    <span class="text-brand-accent font-bold tracking-widest uppercase text-sm mb-2 block"
+                        data-i18n="skills.subtitle">Tech
+                        Stack</span>
+                    <h2 class="text-4xl font-bold text-brand-dark dark:text-white font-display"
+                        data-i18n="skills.title">Kỹ Năng Chuyên Môn</h2>
+                </div>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <!-- Languages -->
+                    <div
+                        class="p-8 rounded-2xl bg-brand-soft dark:bg-slate-800/40 border border-slate-100 dark:border-white/5 reveal hover:border-brand-accent/30 transition-colors">
+                        <div
+                            class="w-12 h-12 bg-white dark:bg-slate-700/50 rounded-lg flex items-center justify-center shadow-sm mb-6 text-brand-accent">
+                            <span class="material-symbols-outlined text-3xl">code</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-brand-dark dark:text-white mb-6" data-i18n="skills.cat_lang">
+                            Languages</h3>
+                        <div class="flex flex-wrap gap-3">
+                            <span
+                                class="px-3 py-2 bg-white dark:bg-slate-800 rounded border border-slate-200 dark:border-slate-700 text-sm font-medium text-slate-600 dark:text-slate-300 flex items-center gap-2">
+                                <i class="devicon-html5-plain text-orange-500"></i> HTML5
+                            </span>
+                            <span
+                                class="px-3 py-2 bg-white dark:bg-slate-800 rounded border border-slate-200 dark:border-slate-700 text-sm font-medium text-slate-600 dark:text-slate-300 flex items-center gap-2">
+                                <i class="devicon-css3-plain text-blue-500"></i> CSS3
+                            </span>
+                            <span
+                                class="px-3 py-2 bg-white dark:bg-slate-800 rounded border border-slate-200 dark:border-slate-700 text-sm font-medium text-slate-600 dark:text-slate-300 flex items-center gap-2">
+                                <i class="devicon-typescript-plain colored"></i> TypeScript
+                            </span>
+                            <span
+                                class="px-3 py-2 bg-white dark:bg-slate-800 rounded border border-slate-200 dark:border-slate-700 text-sm font-medium text-slate-600 dark:text-slate-300 flex items-center gap-2">
+                                <i class="devicon-javascript-plain text-yellow-400"></i> JavaScript
+                            </span>
+                            <span
+                                class="px-3 py-2 bg-white dark:bg-slate-800 rounded border border-slate-200 dark:border-slate-700 text-sm font-medium text-slate-600 dark:text-slate-300 flex items-center gap-2">
+                                <i class="devicon-php-plain text-indigo-500"></i> PHP
+                            </span>
+                        </div>
+                    </div>
+                    <!-- Frameworks -->
+                    <div class="p-8 rounded-2xl bg-brand-soft dark:bg-slate-800/40 border border-slate-100 dark:border-white/5 reveal hover:border-brand-accent/30 transition-colors"
+                        style="transition-delay: 100ms;">
+                        <div
+                            class="w-12 h-12 bg-white dark:bg-slate-700/50 rounded-lg flex items-center justify-center shadow-sm mb-6 text-brand-accent">
+                            <span class="material-symbols-outlined text-3xl">layers</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-brand-dark dark:text-white mb-6"
+                            data-i18n="skills.cat_frameworks">Frameworks</h3>
+                        <div class="flex flex-wrap gap-3">
+                            <span
+                                class="px-3 py-2 bg-white dark:bg-slate-800 rounded border border-slate-200 dark:border-slate-700 text-sm font-medium text-slate-600 dark:text-slate-300 flex items-center gap-2">
+                                <i class="devicon-react-original text-sky-400"></i> React
+                            </span>
+                            <span
+                                class="px-3 py-2 bg-white dark:bg-slate-800 rounded border border-slate-200 dark:border-slate-700 text-sm font-medium text-slate-600 dark:text-slate-300 flex items-center gap-2">
+                                <i class="devicon-nodejs-plain text-green-500"></i> Node.js
+                            </span>
+                            <span
+                                class="px-3 py-2 bg-white dark:bg-slate-800 rounded border border-slate-200 dark:border-slate-700 text-sm font-medium text-slate-600 dark:text-slate-300 flex items-center gap-2">
+                                <i class="devicon-denojs-original text-white bg-black rounded-full p-0.5"></i> Deno
+                            </span>
+                            <span
+                                class="px-3 py-2 bg-white dark:bg-slate-800 rounded border border-slate-200 dark:border-slate-700 text-sm font-medium text-slate-600 dark:text-slate-300 flex items-center gap-2">
+                                <i class="devicon-tailwindcss-original text-sky-400"></i> Tailwind
+                            </span>
+                        </div>
+                    </div>
+                    <!-- Tools/DB -->
+                    <div class="p-8 rounded-2xl bg-brand-soft dark:bg-slate-800/40 border border-slate-100 dark:border-white/5 reveal hover:border-brand-accent/30 transition-colors"
+                        style="transition-delay: 200ms;">
+                        <div
+                            class="w-12 h-12 bg-white dark:bg-slate-700/50 rounded-lg flex items-center justify-center shadow-sm mb-6 text-brand-accent">
+                            <span class="material-symbols-outlined text-3xl">build</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-brand-dark dark:text-white mb-6" data-i18n="skills.cat_tools">
+                            Tools & DB</h3>
+                        <div class="flex flex-wrap gap-3">
+                            <span
+                                class="px-3 py-2 bg-white dark:bg-slate-800 rounded border border-slate-200 dark:border-slate-700 text-sm font-medium text-slate-600 dark:text-slate-300 flex items-center gap-2">
+                                <i class="devicon-docker-plain text-blue-500"></i> Docker
+                            </span>
+                            <span
+                                class="px-3 py-2 bg-white dark:bg-slate-800 rounded border border-slate-200 dark:border-slate-700 text-sm font-medium text-slate-600 dark:text-slate-300 flex items-center gap-2">
+                                <i class="devicon-git-plain text-orange-600"></i> Git
+                            </span>
+                            <span
+                                class="px-3 py-2 bg-white dark:bg-slate-800 rounded border border-slate-200 dark:border-slate-700 text-sm font-medium text-slate-600 dark:text-slate-300 flex items-center gap-2">
+                                <i class="devicon-cloudflare-plain text-orange-400"></i> Cloudflare
+                            </span>
+                            <span
+                                class="px-3 py-2 bg-white dark:bg-slate-800 rounded border border-slate-200 dark:border-slate-700 text-sm font-medium text-slate-600 dark:text-slate-300 flex items-center gap-2">
+                                <i class="devicon-postgresql-plain text-blue-700"></i> PostgreSQL
+                            </span>
+                            <span
+                                class="px-3 py-2 bg-white dark:bg-slate-800 rounded border border-slate-200 dark:border-slate-700 text-sm font-medium text-slate-600 dark:text-slate-300 flex items-center gap-2">
+                                <i class="devicon-prisma-original text-slate-700 dark:text-slate-200"></i> Prisma
+                            </span>
+                            <span
+                                class="px-3 py-2 bg-white dark:bg-slate-800 rounded border border-slate-200 dark:border-slate-700 text-sm font-medium text-slate-600 dark:text-slate-300 flex items-center gap-2">
+                                <i class="devicon-linux-plain text-slate-700 dark:text-slate-200"></i> Linux
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-16 md:py-24 border-y border-slate-100 dark:border-white/5" id="experience">
+            <div class="max-w-6xl mx-auto px-6">
+                <!-- Clean / Light Design for Experience -->
+                <div class="text-center mb-12 reveal">
+                    <span class="text-brand-accent font-bold tracking-widest uppercase text-sm mb-2 block"
+                        data-i18n="experience.subtitle">Career
+                        Journey</span>
+                    <h2 class="text-4xl font-bold text-brand-dark dark:text-white font-display"
+                        data-i18n="experience.title">Kinh Nghiệm Làm Việc
+                    </h2>
+                </div>
+
+
+                <div class="reveal max-w-5xl mx-auto">
+                    <!-- Main Role Container -->
+                    <div class="flex flex-col md:flex-row items-baseline gap-4 mb-8 border-b border-slate-200 pb-4">
+                        <h3 class="text-3xl font-bold text-brand-dark dark:text-white" data-i18n="experience.role">IT
+                            Specialist</h3>
+                        <span class="text-2xl text-brand-muted font-light" data-i18n="experience.at">at</span>
+                        <h4 class="text-xl font-semibold text-brand-accent flex items-center gap-2 flex-wrap">
+                            <span data-i18n="experience.company">World Simp & Friends</span>
+                            <span
+                                class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-medium bg-amber-50 dark:bg-amber-900/20 text-amber-700 dark:text-amber-500 border border-amber-100 dark:border-amber-900/30 uppercase tracking-wide"
+                                data-i18n="experience.type">Community
+                                Project</span>
+                        </h4>
+                        <div
+                            class="ml-auto flex items-center gap-2 text-sm font-mono text-slate-500 dark:text-slate-400 bg-white dark:bg-brand-darkCard px-3 py-1 rounded-full border border-slate-200 dark:border-white/5 shadow-sm">
+                            <i class="far fa-calendar-alt"></i> <span data-i18n="experience.time">2023 - Nay</span>
+                        </div>
+                    </div>
+
+                    <p class="text-lg text-slate-600 dark:text-slate-300 mb-10 max-w-3xl leading-relaxed"
+                        data-i18n="experience.desc">
+                        Chịu trách nhiệm toàn bộ hạ tầng kỹ thuật, từ phát triển hệ thống nội bộ đến triển khai các giải
+                        pháp công nghệ cho sự kiện.
+                    </p>
+
+                    <!-- 4 Column Focus Grid (Clean Cards) -->
+                    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+                        <!-- Internal Systems -->
+                        <div
+                            class="bg-white dark:bg-slate-800/40 p-6 rounded-xl border border-slate-100 dark:border-white/5 hover:border-blue-200 hover:shadow-lg transition-all group">
+                            <div
+                                class="w-12 h-12 bg-blue-50 dark:bg-blue-500/10 rounded-lg flex items-center justify-center text-blue-600 dark:text-blue-400 mb-4 group-hover:scale-110 transition-transform">
+                                <span class="material-symbols-outlined">dataset</span>
+                            </div>
+                            <h5 class="font-bold text-brand-dark dark:text-white mb-2"
+                                data-i18n="experience.card_internal">Hệ Thống Nội Bộ</h5>
+                            <p class="text-sm text-brand-muted dark:text-slate-400 leading-relaxed"
+                                data-i18n="experience.desc_internal">Phát triển và duy
+                                trì nhiều hệ thống để
+                                hỗ trợ các hoạt động của đội nhóm.</p>
+                        </div>
+                        <!-- Event Tech -->
+                        <div
+                            class="bg-white dark:bg-brand-darkCard p-6 rounded-xl border border-slate-100 dark:border-white/5 hover:border-orange-200 hover:shadow-lg transition-all group">
+                            <div
+                                class="w-12 h-12 bg-orange-50 dark:bg-orange-500/10 rounded-lg flex items-center justify-center text-orange-600 dark:text-orange-400 mb-4 group-hover:scale-110 transition-transform">
+                                <span class="material-symbols-outlined">event</span>
+                            </div>
+                            <h5 class="font-bold text-brand-dark dark:text-white mb-2"
+                                data-i18n="experience.card_event">Event Solutions</h5>
+                            <p class="text-sm text-brand-muted dark:text-slate-400 leading-relaxed"
+                                data-i18n="experience.desc_event">Xây dựng ứng dụng
+                                quản lý kinh doanh và
+                                hệ thống quản lý sự kiện cho các sự kiện offline.</p>
+                        </div>
+                        <!-- Web Perf -->
+                        <div
+                            class="bg-white dark:bg-brand-darkCard p-6 rounded-xl border border-slate-100 dark:border-white/5 hover:border-green-200 hover:shadow-lg transition-all group">
+                            <div
+                                class="w-12 h-12 bg-green-50 dark:bg-green-500/10 rounded-lg flex items-center justify-center text-green-600 dark:text-green-400 mb-4 group-hover:scale-110 transition-transform">
+                                <span class="material-symbols-outlined">rocket_launch</span>
+                            </div>
+                            <h5 class="font-bold text-brand-dark dark:text-white mb-2" data-i18n="experience.card_web">
+                                Web Projects</h5>
+                            <p class="text-sm text-brand-muted dark:text-slate-400 leading-relaxed"
+                                data-i18n="experience.desc_web">Triển khai các dự án
+                                web nhằm cải thiện
+                                hình ảnh công chúng và quy trình làm việc nội bộ.</p>
+                        </div>
+                        <!-- Mentorship -->
+                        <div
+                            class="bg-white dark:bg-brand-darkCard p-6 rounded-xl border border-slate-100 dark:border-white/5 hover:border-purple-200 hover:shadow-lg transition-all group">
+                            <div
+                                class="w-12 h-12 bg-purple-50 dark:bg-purple-500/10 rounded-lg flex items-center justify-center text-purple-600 dark:text-purple-400 mb-4 group-hover:scale-110 transition-transform">
+                                <span class="material-symbols-outlined">engineering</span>
+                            </div>
+                            <h5 class="font-bold text-brand-dark dark:text-white mb-2" data-i18n="experience.card_lead">
+                                Technical Lead</h5>
+                            <p class="text-sm text-brand-muted dark:text-slate-400 leading-relaxed"
+                                data-i18n="experience.desc_lead">Chịu trách nhiệm
+                                toàn bộ cho mọi công
+                                việc kỹ thuật.</p>
+                        </div>
+                    </div>
+
+                    <!-- Tech Stack Chips -->
+                    <div class="flex flex-wrap items-center gap-3">
+                        <span
+                            class="text-sm font-bold text-brand-primary dark:text-slate-300 uppercase tracking-wider mr-2">Tech
+                            Stack:</span>
+                        <span
+                            class="px-3 py-1 bg-white dark:bg-slate-800 border border-slate-200 dark:border-white/10 text-slate-600 dark:text-slate-300 rounded-lg text-sm font-medium hover:border-brand-accent transition-colors">React</span>
+                        <span
+                            class="px-3 py-1 bg-white dark:bg-slate-800 border border-slate-200 dark:border-white/10 text-slate-600 dark:text-slate-300 rounded-lg text-sm font-medium hover:border-brand-accent transition-colors">Node.js</span>
+                        <span
+                            class="px-3 py-1 bg-white dark:bg-slate-800 border border-slate-200 dark:border-white/10 text-slate-600 dark:text-slate-300 rounded-lg text-sm font-medium hover:border-brand-accent transition-colors">PostgreSQL</span>
+                        <span
+                            class="px-3 py-1 bg-white dark:bg-slate-800 border border-slate-200 dark:border-white/10 text-slate-600 dark:text-slate-300 rounded-lg text-sm font-medium hover:border-brand-accent transition-colors">Docker</span>
+                        <span
+                            class="px-3 py-1 bg-white dark:bg-slate-800 border border-slate-200 dark:border-white/10 text-slate-600 dark:text-slate-300 rounded-lg text-sm font-medium hover:border-brand-accent transition-colors">Cloudflare
+                            Workers</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section
+            class="py-16 md:py-24 bg-white/50 dark:bg-brand-darkBg/50 border-y border-slate-100 dark:border-white/5"
+            id="projects">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 reveal">
+                    <div>
+                        <span class="text-brand-accent font-bold tracking-widest uppercase text-sm mb-2 block"
+                            data-i18n="projects.subtitle">Portfolio</span>
+                        <h2 class="text-4xl md:text-5xl font-bold text-brand-dark dark:text-white font-display"
+                            data-i18n="projects.title">Dự Án
+                            Tiêu Biểu</h2>
+                    </div>
+                    <div class="hidden md:block">
+                        <a class="text-brand-dark dark:text-slate-200 hover:text-brand-accent font-medium flex items-center gap-2 transition-colors"
+                            href="https://github.com/Miho1254">
+                            <span data-i18n="projects.view_github">Xem Github</span> <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="grid lg:grid-cols-2 gap-10">
+                    <!-- Project Agri-Loop (Hackathon) -->
+                    <div
+                        class="group bg-white dark:bg-slate-800/40 rounded-2xl p-8 shadow-sm border border-slate-100 dark:border-white/5 hover:shadow-xl transition-all duration-300 reveal">
+                        <div class="relative overflow-hidden rounded-xl mb-8 aspect-video bg-slate-100 group">
+                            <!-- Gradient Overlay -->
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-60 z-10">
+                            </div>
+
+                            <!-- Badges -->
+                            <div class="absolute top-4 left-4 z-20 flex flex-wrap gap-2">
+                                <span
+                                    class="px-3 py-1 bg-purple-600 text-white text-xs font-bold rounded-full shadow-lg border border-white/20 uppercase tracking-wider backdrop-blur-md">
+                                    <i class="fas fa-trophy mr-1"></i> Hackathon
+                                </span>
+                                <span
+                                    class="px-3 py-1 bg-blue-500 text-white text-xs font-bold rounded-full shadow-lg border border-white/20 backdrop-blur-md">
+                                    <i class="fas fa-mobile-alt mr-1"></i> Mobile
+                                </span>
+                            </div>
+
+                            <img alt="Agri-Loop Hackathon Project"
+                                class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 skele-loading transition-opacity duration-500"
+                                src="assets/images/ydcc2025.webp" onload="handleImageLoad(this)"
+                                onerror="this.src='https://ui-avatars.com/api/?name=Agri+Loop&background=random&size=512'" />
+
+                            <!-- AI Badge Bottom -->
+                            <div class="absolute bottom-4 left-4 z-20">
+                                <span
+                                    class="px-3 py-1 bg-white/90 text-brand-dark text-xs font-bold rounded-full shadow-lg backdrop-blur flex items-center gap-1">
+                                    <span
+                                        class="material-symbols-outlined text-sm text-brand-accent">auto_awesome</span>
+                                    Powered by Gemini 2.5 Flash
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- Content -->
+                        <div class="mb-6">
+                            <div class="flex justify-between items-start mb-4">
+                                <div>
+                                    <span
+                                        class="text-xs font-bold text-brand-accent uppercase tracking-widest mb-1 block">YDCC
+                                        2025 Submission</span>
+                                    <h3
+                                        class="text-2xl font-bold text-brand-dark dark:text-white group-hover:text-brand-primary dark:group-hover:text-brand-accent transition-colors">
+                                        Agri-Loop</h3>
+                                </div>
+                                <a href="https://github.com/Miho1254/delta-next-ydcc2025" target="_blank"
+                                    aria-label="View Source on Github"
+                                    class="w-10 h-10 rounded-full bg-slate-50 dark:bg-white/5 flex items-center justify-center text-slate-600 dark:text-slate-300 hover:bg-brand-dark dark:hover:bg-brand-accent hover:text-white dark:hover:text-brand-dark transition-all">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                            </div>
+                            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-6"
+                                data-i18n="projects.agri_desc">
+                                Giải pháp Xử lý Phụ phẩm Nông nghiệp bằng AI cho nông dân ĐBSCL. Sử dụng <strong>Gemini
+                                    2.5 Flash</strong> để phân tích hình ảnh đống ủ và đưa ra phác đồ xử lý, kết hợp
+                                tương tác giọng nói giúp nông dân dễ dàng tiếp cận công nghệ.
+                            </p>
+
+                            <!-- Tech Stack -->
+                            <div class="flex flex-wrap gap-2 mb-6">
+                                <span
+                                    class="px-3 py-1 bg-slate-50 dark:bg-slate-800 text-slate-600 dark:text-slate-300 rounded-lg text-xs font-medium border border-slate-100 dark:border-slate-700">React
+                                    Native</span>
+                                <span
+                                    class="px-3 py-1 bg-slate-50 dark:bg-slate-800 text-slate-600 dark:text-slate-300 rounded-lg text-xs font-medium border border-slate-100 dark:border-slate-700">Expo</span>
+                                <span
+                                    class="px-3 py-1 bg-slate-50 dark:bg-slate-800 text-slate-600 dark:text-slate-300 rounded-lg text-xs font-medium border border-slate-100 dark:border-slate-700">Supabase</span>
+                                <span
+                                    class="px-3 py-1 bg-slate-50 dark:bg-slate-800 text-slate-600 dark:text-slate-300 rounded-lg text-xs font-medium border border-slate-100 dark:border-slate-700">Gemini
+                                    AI</span>
+                            </div>
+
+                            <!-- Hackathon Disclaimer -->
+                            <div
+                                class="bg-amber-50 dark:bg-amber-900/10 border border-amber-100 dark:border-amber-900/30 rounded-lg p-3 flex items-start gap-3">
+                                <span
+                                    class="material-symbols-outlined text-amber-600 dark:text-amber-500 mt-0.5 text-lg">warning</span>
+                                <div>
+                                    <p class="text-xs font-bold text-amber-800 dark:text-amber-400 uppercase mb-0.5"
+                                        data-i18n="projects.hackathon_badge">
+                                        Hackathon Prototype</p>
+                                    <p class="text-xs text-amber-700 dark:text-amber-500/80 leading-tight"
+                                        data-i18n="projects.hackathon_warn">Dự án được
+                                        xây dựng trong khuôn khổ
+                                        cuộc thi Hackathon. Đang trong giai đoạn phát triển ý tưởng (Prototype), chưa có
+                                        MVP hoàn chỉnh.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Project 1 -->
+                    <div
+                        class="group bg-white dark:bg-slate-800/40 rounded-2xl p-8 shadow-sm border border-slate-100 dark:border-white/5 hover:shadow-xl transition-all duration-300 reveal">
+                        <div class="relative overflow-hidden rounded-xl mb-8 aspect-video bg-slate-100">
+                            <div
+                                class="absolute inset-0 bg-brand-dark/0 group-hover:bg-brand-dark/10 transition-colors duration-300 z-10">
+                            </div>
+                            <img alt="Ticket Management System Preview"
+                                class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500 skele-loading transition-opacity duration-500"
+                                src="assets/images/wlh-office.webp" onload="handleImageLoad(this)" />
+                        </div>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span
+                                class="px-3 py-1 bg-sky-50 dark:bg-sky-500/10 text-brand-accent text-xs font-semibold rounded-full">React
+                                Admin</span>
+                            <span
+                                class="px-3 py-1 bg-sky-50 dark:bg-sky-500/10 text-brand-accent text-xs font-semibold rounded-full">Deno</span>
+                            <span
+                                class="px-3 py-1 bg-sky-50 dark:bg-sky-500/10 text-brand-accent text-xs font-semibold rounded-full">Prisma</span>
+                            <span
+                                class="px-3 py-1 bg-sky-50 dark:bg-sky-500/10 text-brand-accent text-xs font-semibold rounded-full">PostgreSQL</span>
+                        </div>
+                        <h3 class="text-2xl font-bold text-brand-dark dark:text-white mb-3 group-hover:text-brand-accent transition-colors"
+                            data-i18n="projects.ticket_title">
+                            Hệ thống quản lý và soát vé</h3>
+                        <div class="text-brand-muted dark:text-slate-400 mb-6 text-sm">
+                            <ul class="list-disc pl-5 space-y-1">
+                                <li data-i18n="projects.ticket_li_1">Thiết kế hệ thống bán vé và check-in cho sự kiện
+                                    quy mô lớn.</li>
+                                <li data-i18n="projects.ticket_li_2">Xử lý 400+ vé, doanh thu ~50 triệu VND.</li>
+                                <li data-i18n="projects.ticket_li_3">Tự động gửi email QR và dashboard real-time.</li>
+                            </ul>
+                        </div>
+                        <a class="inline-flex items-center text-brand-dark dark:text-slate-300 font-semibold group-hover:translate-x-2 transition-transform"
+                            href="https://www.facebook.com/share/p/17KFWRUQa4/" target="_blank">
+                            <span data-i18n="projects.view_demo">Xem Demo</span> <i
+                                class="fas fa-external-link-alt ml-2 text-xs"></i>
+                        </a>
+                    </div>
+
+                    <!-- Project 2 -->
+                    <div class="group bg-white dark:bg-brand-darkCard rounded-2xl p-8 shadow-sm border border-slate-100 dark:border-white/5 hover:shadow-xl transition-all duration-300 reveal"
+                        style="transition-delay: 100ms;">
+                        <div class="relative overflow-hidden rounded-xl mb-8 aspect-video bg-slate-100">
+                            <div
+                                class="absolute inset-0 bg-brand-dark/0 group-hover:bg-brand-dark/10 transition-colors duration-300 z-10">
+                            </div>
+                            <img alt="NFC Member System Preview"
+                                class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500 skele-loading transition-opacity duration-500"
+                                src="assets/images/wlh-staff.webp" onload="handleImageLoad(this)" />
+                        </div>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span
+                                class="px-3 py-1 bg-sky-50 dark:bg-sky-500/10 text-brand-accent text-xs font-semibold rounded-full">IoT</span>
+                            <span
+                                class="px-3 py-1 bg-sky-50 dark:bg-sky-500/10 text-brand-accent text-xs font-semibold rounded-full">SonicJS</span>
+                            <span
+                                class="px-3 py-1 bg-sky-50 dark:bg-sky-500/10 text-brand-accent text-xs font-semibold rounded-full">Cloudflare</span>
+                        </div>
+                        <h3 class="text-2xl font-bold text-brand-dark dark:text-white mb-3 group-hover:text-brand-accent transition-colors"
+                            data-i18n="projects.nfc_title">
+                            Hệ thống Quản lý Thành viên NFC</h3>
+                        <div class="text-brand-muted dark:text-slate-400 mb-6 text-sm">
+                            <ul class="list-disc pl-5 space-y-1">
+                                <li data-i18n="projects.nfc_li_1">Liên kết thẻ NFC với hồ sơ trực tuyến.</li>
+                                <li data-i18n="projects.nfc_li_2">Dashboard quản trị dữ liệu thành viên.</li>
+                                <li data-i18n="projects.nfc_li_3">Quản lý thông tin 40+ thành viên, phân quyền linh
+                                    hoạt.</li>
+                            </ul>
+                        </div>
+                        <a class="inline-flex items-center text-brand-dark dark:text-slate-300 font-semibold group-hover:translate-x-2 transition-transform"
+                            href="https://worldlotho.com/staff" target="_blank">
+                            <span data-i18n="projects.view_demo">Xem Demo</span> <i
+                                class="fas fa-external-link-alt ml-2 text-xs"></i>
+                        </a>
+                    </div>
+
+                    <!-- Project 3 -->
+                    <div class="group bg-white dark:bg-brand-darkCard rounded-2xl p-8 shadow-sm border border-slate-100 dark:border-white/5 hover:shadow-xl transition-all duration-300 reveal"
+                        style="transition-delay: 200ms;">
+                        <div class="relative overflow-hidden rounded-xl mb-8 aspect-video bg-slate-100">
+                            <div
+                                class="absolute inset-0 bg-brand-dark/0 group-hover:bg-brand-dark/10 transition-colors duration-300 z-10">
+                            </div>
+                            <img alt="World Lọt Hố Website Preview"
+                                class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
+                                src="assets/images/wlh-web.webp" />
+                        </div>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span
+                                class="px-3 py-1 bg-sky-50 dark:bg-sky-500/10 text-brand-accent text-xs font-semibold rounded-full">Vanilla
+                                CSS</span>
+                            <span
+                                class="px-3 py-1 bg-sky-50 dark:bg-sky-500/10 text-brand-accent text-xs font-semibold rounded-full">HTML5</span>
+                            <span
+                                class="px-3 py-1 bg-sky-50 dark:bg-sky-500/10 text-brand-accent text-xs font-semibold rounded-full">Performance</span>
+                        </div>
+                        <h3 class="text-2xl font-bold text-brand-dark dark:text-white mb-3 group-hover:text-brand-accent transition-colors"
+                            data-i18n="projects.web_title">
+                            Website giới thiệu World Lọt Hố</h3>
+                        <div class="text-brand-muted dark:text-slate-400 mb-6 text-sm">
+                            <ul class="list-disc pl-5 space-y-1">
+                                <li data-i18n="projects.web_li_1">Landing page chuyển đổi cao.</li>
+                                <li data-i18n="projects.web_li_2">Tối ưu tốc độ tải trang, Lighthouse > 90.</li>
+                                <li data-i18n="projects.web_li_3">Tích hợp biểu mẫu liên hệ tự động.</li>
+                            </ul>
+                        </div>
+                        <a class="inline-flex items-center text-brand-dark dark:text-slate-300 font-semibold group-hover:translate-x-2 transition-transform"
+                            href="https://worldlotho.com" target="_blank">
+                            <span data-i18n="projects.view_live">Xem Live</span> <i
+                                class="fas fa-external-link-alt ml-2 text-xs"></i>
+                        </a>
+                    </div>
+
+                </div>
+                <div class="mt-12 text-center md:hidden">
+                    <a class="text-brand-dark dark:text-slate-200 hover:text-brand-accent font-medium inline-flex items-center gap-2 transition-colors"
+                        href="https://github.com/Miho1254">
+                        <span data-i18n="projects.view_all">Xem tất cả dự án</span> <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Latest Blog Posts -->
+        <section class="py-16 md:py-24 border-t border-slate-100 dark:border-white/5" id="blog">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="text-center mb-16 reveal">
+                    <span class="text-brand-accent font-bold tracking-widest uppercase text-sm mb-2 block"
+                        data-i18n="blog.subtitle">Latest Articles</span>
+                    <h2 class="text-4xl font-bold text-brand-dark dark:text-white font-display" data-i18n="blog.title">
+                        Blog</h2>
+                </div>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="latest-blogs">
+                    <!-- Skeleton loading cards -->
+                    <div class="rounded-2xl border border-slate-100 dark:border-white/5 overflow-hidden">
+                        <div class="h-48 skele-loading"></div>
+                        <div class="p-6 space-y-3">
+                            <div class="h-4 w-24 rounded skele-loading"></div>
+                            <div class="h-6 w-full rounded skele-loading"></div>
+                            <div class="h-4 w-3/4 rounded skele-loading"></div>
+                        </div>
+                    </div>
+                    <div
+                        class="rounded-2xl border border-slate-100 dark:border-white/5 overflow-hidden hidden md:block">
+                        <div class="h-48 skele-loading"></div>
+                        <div class="p-6 space-y-3">
+                            <div class="h-4 w-24 rounded skele-loading"></div>
+                            <div class="h-6 w-full rounded skele-loading"></div>
+                            <div class="h-4 w-3/4 rounded skele-loading"></div>
+                        </div>
+                    </div>
+                    <div
+                        class="rounded-2xl border border-slate-100 dark:border-white/5 overflow-hidden hidden lg:block">
+                        <div class="h-48 skele-loading"></div>
+                        <div class="p-6 space-y-3">
+                            <div class="h-4 w-24 rounded skele-loading"></div>
+                            <div class="h-6 w-full rounded skele-loading"></div>
+                            <div class="h-4 w-3/4 rounded skele-loading"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-12 text-center reveal">
+                    <a class="inline-flex items-center gap-2 px-8 py-4 bg-brand-dark text-white rounded-lg font-semibold hover:bg-brand-primary transition-colors shadow-lg shadow-brand-dark/20 dark:bg-brand-accent dark:hover:bg-sky-400 dark:text-brand-dark"
+                        href="/blogs">
+                        <span data-i18n="blog.view_all">Xem tất cả bài viết</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-20 md:py-32 relative overflow-hidden border-t border-slate-100 dark:border-white/5"
+            id="contact">
+            <div class="absolute left-0 bottom-0 -z-0 grid grid-cols-4 gap-4 opacity-20 p-10">
+                <div class="w-2 h-2 rounded-full bg-brand-accent"></div>
+                <div class="w-2 h-2 rounded-full bg-brand-accent"></div>
+                <div class="w-2 h-2 rounded-full bg-brand-accent"></div>
+                <div class="w-2 h-2 rounded-full bg-brand-accent"></div>
+                <div class="w-2 h-2 rounded-full bg-brand-accent"></div>
+                <div class="w-2 h-2 rounded-full bg-brand-accent"></div>
+                <div class="w-2 h-2 rounded-full bg-brand-accent"></div>
+                <div class="w-2 h-2 rounded-full bg-brand-accent"></div>
+            </div>
+            <div class="max-w-4xl mx-auto px-6 text-center reveal">
+                <h2 class="text-4xl md:text-5xl font-bold text-brand-dark dark:text-white mb-8 font-display"
+                    data-i18n="contact.title">Sẵn sàng
+                    hợp tác?</h2>
+                <p class="text-xl text-brand-muted dark:text-slate-400 mb-12 leading-relaxed" data-i18n="contact.desc">
+                    Cho dù bạn có thắc mắc về các dự án của tôi, muốn thảo luận về công nghệ, hay chỉ đơn giản là muốn
+                    nói "Xin chào", tôi sẽ cố gắng phản hồi sớm nhất có thể!
+                </p>
+                <div class="grid md:grid-cols-3 gap-6 mb-12">
+                    <a class="flex flex-col items-center justify-center p-8 bg-white dark:bg-brand-darkCard rounded-2xl border border-slate-100 dark:border-white/5 hover:shadow-lg hover:-translate-y-1 transition-all group"
+                        href="mailto:wanghien.miho.dev@gmail.com">
+                        <span
+                            class="material-symbols-outlined text-4xl text-brand-accent mb-4 group-hover:scale-110 transition-transform">mail</span>
+                        <h3 class="text-lg font-bold text-brand-dark dark:text-white" data-i18n="contact.email_title">
+                            Email Me</h3>
+                        <p class="text-brand-muted dark:text-slate-400 text-sm mt-1" data-i18n="contact.email_desc">
+                            wanghien.miho.dev...</p>
+                    </a>
+                    <a class="flex flex-col items-center justify-center p-8 bg-white dark:bg-brand-darkCard rounded-2xl border border-slate-100 dark:border-white/5 hover:shadow-lg hover:-translate-y-1 transition-all group"
+                        href="https://github.com/Miho1254" target="_blank">
+                        <i
+                            class="fab fa-github text-4xl text-brand-dark dark:text-white mb-4 group-hover:scale-110 transition-transform"></i>
+                        <h3 class="text-lg font-bold text-brand-dark dark:text-white" data-i18n="contact.github_title">
+                            Github</h3>
+                        <p class="text-brand-muted dark:text-slate-400 text-sm mt-1" data-i18n="contact.github_desc">
+                            Explore my code</p>
+                    </a>
+                    <div
+                        class="flex flex-col items-center justify-center p-8 bg-white dark:bg-brand-darkCard rounded-2xl border border-slate-100 dark:border-white/5 hover:shadow-lg hover:-translate-y-1 transition-all group">
+                        <span
+                            class="material-symbols-outlined text-4xl text-red-500 mb-4 group-hover:scale-110 transition-transform">location_on</span>
+                        <h3 class="text-lg font-bold text-brand-dark dark:text-white"
+                            data-i18n="contact.location_title">Location</h3>
+                        <p class="text-brand-muted dark:text-slate-400 text-sm mt-1" data-i18n="contact.location_desc">
+                            TP. Hồ Chí Minh, VN</p>
+                    </div>
+                </div>
+                <div class="flex justify-center gap-6 mt-8">
+                    <a href="https://t.me/Miho1011" target="_blank" aria-label="Telegram"
+                        class="text-brand-muted hover:text-brand-accent text-3xl transition-colors"><i
+                            class="fab fa-telegram"></i></a>
+                    <a href="https://www.facebook.com/WangHien.1254" target="_blank" aria-label="Facebook"
+                        class="text-brand-muted hover:text-brand-accent text-3xl transition-colors"><i
+                            class="fab fa-facebook"></i></a>
+                    <a href="https://www.linkedin.com/in/miho1254" target="_blank" aria-label="LinkedIn"
+                        class="text-brand-muted hover:text-brand-accent text-3xl transition-colors"><i
+                            class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </section>
+
+        <footer class="bg-white dark:bg-brand-darkBg py-12 border-t border-slate-200 dark:border-white/10">
+            <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
+                <div>
+                    <img src="assets/images/logo.webp" alt="Logo" class="h-16 w-auto object-contain opacity-90">
+                </div>
+                <div class="text-sm text-brand-muted text-center">
+                    <p data-i18n="footer.copyright">© 2026 Miho Portfolio. Designed & Built in TP.HCM.</p>
+                </div>
+                <div class="flex gap-6 text-brand-muted">
+                    <!-- Footer links redundant with contact section but nice to have -->
+                    <a class="hover:text-brand-accent transition-colors" href="https://github.com/Miho1254"
+                        aria-label="Github"><i class="fab fa-github text-xl"></i></a>
+                    <a class="hover:text-brand-accent transition-colors" href="https://www.facebook.com/WangHien.1254"
+                        aria-label="Facebook"><i class="fab fa-facebook text-xl"></i></a>
+                </div>
+            </div>
+        </footer>
+    </main>
+    <script>
+        // Reveal animation
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 100;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+        window.addEventListener("scroll", reveal);
+        reveal();
+
+        // Navbar scroll effect
+        var prevScrollpos = window.pageYOffset;
+        window.onscroll = function () {
+            var currentScrollPos = window.pageYOffset;
+            reveal();
+            var navbar = document.getElementById("navbar");
+            if (prevScrollpos > currentScrollPos) {
+                navbar.style.top = "0";
+                if (currentScrollPos > 50) {
+                    navbar.classList.add("shadow-sm", "border-slate-100", "dark:border-white/5");
+                    navbar.classList.remove("border-transparent");
+                } else {
+                    navbar.classList.remove("shadow-sm", "border-slate-100", "dark:border-white/5");
+                    navbar.classList.add("border-transparent");
+                }
+            } else {
+                navbar.style.top = "-100px";
+            }
+            prevScrollpos = currentScrollPos;
+        }
+
+        // Mobile Menu
+        // Mobile Menu Logic with Animation
+        const menu = document.getElementById("mobile-menu");
+
+        function toggleMenu() {
+            const isOpen = !menu.classList.contains("translate-x-full");
+
+            if (isOpen) {
+                // Close
+                menu.classList.add("translate-x-full", "opacity-0");
+                menu.classList.remove("translate-x-0", "opacity-100");
+                document.body.classList.remove("overflow-hidden");
+            } else {
+                // Open
+                menu.classList.remove("translate-x-full", "opacity-0");
+                menu.classList.add("translate-x-0", "opacity-100");
+                document.body.classList.add("overflow-hidden");
+            }
+        }
+
+        // Dark Mode Logic
+        function toggleTheme() {
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                localStorage.theme = 'light';
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.theme = 'dark';
+            }
+        }
+    </script>
+    <script src="assets/js/i18n.js"></script>
+    <script src="assets/js/hero-animation.js"></script>
+    <script>
+        async function loadLatestBlogs() {
+            try {
+                const response = await fetch('/blogs/api/posts.json');
+                const posts = await response.json();
+                const container = document.getElementById('latest-blogs');
+                if (!posts.length) {
+                    container.innerHTML = '<p class="text-brand-muted dark:text-slate-400 col-span-full text-center py-8">Chưa có bài viết nào.</p>';
+                    return;
+                }
+                container.innerHTML = posts.map(post => `
+                    <a href="${post.link}" class="group rounded-2xl bg-white dark:bg-slate-800/40 border border-slate-100 dark:border-white/5 overflow-hidden hover:border-brand-accent/30 hover:shadow-xl transition-all">
+                        ${post.image ? `<div class="h-48 overflow-hidden bg-slate-100 dark:bg-slate-800"><img src="${post.image}" alt="${post.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"></div>` : '<div class="h-48 bg-gradient-to-br from-brand-accent/10 to-purple-500/10 dark:from-brand-accent/5 dark:to-purple-500/5 flex items-center justify-center"><span class="material-symbols-outlined text-6xl text-brand-accent/30">article</span></div>'}
+                        <div class="p-6">
+                            <time class="text-xs font-mono text-brand-accent mb-2 block">${new Date(post.date).toLocaleDateString('vi-VN', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+                            <h3 class="text-lg font-bold text-brand-dark dark:text-white group-hover:text-brand-accent transition-colors mb-2">${post.title}</h3>
+                            ${post.description ? `<p class="text-sm text-brand-muted dark:text-slate-400 line-clamp-2">${post.description}</p>` : ''}
+                        </div>
+                    </a>
+                `).join('');
+            } catch (error) {
+                console.error('Error loading blog posts:', error);
+                document.getElementById('latest-blogs').innerHTML = '<p class="text-brand-muted dark:text-slate-400 col-span-full text-center py-8">Không thể tải bài viết.</p>';
+            }
+        }
+        loadLatestBlogs();
+    </script>
+</body>
+
+</html>

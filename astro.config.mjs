@@ -1,7 +1,8 @@
 import { defineConfig } from "astro/config";
 import sitemap from "@astrojs/sitemap";
+import mdx from "@astrojs/mdx";
 
 export default defineConfig({
-  integrations: [sitemap()],
-  site: "https://astro-theme-creek.netlify.app/",
+  integrations: [sitemap(), mdx()],
+  site: "https://miho.worldsimp.com/",
 });
