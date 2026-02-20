@@ -32,14 +32,27 @@
     } */
 
   >blockquote {
-    @apply border-l-4 border-hot-pink bg-gray-50 px-8 py-6 my-10 shadow-sm;
+    @apply border-l-4 border-hot-pink bg-gray-50 px-8 py-6 my-10 shadow-sm flex flex-col gap-3;
 
     p {
       @apply text-xl md:text-2xl leading-relaxed italic text-gray-800 m-0 font-medium;
 
-      &::before {
+      /* Dòng nội dung trích dẫn (Dòng đầu tiên) */
+      &:first-of-type::before {
         content: '"';
-        @apply text-hot-pink text-4xl font-serif leading-none mr-1 opacity-50;
+        @apply text-hot-pink text-4xl font-serif leading-none mr-2 opacity-50 inline-block;
+        transform: translateY(4px);
+      }
+
+      /* Dòng Tên tác giả (Dòng thứ 2) */
+      &:last-of-type:not(:first-of-type) {
+        @apply text-base text-right text-gray-500 font-bold not-italic font-sans mt-2;
+
+        &::before {
+          content: '—';
+          @apply text-hot-pink font-bold text-lg mr-2 inline-block opacity-100;
+          transform: translateY(0);
+        }
       }
     }
   }

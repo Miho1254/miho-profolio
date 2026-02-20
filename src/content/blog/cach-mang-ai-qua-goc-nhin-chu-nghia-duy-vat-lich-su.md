@@ -35,7 +35,9 @@ Những người thợ dệt Schlesien đã ngã xuống không phải vì họ 
 Nếu chúng ta nhìn nhận một cuộc cách mạng chỉ qua những con số tăng trưởng hay sự tiện lợi, chúng ta đã bỏ lỡ phần đau đớn nhất của nó.
 
 Karl Marx từng chỉ ra rằng:
-> "Những thời đại kinh tế khác nhau không phải ở chỗ chúng sản xuất ra cái gì, mà là ở chỗ chúng sản xuất bằng cách nào, với những tư liệu lao động nào".
+> Những thời đại kinh tế khác nhau không phải ở chỗ chúng sản xuất ra cái gì, mà là ở chỗ chúng sản xuất bằng cách nào, với những tư liệu lao động nào.
+>
+> Karl Marx
 
 Nhưng đằng sau câu nói ấy là một thực tại nghiệt ngã: mỗi lần công cụ lao động thay đổi, là một lần trật tự thế giới bị đập đi xây lại trên lưng những người lao động cũ. Một cuộc cách mạng thực thụ không chỉ là sự tiến bộ kỹ thuật; nó là một cuộc tái cấu trúc quyền lực.
 
@@ -70,3 +72,27 @@ Ngày nay, một cuộc "cướp đất" tương tự đang diễn ra trên khô
 Marx nói về sự tha hóa khi con người không còn thấy mình trong sản phẩm mình làm ra. Nhưng với Artist hiện đại, sự tha hóa này còn đáng sợ hơn. Khi một bản thiết kế được "prompt" ra trong 3 giây, toàn bộ quá trình tư duy, rung cảm và kỹ thuật của con người bị hệ thống xem là "phí phạm" và "đắt đỏ".
 
 Và rồi tên thương nhân năm xưa lại đến và nói: "Giá của các người quá đắt! AI của tôi rẻ hơn". Câu nói này không chỉ là một lời mặc cả; nó là một sự phủ nhận toàn bộ giá trị con người. Những người làm sáng tạo đang rơi vào một trạng thái bất lực thực sự: Sản phẩm của họ bị lấy đi để huấn luyện máy, và rồi cái máy đó lại được dùng để thay thế họ.
+
+## Dự luật AI
+![Dự luật AI ](../../../public/images/du-luat-ai-bao-tuoi-tre.png)
+*Tranh luận công nhận sản phẩm trí tuệ nhân tạo, Nguồn: Báo tuổi trẻ*
+
+> Toàn bộ những quan hệ sản xuất ấy hợp thành cơ cấu kinh tế của xã hội, tức là cái cơ sở thực tế trên đó xây dựng lên một kiến trúc thượng tầng pháp lý và chính trị, và những hình thái ý thức xã hội nhất định tương ứng với cơ sở thực tế đó. Phương thức sản xuất đời sống vật chất quyết định các quá trình sinh hoạt xã hội, chính trị và tinh thần nói chung.
+>
+> Karl Marx
+
+Nói một cách thực tế hơn, Marx đang chỉ ra rằng: Cách chúng ta kiếm tiền và công cụ chúng ta dùng để làm việc (AI) chính là cái nền móng. Còn luật pháp, bản quyền hay những tranh luận tại nghị trường mà chúng ta đang thấy chính là cái nhà xây trên cái nền đó.
+
+Khi cái móng AI đã thay đổi quá nhanh — từ việc một bức tranh được vẽ bằng tay sang việc được 'huấn luyện' từ hàng tỷ dữ liệu — thì cái nhà (Luật Sở hữu trí tuệ) cũ kỹ không còn đứng vững được nữa. Nó buộc phải nứt vỡ, phải sửa sang, thậm chí là phải đập đi xây lại để không bị đổ sụp trước sức mạnh của công nghệ."
+
+Nếu câu chuyện của những người thợ dệt Schlesien kết thúc bằng bạo lực để bảo vệ quyền sở hữu nhà máy, thì ngày nay, cuộc chiến đó đã chuyển dời về bàn nghị trường. Đây chính là lúc chúng ta thấy rõ nhất cái gọi là "Kiến trúc thượng tầng" (luật pháp) đang phải loay hoay như thế nào để đuổi kịp những thay đổi chóng mặt của "Hạ tầng" (công nghệ).
+
+Trong những phiên thảo luận về Luật Sở hữu trí tuệ gần đây tại Việt Nam, sự giằng co này hiện lên không thể rõ ràng hơn.
+
+Ở một phía, có những góc nhìn đầy thận trọng như của đại biểu Trần Thị Thu Đông. Bà xoáy thẳng vào một thực tế khô khốc: chúng ta đang biến lao động sáng tạo thành "nguồn tài nguyên miễn phí" cho máy móc. Nếu nhìn qua lăng kính của Marx, đây chính là một cuộc tước đoạt tư liệu sản xuất kiểu mới. Dữ liệu của nghệ sĩ bị thu thập để huấn luyện AI mà họ không hề hay biết, để rồi chính cái máy đó quay lại cạnh tranh với họ trên thị trường. Nó không còn là câu chuyện về "tiến bộ", mà là câu chuyện về việc ai đang bị chiếm dụng giá trị thặng dư.
+
+Ngược lại, đại biểu Phạm Trọng Nghĩa lại đại diện cho một tư duy thực dụng hơn: Nếu không công nhận sản phẩm AI, chúng ta sẽ tự gạt mình ra khỏi cuộc chơi toàn cầu. Ông đề nghị một lối đi là bảo hộ sản phẩm AI nhưng phải gắn với người vận hành. Điều này thực chất là nỗ lực định danh cho một giai cấp mới—những người không còn làm việc theo cách thủ công, mà sử dụng AI như một công cụ sản xuất chủ đạo. Họ cần một hành lang pháp lý để hợp pháp hóa quyền lực của mình đối với công cụ đó.
+
+Cuộc tranh luận giữa việc "bảo vệ bản quyền nghệ sĩ" hay "thúc đẩy đầu tư AI" thực chất là một cuộc mặc cả về lợi ích kinh tế giữa các tầng lớp xã hội.
+
+Lịch sử vốn dĩ tàn nhẫn và luật pháp thường sẽ nghiêng về phía nào mang lại năng suất cao hơn. Nhưng bi kịch ở Schlesien là một bài học nhãn tiền: Khi luật pháp chỉ mải mê bảo vệ quyền lợi của những người sở hữu cỗ máy mà bỏ mặc những người tạo ra "nguyên liệu" cho nó, sự tha hóa sẽ đạt đến đỉnh điểm. Chúng ta không thể kỳ vọng một nền kinh tế sáng tạo phát triển trên gốc rễ của sự chiếm đoạt.
