@@ -62,6 +62,21 @@
     }
   }
 
+  /* Style cho thẻ Highlight (Bút dạ quang) */
+  mark {
+    @apply bg-hot-pink/20 text-hot-pink px-1 rounded-sm font-medium;
+  }
+
+  /* Style cho thuật ngữ có chú thích */
+  abbr[title] {
+    @apply cursor-help border-b-2 border-hot-pink/50 border-dashed text-gray-900 font-semibold no-underline transition-colors;
+    text-decoration: none;
+
+    &:hover {
+      @apply bg-hot-pink/10 border-hot-pink;
+    }
+  }
+
   ul:not(.list-none) {
     @apply pl-0 list-disc ml-10 mb-8 text-lg;
 
