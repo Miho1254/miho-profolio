@@ -1,6 +1,8 @@
 ---
 import EmailSignup from './Subscribe/EmailSignup.astro'
 import { Image } from 'astro:assets';
+import dayjs from 'dayjs';
+import 'dayjs/locale/vi';
 
 export interface Props {
   title: string;
@@ -14,7 +16,18 @@ const { title, date, hero, youtube } = Astro.props;
 
 <article class="max-w-5xl mx-auto px-3">
   <header class="mx-auto max-w-3xl text-center content">
-    <h1>{title}</h1>
+    <h1 class="mb-4">{title}</h1>
+    
+    <div class="flex items-center justify-center space-x-3 mt-8 mb-10 text-gray-500">
+      <div class="flex items-center space-x-2">
+        <img src="/assets/images/miho-with-bg.webp" alt="Miho" class="w-[42px] h-[42px] m-0 rounded-full object-cover border-2 border-gray-100 shadow-sm" />
+        <span class="text-gray-900 font-bold text-base tracking-tight">Miho</span>
+      </div>
+      <span class="text-gray-300 text-lg leading-none">•</span>
+      <time datetime={date} class="text-sm font-medium">
+        {dayjs(date).locale('vi').format('DD MMMM, YYYY')}
+      </time>
+    </div>
   </header>
 
   <!-- Image -->
