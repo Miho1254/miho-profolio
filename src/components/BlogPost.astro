@@ -1,5 +1,5 @@
 ---
-import EmailSignup from './Subscribe/EmailSignup.astro'
+import PostFooter from './PostFooter.astro';
 import { Image } from 'astro:assets';
 import dayjs from 'dayjs';
 import 'dayjs/locale/vi';
@@ -49,5 +49,5 @@ const { title, date, hero, youtube } = Astro.props;
     <slot />
   </section>
 
-  <EmailSignup />
+  <PostFooter title={title} url={Astro.url.href} />
 </article>
