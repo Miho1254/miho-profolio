@@ -79,7 +79,9 @@
     /* Custom tooltip thay vì tooltip mặc định của trình duyệt để đảm bảo luôn hiện mượt */
     &:hover::after {
       content: attr(title);
-      @apply absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-2 bg-gray-900 text-white text-sm rounded shadow-lg whitespace-normal leading-snug w-max max-w-xs z-50 text-center pointer-events-none;
+      @apply absolute left-1/2 -translate-x-1/2 mb-2 px-3 py-2 bg-gray-900 text-white text-sm rounded shadow-lg whitespace-normal leading-snug max-w-xs z-50 text-center pointer-events-none;
+      bottom: 100%;
+      width: max-content;
     }
   }
 
