@@ -1,7 +1,7 @@
 ---
 title: Xin chào thế giới!
 description: Bài viết đầu tiên trên blog cá nhân của Miho.
-pubDate: 2026-02-20
+pubDate: 2026-02-19
 hero: "/images/social.jpg"
 ---
 

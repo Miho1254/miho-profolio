@@ -32,15 +32,26 @@
     } */
 
   >blockquote {
-    @apply text-center font-bold italic px-4 mb-12 pt-6 text-3xl leading-tight;
+    @apply border-l-4 border-hot-pink bg-gray-50 px-8 py-6 my-10 shadow-sm;
+
+    p {
+      @apply text-xl md:text-2xl leading-relaxed italic text-gray-800 m-0 font-medium;
+
+      &::before {
+        content: '"';
+        @apply text-hot-pink text-4xl font-serif leading-none mr-1 opacity-50;
+      }
+    }
   }
 
-  >blockquote>p {
-    @apply text-3xl leading-tight;
+  img {
+    @apply my-8 mx-auto rounded-xl shadow-lg;
   }
 
-  >img {
-    @apply my-12;
+  /* Tự động style dòng in nghiêng ngay sau ảnh làm caption */
+  img+em,
+  p>img+em {
+    @apply block text-center text-sm text-gray-500 -mt-6 mb-8 italic;
   }
 
   a {
