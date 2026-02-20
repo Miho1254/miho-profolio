@@ -90,7 +90,7 @@
       @apply bg-hot-pink/10 border-hot-pink;
     }
 
-    /* Custom tooltip thay vì tooltip mặc định của trình duyệt để đảm bảo luôn hiện mượt */
+    /* Custom tooltip mặc định trên desktop */
     &:hover::after {
       content: attr(data-title);
       @apply absolute mb-2 px-3 py-2 bg-gray-900 text-white text-sm rounded shadow-lg whitespace-normal leading-snug z-50 text-center pointer-events-none;
@@ -100,6 +100,20 @@
       /* max-w-xs equivalent */
       left: 50%;
       transform: translateX(-50%);
+    }
+
+    /* Riêng với mobile, tooltip hiện dưới dạng Toast ở đáy màn hình để tránh việc nhảy width màn hình */
+    @media (max-width: 768px) {
+      &:hover::after {
+        position: fixed;
+        bottom: max(5vh, 20px);
+        left: 5vw;
+        width: 90vw;
+        max-width: 90vw;
+        transform: none;
+        box-sizing: border-box;
+        @apply shadow-2xl;
+      }
     }
   }
 

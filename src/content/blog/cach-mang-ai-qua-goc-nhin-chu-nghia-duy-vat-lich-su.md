@@ -31,7 +31,7 @@ Lịch sử kết luận lạnh lùng: Khi <abbr title="Sự kết hợp giữa 
 ![Cuộc khởi nghĩa của những người thợ dệt Schlesien chống lại sự tước đoạt tư liệu sản xuất](/images/dan-ap-nguoi-nong-dan.jpg)
 *Cuộc khởi nghĩa của thợ dệt Schlesien — Lời cảnh báo từ quá khứ*
 
-## AI không cướp việc: Tư bản đang tái chiếm "Trí tuệ chung"
+## AI không cướp việc, Tư bản đang tái chiếm "Trí tuệ chung"
 
 Coi AI đơn thuần là "kẻ cắp việc làm" là cái nhìn trữ tình nạn nhân, hời hợt và thiếu tính biện chứng. AI không tự nhiên sinh ra với năng lực tư duy. 
 
@@ -40,7 +40,7 @@ Trong tác phẩm *Grundrisse*, Marx đã tiên đoán về sự xuất hiện c
 Bạn không thua một cỗ máy. Bạn đang thua chính cái bóng sáng tạo của tập thể nhân loại — thứ lẽ ra là di sản chung, nhưng nay đã bị tước đoạt và tư hữu hóa tàn bạo bởi các tập đoàn công nghệ.
 
 
-## Rào dậu kỹ thuật số và Nỗi nhục nhã của sự Tha hóa mới
+## Rào dậu kỹ thuật số
 
 Nếu cuộc <abbr title="Giai đoạn tước đoạt quy mô lớn tư liệu sản xuất từ người lao động sang tay thiểu số tư bản">Tích lũy nguyên thủy</abbr> của kỷ nguyên cơ bắp là rào dậu cướp đất để dồn nông dân vào nhà máy, thì kỷ nguyên này đang chứng kiến một cuộc **Rào dậu không gian số** khốc liệt hơn gấp bội. 
 
@@ -49,7 +49,7 @@ Các Big Tech "cào" sạch dữ liệu do nhân loại tạo ra mà không tố
 Sự trớ trêu này chính là đỉnh cao của sự <abbr title="Quá trình người lao động bị tách rời và mất kiểm soát hoàn toàn đối với sản phẩm do chính tư duy mình tạo ra">tha hóa</abbr>. Ngày xưa, công nhân bị tách rời khỏi đồ vật vật lý họ lấp ráp. Ngày nay, giới tri thức bị tách rời khỏi chính năng lực nhận thức và trực giác thẩm mỹ của mình. Tư duy của chúng ta quay lại phản bội chúng ta dưới dạng một dòng chữ trả phí hằng tháng.
 
 
-## Pháp lý AI: Trận địa của Kiến trúc Thượng tầng
+## Pháp lý AI: bài học tiêu biểu về Kiến trúc Thượng tầng
 ![Tranh luận Luật Sở hữu trí tuệ và Dự luật AI tại Việt Nam qua lăng kính Kiến trúc thượng tầng](/images/du-luat-ai-bao-tuoi-tre.png)
 *Tranh luận công nhận sản phẩm trí tuệ nhân tạo, Nguồn: Báo tuổi trẻ*
 
@@ -72,7 +72,7 @@ Cuộc chiến thực sự **không nằm ở trục "Người chống lại Má
 
 Để phá vỡ xiềng xích thao túng này, giai cấp Vô sản kỹ thuật số phải đấu tranh tái lập <abbr title="Mối quan hệ pháp lý và kinh tế giữa người với người trong việc sở hữu tư liệu sản xuất và phân phối giá trị">Quan hệ sản xuất</abbr>. Chúng ta không phủ nhận AI, chúng ta đòi hỏi **sự sở hữu tập thể đối với trí tuệ chung**. Lợi nhuận siêu ngạch từ những thuật toán hút máu tài nguyên nhân loại phải được thiết chế hóa thành Thu nhập Cơ bản Phổ quát (UBI) hoặc các hình thức tái phân phối lợi ích khác.
 
-Chỉ khi tháo gỡ được sự độc chiếm Tư liệu sản xuất này, AI mới hoàn thành sứ mệnh biện chứng của nó: Dẫn dắt nhân loại tiến vào kỷ nguyên Hậu khan hiếm (Post-scarcity), thay vì trở thành công cụ kiến tạo quyền lực độc tài thâm độc bậc nhất lịch sử loài người.
+Chỉ khi tháo gỡ được sự độc chiếm Tư liệu sản xuất này, AI mới hoàn thành sứ mệnh biện chứng của nó: Dẫn dắt nhân loại tiến vào kỷ nguyên Hậu khan hiếm (Post-scarcity)
 
 
 ### Tài liệu tham khảo mình đã dùng
