@@ -1,6 +1,6 @@
 .content {
   h1 {
-    @apply font-display uppercase font-bold leading-none;
+    @apply font-display font-bold leading-tight;
     margin-bottom: 1em;
 
     font-size: min(max(2.5rem, 5vw), 4.5rem);
@@ -11,15 +11,15 @@
   }
 
   h2 {
-    @apply text-4xl font-bold leading-none mt-12 py-6 tracking-tight;
+    @apply text-4xl font-bold leading-tight mt-12 py-6 tracking-tight;
   }
 
   h3 {
-    @apply text-xl font-bold leading-none py-6;
+    @apply text-xl font-bold leading-tight py-6;
   }
 
   h4 {
-    @apply font-bold uppercase tracking-widest leading-none py-6;
+    @apply font-bold uppercase tracking-widest leading-tight py-6;
   }
 
   >p {
