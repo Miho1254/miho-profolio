@@ -16,17 +16,17 @@ Rất cảm ơn tác giả **chanhndh** đã dịch tác phẩm này, các bạn
 
 Câu chuyện về những người nông dân Schlesien không bắt đầu bằng những con số hay định nghĩa khô khan, mà bằng tiếng bước chân mệt mỏi trên những con đường dẫn vào thành phố.
 
-Thuở đầu, Schlesien hiện ra như một bài thơ về sự tự chủ. Ở đó, mỗi người nông dân là một thực thể tự do, họ sở hữu mảnh ruộng, hạt giống và cả thành quả lao động của mình—những gì mà sau này chúng ta gọi là tư liệu sản xuất. Nhưng sự tự do ấy sớm bị bóp nghẹt bởi một thực thể vô hình mang tên "Quy luật thị trường". Khi người thương nhân từ chối mua ngũ cốc vì máy móc hiện đại ở Westfalen đã tạo ra những sản phẩm rẻ hơn, người nông dân Schlesien bất ngờ nhận ra: Sự cần cù của đôi tay không còn là đối trọng xứng tầm với sự tiến bộ của kỹ thuật.
+Thuở đầu, Schlesien hiện ra như một bài thơ về sự tự chủ. Ở đó, mỗi người nông dân là một thực thể tự do, họ sở hữu mảnh ruộng, hạt giống và cả thành quả lao động của mình—những gì mà sau này chúng ta gọi là <abbr title="Công cụ, máy móc, nguyên vật liệu và đất đai dùng để sản xuất ra của cải vật chất">tư liệu sản xuất</abbr>. Nhưng sự tự do ấy sớm bị bóp nghẹt bởi một thực thể vô hình mang tên "Quy luật thị trường". Khi người thương nhân từ chối mua vải lanh vì máy móc hiện đại ở Westfalen đã tạo ra những sản phẩm rẻ hơn, người nông dân Schlesien bất ngờ nhận ra: Sự cần cù của đôi tay không còn là đối trọng xứng tầm với sự tiến bộ của kỹ thuật.
 
 Cứ thế, một vòng xoáy nghiệt ngã bắt đầu. Để sinh tồn, họ bán đi mảnh đất, bán đi ngôi nhà—những điểm tựa cuối cùng của một người tự do—để rồi dạt vào thành phố với hành trang duy nhất là chiếc máy xe sợi cũ kỹ. Đây chính là khoảnh khắc của một cuộc chuyển giao đau đớn: từ những nông dân tự doanh, họ trở thành những người thợ dệt thủ công, cố gắng dùng nghề mọn để nuôi hy vọng về một cuộc đời dễ thở hơn.
 
-Nhưng "ma thuật" của thị trường không buông tha họ. Những nhà máy dệt công nghiệp với quy mô khổng lồ xuất hiện, biến những tấm vải dệt tay trở thành món hàng xa xỉ lỗi thời. Đứng trước cổng nhà máy, người nông dân Schlesien năm nào giờ đây đứng chung hàng với những thợ thủ công phá sản, những tiểu chủ thất thế. Trong khoảnh khắc đó, họ chính thức tan biến vào một khối người chung vận mệnh: Giai cấp vô sản. Họ không còn gì để bán ngoài sức lao động của chính mình, và bi kịch thay, ngay cả thứ cuối cùng đó cũng bị đem ra đấu giá ngược. Người ta sẵn sàng trả mức lương thấp đến mức nực cười, thậm chí là sử dụng lao động trẻ em, chỉ để tối ưu hóa cái gọi là "chi phí thị trường".
+Nhưng "ma thuật" của thị trường không buông tha họ. Những nhà máy dệt công nghiệp với quy mô khổng lồ xuất hiện, biến những tấm vải dệt tay trở thành món hàng xa xỉ lỗi thời. Đứng trước cổng nhà máy, người nông dân Schlesien năm nào giờ đây đứng chung hàng với những thợ thủ công phá sản, những tiểu chủ thất thế. Trong khoảnh khắc đó, họ chính thức tan biến vào một khối người chung vận mệnh: <abbr title="Tầng lớp những người lao động làm thuê, không sở hữu tư liệu sản xuất và phải bán sức lao động để sống">Giai cấp vô sản</abbr>. Họ không còn gì để bán ngoài sức lao động của chính mình, và bi kịch thay, ngay cả thứ cuối cùng đó cũng bị đem ra đấu giá ngược. Người ta sẵn sàng trả mức lương thấp đến mức nực cười, thậm chí là sử dụng lao động trẻ em, chỉ để tối ưu hóa cái gọi là "chi phí thị trường".
 
 Khi nỗi tuyệt vọng vượt quá giới hạn của sự chịu đựng, những người thợ dệt đã đứng dậy. Họ không tấn công một con người cụ thể, mà trút cơn giận dữ vào những cỗ máy—thứ mà họ tin rằng đã cướp đi phẩm giá và miếng ăn của mình. Họ đốt kho hàng, đập phá những bộ phận cơ khí vô tri. Nhưng phản ứng của họ, dù mãnh liệt, lại chỉ là tiếng kêu cứu đơn độc trước một hệ thống đã được thiết lập chặt chẽ.
 
-Kết thúc câu chuyện, khi họng súng của quân đội chĩa thẳng vào những người nổi loạn, chúng ta thấy hiện rõ hình hài của Kiến trúc thượng tầng. Từ tên đốc công đến nhà vua, tất cả đều nhân danh một thứ tôn nghiêm duy nhất: Quyền sở hữu tư nhân. Nhà vua không chỉ nã đạn để bảo vệ nhà máy, ông ta nã đạn để bảo vệ trật tự của một xã hội nơi công cụ lao động không thuộc về người trực tiếp tạo ra của cải.
+Kết thúc câu chuyện, khi họng súng của quân đội chĩa thẳng vào những người nổi loạn, chúng ta thấy hiện rõ hình hài của <abbr title="Toàn bộ hệ thống nhà nước, pháp luật, chính trị, tôn giáo, đạo đức, nghệ thuật... được xây dựng dựa trên nền tảng kinh tế">Kiến trúc thượng tầng</abbr>. Từ tên đốc công đến nhà vua, tất cả đều nhân danh một thứ tôn nghiêm duy nhất: <mark>Quyền sở hữu tư nhân</mark>. Nhà vua không chỉ nã đạn để bảo vệ nhà máy, ông ta nã đạn để bảo vệ trật tự của một xã hội nơi công cụ lao động không thuộc về người trực tiếp tạo ra của cải.
 
-Những người thợ dệt Schlesien đã ngã xuống không phải vì họ lười biếng hay thiếu kỹ năng, mà vì họ đã bị nghiền nát giữa bánh xe lịch sử khi lực lượng sản xuất thay đổi, còn họ thì mãi mãi bị tách rời khỏi những công cụ mới của thời đại.
+Những người thợ dệt Schlesien đã ngã xuống không phải vì họ lười biếng hay thiếu kỹ năng, mà vì họ đã bị nghiền nát giữa bánh xe lịch sử khi <abbr title="Sự kết hợp giữa người lao động và tư liệu sản xuất (công cụ, máy móc) để tạo ra của cải">lực lượng sản xuất</abbr> thay đổi, còn họ thì mãi mãi bị tách rời khỏi những công cụ mới của thời đại.
 
 ![Cuộc khởi nghĩa của những người thợ dệt Schlesien chống lại sự tước đoạt tư liệu sản xuất](/images/dan-ap-nguoi-nong-dan.jpg)
 *Cuộc khởi nghĩa của những người thợ dệt Schlesien*
@@ -61,10 +61,10 @@ Tiếng súng ở Schlesien năm 1844 đã tắt, nhưng nỗi bất lực của
 ### Cuộc "Tích lũy nguyên thủy" và nghịch lý của sự sáng tạo
 Trong chủ nghĩa duy vật lịch sử, <abbr title="Giai đoạn tước đoạt một lượng lớn tư liệu sản xuất từ người lao động sang tay thiểu số tư bản">Tích lũy nguyên thủy</abbr> là giai đoạn kẻ mạnh dùng quyền lực để tước đoạt tư liệu sản xuất của người yếu (như rào dậu cướp đất rừng của nông dân).
 
-Ngày nay, một cuộc rào dậu tương tự đang diễn ra trên không gian số, nhưng "cừu" ở đây là các thuật toán AI, và "đất đai" chính là kho tàng tri thức nhân loại. Các Big Tech không tự nhiên mà thông minh; họ "giỏi" lên nhờ hấp thụ hàng tỷ bức tranh, dòng code và câu chữ—kết quả của hàng đời nghệ sĩ chắt chiu sáng tạo—mà không trả một xu. Chúng ta đang bị biến thành "nguyên liệu thô" rẻ mạt để nuôi dưỡng chính cái hệ thống sẽ hất cẳng mình khỏi thị trường lao động. Đó không phải là tiến bộ đơn thuần, đó là sự tái chiếm hữu giá trị thặng dư ở quy mô toàn cầu.
+Ngày nay, một cuộc rào dậu tương tự đang diễn ra trên không gian số, nhưng "cừu" ở đây là các thuật toán AI, và "đất đai" chính là kho tàng tri thức nhân loại. Các Big Tech không tự nhiên mà thông minh; họ "giỏi" lên nhờ hấp thụ hàng tỷ bức tranh, dòng code và câu chữ—kết quả của hàng đời nghệ sĩ chắt chiu sáng tạo—mà không trả một xu. Chúng ta đang bị biến thành "nguyên liệu thô" rẻ mạt để nuôi dưỡng chính cái hệ thống sẽ hất cẳng mình khỏi thị trường lao động. Đó không phải là tiến bộ đơn thuần, đó là sự tái chiếm hữu <abbr title="Phần giá trị dôi ra ngoài giá trị sức lao động do người lao động tạo ra, bị nhà tư bản chiếm đoạt không công">giá trị thặng dư</abbr> ở quy mô toàn cầu.
 
 ### Sự "Tha hóa" và nỗi đau bị phủ nhận
-Marx nói về sự tha hóa khi con người không còn thấy mình trong sản phẩm mình làm ra. Nhưng với Artist hiện đại, sự tha hóa này còn đáng sợ hơn. Khi một bản thiết kế được "prompt" ra trong 3 giây, toàn bộ quá trình tư duy, rung cảm và kỹ thuật của con người bị hệ thống xem là "phí phạm" và "đắt đỏ".
+Marx nói về sự <abbr title="Quá trình người lao động bị mất kiểm soát đối với sản phẩm do chính mình tạo ra, khiến họ trở nên phụ thuộc và đối lập với nó">tha hóa</abbr> khi con người không còn thấy mình trong sản phẩm mình làm ra. Nhưng với Artist hiện đại, sự tha hóa này còn đáng sợ hơn. Khi một bản thiết kế được "prompt" ra trong 3 giây, toàn bộ quá trình tư duy, rung cảm và kỹ thuật của con người bị hệ thống xem là "phí phạm" và "đắt đỏ".
 
 Và rồi tên thương nhân năm xưa lại đến và nói: "Giá của các người quá đắt! AI của tôi rẻ hơn". Câu nói này không chỉ là một lời mặc cả; nó là một sự phủ nhận toàn bộ giá trị con người. Những người làm sáng tạo đang rơi vào một trạng thái bất lực thực sự: Sản phẩm của họ bị lấy đi để huấn luyện máy, và rồi cái máy đó lại được dùng để thay thế họ.
 
@@ -76,24 +76,24 @@ Và rồi tên thương nhân năm xưa lại đến và nói: "Giá của các 
 >
 > Karl Marx
 
-Marx đã chỉ ra một sự thật trần trụi: Cách chúng ta kiếm tiền và công cụ chúng ta dùng để làm việc (Hạ tầng) chính là cái nền móng quyết định hình hài của luật pháp và ý thức xã hội (Kiến trúc thượng tầng).
+Marx đã chỉ ra một sự thật trần trụi: Cách chúng ta kiếm tiền và công cụ chúng ta dùng để làm việc (<mark>Hạ tầng / Cơ sở hạ tầng</mark>) chính là cái nền móng quyết định hình hài của luật pháp và ý thức xã hội (<mark>Kiến trúc thượng tầng</mark>).
 
-Khi "Lực lượng sản xuất" AI bùng nổ với tốc độ ánh sáng, "Quan hệ sản xuất" vốn được thiết kế cho thời đại con người cầm bút, cầm cọ bỗng trở nên chật chội và nứt vỡ. Những cuộc tranh luận tại nghị trường về Luật Sở hữu trí tuệ chính là hình ảnh phản chiếu của sự nứt vỡ đó.
+Khi <mark>Lực lượng sản xuất</mark> AI bùng nổ với tốc độ ánh sáng, <abbr title="Mối quan hệ giữa người với người trong quá trình sản xuất, phân phối và trao đổi tài sản/của cải">Quan hệ sản xuất</abbr> vốn được thiết kế cho thời đại con người cầm bút, cầm cọ bỗng trở nên chật chội và nứt vỡ. Những cuộc tranh luận tại nghị trường về Luật Sở hữu trí tuệ chính là hình ảnh phản chiếu của sự nứt vỡ đó.
 
 Hãy nhìn vào những tranh luận tại nghị trường về Luật Sở hữu trí tuệ như một màn kịch của Kiến trúc thượng tầng.
 
 Một bên (như ĐB Trần Thị Thu Đông) đang cố bảo vệ 'người lao động cũ' khỏi sự tước đoạt. Một bên (như ĐB Phạm Trọng Nghĩa) đang thúc đẩy việc công nhận AI để bắt kịp 'năng suất mới'.
 
-Tại sao luật pháp lại loay hoay? Vì cái móng (Hạ tầng công nghệ) đã thay đổi quá nhanh. Khi AI có thể tạo ra sản phẩm tương đương con người, luật pháp buộc phải chọn: Hoặc là bảo vệ con người, hoặc là bảo vệ sự tích lũy tư bản của những kẻ sở hữu AI. Tiếng súng ở Schlesien năm xưa dùng để bảo vệ quyền sở hữu nhà máy đơn giản các nhà tư bản đã chiến thắng thợ thủ công trong việc quyết định kiến trúc thượng tầng; Hiện tại việc đó lại lặp lại và một lần nữa, kiến trúc thượng tầng đang được quyết định nên bảo vệ ai.
+Tại sao luật pháp lại loay hoay? Vì cái móng (Hạ tầng công nghệ) đã thay đổi quá nhanh. Khi AI có thể tạo ra sản phẩm tương đương mức độ hoàn thiện của con người, luật pháp buộc phải chọn: Hoặc là bảo vệ người lao động, hoặc là bảo vệ sự <mark>tích lũy tư bản</mark> của những tổ chức sở hữu AI. Tiếng súng ở Schlesien năm xưa nổ ra để bảo vệ quyền sở hữu nhà máy, đơn giản vì giới tư bản đã chiến thắng thợ thủ công trong việc định hình kiến trúc thượng tầng. Hiện tại, lịch sử đang lặp lại: kiến trúc thượng tầng một lần nữa đang đứng trước ngã rẽ phải quyết định xem sẽ bảo vệ quyền lợi của ai.
 
 Cuộc tranh luận giữa việc "bảo vệ bản quyền nghệ sĩ" hay "thúc đẩy đầu tư AI" thực chất là một cuộc mặc cả về lợi ích kinh tế giữa các tầng lớp xã hội.
 
 Lịch sử vốn dĩ tàn nhẫn và luật pháp thường sẽ nghiêng về phía nào mang lại năng suất cao hơn. Nhưng bi kịch ở Schlesien là một bài học nhãn tiền: Khi luật pháp chỉ mải mê bảo vệ quyền lợi của những người sở hữu cỗ máy mà bỏ mặc những người tạo ra "nguyên liệu" cho nó, sự tha hóa sẽ đạt đến đỉnh điểm. Chúng ta không thể kỳ vọng một nền kinh tế sáng tạo phát triển trên gốc rễ của sự chiếm đoạt.
 
 ## Kết luận
-Kết thúc câu chuyện ở Schlesien, những người thợ dệt ngã xuống vì họ chọn đập phá máy móc thay vì làm chủ nó. Bài học cho chúng ta hôm nay không phải là tẩy chay AI một cách cực đoan.
+Kết thúc câu chuyện ở Schlesien, những người thợ dệt đã ngã xuống khi chọn đập phá máy móc thay vì làm chủ nó — một sự phản kháng tuyệt vọng khi họ hoàn toàn <mark>bị tước đoạt tư liệu sản xuất</mark>. Bài học cho chúng ta hôm nay không phải là tẩy chay AI một cách cực đoan.
 
-Cuộc chiến thực sự không nằm ở 'Người vs Máy', mà nằm ở việc Ai sở hữu Máy?. Nếu chúng ta không lên tiếng về quyền sở hữu dữ liệu, về bản quyền và về việc phân phối lại giá trị mà AI tạo ra, chúng ta sẽ mãi là những 'hồn ma' vất vưởng trên bàn phím, bị nghiền nát bởi chính những công cụ do nhân loại tạo ra.
+Cuộc chiến thực sự không nằm ở "Người vs Máy", mà nằm ở câu hỏi: "Ai sở hữu Máy?". Nếu chúng ta không lên tiếng về quyền sở hữu dữ liệu, về bản quyền và về việc phân phối lại giá trị mà AI tạo ra, chúng ta sẽ mãi là những "hồn ma" vất vưởng trên bàn phím, bị nghiền nát bởi chính những công cụ do nhân loại tạo ra.
 
 
 ### Tài liệu tham khảo mình đã dùng
