@@ -1,6 +1,6 @@
 ---
 title: Bàn về cuộc cách mạng AI và tự động hóa qua góc nhìn chủ nghĩa duy vật lịch sử
-description: Bài viết đầu tiên trên blog cá nhân của Miho.
+description: Cách mạng AI đang tước đoạt giá trị sáng tạo ra sao? Phân tích hiện tượng tha hóa, tích lũy nguyên thủy và bản quyền AI dưới lăng kính Karl Marx.
 pubDate: 2026-02-20
 hero: "/images/dan-ap-nguoi-nong-dan.jpg"
 ---
@@ -28,7 +28,7 @@ Kết thúc câu chuyện, khi họng súng của quân đội chĩa thẳng và
 
 Những người thợ dệt Schlesien đã ngã xuống không phải vì họ lười biếng hay thiếu kỹ năng, mà vì họ đã bị nghiền nát giữa bánh xe lịch sử khi lực lượng sản xuất thay đổi, còn họ thì mãi mãi bị tách rời khỏi những công cụ mới của thời đại.
 
-![Cuộc khởi nghĩa của những người thợ dệt Schlesien](/images/dan-ap-nguoi-nong-dan.jpg)
+![Cuộc khởi nghĩa của những người thợ dệt Schlesien chống lại sự tước đoạt tư liệu sản xuất](/images/dan-ap-nguoi-nong-dan.jpg)
 *Cuộc khởi nghĩa của những người thợ dệt Schlesien*
 
 ## Thế nào là một cuộc cách mạng?
@@ -50,7 +50,7 @@ Sự dịch chuyển này đang lặng lẽ chia thế giới thành hai nửa: 
 
 Hóa ra, cách mạng không phải là sự thay thế con người, mà là một cuộc tái định nghĩa quyền lực: Ai là người làm chủ công cụ, và ai là người bị công cụ làm chủ?
 
-![Nhà tư bản](/images/nha-tuban.jpg)
+![Hình ảnh nhà tư bản và sự tha hóa của người lao động trước công cụ tự động hóa](/images/nha-tuban.jpg)
 
 
 
@@ -69,7 +69,7 @@ Marx nói về sự tha hóa khi con người không còn thấy mình trong s�
 Và rồi tên thương nhân năm xưa lại đến và nói: "Giá của các người quá đắt! AI của tôi rẻ hơn". Câu nói này không chỉ là một lời mặc cả; nó là một sự phủ nhận toàn bộ giá trị con người. Những người làm sáng tạo đang rơi vào một trạng thái bất lực thực sự: Sản phẩm của họ bị lấy đi để huấn luyện máy, và rồi cái máy đó lại được dùng để thay thế họ.
 
 ## Góc nhìn của chủ nghĩa duy vật lịch sử về Dự luật AI & kiến trúc thượng tầng
-![Dự luật AI ](../../../public/images/du-luat-ai-bao-tuoi-tre.png)
+![Tranh luận Luật Sở hữu trí tuệ và Dự luật AI tại Việt Nam qua lăng kính Kiến trúc thượng tầng](/images/du-luat-ai-bao-tuoi-tre.png)
 *Tranh luận công nhận sản phẩm trí tuệ nhân tạo, Nguồn: Báo tuổi trẻ*
 
 > Toàn bộ những quan hệ sản xuất ấy hợp thành cơ cấu kinh tế của xã hội, tức là cái cơ sở thực tế trên đó xây dựng lên một kiến trúc thượng tầng pháp lý và chính trị, và những hình thái ý thức xã hội nhất định tương ứng với cơ sở thực tế đó. Phương thức sản xuất đời sống vật chất quyết định các quá trình sinh hoạt xã hội, chính trị và tinh thần nói chung.
