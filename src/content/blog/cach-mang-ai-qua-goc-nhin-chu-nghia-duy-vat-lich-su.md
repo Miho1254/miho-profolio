@@ -96,4 +96,13 @@ Kết thúc câu chuyện ở Schlesien, những người thợ dệt ngã xuố
 Cuộc chiến thực sự không nằm ở 'Người vs Máy', mà nằm ở việc Ai sở hữu Máy?. Nếu chúng ta không lên tiếng về quyền sở hữu dữ liệu, về bản quyền và về việc phân phối lại giá trị mà AI tạo ra, chúng ta sẽ mãi là những 'hồn ma' vất vưởng trên bàn phím, bị nghiền nát bởi chính những công cụ do nhân loại tạo ra.
 
 
-### Tài liệu tham khảo mìn
+### Tài liệu tham khảo mình đã dùng
+
+- **Sách:** *Hồn ma của Karl Marx (Le phantôme de Karl Marx)* – Ronan de Calan (Minh họa bởi Donatien Mary). Đây là cuốn sách tuyệt vời giúp đơn giản hóa các khái niệm phức tạp của Marx qua câu chuyện của những người thợ dệt.
+- **Bản dịch tiếng Việt:** [[DỊCH] Hồn ma của Karl Marx](https://spiderum.com/bai-dang/DICH-Hon-ma-cua-Karl-Marx-Ronan-de-Calan-9nu) – Tác giả *chanhndh* trên Spiderum (Cảm ơn bạn vì bản dịch rất mượt mà).
+- **Lý thuyết gốc:** 
+  - *Hệ tư tưởng Đức (1845)* – Karl Marx & Friedrich Engels: Nơi đặt nền móng cho chủ nghĩa duy vật lịch sử.
+  - *Góp phần phê phán kinh tế chính trị (1859)* – Karl Marx: Đoạn tiền đề về "Kiến trúc thượng tầng" và "Hạ tầng".
+  - *Bộ Tư bản (Das Kapital)* – Chương về "Tích lũy nguyên thủy" và "Sự tha hóa".
+- **Báo Tuổi Trẻ:** [Các bài tường thuật về phiên thảo luận sửa đổi Luật Sở hữu trí tuệ liên quan đến AI tại Quốc hội Việt Nam (Khóa XV)](https://tuoitre.vn/tranh-luan-cong-nhan-san-pham-tri-tue-nhan-tao-ai-dai-bieu-de-nghi-than-trong-tranh-sao-chep-20251124102858176.htm).
+- **Phân tích đương đại:** Khái niệm "Vô sản kỹ thuật số" (Digital Proletariat) và "Chủ nghĩa phong kiến kỹ thuật số" (Techno-feudalism) – Cảm ơn các bài tiểu luận của tác giả *Yanis Varoufakis*.
