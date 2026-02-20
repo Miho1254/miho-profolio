@@ -1,16 +1,16 @@
-const postImportResult = import.meta.glob("../posts/*.{md,mdx}", { eager: true });
-const posts = Object.values(postImportResult);
+import { getCollection } from 'astro:content';
 
-export function GET() {
+export async function GET() {
+    const posts = await getCollection('blog');
     const sorted = posts
-        .sort((a, b) => new Date(b.frontmatter.pubDate).valueOf() - new Date(a.frontmatter.pubDate).valueOf())
+        .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
         .slice(0, 4)
         .map((post) => ({
-            title: post.frontmatter.title,
-            description: post.frontmatter.description || "",
-            link: post.url,
-            date: post.frontmatter.pubDate,
-            image: post.frontmatter.hero || "",
+            title: post.data.title,
+            description: post.data.description || "",
+            link: `/blogs/posts/${post.slug}`,
+            date: post.data.pubDate,
+            image: post.data.hero || "",
         }));
 
     return new Response(JSON.stringify(sorted), {

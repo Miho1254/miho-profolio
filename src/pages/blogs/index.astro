@@ -5,16 +5,14 @@ import HomeHeader from '../../components/HomeHeader.astro';
 import Card from '../../components/Card.astro';
 import Footer from '../../components/Footer/Footer.astro'
 
-interface MarkdownFrontmatter {
-  date: number;
-}
+import { getCollection } from 'astro:content';
 
 const title = 'Miho Blog';
 const description = 'Developer, Writer, Creator.';
 const seoDescription = "Miho's personal blog";
 
-const allPosts = await Astro.glob<MarkdownFrontmatter>('./posts/*.{md,mdx}');
-const sortedPosts = allPosts.sort((a, b) => new Date(b.frontmatter.pubDate).valueOf() - new Date(a.frontmatter.pubDate).valueOf());
+const allPosts = await getCollection('blog');
+const sortedPosts = allPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 ---
 
 <html lang="en">

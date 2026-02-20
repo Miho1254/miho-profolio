@@ -1,8 +1,7 @@
 ---
-layout: ../../../layouts/BlogPostLayout.astro
 title: Xin chào thế giới!
 description: Bài viết đầu tiên trên blog cá nhân của Miho.
-pubDate: 2026-02-20T00:00:00.000Z
+pubDate: 2026-02-20
 hero: "/images/social.jpg"
 ---
 

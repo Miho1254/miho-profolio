@@ -1,12 +1,17 @@
 import rss from "@astrojs/rss";
+import { getCollection } from "astro:content";
 
-const postImportResult = import.meta.glob("./posts/*.{md,mdx}", { eager: true });
-const posts = Object.values(postImportResult);
-
-export const GET = () =>
-  rss({
+export const GET = async (context) => {
+  const posts = await getCollection("blog");
+  return rss({
     title: "Miho Blog",
     description: "Miho's personal blog",
-    site: import.meta.env.SITE,
-    items: import.meta.glob("./posts/**/*.{md,mdx}"),
+    site: context.site,
+    items: posts.map((post) => ({
+      title: post.data.title,
+      pubDate: post.data.pubDate,
+      description: post.data.description,
+      link: `/blogs/posts/${post.slug}`,
+    })),
   });
+};
