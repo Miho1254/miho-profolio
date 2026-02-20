@@ -69,4 +69,4 @@ Ngày nay, một cuộc "cướp đất" tương tự đang diễn ra trên khô
 ### Sự "Tha hóa" và nỗi đau bị phủ nhận
 Marx nói về sự tha hóa khi con người không còn thấy mình trong sản phẩm mình làm ra. Nhưng với Artist hiện đại, sự tha hóa này còn đáng sợ hơn. Khi một bản thiết kế được "prompt" ra trong 3 giây, toàn bộ quá trình tư duy, rung cảm và kỹ thuật của con người bị hệ thống xem là "phí phạm" và "đắt đỏ".
 
-Điệp khúc của tên thương nhân vải năm xưa lại vang lên: "Giá của các người quá đắt! AI của tôi rẻ hơn". Câu nói này không chỉ là một lời mặc cả; nó là một sự phủ nhận toàn bộ giá trị con người. Những người làm sáng tạo đang rơi vào một trạng thái bất lực thực sự: Sản phẩm của họ bị lấy đi để huấn luyện máy, và rồi cái máy đó lại được dùng để thay thế họ.
+Và rồi tên thương nhân năm xưa lại đến và nói: "Giá của các người quá đắt! AI của tôi rẻ hơn". Câu nói này không chỉ là một lời mặc cả; nó là một sự phủ nhận toàn bộ giá trị con người. Những người làm sáng tạo đang rơi vào một trạng thái bất lực thực sự: Sản phẩm của họ bị lấy đi để huấn luyện máy, và rồi cái máy đó lại được dùng để thay thế họ.

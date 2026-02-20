@@ -51,3 +51,12 @@ const { title, date, hero, youtube } = Astro.props;
 
   <PostFooter title={title} url={Astro.url.href} />
 </article>
+
+<script>
+  // Chuyển đổi thuộc tính title của thẻ abbr thành data-title khi tải trang
+  // Việc này nhằm giấu tooltip trắng mặc định của Chrome đi, chỉ giữ lại custom UI Tooltip CSS
+  document.querySelectorAll('abbr[title]').forEach(abbr => {
+    abbr.setAttribute('data-title', abbr.getAttribute('title') || '');
+    abbr.removeAttribute('title');
+  });
+</script>
