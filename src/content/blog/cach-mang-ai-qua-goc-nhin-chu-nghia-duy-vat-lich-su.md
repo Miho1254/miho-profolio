@@ -33,7 +33,7 @@ Những người thợ dệt Schlesien đã ngã xuống không phải vì họ 
 
 ## Thế nào là một cuộc cách mạng?
 
-Chủ nghĩa Marx chỉ ra rằng: 
+Karl Marx từng chỉ ra rằng: 
 > "Những thời đại kinh tế khác nhau không phải ở chỗ chúng sản xuất ra cái gì, mà là ở chỗ chúng sản xuất bằng cách nào, với những tư liệu lao động nào".
 
 Như vậy, một cuộc cách mạng thực thụ không đơn thuần là sự thay đổi về mặt kỹ thuật, mà là sự biến đổi về chất của lực lượng sản xuất, từ đó kéo theo sự tái cấu trúc toàn diện các quan hệ xã hội. Đó là khoảnh khắc mà công cụ lao động không chỉ thay thế cái cũ, mà còn định nghĩa lại vị thế của con người trong chính hệ thống mà họ tạo ra.
