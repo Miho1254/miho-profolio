@@ -7,7 +7,9 @@
     "start": "astro dev",
     "build": "astro build",
     "postbuild": "node ./scripts/search/prepare-index.js",
-    "preview": "astro preview"
+    "preview": "astro preview",
+    "tailwind:build": "tailwindcss -i ./src/styles/tailwind-input.css -o ./public/assets/css/style.css --minify",
+    "tailwind:watch": "tailwindcss -i ./src/styles/tailwind-input.css -o ./public/assets/css/style.css --watch"
   },
   "devDependencies": {
     "astro": "^5.17.3",

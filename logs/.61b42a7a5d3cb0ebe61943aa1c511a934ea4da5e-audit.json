@@ -9,6 +9,11 @@
             "date": 1777035966943,
             "name": "/home/miho/Documents/code/Miho-blog/logs/mcp-puppeteer-2026-04-24.log",
             "hash": "1648819da28626f8f403ab088c21a052e8cb27c7d2424138ce4481a4755859b1"
+        },
+        {
+            "date": 1777123836139,
+            "name": "/home/miho/Documents/code/Miho-blog/logs/mcp-puppeteer-2026-04-25.log",
+            "hash": "48e01932e9ab15ed897a9c5decd48596ca22af1234aa84f6f42d53cfec205cea"
         }
     ],
     "hashType": "sha256"

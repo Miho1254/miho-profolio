@@ -26,7 +26,8 @@
     <meta name="twitter:image" content="https://miho.worldsimp.com/assets/images/logo.webp" />
     <meta name="twitter:image:alt" content="Miho Logo" />
     <link rel="icon" type="image/webp" href="assets/images/logo.webp" />
-    <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+    <link rel="preload" as="image" href="assets/images/miho-no-bg.webp" />
+    <link rel="stylesheet" href="assets/css/style.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
     <link href="https://fonts.googleapis.com" rel="preconnect" />
     <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
@@ -37,107 +38,45 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
         rel="stylesheet" />
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    colors: {
-                        brand: {
-                            dark: "#1a3a6e",
-                            primary: "#4091FF",
-                            accent: "#4091FF",
-                            light: "#7AB5FF",
-                            lighter: "#b7d4ff",
-                            soft: "#f0f5ff",
-                            surface: "#e6f0ff",
-                            muted: "#5a7ba8",
-                            onPrimary: "#FFFFFF",
-                            darkBg: "#0a1628",
-                            darkCard: "#112240",
-                            darkBorder: "rgba(64, 145, 255, 0.2)",
-                        }
-                    },
-                    fontFamily: {
-                        display: ['"Chakra Petch"', 'sans-serif'],
-                        sans: ['"Space Grotesk"', 'sans-serif'],
-                        mono: ['"Fira Code"', 'monospace'],
-                    },
-                    borderRadius: {
-                        'xl': '1rem',
-                        '2xl': '1.5rem',
-                        '3xl': '2rem',
-                    },
-                    boxShadow: {
-                        'brutal': '4px 4px 0px rgba(64, 145, 255, 0.25)',
-                        'brutal-lg': '6px 6px 0px rgba(64, 145, 255, 0.3)',
-                        'brutal-dark': '4px 4px 0px rgba(64, 145, 255, 0.15)',
-                    },
-                },
-            },
-        };
-    </script>
-    <style type="text/tailwindcss">
-        @layer utilities {
-            .brutal-box {
-                @apply border-3 border-brand-primary shadow-[4px_4px_0px_var(--tw-shadow-color)] shadow-brand-primary transition-all duration-300;
-            }
-            .brutal-box:hover {
-                @apply -translate-x-1 -translate-y-1 shadow-[6px_6px_0px_var(--tw-shadow-color)] shadow-brand-primary;
-            }
-            .dark .brutal-box {
-                @apply border-brand-primary bg-brand-darkCard shadow-brand-primary;
-            }
-            .neo-btn {
-                @apply relative inline-flex items-center justify-center border-3 border-brand-dark dark:border-slate-200 bg-brand-primary text-white font-display font-bold uppercase tracking-wider rounded-full transition-all duration-200 shadow-[4px_4px_0px_black] dark:shadow-[4px_4px_0px_rgba(255,255,255,0.4)];
-            }
-            .neo-btn:hover {
-                @apply -translate-x-1 -translate-y-1 shadow-[7px_7px_0px_black] dark:shadow-[7px_7px_0px_rgba(255,255,255,0.5)] brightness-110;
-            }
-            .neo-btn:active {
-                @apply translate-x-[4px] translate-y-[4px] shadow-none brightness-90;
-            }
-            .neo-btn-outline {
-                @apply relative inline-flex items-center justify-center border-3 border-brand-primary dark:border-brand-light bg-transparent text-brand-primary dark:text-brand-light font-display font-bold uppercase tracking-wider rounded-full transition-all duration-200 shadow-[4px_4px_0px_var(--tw-shadow-color)] shadow-brand-primary dark:shadow-brand-light/40;
-            }
-            .neo-btn-outline:hover {
-                @apply -translate-x-1 -translate-y-1 shadow-[6px_6px_0px_var(--tw-shadow-color)] shadow-brand-primary dark:shadow-brand-light/60 bg-brand-soft dark:bg-white/5;
-            }
-            .neo-btn-outline:active {
-                @apply translate-x-[4px] translate-y-[4px] shadow-none bg-brand-primary dark:bg-brand-light text-white dark:text-brand-dark;
-            }
-            .neo-btn-white {
-                @apply relative inline-flex items-center justify-center border-3 border-brand-dark dark:border-slate-200 bg-white dark:bg-brand-darkCard text-brand-dark dark:text-white font-display font-bold uppercase tracking-wider rounded-full transition-all duration-200 shadow-[4px_4px_0px_black] dark:shadow-[4px_4px_0px_rgba(255,255,255,0.4)];
-            }
-            .neo-btn-white:hover {
-                @apply -translate-x-1 -translate-y-1 shadow-[7px_7px_0px_black] dark:shadow-[7px_7px_0px_rgba(255,255,255,0.5)] brightness-110;
-            }
-            .neo-btn-white:active {
-                @apply translate-x-[4px] translate-y-[4px] shadow-none brightness-90;
-            }
-            .neo-tag {
-                @apply inline-flex items-center gap-2 px-3 py-2 bg-white dark:bg-brand-darkCard border-2 border-brand-dark dark:border-slate-300 text-sm font-bold text-brand-dark dark:text-white rounded-md shadow-[2px_2px_0px_black] dark:shadow-[2px_2px_0px_rgba(255,255,255,0.3)] hover:-translate-y-1 hover:-translate-x-1 hover:shadow-[4px_4px_0px_black] dark:hover:shadow-[4px_4px_0px_rgba(255,255,255,0.4)] transition-all duration-200 cursor-default;
-            }
-            .border-3 {
-                border-width: 3px;
-            }
-        }
-    </style>
     <style>
         /* ===== FONTS ===== */
 
 
         /* ===== SCROLLBAR — Blue Monochrome ===== */
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #f0f5ff; }
-        ::-webkit-scrollbar-thumb { background: #b7d4ff; border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: #7AB5FF; }
-        .dark ::-webkit-scrollbar-track { background: #0a1628; }
-        .dark ::-webkit-scrollbar-thumb { background: #1a3a6e; }
-        .dark ::-webkit-scrollbar-thumb:hover { background: #4091FF; }
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f0f5ff;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #b7d4ff;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #7AB5FF;
+        }
+
+        .dark ::-webkit-scrollbar-track {
+            background: #0a1628;
+        }
+
+        .dark ::-webkit-scrollbar-thumb {
+            background: #1a3a6e;
+        }
+
+        .dark ::-webkit-scrollbar-thumb:hover {
+            background: #4091FF;
+        }
 
         /* ===== SELECTION ===== */
-        ::selection { background: #4091FF; color: #fff; }
+        ::selection {
+            background: #4091FF;
+            color: #fff;
+        }
 
         /* ===== REVEAL ANIMATION ===== */
         .reveal {
@@ -146,6 +85,7 @@
             transition: opacity 0.55s ease, transform 0.55s ease;
             will-change: opacity, transform;
         }
+
         .reveal.active {
             opacity: 1;
             transform: translateY(0);
@@ -162,22 +102,53 @@
             background: #b7d4ff;
             border-radius: 2px;
         }
+
         .dark .timeline-line::before {
             background: rgba(64, 145, 255, 0.25);
         }
 
         /* ===== BUBBLE / BLOB ANIMATION ===== */
         @keyframes blob {
-            0%   { transform: translate(0, 0) scale(1); opacity: 0.9; }
-            50%  { transform: translate(10px, -10px) scale(1.1); opacity: 1; }
-            100% { transform: translate(0, 0) scale(1); opacity: 0.9; }
+            0% {
+                transform: translate(0, 0) scale(1);
+                opacity: 0.9;
+            }
+
+            50% {
+                transform: translate(10px, -10px) scale(1.1);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translate(0, 0) scale(1);
+                opacity: 0.9;
+            }
         }
-        .animate-blob { animation: blob 7s infinite; }
-        .animation-delay-2000 { animation-delay: 2s; }
-        .animation-delay-4000 { animation-delay: 4s; }
+
+        .animate-blob {
+            animation: blob 7s infinite;
+        }
+
+        .animation-delay-2000 {
+            animation-delay: 2s;
+        }
+
+        .animation-delay-4000 {
+            animation-delay: 4s;
+        }
 
         /* ===== SMOOTH THEME TRANSITION ===== */
-        body, div, nav, section, h1, h2, h3, p, a, button, span {
+        body,
+        div,
+        nav,
+        section,
+        h1,
+        h2,
+        h3,
+        p,
+        a,
+        button,
+        span {
             transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
             transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
             transition-duration: 300ms;
@@ -189,27 +160,37 @@
             position: relative;
             overflow: hidden;
         }
-        .dark .skele-loading { background: #1a3a6e; }
+
+        .dark .skele-loading {
+            background: #1a3a6e;
+        }
+
         .skele-loading::after {
             content: "";
             position: absolute;
             inset: 0;
             transform: translateX(-100%);
             background-image: linear-gradient(90deg,
-                rgba(255,255,255,0) 0,
-                rgba(255,255,255,0.3) 20%,
-                rgba(255,255,255,0.6) 60%,
-                rgba(255,255,255,0));
+                    rgba(255, 255, 255, 0) 0,
+                    rgba(255, 255, 255, 0.3) 20%,
+                    rgba(255, 255, 255, 0.6) 60%,
+                    rgba(255, 255, 255, 0));
             animation: shimmer 2s infinite;
         }
+
         .dark .skele-loading::after {
             background-image: linear-gradient(90deg,
-                rgba(255,255,255,0) 0,
-                rgba(255,255,255,0.05) 20%,
-                rgba(255,255,255,0.1) 60%,
-                rgba(255,255,255,0));
+                    rgba(255, 255, 255, 0) 0,
+                    rgba(255, 255, 255, 0.05) 20%,
+                    rgba(255, 255, 255, 0.1) 60%,
+                    rgba(255, 255, 255, 0));
         }
-        @keyframes shimmer { 100% { transform: translateX(100%); } }
+
+        @keyframes shimmer {
+            100% {
+                transform: translateX(100%);
+            }
+        }
 
         /* ===== NEO-BRUTALISM CARD HOVER ===== */
         .card-brutal {
@@ -218,15 +199,18 @@
             box-shadow: 4px 4px 0px #4091FF;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
+
         .card-brutal:hover {
             transform: translate(-3px, -3px);
             box-shadow: 8px 8px 0px #4091FF;
         }
+
         .dark .card-brutal {
             border-color: #4091FF;
             background-color: #112240;
             box-shadow: 4px 4px 0px #4091FF;
         }
+
         .dark .card-brutal:hover {
             box-shadow: 8px 8px 0px #4091FF;
         }
@@ -239,6 +223,7 @@
             font-weight: 800;
             letter-spacing: 0.02em;
         }
+
         .section-title::after {
             content: '';
             flex: 1;
@@ -247,6 +232,7 @@
             border-radius: 2px;
             opacity: 0.3;
         }
+
         .dark .section-title::after {
             background: #7AB5FF;
             opacity: 0.2;
@@ -257,6 +243,7 @@
             position: relative;
             text-decoration: none;
         }
+
         .nav-link::after {
             content: '';
             position: absolute;
@@ -267,6 +254,7 @@
             background: #FFFFFF;
             transition: width 0.3s ease;
         }
+
         .nav-link:hover::after {
             width: 100%;
         }
@@ -284,14 +272,17 @@
             color: #4091FF;
             transition: all 0.3s ease;
         }
+
         .pill-tag:hover {
             background: #4091FF;
             color: #fff;
         }
+
         .dark .pill-tag {
             border-color: #7AB5FF;
             color: #7AB5FF;
         }
+
         .dark .pill-tag:hover {
             background: #7AB5FF;
             color: #0a1628;
@@ -308,10 +299,12 @@
             align-items: center;
             transition: opacity 0.5s ease;
         }
+
         .global-loader.hidden {
             opacity: 0;
             pointer-events: none;
         }
+
         .loader-dot {
             width: 12px;
             height: 12px;
@@ -320,17 +313,42 @@
             margin: 0 6px;
             animation: loaderPulse 1.2s infinite ease-in-out;
         }
-        .loader-dot:nth-child(2) { animation-delay: 0.15s; }
-        .loader-dot:nth-child(3) { animation-delay: 0.3s; }
+
+        .loader-dot:nth-child(2) {
+            animation-delay: 0.15s;
+        }
+
+        .loader-dot:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
         @keyframes loaderPulse {
-            0%, 80%, 100% { transform: scale(0.6); opacity: 0.4; }
-            40% { transform: scale(1); opacity: 1; }
+
+            0%,
+            80%,
+            100% {
+                transform: scale(0.6);
+                opacity: 0.4;
+            }
+
+            40% {
+                transform: scale(1);
+                opacity: 1;
+            }
         }
 
         /* ===== STAGGER DELAYS ===== */
-        .reveal:nth-child(2) { transition-delay: 80ms; }
-        .reveal:nth-child(3) { transition-delay: 160ms; }
-        .reveal:nth-child(4) { transition-delay: 240ms; }
+        .reveal:nth-child(2) {
+            transition-delay: 80ms;
+        }
+
+        .reveal:nth-child(3) {
+            transition-delay: 160ms;
+        }
+
+        .reveal:nth-child(4) {
+            transition-delay: 240ms;
+        }
     </style>
     <script>
         function handleImageLoad(img) {
@@ -346,8 +364,7 @@
     </script>
 </head>
 
-<body
-    class="bg-white dark:bg-brand-darkBg text-brand-dark dark:text-slate-100 font-sans antialiased relative">
+<body class="bg-white dark:bg-brand-darkBg text-brand-dark dark:text-slate-100 font-sans antialiased relative">
     <!-- Global Loading Screen -->
     <div class="global-loader" id="globalLoader">
         <div class="flex items-center">
@@ -358,9 +375,7 @@
     </div>
     <script>
         window.addEventListener('load', () => {
-            setTimeout(() => {
-                document.getElementById('globalLoader').classList.add('hidden');
-            }, 600);
+            document.getElementById('globalLoader').classList.add('hidden');
         });
     </script>
     <a href="#main-content"
@@ -368,12 +383,12 @@
         to content</a>
     <!-- Modern Tech Grid Background -->
     <div
-        class="fixed inset-0 -z-50 h-full w-full bg-white dark:bg-brand-darkBg bg-[linear-gradient(to_right,#4091FF08_1px,transparent_1px),linear-gradient(to_bottom,#4091FF08_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,#4091FF06_1px,transparent_1px),linear-gradient(to_bottom,#4091FF06_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none">
+        class="fixed inset-0 -z-50 h-full w-full bg-white dark:bg-brand-darkBg bg-[linear-gradient(to_right,rgba(0,0,0,0.06)_1px,transparent_1px),linear-gradient(to_bottom,rgba(0,0,0,0.06)_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none">
         <div
             class="absolute inset-0 bg-transparent dark:bg-[radial-gradient(ellipse_80%_50%_at_50%_0%,rgba(64,145,255,0.15),transparent)]">
         </div>
         <div
-            class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-white/80 dark:to-brand-darkBg/90">
+            class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-white/95 dark:to-brand-darkBg/95">
         </div>
     </div>
     <nav class="fixed w-full z-50 top-0 bg-brand-soft/95 dark:bg-brand-darkBg/95 backdrop-blur-md transition-all duration-300 border-b-3 border-brand-primary/10 dark:border-brand-light/10 shadow-sm"
@@ -401,11 +416,17 @@
                 <!-- Language Switcher Desktop -->
                 <div
                     class="flex items-center gap-2 text-sm font-bold border-l border-brand-dark/10 dark:border-white/20 pl-6">
-                    <button class="lang-btn text-brand-dark/70 dark:text-white/70 hover:text-brand-primary dark:hover:text-white transition-colors" data-lang="vi">VI</button>
+                    <button
+                        class="lang-btn text-brand-dark/70 dark:text-white/70 hover:text-brand-primary dark:hover:text-white transition-colors"
+                        data-lang="vi">VI</button>
                     <span class="text-brand-dark/30 dark:text-white/30">/</span>
-                    <button class="lang-btn text-brand-dark/70 dark:text-white/70 hover:text-brand-primary dark:hover:text-white transition-colors" data-lang="en">EN</button>
+                    <button
+                        class="lang-btn text-brand-dark/70 dark:text-white/70 hover:text-brand-primary dark:hover:text-white transition-colors"
+                        data-lang="en">EN</button>
                     <span class="text-brand-dark/30 dark:text-white/30">/</span>
-                    <button class="lang-btn text-brand-dark/70 dark:text-white/70 hover:text-brand-primary dark:hover:text-white transition-colors" data-lang="ja">JA</button>
+                    <button
+                        class="lang-btn text-brand-dark/70 dark:text-white/70 hover:text-brand-primary dark:hover:text-white transition-colors"
+                        data-lang="ja">JA</button>
                 </div>
                 <button
                     class="text-brand-dark/80 dark:text-white/80 hover:text-brand-primary dark:hover:text-yellow-300 transition-colors focus:outline-none"
@@ -413,8 +434,7 @@
                     <span class="material-symbols-outlined text-xl align-middle dark:hidden">dark_mode</span>
                     <span class="material-symbols-outlined text-xl align-middle hidden dark:inline">light_mode</span>
                 </button>
-                <a class="neo-btn-white px-6 py-2.5 text-xs"
-                    href="#contact" data-i18n="nav.contact">
+                <a class="neo-btn-white px-6 py-2.5 text-xs" href="#contact" data-i18n="nav.contact">
                     Liên hệ
                 </a>
             </div>
@@ -436,8 +456,7 @@
     <!-- Mobile Menu Overlay -->
     <div class="md:hidden fixed inset-0 z-[60] bg-brand-primary/95 dark:bg-brand-darkBg/95 backdrop-blur-2xl transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] translate-x-full opacity-0 flex flex-col justify-center items-center gap-8"
         id="mobile-menu">
-        <button
-            class="absolute top-6 right-6 p-4 text-white/70 hover:text-white transition-colors focus:outline-none"
+        <button class="absolute top-6 right-6 p-4 text-white/70 hover:text-white transition-colors focus:outline-none"
             onclick="toggleMenu()">
             <span class="material-symbols-outlined text-4xl">close</span>
         </button>
@@ -484,8 +503,7 @@
             <button class="lang-btn text-white/70 hover:text-white transition-colors" data-lang="ja">JA</button>
         </div>
 
-        <a class="neo-btn-white px-10 py-4 text-lg flex items-center gap-3"
-            href="#contact" onclick="toggleMenu()">
+        <a class="neo-btn-white px-10 py-4 text-lg flex items-center gap-3" href="#contact" onclick="toggleMenu()">
             <span class="material-symbols-outlined">mail</span>
             <span data-i18n="nav.contact">Liên hệ ngay</span>
         </a>
@@ -515,9 +533,7 @@
                     <h1
                         class="text-4xl sm:text-5xl md:text-7xl font-bold text-brand-primary dark:text-brand-light leading-[1.1] mb-6 font-display tracking-tight min-h-[3.3em]">
                         <span id="hero-title-1"></span><br />
-                        <span
-                            class="text-brand-dark dark:text-white"
-                            id="hero-title-2"></span>
+                        <span class="text-brand-dark dark:text-white" id="hero-title-2"></span>
                         <span class="animate-pulse text-brand-primary dark:text-brand-light">|</span>
                     </h1>
                     <h2 class="text-xl sm:text-2xl md:text-4xl font-bold text-brand-dark dark:text-slate-200 mb-6 tracking-wide"
@@ -530,12 +546,10 @@
                         Là con trai nhưng tiêu thụ trà sữa nhiều hơn con gái.
                     </p>
                     <div class="flex flex-wrap justify-center lg:justify-start gap-4">
-                        <a class="neo-btn-white px-8 py-4 text-sm"
-                            href="#projects" data-i18n="hero.btn_projects">
+                        <a class="neo-btn-white px-8 py-4 text-sm" href="#projects" data-i18n="hero.btn_projects">
                             Xem dự án
                         </a>
-                        <a class="neo-btn px-8 py-4 text-sm"
-                            href="#contact" data-i18n="hero.btn_contact">
+                        <a class="neo-btn px-8 py-4 text-sm" href="#contact" data-i18n="hero.btn_contact">
                             Liên hệ
                         </a>
                     </div>
@@ -551,21 +565,24 @@
                             <div class="text-center">
                                 <span
                                     class="block text-2xl font-bold text-brand-primary dark:text-brand-light font-display">3+</span>
-                                <span class="text-xs text-brand-muted dark:text-slate-500 uppercase tracking-wider font-bold"
+                                <span
+                                    class="text-xs text-brand-muted dark:text-slate-500 uppercase tracking-wider font-bold"
                                     data-i18n="hero.stats_exp">Năm
                                     Kinh Nghiệm</span>
                             </div>
                             <div class="text-center">
                                 <span
                                     class="block text-2xl font-bold text-brand-primary dark:text-brand-light font-display">3</span>
-                                <span class="text-xs text-brand-muted dark:text-slate-500 uppercase tracking-wider font-bold"
+                                <span
+                                    class="text-xs text-brand-muted dark:text-slate-500 uppercase tracking-wider font-bold"
                                     data-i18n="hero.stats_projects">Dự Án
                                     Lớn</span>
                             </div>
                             <div class="text-center">
                                 <span
                                     class="block text-2xl font-bold text-brand-primary dark:text-brand-light font-display">3+</span>
-                                <span class="text-xs text-brand-muted dark:text-slate-500 uppercase tracking-wider font-bold"
+                                <span
+                                    class="text-xs text-brand-muted dark:text-slate-500 uppercase tracking-wider font-bold"
                                     data-i18n="hero.stats_awards">Giải
                                     Thưởng</span>
                             </div>
@@ -592,34 +609,32 @@
                             </div>
                             <img alt="Miho Portrait"
                                 class="w-full h-full object-contain object-bottom relative z-10 skele-loading transition-opacity duration-500"
-                                src="assets/images/miho-no-bg.webp" onload="handleImageLoad(this)" />
+                                src="assets/images/miho-no-bg.webp" fetchpriority="high" width="600" height="800"
+                                onload="handleImageLoad(this)" />
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="py-16 md:py-24 border-y-3 border-brand-primary/10 dark:border-brand-light/5" id="education-awards">
+        <section class="py-16 md:py-24 border-y-3 border-brand-primary/10 dark:border-brand-light/5"
+            id="education-awards">
             <div class="max-w-7xl mx-auto px-6">
                 <div class="grid lg:grid-cols-2 gap-16">
                     <!-- Education -->
                     <div class="reveal">
-                        <h3
-                            class="section-title text-3xl text-brand-primary dark:text-brand-light font-display mb-10">
+                        <h3 class="section-title text-3xl text-brand-primary dark:text-brand-light font-display mb-10">
                             <span class="material-symbols-outlined text-4xl">school</span>
                             <span data-i18n="education.title">Học Vấn</span>
                         </h3>
                         <div class="space-y-6">
-                            <div
-                                class="card-brutal bg-white dark:bg-brand-darkCard p-6">
+                            <div class="card-brutal bg-white dark:bg-brand-darkCard p-6">
                                 <div
                                     class="flex flex-col items-start sm:flex-row sm:justify-between sm:items-start gap-2 mb-2">
                                     <h4 class="text-xl font-bold text-brand-dark dark:text-white"
                                         data-i18n="education.tlu_name">ĐH Thủy Lợi – Phân
                                         hiệu TP.HCM</h4>
-                                    <span
-                                        class="pill-tag text-xs whitespace-nowrap"
-                                        data-i18n="education.tlu_time">2025
+                                    <span class="pill-tag text-xs whitespace-nowrap" data-i18n="education.tlu_time">2025
                                         -
                                         Hiện tại</span>
                                 </div>
@@ -628,16 +643,13 @@
                                 </p>
                                 <!-- GPA not specified in old file for Uni -->
                             </div>
-                            <div
-                                class="card-brutal bg-white dark:bg-brand-darkCard p-6">
+                            <div class="card-brutal bg-white dark:bg-brand-darkCard p-6">
                                 <div
                                     class="flex flex-col items-start sm:flex-row sm:justify-between sm:items-start gap-2 mb-2">
                                     <h4 class="text-xl font-bold text-brand-dark dark:text-white"
                                         data-i18n="education.nd_name">Trung cấp nghề Nhân
                                         Đạo</h4>
-                                    <span
-                                        class="pill-tag text-xs whitespace-nowrap"
-                                        data-i18n="education.nd_time">2022
+                                    <span class="pill-tag text-xs whitespace-nowrap" data-i18n="education.nd_time">2022
                                         -
                                         2024</span>
                                 </div>
@@ -654,8 +666,7 @@
                     <!-- Awards -->
                     <!-- Awards with adjusted spacing -->
                     <div class="reveal" style="transition-delay: 100ms;">
-                        <h3
-                            class="section-title text-3xl text-brand-primary dark:text-brand-light font-display mb-10">
+                        <h3 class="section-title text-3xl text-brand-primary dark:text-brand-light font-display mb-10">
                             <span class="material-symbols-outlined text-4xl">emoji_events</span>
                             <span data-i18n="awards.title">Giải Thưởng</span>
                         </h3>
@@ -739,11 +750,14 @@
                 <div class="grid md:grid-cols-3 gap-8">
                     <!-- Languages -->
                     <div class="card-brutal p-8 bg-white dark:bg-brand-darkCard reveal flex flex-col h-full">
-                        <div class="flex items-center gap-4 mb-6 border-b-3 border-brand-primary/20 dark:border-brand-light/20 pb-6">
-                            <div class="w-14 h-14 bg-brand-primary border-3 border-brand-dark dark:border-white shadow-[4px_4px_0px_var(--tw-shadow-color)] shadow-brand-dark dark:shadow-white rounded-xl flex items-center justify-center text-white shrink-0">
+                        <div
+                            class="flex items-center gap-4 mb-6 border-b-3 border-brand-primary/20 dark:border-brand-light/20 pb-6">
+                            <div
+                                class="w-14 h-14 bg-brand-primary border-3 border-brand-dark dark:border-white shadow-[4px_4px_0px_var(--tw-shadow-color)] shadow-brand-dark dark:shadow-white rounded-xl flex items-center justify-center text-white shrink-0">
                                 <span class="material-symbols-outlined text-3xl">code</span>
                             </div>
-                            <h3 class="text-2xl font-bold text-brand-dark dark:text-white font-display uppercase tracking-wide" data-i18n="skills.cat_lang">
+                            <h3 class="text-2xl font-bold text-brand-dark dark:text-white font-display uppercase tracking-wide"
+                                data-i18n="skills.cat_lang">
                                 Languages</h3>
                         </div>
                         <div class="flex flex-wrap gap-3">
@@ -767,8 +781,10 @@
                     <!-- Frameworks -->
                     <div class="card-brutal p-8 bg-white dark:bg-brand-darkCard reveal flex flex-col h-full"
                         style="transition-delay: 100ms;">
-                        <div class="flex items-center gap-4 mb-6 border-b-3 border-brand-primary/20 dark:border-brand-light/20 pb-6">
-                            <div class="w-14 h-14 bg-brand-primary border-3 border-brand-dark dark:border-white shadow-[4px_4px_0px_var(--tw-shadow-color)] shadow-brand-dark dark:shadow-white rounded-xl flex items-center justify-center text-white shrink-0">
+                        <div
+                            class="flex items-center gap-4 mb-6 border-b-3 border-brand-primary/20 dark:border-brand-light/20 pb-6">
+                            <div
+                                class="w-14 h-14 bg-brand-primary border-3 border-brand-dark dark:border-white shadow-[4px_4px_0px_var(--tw-shadow-color)] shadow-brand-dark dark:shadow-white rounded-xl flex items-center justify-center text-white shrink-0">
                                 <span class="material-symbols-outlined text-3xl">layers</span>
                             </div>
                             <h3 class="text-2xl font-bold text-brand-dark dark:text-white font-display uppercase tracking-wide"
@@ -782,7 +798,9 @@
                                 <i class="devicon-nodejs-plain text-green-500 text-lg"></i> Node.js
                             </span>
                             <span class="neo-tag">
-                                <i class="devicon-denojs-original text-white bg-black dark:border-white dark:border border border-transparent rounded-full p-0.5 text-lg"></i> Deno
+                                <i
+                                    class="devicon-denojs-original text-white bg-black dark:border-white dark:border border border-transparent rounded-full p-0.5 text-lg"></i>
+                                Deno
                             </span>
                             <span class="neo-tag">
                                 <i class="devicon-tailwindcss-original text-sky-400 text-lg"></i> Tailwind
@@ -792,11 +810,14 @@
                     <!-- Tools/DB -->
                     <div class="card-brutal p-8 bg-white dark:bg-brand-darkCard reveal flex flex-col h-full"
                         style="transition-delay: 200ms;">
-                        <div class="flex items-center gap-4 mb-6 border-b-3 border-brand-primary/20 dark:border-brand-light/20 pb-6">
-                            <div class="w-14 h-14 bg-brand-primary border-3 border-brand-dark dark:border-white shadow-[4px_4px_0px_var(--tw-shadow-color)] shadow-brand-dark dark:shadow-white rounded-xl flex items-center justify-center text-white shrink-0">
+                        <div
+                            class="flex items-center gap-4 mb-6 border-b-3 border-brand-primary/20 dark:border-brand-light/20 pb-6">
+                            <div
+                                class="w-14 h-14 bg-brand-primary border-3 border-brand-dark dark:border-white shadow-[4px_4px_0px_var(--tw-shadow-color)] shadow-brand-dark dark:shadow-white rounded-xl flex items-center justify-center text-white shrink-0">
                                 <span class="material-symbols-outlined text-3xl">build</span>
                             </div>
-                            <h3 class="text-2xl font-bold text-brand-dark dark:text-white font-display uppercase tracking-wide" data-i18n="skills.cat_tools">
+                            <h3 class="text-2xl font-bold text-brand-dark dark:text-white font-display uppercase tracking-wide"
+                                data-i18n="skills.cat_tools">
                                 Tools & DB</h3>
                         </div>
                         <div class="flex flex-wrap gap-3">
@@ -813,7 +834,8 @@
                                 <i class="devicon-postgresql-plain text-blue-700 text-lg"></i> PostgreSQL
                             </span>
                             <span class="neo-tag">
-                                <i class="devicon-prisma-original text-slate-700 dark:text-slate-200 text-lg"></i> Prisma
+                                <i class="devicon-prisma-original text-slate-700 dark:text-slate-200 text-lg"></i>
+                                Prisma
                             </span>
                             <span class="neo-tag">
                                 <i class="devicon-linux-plain text-slate-700 dark:text-slate-200 text-lg"></i> Linux
@@ -835,13 +857,17 @@
 
                 <div class="reveal max-w-5xl mx-auto">
                     <!-- Main Role Container -->
-                    <div class="flex flex-col md:flex-row items-baseline gap-4 mb-8 border-b-3 border-brand-primary/20 dark:border-brand-light/10 pb-4">
-                        <h3 class="text-3xl font-bold text-brand-primary dark:text-brand-light" data-i18n="experience.role">IT
+                    <div
+                        class="flex flex-col md:flex-row items-baseline gap-4 mb-8 border-b-3 border-brand-primary/20 dark:border-brand-light/10 pb-4">
+                        <h3 class="text-3xl font-bold text-brand-primary dark:text-brand-light"
+                            data-i18n="experience.role">IT
                             Specialist</h3>
                         <span class="text-2xl text-brand-muted font-light" data-i18n="experience.at">at</span>
                         <h4 class="text-xl font-semibold text-brand-primary flex items-center gap-2 flex-wrap">
                             <span data-i18n="experience.company">World Simp & Friends</span>
-                            <span class="inline-flex items-center gap-1 px-3 py-1 rounded bg-amber-300 dark:bg-amber-500 border-2 border-brand-dark dark:border-white text-xs font-bold text-brand-dark uppercase tracking-wider shadow-[2px_2px_0px_var(--tw-shadow-color)] shadow-brand-dark dark:shadow-white" data-i18n="experience.type">Community Project</span>
+                            <span
+                                class="inline-flex items-center gap-1 px-3 py-1 rounded bg-brand-primary dark:bg-brand-light border-2 border-brand-dark dark:border-white text-xs font-bold text-white dark:text-brand-dark uppercase tracking-wider shadow-[2px_2px_0px_var(--tw-shadow-color)] shadow-brand-dark dark:shadow-white"
+                                data-i18n="experience.type">Community Project</span>
                         </h4>
                         <div
                             class="ml-auto flex items-center gap-2 text-sm font-mono text-slate-500 dark:text-slate-400 bg-white dark:bg-brand-darkCard px-3 py-1 rounded-full border border-slate-200 dark:border-white/5 shadow-sm">
@@ -858,44 +884,58 @@
                     <!-- 4 Column Focus Grid (Clean Cards) -->
                     <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
                         <div class="card-brutal bg-white dark:bg-brand-darkCard p-8 group flex flex-col h-full">
-                            <div class="w-14 h-14 bg-brand-primary border-3 border-brand-dark dark:border-white shadow-[4px_4px_0px_var(--tw-shadow-color)] shadow-brand-dark dark:shadow-white rounded-xl flex items-center justify-center text-white mb-6 shrink-0 group-hover:-translate-y-1 transition-transform">
+                            <div
+                                class="w-14 h-14 bg-brand-primary border-3 border-brand-dark dark:border-white shadow-[4px_4px_0px_var(--tw-shadow-color)] shadow-brand-dark dark:shadow-white rounded-xl flex items-center justify-center text-white mb-6 shrink-0 group-hover:-translate-y-1 transition-transform">
                                 <span class="material-symbols-outlined text-3xl">dataset</span>
                             </div>
                             <h5 class="font-bold text-xl text-brand-dark dark:text-white mb-3 font-display tracking-wide uppercase"
                                 data-i18n="experience.card_internal">Hệ Thống Nội Bộ</h5>
-                            <div class="w-12 h-1 bg-brand-primary mb-4 border-2 border-brand-dark dark:border-white"></div>
+                            <div class="w-12 h-1 bg-brand-primary mb-4 border-2 border-brand-dark dark:border-white">
+                            </div>
                             <p class="text-sm text-brand-muted dark:text-slate-400 leading-relaxed"
-                                data-i18n="experience.desc_internal">Phát triển và duy trì nhiều hệ thống để hỗ trợ các hoạt động của đội nhóm.</p>
+                                data-i18n="experience.desc_internal">Phát triển và duy trì nhiều hệ thống để hỗ trợ các
+                                hoạt động của đội nhóm.</p>
                         </div>
                         <div class="card-brutal bg-white dark:bg-brand-darkCard p-8 group flex flex-col h-full">
-                            <div class="w-14 h-14 bg-brand-primary border-3 border-brand-dark dark:border-white shadow-[4px_4px_0px_var(--tw-shadow-color)] shadow-brand-dark dark:shadow-white rounded-xl flex items-center justify-center text-white mb-6 shrink-0 group-hover:-translate-y-1 transition-transform">
+                            <div
+                                class="w-14 h-14 bg-brand-primary border-3 border-brand-dark dark:border-white shadow-[4px_4px_0px_var(--tw-shadow-color)] shadow-brand-dark dark:shadow-white rounded-xl flex items-center justify-center text-white mb-6 shrink-0 group-hover:-translate-y-1 transition-transform">
                                 <span class="material-symbols-outlined text-3xl">event</span>
                             </div>
                             <h5 class="font-bold text-xl text-brand-dark dark:text-white mb-3 font-display tracking-wide uppercase"
                                 data-i18n="experience.card_event">Event Solutions</h5>
-                            <div class="w-12 h-1 bg-brand-primary mb-4 border-2 border-brand-dark dark:border-white"></div>
+                            <div class="w-12 h-1 bg-brand-primary mb-4 border-2 border-brand-dark dark:border-white">
+                            </div>
                             <p class="text-sm text-brand-muted dark:text-slate-400 leading-relaxed"
-                                data-i18n="experience.desc_event">Xây dựng ứng dụng quản lý kinh doanh và hệ thống quản lý sự kiện cho các sự kiện offline.</p>
+                                data-i18n="experience.desc_event">Xây dựng ứng dụng quản lý kinh doanh và hệ thống quản
+                                lý sự kiện cho các sự kiện offline.</p>
                         </div>
                         <div class="card-brutal bg-white dark:bg-brand-darkCard p-8 group flex flex-col h-full">
-                            <div class="w-14 h-14 bg-brand-primary border-3 border-brand-dark dark:border-white shadow-[4px_4px_0px_var(--tw-shadow-color)] shadow-brand-dark dark:shadow-white rounded-xl flex items-center justify-center text-white mb-6 shrink-0 group-hover:-translate-y-1 transition-transform">
+                            <div
+                                class="w-14 h-14 bg-brand-primary border-3 border-brand-dark dark:border-white shadow-[4px_4px_0px_var(--tw-shadow-color)] shadow-brand-dark dark:shadow-white rounded-xl flex items-center justify-center text-white mb-6 shrink-0 group-hover:-translate-y-1 transition-transform">
                                 <span class="material-symbols-outlined text-3xl">rocket_launch</span>
                             </div>
-                            <h5 class="font-bold text-xl text-brand-dark dark:text-white mb-3 font-display tracking-wide uppercase" data-i18n="experience.card_web">
+                            <h5 class="font-bold text-xl text-brand-dark dark:text-white mb-3 font-display tracking-wide uppercase"
+                                data-i18n="experience.card_web">
                                 Web Projects</h5>
-                            <div class="w-12 h-1 bg-brand-primary mb-4 border-2 border-brand-dark dark:border-white"></div>
+                            <div class="w-12 h-1 bg-brand-primary mb-4 border-2 border-brand-dark dark:border-white">
+                            </div>
                             <p class="text-sm text-brand-muted dark:text-slate-400 leading-relaxed"
-                                data-i18n="experience.desc_web">Triển khai các dự án web nhằm cải thiện hình ảnh công chúng và quy trình làm việc nội bộ.</p>
+                                data-i18n="experience.desc_web">Triển khai các dự án web nhằm cải thiện hình ảnh công
+                                chúng và quy trình làm việc nội bộ.</p>
                         </div>
                         <div class="card-brutal bg-white dark:bg-brand-darkCard p-8 group flex flex-col h-full">
-                            <div class="w-14 h-14 bg-brand-primary border-3 border-brand-dark dark:border-white shadow-[4px_4px_0px_var(--tw-shadow-color)] shadow-brand-dark dark:shadow-white rounded-xl flex items-center justify-center text-white mb-6 shrink-0 group-hover:-translate-y-1 transition-transform">
+                            <div
+                                class="w-14 h-14 bg-brand-primary border-3 border-brand-dark dark:border-white shadow-[4px_4px_0px_var(--tw-shadow-color)] shadow-brand-dark dark:shadow-white rounded-xl flex items-center justify-center text-white mb-6 shrink-0 group-hover:-translate-y-1 transition-transform">
                                 <span class="material-symbols-outlined text-3xl">engineering</span>
                             </div>
-                            <h5 class="font-bold text-xl text-brand-dark dark:text-white mb-3 font-display tracking-wide uppercase" data-i18n="experience.card_lead">
+                            <h5 class="font-bold text-xl text-brand-dark dark:text-white mb-3 font-display tracking-wide uppercase"
+                                data-i18n="experience.card_lead">
                                 Technical Lead</h5>
-                            <div class="w-12 h-1 bg-brand-primary mb-4 border-2 border-brand-dark dark:border-white"></div>
+                            <div class="w-12 h-1 bg-brand-primary mb-4 border-2 border-brand-dark dark:border-white">
+                            </div>
                             <p class="text-sm text-brand-muted dark:text-slate-400 leading-relaxed"
-                                data-i18n="experience.desc_lead">Chịu trách nhiệm toàn bộ cho mọi công việc kỹ thuật.</p>
+                                data-i18n="experience.desc_lead">Chịu trách nhiệm toàn bộ cho mọi công việc kỹ thuật.
+                            </p>
                         </div>
                     </div>
 
@@ -926,201 +966,324 @@
                             Tiêu Biểu</h2>
                     </div>
                     <div class="hidden md:block">
-                        <a class="neo-tag flex items-center gap-2"
-                            href="https://github.com/Miho1254">
+                        <a class="neo-tag flex items-center gap-2" href="https://github.com/Miho1254">
                             <span data-i18n="projects.view_github">Xem Github</span> <i class="fas fa-arrow-right"></i>
                         </a>
                     </div>
                 </div>
                 <div class="grid lg:grid-cols-2 gap-10">
-                    <div class="group card-brutal bg-white dark:bg-brand-darkCard p-6 md:p-8 reveal flex flex-col h-full hover:shadow-brutal-lg transition-all">
-                        <div class="relative overflow-hidden border-4 border-brand-dark dark:border-white shadow-[6px_6px_0px_var(--tw-shadow-color)] shadow-brand-dark dark:shadow-white rounded-2xl mb-8 aspect-video bg-slate-100 group">
+                    <div
+                        class="group card-brutal relative bg-white dark:bg-brand-darkCard p-6 md:p-8 reveal flex flex-col h-full hover:shadow-brutal-lg transition-all duration-500 hover:-translate-y-2 hover:-translate-x-2 overflow-hidden z-10">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-brand-primary/5 dark:to-brand-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
+                        </div>
+
+                        <div
+                            class="relative overflow-hidden border-4 border-brand-dark dark:border-brand-primary shadow-[6px_6px_0px_var(--tw-shadow-color)] shadow-brand-dark dark:shadow-brand-primary rounded-2xl mb-8 aspect-video bg-slate-100 group-hover:shadow-[8px_8px_0px_var(--tw-shadow-color)] transition-all duration-500 group-hover:-translate-y-1 group-hover:-translate-x-1 z-20">
                             <!-- Gradient Overlay -->
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-60 z-10"></div>
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-60 group-hover:opacity-40 transition-opacity duration-500 z-10">
+                            </div>
 
                             <!-- Badges -->
-                            <div class="absolute top-4 left-4 z-20 flex flex-wrap gap-2">
-                                <span class="px-3 py-1 bg-amber-400 text-brand-dark text-xs font-black border-2 border-brand-dark uppercase tracking-wider shadow-[2px_2px_0px_black] rounded flex items-center gap-1">
+                            <div
+                                class="absolute top-4 left-4 z-20 flex flex-wrap gap-2 transform transition-transform duration-500 group-hover:translate-y-1 group-hover:translate-x-1">
+                                <span
+                                    class="px-3 py-1 bg-amber-400 text-brand-dark text-xs font-black border-2 border-brand-dark uppercase tracking-wider shadow-[2px_2px_0px_black] rounded flex items-center gap-1">
                                     <i class="fas fa-trophy"></i> HACKATHON
                                 </span>
-                                <span class="px-3 py-1 bg-brand-primary text-white text-xs font-black border-2 border-brand-dark uppercase tracking-wider shadow-[2px_2px_0px_black] rounded flex items-center gap-1">
+                                <span
+                                    class="px-3 py-1 bg-brand-primary text-white text-xs font-black border-2 border-brand-dark uppercase tracking-wider shadow-[2px_2px_0px_black] rounded flex items-center gap-1">
                                     <i class="fas fa-mobile-alt"></i> MOBILE
                                 </span>
                             </div>
 
                             <img alt="Agri-Loop Hackathon Project"
-                                class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 skele-loading"
-                                src="assets/images/ydcc2025.webp" onload="handleImageLoad(this)"
+                                class="w-full h-full object-cover transform scale-105 group-hover:scale-110 group-hover:rotate-1 transition-all duration-700 skele-loading"
+                                src="assets/images/ydcc2025.webp" loading="lazy" width="600" height="400"
+                                onload="handleImageLoad(this)"
                                 onerror="this.src='https://ui-avatars.com/api/?name=Agri+Loop&background=random&size=512'" />
 
                             <!-- AI Badge Bottom -->
-                            <div class="absolute bottom-4 left-4 z-20">
-                                <span class="px-3 py-1 bg-white text-brand-dark text-[10px] font-black border-2 border-brand-dark shadow-[2px_2px_0px_black] rounded uppercase flex items-center gap-1">
-                                    <span class="material-symbols-outlined text-sm text-brand-primary">auto_awesome</span>
+                            <div
+                                class="absolute bottom-4 left-4 z-20 transform transition-transform duration-500 group-hover:-translate-y-1">
+                                <span
+                                    class="px-3 py-1 bg-white text-brand-dark text-[10px] font-black border-2 border-brand-dark shadow-[2px_2px_0px_black] rounded uppercase flex items-center gap-1">
+                                    <span
+                                        class="material-symbols-outlined text-sm text-brand-primary animate-pulse">auto_awesome</span>
                                     Powered by Gemini 2.5 Flash
                                 </span>
                             </div>
                         </div>
 
                         <!-- Content -->
-                        <div class="flex-grow">
+                        <div class="flex-grow relative z-20">
                             <div class="flex justify-between items-start mb-4">
                                 <div>
-                                    <span class="text-[10px] font-black text-brand-primary uppercase tracking-[0.2em] mb-1 block">YDCC 2025 SUBMISSION</span>
-                                    <h3 class="text-2xl font-black text-brand-dark dark:text-white font-display tracking-tight group-hover:text-brand-primary transition-colors">Agri-Loop</h3>
+                                    <span
+                                        class="text-[10px] font-black text-brand-primary uppercase tracking-[0.2em] mb-1 block transform transition-all duration-300 group-hover:translate-x-1">YDCC
+                                        2025 SUBMISSION</span>
+                                    <h3
+                                        class="text-2xl md:text-3xl font-black text-brand-dark dark:text-white font-display tracking-tight group-hover:text-brand-primary transition-colors inline-flex items-center gap-2">
+                                        Agri-Loop
+                                        <span
+                                            class="material-symbols-outlined opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-xl">arrow_forward</span>
+                                    </h3>
                                 </div>
                                 <a href="https://github.com/Miho1254/delta-next-ydcc2025" target="_blank"
                                     aria-label="View Source on Github"
-                                    class="w-12 h-12 rounded-xl bg-white border-3 border-brand-dark shadow-[4px_4px_0px_black] flex items-center justify-center text-brand-dark hover:-translate-x-[2px] hover:-translate-y-[2px] hover:shadow-[6px_6px_0px_black] active:shadow-none active:translate-x-[4px] active:translate-y-[4px] transition-all">
-                                    <i class="fab fa-github text-xl"></i>
+                                    class="w-12 h-12 rounded-xl bg-white border-3 border-brand-dark shadow-[4px_4px_0px_black] flex items-center justify-center text-brand-dark hover:-translate-x-[2px] hover:-translate-y-[2px] hover:shadow-[6px_6px_0px_black] active:shadow-none active:translate-x-[4px] active:translate-y-[4px] transition-all group/git">
+                                    <i
+                                        class="fab fa-github text-xl transform group-hover/git:rotate-12 transition-transform duration-300"></i>
                                 </a>
                             </div>
-                            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-6 text-sm" data-i18n="projects.agri_desc">
-                                Giải pháp Xử lý Phụ phẩm Nông nghiệp bằng AI cho nông dân ĐBSCL. Sử dụng <strong>Gemini 2.5 Flash</strong> để phân tích hình ảnh đống ủ và đưa ra phác đồ xử lý, kết hợp tương tác giọng nói giúp nông dân dễ dàng tiếp cận công nghệ.
+                            <p class="text-slate-800 dark:text-slate-200 leading-relaxed mb-6 text-base md:text-lg font-medium"
+                                data-i18n="projects.agri_desc">
+                                Giải pháp Xử lý Phụ phẩm Nông nghiệp bằng AI cho nông dân ĐBSCL. Sử dụng <strong>Gemini
+                                    2.5 Flash</strong> để phân tích hình ảnh đống ủ và đưa ra phác đồ xử lý, kết hợp
+                                tương tác giọng nói giúp nông dân dễ dàng tiếp cận công nghệ.
                             </p>
 
                             <!-- Tech Stack -->
                             <div class="flex flex-wrap gap-2 mb-8">
-                                <span class="neo-tag">React Native</span>
-                                <span class="neo-tag">Expo</span>
-                                <span class="neo-tag">Supabase</span>
-                                <span class="neo-tag">Gemini AI</span>
+                                <span class="neo-tag transform transition-transform duration-300 hover:scale-105">React
+                                    Native</span>
+                                <span class="neo-tag transform transition-transform duration-300 hover:scale-105"
+                                    style="transition-delay: 50ms;">Expo</span>
+                                <span class="neo-tag transform transition-transform duration-300 hover:scale-105"
+                                    style="transition-delay: 100ms;">Supabase</span>
+                                <span class="neo-tag transform transition-transform duration-300 hover:scale-105"
+                                    style="transition-delay: 150ms;">Gemini AI</span>
                             </div>
 
                             <!-- Hackathon Disclaimer -->
-                            <div class="bg-amber-100 dark:bg-amber-500/10 border-3 border-brand-dark dark:border-amber-500/50 shadow-[4px_4px_0px_black] dark:shadow-[4px_4px_0px_white] rounded-xl p-4 flex items-start gap-3">
-                                <span class="material-symbols-outlined text-brand-dark dark:text-amber-500 font-bold">warning</span>
+                            <div
+                                class="bg-amber-100 dark:bg-amber-500/10 border-3 border-brand-dark dark:border-amber-500/50 shadow-[4px_4px_0px_black] dark:shadow-[4px_4px_0px_white] rounded-xl p-4 flex items-start gap-3 transform transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-[6px_6px_0px_black] dark:group-hover:shadow-[6px_6px_0px_white]">
+                                <span
+                                    class="material-symbols-outlined text-brand-dark dark:text-amber-500 font-bold mt-0.5 animate-bounce">warning</span>
                                 <div>
-                                    <p class="text-xs font-black text-brand-dark dark:text-amber-400 uppercase mb-1" data-i18n="projects.hackathon_badge">Hackathon Prototype</p>
-                                    <p class="text-[11px] text-brand-dark dark:text-amber-500/90 leading-tight font-medium" data-i18n="projects.hackathon_warn">Dự án được xây dựng trong khuôn khổ cuộc thi Hackathon. Đang trong giai đoạn phát triển ý tưởng (Prototype), chưa có MVP hoàn chỉnh.</p>
+                                    <p class="text-xs font-black text-brand-dark dark:text-amber-400 uppercase mb-1"
+                                        data-i18n="projects.hackathon_badge">Hackathon Prototype</p>
+                                    <p class="text-[11px] text-brand-dark dark:text-amber-500/90 leading-tight font-medium"
+                                        data-i18n="projects.hackathon_warn">Dự án được xây dựng trong khuôn khổ cuộc thi
+                                        Hackathon. Đang trong giai đoạn phát triển ý tưởng (Prototype), chưa có MVP hoàn
+                                        chỉnh.</p>
                                 </div>
                             </div>
                         </div>
                     </div>
+
                     <!-- Project 1 -->
-                    <!-- Project 1 -->
-                    <div class="group card-brutal bg-white dark:bg-brand-darkCard p-6 md:p-8 reveal flex flex-col h-full hover:shadow-brutal-lg transition-all">
-                        <div class="relative overflow-hidden border-4 border-brand-dark dark:border-white shadow-[6px_6px_0px_var(--tw-shadow-color)] shadow-brand-dark dark:shadow-white rounded-2xl mb-8 aspect-video bg-slate-100">
-                            <div class="absolute inset-0 bg-brand-dark/0 group-hover:bg-brand-dark/10 transition-colors duration-300 z-10"></div>
+                    <div
+                        class="group card-brutal relative bg-white dark:bg-brand-darkCard p-6 md:p-8 reveal flex flex-col h-full hover:shadow-brutal-lg transition-all duration-500 hover:-translate-y-2 hover:-translate-x-2 overflow-hidden z-10">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-brand-primary/5 dark:to-brand-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
+                        </div>
+
+                        <div
+                            class="relative overflow-hidden border-4 border-brand-dark dark:border-brand-primary shadow-[6px_6px_0px_var(--tw-shadow-color)] shadow-brand-dark dark:shadow-brand-primary rounded-2xl mb-8 aspect-video bg-slate-100 group-hover:shadow-[8px_8px_0px_var(--tw-shadow-color)] transition-all duration-500 group-hover:-translate-y-1 group-hover:-translate-x-1 z-20">
+                            <div
+                                class="absolute inset-0 bg-brand-dark/0 group-hover:bg-brand-dark/20 transition-colors duration-500 z-10">
+                            </div>
                             <img alt="Ticket Management System Preview"
-                                class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 skele-loading"
+                                class="w-full h-full object-cover transform scale-105 group-hover:scale-110 group-hover:-rotate-1 transition-all duration-700 skele-loading"
                                 src="assets/images/wlh-office.webp" onload="handleImageLoad(this)" />
                         </div>
-                        <div class="flex flex-wrap gap-2 mb-6">
-                            <span class="neo-tag">React Admin</span>
-                            <span class="neo-tag">Deno</span>
-                            <span class="neo-tag">Prisma</span>
-                            <span class="neo-tag">PostgreSQL</span>
+                        <div class="flex-grow relative z-20 flex flex-col">
+                            <div class="flex flex-wrap gap-2 mb-6">
+                                <span class="neo-tag transform transition-transform duration-300 hover:scale-105">React
+                                    Admin</span>
+                                <span class="neo-tag transform transition-transform duration-300 hover:scale-105"
+                                    style="transition-delay: 50ms;">Deno</span>
+                                <span class="neo-tag transform transition-transform duration-300 hover:scale-105"
+                                    style="transition-delay: 100ms;">Prisma</span>
+                                <span class="neo-tag transform transition-transform duration-300 hover:scale-105"
+                                    style="transition-delay: 150ms;">PostgreSQL</span>
+                            </div>
+                            <h3 class="text-2xl md:text-3xl font-black text-brand-dark dark:text-white mb-4 font-display group-hover:text-brand-primary transition-colors inline-flex items-center gap-2"
+                                data-i18n="projects.ticket_title">
+                                Hệ thống quản lý và soát vé
+                                <span
+                                    class="material-symbols-outlined opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-xl">arrow_forward</span>
+                            </h3>
+                            <div
+                                class="text-slate-800 dark:text-slate-200 font-medium mb-8 text-base md:text-lg flex-grow">
+                                <ul class="space-y-3">
+                                    <li
+                                        class="flex items-start gap-2 transform transition-all duration-300 group-hover:translate-x-2">
+                                        <span
+                                            class="material-symbols-outlined text-brand-primary text-sm mt-1 transform transition-transform duration-300 group-hover:scale-125 group-hover:rotate-12">check_circle</span>
+                                        <span data-i18n="projects.ticket_li_1">Thiết kế hệ thống bán vé và check-in cho
+                                            sự kiện quy mô lớn.</span>
+                                    </li>
+                                    <li class="flex items-start gap-2 transform transition-all duration-300 group-hover:translate-x-2"
+                                        style="transition-delay: 75ms;">
+                                        <span
+                                            class="material-symbols-outlined text-brand-primary text-sm mt-1 transform transition-transform duration-300 group-hover:scale-125 group-hover:rotate-12">check_circle</span>
+                                        <span data-i18n="projects.ticket_li_2">Xử lý 400+ vé, doanh thu ~50 triệu
+                                            VND.</span>
+                                    </li>
+                                    <li class="flex items-start gap-2 transform transition-all duration-300 group-hover:translate-x-2"
+                                        style="transition-delay: 150ms;">
+                                        <span
+                                            class="material-symbols-outlined text-brand-primary text-sm mt-1 transform transition-transform duration-300 group-hover:scale-125 group-hover:rotate-12">check_circle</span>
+                                        <span data-i18n="projects.ticket_li_3">Tự động gửi email QR và dashboard
+                                            real-time.</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <a class="neo-btn inline-flex items-center justify-center gap-2 w-fit px-6 py-3 group/btn overflow-hidden mt-auto"
+                                href="https://www.facebook.com/share/p/17KFWRUQa4/" target="_blank">
+                                <span class="relative z-10" data-i18n="projects.view_demo">Xem Demo</span>
+                                <i
+                                    class="fas fa-external-link-alt text-xs relative z-10 transform transition-transform duration-300 group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1"></i>
+                                <div
+                                    class="absolute inset-0 h-full w-full bg-white/20 -translate-x-full skew-x-12 group-hover/btn:animate-[wipe_0.7s_ease-in-out]">
+                                </div>
+                            </a>
                         </div>
-                        <h3 class="text-2xl font-black text-brand-dark dark:text-white mb-4 font-display group-hover:text-brand-primary transition-colors"
-                            data-i18n="projects.ticket_title">
-                            Hệ thống quản lý và soát vé</h3>
-                        <div class="text-brand-muted dark:text-slate-400 mb-8 text-sm flex-grow">
-                            <ul class="space-y-3">
-                                <li class="flex items-start gap-2">
-                                    <span class="material-symbols-outlined text-brand-primary text-sm mt-1">check_circle</span>
-                                    <span data-i18n="projects.ticket_li_1">Thiết kế hệ thống bán vé và check-in cho sự kiện quy mô lớn.</span>
-                                </li>
-                                <li class="flex items-start gap-2">
-                                    <span class="material-symbols-outlined text-brand-primary text-sm mt-1">check_circle</span>
-                                    <span data-i18n="projects.ticket_li_2">Xử lý 400+ vé, doanh thu ~50 triệu VND.</span>
-                                </li>
-                                <li class="flex items-start gap-2">
-                                    <span class="material-symbols-outlined text-brand-primary text-sm mt-1">check_circle</span>
-                                    <span data-i18n="projects.ticket_li_3">Tự động gửi email QR và dashboard real-time.</span>
-                                </li>
-                            </ul>
-                        </div>
-                        <a class="neo-btn inline-flex items-center justify-center gap-2 w-fit px-6 py-3"
-                            href="https://www.facebook.com/share/p/17KFWRUQa4/" target="_blank">
-                            <span data-i18n="projects.view_demo">Xem Demo</span> 
-                            <i class="fas fa-external-link-alt text-xs"></i>
-                        </a>
                     </div>
 
                     <!-- Project 2 -->
-                    <!-- Project 2 -->
-                    <div class="group card-brutal bg-white dark:bg-brand-darkCard p-6 md:p-8 reveal flex flex-col h-full hover:shadow-brutal-lg transition-all" style="transition-delay: 100ms;">
-                        <div class="relative overflow-hidden border-4 border-brand-dark dark:border-white shadow-[6px_6px_0px_var(--tw-shadow-color)] shadow-brand-dark dark:shadow-white rounded-2xl mb-8 aspect-video bg-slate-100">
-                            <div class="absolute inset-0 bg-brand-dark/0 group-hover:bg-brand-dark/10 transition-colors duration-300 z-10"></div>
+                    <div class="group card-brutal relative bg-white dark:bg-brand-darkCard p-6 md:p-8 reveal flex flex-col h-full hover:shadow-brutal-lg transition-all duration-500 hover:-translate-y-2 hover:-translate-x-2 overflow-hidden z-10"
+                        style="transition-delay: 100ms;">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-brand-primary/5 dark:to-brand-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
+                        </div>
+
+                        <div
+                            class="relative overflow-hidden border-4 border-brand-dark dark:border-brand-primary shadow-[6px_6px_0px_var(--tw-shadow-color)] shadow-brand-dark dark:shadow-brand-primary rounded-2xl mb-8 aspect-video bg-slate-100 group-hover:shadow-[8px_8px_0px_var(--tw-shadow-color)] transition-all duration-500 group-hover:-translate-y-1 group-hover:-translate-x-1 z-20">
+                            <div
+                                class="absolute inset-0 bg-brand-dark/0 group-hover:bg-brand-dark/20 transition-colors duration-500 z-10">
+                            </div>
                             <img alt="NFC Member System Preview"
-                                class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 skele-loading"
+                                class="w-full h-full object-cover transform scale-105 group-hover:scale-110 group-hover:rotate-1 transition-all duration-700 skele-loading"
                                 src="assets/images/wlh-staff.webp" onload="handleImageLoad(this)" />
                         </div>
-                        <div class="flex flex-wrap gap-2 mb-6">
-                            <span class="neo-tag">IoT</span>
-                            <span class="neo-tag">SonicJS</span>
-                            <span class="neo-tag">Cloudflare</span>
+                        <div class="flex-grow relative z-20 flex flex-col">
+                            <div class="flex flex-wrap gap-2 mb-6">
+                                <span
+                                    class="neo-tag transform transition-transform duration-300 hover:scale-105">IoT</span>
+                                <span class="neo-tag transform transition-transform duration-300 hover:scale-105"
+                                    style="transition-delay: 50ms;">SonicJS</span>
+                                <span class="neo-tag transform transition-transform duration-300 hover:scale-105"
+                                    style="transition-delay: 100ms;">Cloudflare</span>
+                            </div>
+                            <h3 class="text-2xl md:text-3xl font-black text-brand-dark dark:text-white mb-4 font-display group-hover:text-brand-primary transition-colors inline-flex items-center gap-2"
+                                data-i18n="projects.nfc_title">
+                                Hệ thống Quản lý Thành viên NFC
+                                <span
+                                    class="material-symbols-outlined opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-xl">arrow_forward</span>
+                            </h3>
+                            <div
+                                class="text-slate-800 dark:text-slate-200 font-medium mb-8 text-base md:text-lg flex-grow">
+                                <ul class="space-y-3">
+                                    <li
+                                        class="flex items-start gap-2 transform transition-all duration-300 group-hover:translate-x-2">
+                                        <span
+                                            class="material-symbols-outlined text-brand-primary text-sm mt-1 transform transition-transform duration-300 group-hover:scale-125 group-hover:rotate-12">check_circle</span>
+                                        <span data-i18n="projects.nfc_li_1">Liên kết thẻ NFC với hồ sơ trực
+                                            tuyến.</span>
+                                    </li>
+                                    <li class="flex items-start gap-2 transform transition-all duration-300 group-hover:translate-x-2"
+                                        style="transition-delay: 75ms;">
+                                        <span
+                                            class="material-symbols-outlined text-brand-primary text-sm mt-1 transform transition-transform duration-300 group-hover:scale-125 group-hover:rotate-12">check_circle</span>
+                                        <span data-i18n="projects.nfc_li_2">Dashboard quản trị dữ liệu thành
+                                            viên.</span>
+                                    </li>
+                                    <li class="flex items-start gap-2 transform transition-all duration-300 group-hover:translate-x-2"
+                                        style="transition-delay: 150ms;">
+                                        <span
+                                            class="material-symbols-outlined text-brand-primary text-sm mt-1 transform transition-transform duration-300 group-hover:scale-125 group-hover:rotate-12">check_circle</span>
+                                        <span data-i18n="projects.nfc_li_3">Quản lý thông tin 40+ thành viên, phân quyền
+                                            linh hoạt.</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <a class="neo-btn inline-flex items-center justify-center gap-2 w-fit px-6 py-3 group/btn overflow-hidden mt-auto"
+                                href="https://worldlotho.com/staff" target="_blank">
+                                <span class="relative z-10" data-i18n="projects.view_demo">Xem Demo</span>
+                                <i
+                                    class="fas fa-external-link-alt text-xs relative z-10 transform transition-transform duration-300 group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1"></i>
+                                <div
+                                    class="absolute inset-0 h-full w-full bg-white/20 -translate-x-full skew-x-12 group-hover/btn:animate-[wipe_0.7s_ease-in-out]">
+                                </div>
+                            </a>
                         </div>
-                        <h3 class="text-2xl font-black text-brand-dark dark:text-white mb-4 font-display group-hover:text-brand-primary transition-colors"
-                            data-i18n="projects.nfc_title">
-                            Hệ thống Quản lý Thành viên NFC</h3>
-                        <div class="text-brand-muted dark:text-slate-400 mb-8 text-sm flex-grow">
-                            <ul class="space-y-3">
-                                <li class="flex items-start gap-2">
-                                    <span class="material-symbols-outlined text-brand-primary text-sm mt-1">check_circle</span>
-                                    <span data-i18n="projects.nfc_li_1">Liên kết thẻ NFC với hồ sơ trực tuyến.</span>
-                                </li>
-                                <li class="flex items-start gap-2">
-                                    <span class="material-symbols-outlined text-brand-primary text-sm mt-1">check_circle</span>
-                                    <span data-i18n="projects.nfc_li_2">Dashboard quản trị dữ liệu thành viên.</span>
-                                </li>
-                                <li class="flex items-start gap-2">
-                                    <span class="material-symbols-outlined text-brand-primary text-sm mt-1">check_circle</span>
-                                    <span data-i18n="projects.nfc_li_3">Quản lý thông tin 40+ thành viên, phân quyền linh hoạt.</span>
-                                </li>
-                            </ul>
-                        </div>
-                        <a class="neo-btn inline-flex items-center justify-center gap-2 w-fit px-6 py-3"
-                            href="https://worldlotho.com/staff" target="_blank">
-                            <span data-i18n="projects.view_demo">Xem Demo</span> 
-                            <i class="fas fa-external-link-alt text-xs"></i>
-                        </a>
                     </div>
 
                     <!-- Project 3 -->
-                    <div class="group card-brutal bg-white dark:bg-brand-darkCard p-6 md:p-8 reveal flex flex-col h-full hover:shadow-brutal-lg transition-all" style="transition-delay: 200ms;">
-                        <div class="relative overflow-hidden border-4 border-brand-dark dark:border-white shadow-[6px_6px_0px_var(--tw-shadow-color)] shadow-brand-dark dark:shadow-white rounded-2xl mb-8 aspect-video bg-slate-100">
-                            <div class="absolute inset-0 bg-brand-dark/0 group-hover:bg-brand-dark/10 transition-colors duration-300 z-10"></div>
+                    <div class="group card-brutal relative bg-white dark:bg-brand-darkCard p-6 md:p-8 reveal flex flex-col h-full hover:shadow-brutal-lg transition-all duration-500 hover:-translate-y-2 hover:-translate-x-2 overflow-hidden z-10"
+                        style="transition-delay: 200ms;">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-brand-primary/5 dark:to-brand-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
+                        </div>
+
+                        <div
+                            class="relative overflow-hidden border-4 border-brand-dark dark:border-brand-primary shadow-[6px_6px_0px_var(--tw-shadow-color)] shadow-brand-dark dark:shadow-brand-primary rounded-2xl mb-8 aspect-video bg-slate-100 group-hover:shadow-[8px_8px_0px_var(--tw-shadow-color)] transition-all duration-500 group-hover:-translate-y-1 group-hover:-translate-x-1 z-20">
+                            <div
+                                class="absolute inset-0 bg-brand-dark/0 group-hover:bg-brand-dark/20 transition-colors duration-500 z-10">
+                            </div>
                             <img alt="World Lọt Hố Website Preview"
-                                class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
+                                class="w-full h-full object-cover transform scale-105 group-hover:scale-110 group-hover:-rotate-1 transition-all duration-700"
                                 src="assets/images/wlh-web.webp" />
                         </div>
-                        <div class="flex flex-wrap gap-2 mb-6">
-                            <span class="neo-tag">Vanilla CSS</span>
-                            <span class="neo-tag">HTML5</span>
-                            <span class="neo-tag">Performance</span>
+                        <div class="flex-grow relative z-20 flex flex-col">
+                            <div class="flex flex-wrap gap-2 mb-6">
+                                <span
+                                    class="neo-tag transform transition-transform duration-300 hover:scale-105">Vanilla
+                                    CSS</span>
+                                <span class="neo-tag transform transition-transform duration-300 hover:scale-105"
+                                    style="transition-delay: 50ms;">HTML5</span>
+                                <span class="neo-tag transform transition-transform duration-300 hover:scale-105"
+                                    style="transition-delay: 100ms;">Performance</span>
+                            </div>
+                            <h3 class="text-2xl md:text-3xl font-black text-brand-dark dark:text-white mb-4 font-display group-hover:text-brand-primary transition-colors inline-flex items-center gap-2"
+                                data-i18n="projects.web_title">
+                                Website giới thiệu World Lọt Hố
+                                <span
+                                    class="material-symbols-outlined opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-xl">arrow_forward</span>
+                            </h3>
+                            <div
+                                class="text-slate-800 dark:text-slate-200 font-medium mb-8 text-base md:text-lg flex-grow">
+                                <ul class="space-y-3">
+                                    <li
+                                        class="flex items-start gap-2 transform transition-all duration-300 group-hover:translate-x-2">
+                                        <span
+                                            class="material-symbols-outlined text-brand-primary text-sm mt-1 transform transition-transform duration-300 group-hover:scale-125 group-hover:rotate-12">check_circle</span>
+                                        <span data-i18n="projects.web_li_1">Landing page chuyển đổi cao.</span>
+                                    </li>
+                                    <li class="flex items-start gap-2 transform transition-all duration-300 group-hover:translate-x-2"
+                                        style="transition-delay: 75ms;">
+                                        <span
+                                            class="material-symbols-outlined text-brand-primary text-sm mt-1 transform transition-transform duration-300 group-hover:scale-125 group-hover:rotate-12">check_circle</span>
+                                        <span data-i18n="projects.web_li_2">Tối ưu tốc độ tải trang, Lighthouse >
+                                            90.</span>
+                                    </li>
+                                    <li class="flex items-start gap-2 transform transition-all duration-300 group-hover:translate-x-2"
+                                        style="transition-delay: 150ms;">
+                                        <span
+                                            class="material-symbols-outlined text-brand-primary text-sm mt-1 transform transition-transform duration-300 group-hover:scale-125 group-hover:rotate-12">check_circle</span>
+                                        <span data-i18n="projects.web_li_3">Tích hợp biểu mẫu liên hệ tự động.</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <a class="neo-btn inline-flex items-center justify-center gap-2 w-fit px-6 py-3 group/btn overflow-hidden mt-auto"
+                                href="https://worldlotho.com" target="_blank">
+                                <span class="relative z-10" data-i18n="projects.view_live">Xem Live</span>
+                                <i
+                                    class="fas fa-external-link-alt text-xs relative z-10 transform transition-transform duration-300 group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1"></i>
+                                <div
+                                    class="absolute inset-0 h-full w-full bg-white/20 -translate-x-full skew-x-12 group-hover/btn:animate-[wipe_0.7s_ease-in-out]">
+                                </div>
+                            </a>
                         </div>
-                        <h3 class="text-2xl font-black text-brand-dark dark:text-white mb-4 font-display group-hover:text-brand-primary transition-colors"
-                            data-i18n="projects.web_title">
-                            Website giới thiệu World Lọt Hố</h3>
-                        <div class="text-brand-muted dark:text-slate-400 mb-8 text-sm flex-grow">
-                            <ul class="space-y-3">
-                                <li class="flex items-start gap-2">
-                                    <span class="material-symbols-outlined text-brand-primary text-sm mt-1">check_circle</span>
-                                    <span data-i18n="projects.web_li_1">Landing page chuyển đổi cao.</span>
-                                </li>
-                                <li class="flex items-start gap-2">
-                                    <span class="material-symbols-outlined text-brand-primary text-sm mt-1">check_circle</span>
-                                    <span data-i18n="projects.web_li_2">Tối ưu tốc độ tải trang, Lighthouse > 90.</span>
-                                </li>
-                                <li class="flex items-start gap-2">
-                                    <span class="material-symbols-outlined text-brand-primary text-sm mt-1">check_circle</span>
-                                    <span data-i18n="projects.web_li_3">Tích hợp biểu mẫu liên hệ tự động.</span>
-                                </li>
-                            </ul>
-                        </div>
-                        <a class="neo-btn inline-flex items-center justify-center gap-2 w-fit px-6 py-3"
-                            href="https://worldlotho.com" target="_blank">
-                            <span data-i18n="projects.view_live">Xem Live</span> 
-                            <i class="fas fa-external-link-alt text-xs"></i>
-                        </a>
                     </div>
 
                 </div>
                 <div class="mt-12 text-center md:hidden">
-                    <a class="neo-tag inline-flex items-center gap-2"
-                        href="https://github.com/Miho1254">
+                    <a class="neo-tag inline-flex items-center gap-2" href="https://github.com/Miho1254">
                         <span data-i18n="projects.view_all">Xem tất cả dự án</span> <i class="fas fa-arrow-right"></i>
                     </a>
                 </div>
@@ -1131,7 +1294,8 @@
         <section class="py-16 md:py-24 border-t-3 border-brand-primary/10 dark:border-brand-light/5" id="blog">
             <div class="max-w-7xl mx-auto px-6">
                 <div class="text-center mb-16 reveal">
-                    <h2 class="section-title text-4xl text-brand-primary dark:text-brand-light font-display justify-center" data-i18n="blog.title">
+                    <h2 class="section-title text-4xl text-brand-primary dark:text-brand-light font-display justify-center"
+                        data-i18n="blog.title">
                         Blog</h2>
                 </div>
                 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="latest-blogs">
@@ -1144,8 +1308,7 @@
                             <div class="h-4 w-3/4 rounded skele-loading"></div>
                         </div>
                     </div>
-                    <div
-                        class="card-brutal overflow-hidden hidden md:block">
+                    <div class="card-brutal overflow-hidden hidden md:block">
                         <div class="h-48 skele-loading"></div>
                         <div class="p-6 space-y-3">
                             <div class="h-4 w-24 rounded skele-loading"></div>
@@ -1153,8 +1316,7 @@
                             <div class="h-4 w-3/4 rounded skele-loading"></div>
                         </div>
                     </div>
-                    <div
-                        class="card-brutal overflow-hidden hidden lg:block">
+                    <div class="card-brutal overflow-hidden hidden lg:block">
                         <div class="h-48 skele-loading"></div>
                         <div class="p-6 space-y-3">
                             <div class="h-4 w-24 rounded skele-loading"></div>
@@ -1164,8 +1326,7 @@
                     </div>
                 </div>
                 <div class="mt-12 text-center reveal">
-                    <a class="neo-btn inline-flex items-center gap-2 px-8 py-4 text-sm"
-                        href="/blogs">
+                    <a class="neo-btn inline-flex items-center gap-2 px-8 py-4 text-sm" href="/blogs">
                         <span data-i18n="blog.view_all">Xem tất cả bài viết</span>
                         <i class="fas fa-arrow-right"></i>
                     </a>
@@ -1173,7 +1334,8 @@
             </div>
         </section>
 
-        <section class="py-20 md:py-32 relative overflow-hidden border-t-3 border-brand-primary/10 dark:border-brand-light/5"
+        <section
+            class="py-20 md:py-32 relative overflow-hidden border-t-3 border-brand-primary/10 dark:border-brand-light/5"
             id="contact">
             <div class="absolute left-0 bottom-0 -z-0 grid grid-cols-4 gap-4 opacity-20 p-10">
                 <div class="w-2 h-2 rounded-full bg-brand-accent"></div>
@@ -1236,19 +1398,22 @@
             </div>
         </section>
 
-        <footer class="bg-brand-soft dark:bg-brand-darkBg py-12 border-t-3 border-brand-primary/20 dark:border-brand-light/10">
+        <footer
+            class="bg-brand-soft dark:bg-brand-darkBg py-12 border-t-3 border-brand-primary/20 dark:border-brand-light/10">
             <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
                 <div>
-                    <img src="assets/images/logo.webp" alt="Logo" class="h-16 w-auto object-contain opacity-90">
+                    <img src="assets/images/logo.webp" alt="Logo" class="h-16 w-auto object-contain opacity-90"
+                        loading="lazy" width="64" height="64">
                 </div>
                 <div class="text-sm text-brand-dark/70 dark:text-white/70 text-center">
-                    <p data-i18n="footer.copyright">© 2026 Miho Portfolio. Designed & Built in TP.HCM.</p>
+                    <p data-i18n="footer.copyright">© 2026 Miho Portfolio.</p>
                 </div>
                 <div class="flex gap-6 text-brand-dark/60 dark:text-white/60">
-                    <a class="hover:text-brand-primary dark:hover:text-white transition-colors" href="https://github.com/Miho1254"
-                        aria-label="Github"><i class="fab fa-github text-xl"></i></a>
-                    <a class="hover:text-brand-primary dark:hover:text-white transition-colors" href="https://www.facebook.com/WangHien.1254"
-                        aria-label="Facebook"><i class="fab fa-facebook text-xl"></i></a>
+                    <a class="hover:text-brand-primary dark:hover:text-white transition-colors"
+                        href="https://github.com/Miho1254" aria-label="Github"><i class="fab fa-github text-xl"></i></a>
+                    <a class="hover:text-brand-primary dark:hover:text-white transition-colors"
+                        href="https://www.facebook.com/WangHien.1254" aria-label="Facebook"><i
+                            class="fab fa-facebook text-xl"></i></a>
                 </div>
             </div>
         </footer>
@@ -1335,7 +1500,7 @@
                 }
                 container.innerHTML = posts.map(post => `
                     <a href="${post.link}" class="group card-brutal bg-white dark:bg-brand-darkCard overflow-hidden">
-                        ${post.image ? `<div class="h-48 overflow-hidden bg-slate-100 dark:bg-slate-800"><img src="${post.image}" alt="${post.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"></div>` : '<div class="h-48 bg-gradient-to-br from-brand-primary/10 to-blue-500/10 dark:from-brand-primary/5 dark:to-blue-500/5 flex items-center justify-center"><span class="material-symbols-outlined text-6xl text-brand-primary/30">article</span></div>'}
+                        ${post.image ? `<div class="h-48 overflow-hidden bg-slate-100 dark:bg-slate-800"><img src="${post.image}" alt="${post.title}" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"></div>` : '<div class="h-48 bg-gradient-to-br from-brand-primary/10 to-blue-500/10 dark:from-brand-primary/5 dark:to-blue-500/5 flex items-center justify-center"><span class="material-symbols-outlined text-6xl text-brand-primary/30">article</span></div>'}
                         <div class="p-6">
                             <time class="text-xs font-mono text-brand-primary mb-2 block">${new Date(post.date).toLocaleDateString('vi-VN', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
                             <h3 class="text-lg font-bold text-brand-dark dark:text-white group-hover:text-brand-primary transition-colors mb-2">${post.title}</h3>

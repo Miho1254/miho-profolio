@@ -1,0 +1,48 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+    .brutal-box {
+        @apply border-3 border-brand-primary shadow-[4px_4px_0px_var(--tw-shadow-color)] shadow-brand-primary transition-all duration-300;
+    }
+    .brutal-box:hover {
+        @apply -translate-x-1 -translate-y-1 shadow-[6px_6px_0px_var(--tw-shadow-color)] shadow-brand-primary;
+    }
+    .dark .brutal-box {
+        @apply border-brand-primary bg-brand-darkCard shadow-brand-primary;
+    }
+    .neo-btn {
+        @apply relative inline-flex items-center justify-center border-3 border-brand-dark dark:border-slate-200 bg-brand-primary text-white font-display font-bold uppercase tracking-wider rounded-full transition-all duration-200 shadow-[4px_4px_0px_black] dark:shadow-[4px_4px_0px_rgba(255,255,255,0.4)];
+    }
+    .neo-btn:hover {
+        @apply -translate-x-1 -translate-y-1 shadow-[7px_7px_0px_black] dark:shadow-[7px_7px_0px_rgba(255,255,255,0.5)] brightness-110;
+    }
+    .neo-btn:active {
+        @apply translate-x-[4px] translate-y-[4px] shadow-none brightness-90;
+    }
+    .neo-btn-outline {
+        @apply relative inline-flex items-center justify-center border-3 border-brand-primary dark:border-brand-light bg-transparent text-brand-primary dark:text-brand-light font-display font-bold uppercase tracking-wider rounded-full transition-all duration-200 shadow-[4px_4px_0px_var(--tw-shadow-color)] shadow-brand-primary dark:shadow-brand-light/40;
+    }
+    .neo-btn-outline:hover {
+        @apply -translate-x-1 -translate-y-1 shadow-[6px_6px_0px_var(--tw-shadow-color)] shadow-brand-primary dark:shadow-brand-light/60 bg-brand-soft dark:bg-white/5;
+    }
+    .neo-btn-outline:active {
+        @apply translate-x-[4px] translate-y-[4px] shadow-none bg-brand-primary dark:bg-brand-light text-white dark:text-brand-dark;
+    }
+    .neo-btn-white {
+        @apply relative inline-flex items-center justify-center border-3 border-brand-dark dark:border-slate-200 bg-white dark:bg-brand-darkCard text-brand-dark dark:text-white font-display font-bold uppercase tracking-wider rounded-full transition-all duration-200 shadow-[4px_4px_0px_black] dark:shadow-[4px_4px_0px_rgba(255,255,255,0.4)];
+    }
+    .neo-btn-white:hover {
+        @apply -translate-x-1 -translate-y-1 shadow-[7px_7px_0px_black] dark:shadow-[7px_7px_0px_rgba(255,255,255,0.5)] brightness-110;
+    }
+    .neo-btn-white:active {
+        @apply translate-x-[4px] translate-y-[4px] shadow-none brightness-90;
+    }
+    .neo-tag {
+        @apply inline-flex items-center gap-2 px-3 py-2 bg-white dark:bg-brand-darkCard border-2 border-brand-dark dark:border-slate-300 text-sm font-bold text-brand-dark dark:text-white rounded-md shadow-[2px_2px_0px_black] dark:shadow-[2px_2px_0px_rgba(255,255,255,0.3)] hover:-translate-y-1 hover:-translate-x-1 hover:shadow-[4px_4px_0px_black] dark:hover:shadow-[4px_4px_0px_rgba(255,255,255,0.4)] transition-all duration-200 cursor-default;
+    }
+    .border-3 {
+        border-width: 3px;
+    }
+}
