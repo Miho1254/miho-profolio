@@ -95,10 +95,10 @@
         .timeline-line::before {
             content: '';
             position: absolute;
-            top: 0;
+            top: 16px;
+            bottom: 24px;
             left: 15px;
-            height: 100%;
-            width: 3px;
+            width: 2px;
             background: #93c5fd;
             border-radius: 2px;
         }
@@ -857,8 +857,7 @@
                                 <span data-i18n="awards.title">Giải Thưởng</span>
                             </h3>
                         </div>
-                        <!-- Changed pl-4 to pl-6 for container, pl-8 to pl-12 for items -->
-                        <div class="relative timeline-line pl-2 sm:pl-6 space-y-10">
+                        <div class="relative timeline-line space-y-10">
                             <!-- YDCC 2025 -->
                             <div class="relative pl-12">
                                 <div
@@ -994,7 +993,7 @@
 
                 <!-- Main Role Block (Open Editorial Layout, No Boxed Card) -->
                 <div class="reveal">
-                    <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 mb-3">
+                    <div class="flex flex-col items-start sm:flex-row sm:items-baseline justify-between gap-2 mb-3">
                         <div class="flex flex-wrap items-baseline gap-2">
                             <h3 class="text-2xl md:text-3xl font-black font-display text-slate-900 dark:text-white tracking-tight"
                                 data-i18n="experience.role">Product / Web</h3>
@@ -1003,7 +1002,7 @@
                                 class="text-xl md:text-2xl font-bold text-blue-700 dark:text-blue-400 hover:underline inline-flex items-center gap-1.5"
                                 data-i18n="experience.company">World Simp & Friends <i class="fas fa-arrow-up-right-from-square text-xs"></i></a>
                         </div>
-                        <span class="font-mono text-xs md:text-sm font-bold text-blue-800 dark:text-blue-300 px-3 py-1 bg-blue-100/70 dark:bg-blue-950/60 border border-blue-300 dark:border-blue-800 rounded"
+                        <span class="self-start sm:self-auto font-mono text-xs md:text-sm font-bold text-blue-800 dark:text-blue-300 px-3 py-1 bg-blue-100/70 dark:bg-blue-950/60 border border-blue-300 dark:border-blue-800 rounded-md w-fit shrink-0"
                             data-i18n="experience.time">2022–nay</span>
                     </div>
 
@@ -1101,24 +1100,27 @@
                         data-i18n="research.title">Nghiên Cứu</h2>
                 </div>
 
-                <!-- Research Paper Block (Scholarly Wayfinding Layout, No Boxed Card) -->
-                <div class="border-l-3 border-blue-700 dark:border-blue-400 pl-6 md:pl-8 py-2 reveal">
-                    <div class="flex flex-wrap items-center gap-2 mb-3">
-                        <span class="font-mono text-xs font-bold text-blue-800 dark:text-blue-300 bg-blue-100/70 dark:bg-blue-950/60 px-2.5 py-1 border border-blue-300 dark:border-blue-800 rounded"
+                <!-- Research Paper Block (Scholarly Open Layout, Responsive Typography) -->
+                <div class="reveal">
+                    <!-- Title & Meta Header Row -->
+                    <div class="flex flex-col items-start sm:flex-row sm:items-baseline justify-between gap-3 mb-4">
+                        <div class="space-y-1">
+                            <h3 class="text-2xl md:text-3xl font-bold font-display text-slate-900 dark:text-white tracking-tight leading-snug"
+                                data-i18n="research.paper_title">Cân bằng tải trong mạng SDN</h3>
+                            <span class="font-mono text-xs font-semibold text-slate-500 dark:text-slate-400 block">// SDN LOAD BALANCING</span>
+                        </div>
+                        <span class="self-start sm:self-auto font-mono text-xs font-bold text-blue-800 dark:text-blue-300 px-3 py-1 bg-blue-100/70 dark:bg-blue-950/60 border border-blue-300 dark:border-blue-800 rounded-md w-fit shrink-0"
                             data-i18n="research.meta">Học tăng cường Actor–Critic · 2025–2026</span>
-                        <span class="font-mono text-xs font-semibold text-slate-600 dark:text-slate-400">// SDN LOAD BALANCING</span>
                     </div>
 
-                    <h3 class="text-2xl md:text-3xl font-bold font-sans text-slate-900 dark:text-white tracking-tight leading-snug mb-4"
-                        data-i18n="research.paper_title">Cân bằng tải trong mạng SDN</h3>
-
+                    <!-- Research Description -->
                     <p class="text-base md:text-lg text-slate-800 dark:text-slate-200 leading-relaxed max-w-3xl mb-6 font-medium"
                         data-i18n="research.desc">
                         Mình nghiên cứu phương pháp cân bằng tải thích ứng trong mạng được định nghĩa bằng phần mềm (SDN), tập trung vào sự đánh đổi giữa hiệu năng mạng và khả năng thích ứng của chính sách điều khiển.
                     </p>
 
-                    <!-- Conference Presentation Card (Grounded, truthful, no exaggerated peer-review claims) -->
-                    <div class="my-7 max-w-3xl rounded-xl border border-slate-200 dark:border-blue-400/20 bg-slate-50/90 dark:bg-brand-darkCard/80 p-4 sm:p-5 shadow-sm">
+                    <!-- Conference Presentation Card -->
+                    <div class="my-6 max-w-3xl rounded-xl border border-slate-200 dark:border-blue-400/20 bg-slate-50/90 dark:bg-brand-darkCard/80 p-4 sm:p-5 shadow-sm">
                         <div class="flex items-start gap-3.5">
                             <div class="w-10 h-10 rounded-lg bg-blue-600/10 dark:bg-blue-400/10 border border-blue-600/20 dark:border-blue-400/20 flex items-center justify-center shrink-0 mt-0.5">
                                 <i class="fas fa-landmark text-blue-700 dark:text-blue-400 text-base"></i>
@@ -1135,15 +1137,17 @@
                         </div>
                     </div>
 
-                    <!-- Repository Action Group (Minimalist, Refined, with GitHub icon) -->
-                    <div class="flex items-center gap-4">
+                    <!-- Repository Action Link -->
+                    <div class="flex flex-wrap items-center gap-3">
                         <a href="https://github.com/Miho1254/nckh_sdn_payload" target="_blank" rel="noopener noreferrer"
-                            class="group inline-flex items-center gap-2.5 px-4 py-2 rounded-lg border border-slate-900 dark:border-blue-400 bg-white dark:bg-brand-darkCard hover:bg-slate-900 hover:text-white dark:hover:bg-blue-600 dark:hover:text-white text-slate-900 dark:text-white font-semibold text-xs sm:text-sm transition-all duration-200 shadow-[2px_2px_0px_#0f172a] dark:shadow-[2px_2px_0px_rgba(96,165,250,0.4)] hover:shadow-none hover:translate-x-[1px] hover:translate-y-[1px]">
-                            <i class="fab fa-github text-base transition-transform duration-200 group-hover:scale-110"></i>
+                            class="group inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-slate-900 dark:border-blue-400 bg-white dark:bg-brand-darkCard hover:bg-slate-900 hover:text-white dark:hover:bg-blue-600 dark:hover:text-white text-slate-900 dark:text-white font-semibold text-xs sm:text-sm transition-all duration-200 shadow-[2px_2px_0px_#0f172a] dark:shadow-[2px_2px_0px_rgba(96,165,250,0.4)] hover:shadow-none hover:translate-x-[1px] hover:translate-y-[1px]">
+                            <i class="fab fa-github text-base shrink-0 transition-transform duration-200 group-hover:scale-110"></i>
                             <span data-i18n="research.link">Kho mã nguồn nghiên cứu</span>
-                            <span class="font-mono text-xs opacity-75">// Miho1254/nckh_sdn_payload</span>
-                            <i class="fas fa-arrow-up-right-from-square text-xs opacity-70 group-hover:opacity-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all"></i>
+                            <i class="fas fa-arrow-up-right-from-square text-xs opacity-70 group-hover:opacity-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all shrink-0"></i>
                         </a>
+                        <span class="font-mono text-xs text-slate-500 dark:text-slate-400 break-all select-all">
+                            Miho1254/nckh_sdn_payload
+                        </span>
                     </div>
                 </div>
             </div>
