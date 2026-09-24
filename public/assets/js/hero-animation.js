@@ -5,16 +5,16 @@
 
 const phrases = [
     {
-        line1: "Sáng tạo và",
-        line2: "nỗ lực không ngừng"
+        line1: "Học và làm",
+        line2: "sản phẩm web"
     },
     {
-        line1: "Creativity and",
-        line2: "Relentless Effort"
+        line1: "Learning & Building",
+        line2: "Web Products"
     },
     {
-        line1: "創造性と",
-        line2: "絶え間ない努力"
+        line1: "学びながらつくる",
+        line2: "Webプロダクト"
     }
 ];
 

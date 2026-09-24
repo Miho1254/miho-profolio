@@ -1,6 +1,6 @@
 ---
 title: Bàn về cuộc cách mạng AI và tự động hóa qua góc nhìn chủ nghĩa duy vật lịch sử
-description: Cách mạng AI đang tước đoạt giá trị sáng tạo ra sao? Phân tích hiện tượng tha hóa, tích lũy nguyên thủy và bản quyền AI dưới lăng kính Karl Marx.
+description: Bài viết về AI, tự động hóa và bản quyền qua góc nhìn của chủ nghĩa duy vật lịch sử.
 pubDate: 2026-02-20
 hero: "/images/dan-ap-nguoi-nong-dan.jpg"
 ---
