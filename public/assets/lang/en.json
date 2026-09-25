@@ -75,7 +75,12 @@
         "paper_title": "SDN Load Balancing",
         "meta": "Actor–Critic Reinforcement Learning · 2025–2026",
         "desc": "Investigating adaptive load balancing in Software-Defined Networking (SDN) using Actor–Critic reinforcement learning, focusing on trade-offs between network performance and policy adaptability.",
-        "note": "Presented at the National Conference on Information and Communication Technology (ICT) in May 2026.",
+        "conf_badge": "CONFERENCE // ICT 2026",
+        "conf_title": "Presented at National Conference on ICT 2026",
+        "conf_org": "Tien Giang University",
+        "award_badge": "AWARD // RESEARCH 2026",
+        "award_title": "3rd Prize — Student Scientific Research Conference 2026",
+        "award_org": "Thuyloi University (Southern Campus)",
         "link": "Research Repository"
     },
     "projects": {

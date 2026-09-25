@@ -75,7 +75,12 @@
         "paper_title": "Cân bằng tải trong mạng SDN",
         "meta": "Học tăng cường Actor–Critic · 2025–2026",
         "desc": "Mình nghiên cứu phương pháp cân bằng tải thích ứng trong mạng được định nghĩa bằng phần mềm (SDN), tập trung vào sự đánh đổi giữa hiệu năng mạng và khả năng thích ứng của chính sách điều khiển.",
-        "note": "Đề tài được trình bày tại Hội nghị Quốc gia về Công nghệ thông tin và Truyền thông (ICT) vào tháng 5/2026.",
+        "conf_badge": "HỘI THẢO // ICT 2026",
+        "conf_title": "Trình bày tại Hội thảo Khoa học Quốc gia ICT 2026",
+        "conf_org": "Trường Đại học Tiền Giang",
+        "award_badge": "GIẢI THƯỞNG // NCKH 2026",
+        "award_title": "Giải Ba — Hội nghị NCKH Sinh viên 2026",
+        "award_org": "Phân hiệu Đại học Thủy Lợi",
         "link": "Kho mã nguồn nghiên cứu"
     },
     "projects": {
