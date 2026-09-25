@@ -738,25 +738,25 @@
             <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 w-full items-center">
                 <div class="order-1 lg:order-1 reveal active text-center lg:text-left pt-10 lg:pt-0">
                     <div
-                        class="inline-flex items-center gap-2.5 sm:gap-3 p-1.5 pr-3.5 mb-6 bg-white/95 dark:bg-brand-darkCard/95 border border-slate-300/80 dark:border-blue-400/30 rounded-xl shadow-xs backdrop-blur-sm select-none" data-station="hero">
+                        class="inline-flex max-w-full items-center gap-2 sm:gap-3 p-1.5 pr-3 sm:pr-3.5 mb-6 bg-white/95 dark:bg-brand-darkCard/95 border border-slate-300/80 dark:border-blue-400/30 rounded-xl shadow-xs backdrop-blur-sm select-none" data-station="hero">
                         <!-- JR Station Numbering Box -->
-                        <div class="flex items-center rounded-md overflow-hidden border border-blue-600 dark:border-blue-400 font-mono text-xs font-black shadow-2xs">
+                        <div class="flex shrink-0 items-center rounded-md overflow-hidden border border-blue-600 dark:border-blue-400 font-mono text-xs font-black shadow-2xs">
                             <span class="bg-blue-600 dark:bg-blue-500 text-white px-2 py-0.5 tracking-wider text-[11px]">SG</span>
                             <span class="bg-blue-50 dark:bg-brand-darkBg text-blue-800 dark:text-blue-300 px-1.5 py-0.5 text-[11px] border-l border-blue-600/30 dark:border-blue-400/30">00</span>
                         </div>
 
                         <!-- Station Name -->
-                        <div class="flex items-center gap-1.5">
-                            <span class="font-display font-bold text-xs sm:text-sm text-slate-900 dark:text-white tracking-wide"
+                        <div class="flex items-center gap-1 sm:gap-1.5 min-w-0">
+                            <span class="font-display font-bold text-xs sm:text-sm text-slate-900 dark:text-white tracking-wide truncate"
                                 data-i18n="hero.location">TP. HỒ CHÍ MINH</span>
-                            <span class="font-mono text-[10px] text-slate-400 dark:text-slate-500 font-semibold tracking-tight">/ SGN</span>
+                            <span class="font-mono text-[10px] text-slate-400 dark:text-slate-500 font-semibold tracking-tight shrink-0">/ SGN</span>
                         </div>
 
                         <!-- Divider -->
-                        <div class="h-3.5 w-px bg-slate-200 dark:bg-slate-700"></div>
+                        <div class="h-3.5 w-px bg-slate-200 dark:bg-slate-700 shrink-0"></div>
 
                         <!-- Live Weather Telemetry (Open-Meteo) -->
-                        <div id="hero-weather" class="flex items-center gap-1.5 font-mono text-xs font-semibold text-slate-700 dark:text-slate-300" title="Thời tiết thời gian thực tại TP.HCM (Open-Meteo API)">
+                        <div id="hero-weather" class="flex shrink-0 items-center gap-1.5 font-mono text-xs font-semibold text-slate-700 dark:text-slate-300" title="Thời tiết thời gian thực tại TP.HCM (Open-Meteo API)">
                             <span id="weather-icon" class="text-sm">⛅</span>
                             <span id="weather-temp">--°C</span>
                         </div>
@@ -939,7 +939,7 @@
 
                 <div class="grid md:grid-cols-2 gap-6 md:gap-8 items-stretch reveal">
                     <!-- 02.A // Application -->
-                    <div class="p-6 md:p-8 bg-white dark:bg-brand-darkCard border border-slate-200 dark:border-blue-400/20 rounded-2xl shadow-sm hover:border-blue-600/40 dark:hover:border-blue-400/40 transition-colors flex flex-col justify-between">
+                    <div class="p-5 sm:p-6 md:p-8 bg-white dark:bg-brand-darkCard border border-slate-200 dark:border-blue-400/20 rounded-2xl shadow-sm hover:border-blue-600/40 dark:hover:border-blue-400/40 transition-colors flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between pb-3.5 mb-4 border-b border-dashed border-slate-200 dark:border-slate-800">
                                 <h3 class="text-xl md:text-2xl font-bold font-display text-slate-900 dark:text-white flex items-center gap-2">
@@ -953,28 +953,28 @@
                             </p>
                         </div>
 
-                        <div class="grid grid-cols-2 gap-3">
-                            <div class="flex items-center gap-3 px-3.5 py-3 sm:px-4 sm:py-3.5 rounded-xl bg-slate-50 dark:bg-brand-darkBg/60 border border-slate-200 dark:border-blue-400/20 hover:border-blue-600/50 dark:hover:border-blue-400/50 hover:bg-blue-50/40 dark:hover:bg-blue-950/20 transition-all">
-                                <i class="devicon-typescript-plain colored text-2xl shrink-0"></i>
-                                <span class="font-mono font-bold text-sm sm:text-base text-slate-900 dark:text-slate-100">TypeScript</span>
+                        <div class="grid grid-cols-2 gap-2 sm:gap-3">
+                            <div class="flex items-center gap-2 sm:gap-3 px-2.5 py-2.5 sm:px-4 sm:py-3.5 rounded-xl bg-slate-50 dark:bg-brand-darkBg/60 border border-slate-200 dark:border-blue-400/20 hover:border-blue-600/50 dark:hover:border-blue-400/50 hover:bg-blue-50/40 dark:hover:bg-blue-950/20 transition-all min-w-0">
+                                <i class="devicon-typescript-plain colored text-xl sm:text-2xl shrink-0"></i>
+                                <span class="font-mono font-bold text-xs sm:text-sm md:text-base text-slate-900 dark:text-slate-100 truncate">TypeScript</span>
                             </div>
-                            <div class="flex items-center gap-3 px-3.5 py-3 sm:px-4 sm:py-3.5 rounded-xl bg-slate-50 dark:bg-brand-darkBg/60 border border-slate-200 dark:border-blue-400/20 hover:border-blue-600/50 dark:hover:border-blue-400/50 hover:bg-blue-50/40 dark:hover:bg-blue-950/20 transition-all">
-                                <i class="devicon-react-original text-sky-500 text-2xl shrink-0"></i>
-                                <span class="font-mono font-bold text-sm sm:text-base text-slate-900 dark:text-slate-100">React</span>
+                            <div class="flex items-center gap-2 sm:gap-3 px-2.5 py-2.5 sm:px-4 sm:py-3.5 rounded-xl bg-slate-50 dark:bg-brand-darkBg/60 border border-slate-200 dark:border-blue-400/20 hover:border-blue-600/50 dark:hover:border-blue-400/50 hover:bg-blue-50/40 dark:hover:bg-blue-950/20 transition-all min-w-0">
+                                <i class="devicon-react-original text-sky-500 text-xl sm:text-2xl shrink-0"></i>
+                                <span class="font-mono font-bold text-xs sm:text-sm md:text-base text-slate-900 dark:text-slate-100 truncate">React</span>
                             </div>
-                            <div class="flex items-center gap-3 px-3.5 py-3 sm:px-4 sm:py-3.5 rounded-xl bg-slate-50 dark:bg-brand-darkBg/60 border border-slate-200 dark:border-blue-400/20 hover:border-blue-600/50 dark:hover:border-blue-400/50 hover:bg-blue-50/40 dark:hover:bg-blue-950/20 transition-all">
-                                <span class="material-symbols-outlined text-orange-500 text-2xl leading-none shrink-0">local_fire_department</span>
-                                <span class="font-mono font-bold text-sm sm:text-base text-slate-900 dark:text-slate-100">Hono</span>
+                            <div class="flex items-center gap-2 sm:gap-3 px-2.5 py-2.5 sm:px-4 sm:py-3.5 rounded-xl bg-slate-50 dark:bg-brand-darkBg/60 border border-slate-200 dark:border-blue-400/20 hover:border-blue-600/50 dark:hover:border-blue-400/50 hover:bg-blue-50/40 dark:hover:bg-blue-950/20 transition-all min-w-0">
+                                <span class="material-symbols-outlined text-orange-500 text-xl sm:text-2xl leading-none shrink-0">local_fire_department</span>
+                                <span class="font-mono font-bold text-xs sm:text-sm md:text-base text-slate-900 dark:text-slate-100 truncate">Hono</span>
                             </div>
-                            <div class="flex items-center gap-3 px-3.5 py-3 sm:px-4 sm:py-3.5 rounded-xl bg-slate-50 dark:bg-brand-darkBg/60 border border-slate-200 dark:border-blue-400/20 hover:border-blue-600/50 dark:hover:border-blue-400/50 hover:bg-blue-50/40 dark:hover:bg-blue-950/20 transition-all">
-                                <i class="devicon-nodejs-plain text-green-600 text-2xl shrink-0"></i>
-                                <span class="font-mono font-bold text-sm sm:text-base text-slate-900 dark:text-slate-100">Node.js</span>
+                            <div class="flex items-center gap-2 sm:gap-3 px-2.5 py-2.5 sm:px-4 sm:py-3.5 rounded-xl bg-slate-50 dark:bg-brand-darkBg/60 border border-slate-200 dark:border-blue-400/20 hover:border-blue-600/50 dark:hover:border-blue-400/50 hover:bg-blue-50/40 dark:hover:bg-blue-950/20 transition-all min-w-0">
+                                <i class="devicon-nodejs-plain text-green-600 text-xl sm:text-2xl shrink-0"></i>
+                                <span class="font-mono font-bold text-xs sm:text-sm md:text-base text-slate-900 dark:text-slate-100 truncate">Node.js</span>
                             </div>
                         </div>
                     </div>
 
                     <!-- 02.B // Data & Infrastructure -->
-                    <div class="p-6 md:p-8 bg-white dark:bg-brand-darkCard border border-slate-200 dark:border-blue-400/20 rounded-2xl shadow-sm hover:border-blue-600/40 dark:hover:border-blue-400/40 transition-colors flex flex-col justify-between">
+                    <div class="p-5 sm:p-6 md:p-8 bg-white dark:bg-brand-darkCard border border-slate-200 dark:border-blue-400/20 rounded-2xl shadow-sm hover:border-blue-600/40 dark:hover:border-blue-400/40 transition-colors flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between pb-3.5 mb-4 border-b border-dashed border-slate-200 dark:border-slate-800">
                                 <h3 class="text-xl md:text-2xl font-bold font-display text-slate-900 dark:text-white flex items-center gap-2">
@@ -988,26 +988,26 @@
                             </p>
                         </div>
 
-                        <div class="grid grid-cols-2 gap-3">
-                            <div class="flex items-center gap-3 px-3.5 py-3 sm:px-4 sm:py-3.5 rounded-xl bg-slate-50 dark:bg-brand-darkBg/60 border border-slate-200 dark:border-blue-400/20 hover:border-blue-600/50 dark:hover:border-blue-400/50 hover:bg-blue-50/40 dark:hover:bg-blue-950/20 transition-all">
-                                <i class="devicon-postgresql-plain text-blue-600 dark:text-blue-400 text-2xl shrink-0"></i>
-                                <span class="font-mono font-bold text-sm sm:text-base text-slate-900 dark:text-slate-100">PostgreSQL</span>
+                        <div class="grid grid-cols-2 gap-2 sm:gap-3">
+                            <div class="flex items-center gap-2 sm:gap-3 px-2.5 py-2.5 sm:px-4 sm:py-3.5 rounded-xl bg-slate-50 dark:bg-brand-darkBg/60 border border-slate-200 dark:border-blue-400/20 hover:border-blue-600/50 dark:hover:border-blue-400/50 hover:bg-blue-50/40 dark:hover:bg-blue-950/20 transition-all min-w-0">
+                                <i class="devicon-postgresql-plain text-blue-600 dark:text-blue-400 text-xl sm:text-2xl shrink-0"></i>
+                                <span class="font-mono font-bold text-xs sm:text-sm md:text-base text-slate-900 dark:text-slate-100 truncate">PostgreSQL</span>
                             </div>
-                            <div class="flex items-center gap-3 px-3.5 py-3 sm:px-4 sm:py-3.5 rounded-xl bg-slate-50 dark:bg-brand-darkBg/60 border border-slate-200 dark:border-blue-400/20 hover:border-blue-600/50 dark:hover:border-blue-400/50 hover:bg-blue-50/40 dark:hover:bg-blue-950/20 transition-all">
-                                <i class="devicon-prisma-original text-slate-800 dark:text-slate-200 text-2xl shrink-0"></i>
-                                <span class="font-mono font-bold text-sm sm:text-base text-slate-900 dark:text-slate-100">Prisma</span>
+                            <div class="flex items-center gap-2 sm:gap-3 px-2.5 py-2.5 sm:px-4 sm:py-3.5 rounded-xl bg-slate-50 dark:bg-brand-darkBg/60 border border-slate-200 dark:border-blue-400/20 hover:border-blue-600/50 dark:hover:border-blue-400/50 hover:bg-blue-50/40 dark:hover:bg-blue-950/20 transition-all min-w-0">
+                                <i class="devicon-prisma-original text-slate-800 dark:text-slate-200 text-xl sm:text-2xl shrink-0"></i>
+                                <span class="font-mono font-bold text-xs sm:text-sm md:text-base text-slate-900 dark:text-slate-100 truncate">Prisma</span>
                             </div>
-                            <div class="flex items-center gap-3 px-3.5 py-3 sm:px-4 sm:py-3.5 rounded-xl bg-slate-50 dark:bg-brand-darkBg/60 border border-slate-200 dark:border-blue-400/20 hover:border-blue-600/50 dark:hover:border-blue-400/50 hover:bg-blue-50/40 dark:hover:bg-blue-950/20 transition-all">
-                                <i class="devicon-cloudflare-plain text-orange-500 text-2xl shrink-0"></i>
-                                <span class="font-mono font-bold text-sm sm:text-base text-slate-900 dark:text-slate-100">Cloudflare</span>
+                            <div class="flex items-center gap-2 sm:gap-3 px-2.5 py-2.5 sm:px-4 sm:py-3.5 rounded-xl bg-slate-50 dark:bg-brand-darkBg/60 border border-slate-200 dark:border-blue-400/20 hover:border-blue-600/50 dark:hover:border-blue-400/50 hover:bg-blue-50/40 dark:hover:bg-blue-950/20 transition-all min-w-0">
+                                <i class="devicon-cloudflare-plain text-orange-500 text-xl sm:text-2xl shrink-0"></i>
+                                <span class="font-mono font-bold text-xs sm:text-sm md:text-base text-slate-900 dark:text-slate-100 truncate">Cloudflare</span>
                             </div>
-                            <div class="flex items-center gap-3 px-3.5 py-3 sm:px-4 sm:py-3.5 rounded-xl bg-slate-50 dark:bg-brand-darkBg/60 border border-slate-200 dark:border-blue-400/20 hover:border-blue-600/50 dark:hover:border-blue-400/50 hover:bg-blue-50/40 dark:hover:bg-blue-950/20 transition-all">
-                                <i class="devicon-docker-plain text-blue-500 text-2xl shrink-0"></i>
-                                <span class="font-mono font-bold text-sm sm:text-base text-slate-900 dark:text-slate-100">Docker</span>
+                            <div class="flex items-center gap-2 sm:gap-3 px-2.5 py-2.5 sm:px-4 sm:py-3.5 rounded-xl bg-slate-50 dark:bg-brand-darkBg/60 border border-slate-200 dark:border-blue-400/20 hover:border-blue-600/50 dark:hover:border-blue-400/50 hover:bg-blue-50/40 dark:hover:bg-blue-950/20 transition-all min-w-0">
+                                <i class="devicon-docker-plain text-blue-500 text-xl sm:text-2xl shrink-0"></i>
+                                <span class="font-mono font-bold text-xs sm:text-sm md:text-base text-slate-900 dark:text-slate-100 truncate">Docker</span>
                             </div>
-                            <div class="col-span-2 flex items-center gap-3 px-3.5 py-3 sm:px-4 sm:py-3.5 rounded-xl bg-slate-50 dark:bg-brand-darkBg/60 border border-slate-200 dark:border-blue-400/20 hover:border-blue-600/50 dark:hover:border-blue-400/50 hover:bg-blue-50/40 dark:hover:bg-blue-950/20 transition-all">
-                                <i class="devicon-linux-plain text-slate-900 dark:text-slate-100 text-2xl shrink-0"></i>
-                                <span class="font-mono font-bold text-sm sm:text-base text-slate-900 dark:text-slate-100">Linux</span>
+                            <div class="col-span-2 flex items-center gap-2 sm:gap-3 px-2.5 py-2.5 sm:px-4 sm:py-3.5 rounded-xl bg-slate-50 dark:bg-brand-darkBg/60 border border-slate-200 dark:border-blue-400/20 hover:border-blue-600/50 dark:hover:border-blue-400/50 hover:bg-blue-50/40 dark:hover:bg-blue-950/20 transition-all min-w-0">
+                                <i class="devicon-linux-plain text-slate-900 dark:text-slate-100 text-xl sm:text-2xl shrink-0"></i>
+                                <span class="font-mono font-bold text-xs sm:text-sm md:text-base text-slate-900 dark:text-slate-100 truncate">Linux</span>
                             </div>
                         </div>
                     </div>
