@@ -38,9 +38,35 @@ async function setLanguage(lang) {
         // Update HTML lang attribute for accessibility/SEO
         document.documentElement.lang = lang;
 
+        // Keep metro line wayfinding spine and stations in perfect sync with animated text
+        syncMetroWithI18n();
+
     } catch (error) {
         console.error('Error loading language:', error);
     }
+}
+
+let metroSyncTimer = null;
+function syncMetroWithI18n() {
+    if (typeof window.refreshMetroLine !== 'function') return;
+
+    window.refreshMetroLine();
+
+    if (metroSyncTimer) clearInterval(metroSyncTimer);
+    let frames = 0;
+    metroSyncTimer = setInterval(() => {
+        frames++;
+        if (typeof window.refreshMetroLine === 'function') {
+            window.refreshMetroLine();
+        }
+        if (frames > 30) {
+            clearInterval(metroSyncTimer);
+            metroSyncTimer = null;
+            if (typeof window.refreshMetroLine === 'function') {
+                window.refreshMetroLine();
+            }
+        }
+    }, 35);
 }
 
 function updateContent() {
@@ -142,6 +168,9 @@ function animateTextChange(el, newText) {
             // Ensure final state matches exactly (in case of logic drifts)
             el.innerHTML = targetHTML;
             activeAnimations.delete(el);
+            if (typeof window.refreshMetroLine === 'function') {
+                window.refreshMetroLine();
+            }
             return;
         }
 

@@ -738,10 +738,28 @@
             <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 w-full items-center">
                 <div class="order-1 lg:order-1 reveal active text-center lg:text-left pt-10 lg:pt-0">
                     <div
-                        class="inline-flex items-center gap-2 mb-6 px-4 py-1.5 bg-blue-50 dark:bg-brand-darkCard rounded-full text-blue-700 dark:text-blue-400 font-bold uppercase tracking-wider text-xs border border-blue-200 dark:border-blue-900/50" data-station="hero">
-                        <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
-                        <i class="fas fa-location-arrow text-blue-700 dark:text-blue-400 ml-1"></i> <span
-                            data-i18n="hero.location">TP.HCM, VN</span>
+                        class="inline-flex items-center gap-2.5 sm:gap-3 p-1.5 pr-3.5 mb-6 bg-white/95 dark:bg-brand-darkCard/95 border border-slate-300/80 dark:border-blue-400/30 rounded-xl shadow-xs backdrop-blur-sm select-none" data-station="hero">
+                        <!-- JR Station Numbering Box -->
+                        <div class="flex items-center rounded-md overflow-hidden border border-blue-600 dark:border-blue-400 font-mono text-xs font-black shadow-2xs">
+                            <span class="bg-blue-600 dark:bg-blue-500 text-white px-2 py-0.5 tracking-wider text-[11px]">SG</span>
+                            <span class="bg-blue-50 dark:bg-brand-darkBg text-blue-800 dark:text-blue-300 px-1.5 py-0.5 text-[11px] border-l border-blue-600/30 dark:border-blue-400/30">00</span>
+                        </div>
+
+                        <!-- Station Name -->
+                        <div class="flex items-center gap-1.5">
+                            <span class="font-display font-bold text-xs sm:text-sm text-slate-900 dark:text-white tracking-wide"
+                                data-i18n="hero.location">TP. HỒ CHÍ MINH</span>
+                            <span class="font-mono text-[10px] text-slate-400 dark:text-slate-500 font-semibold tracking-tight">/ SGN</span>
+                        </div>
+
+                        <!-- Divider -->
+                        <div class="h-3.5 w-px bg-slate-200 dark:bg-slate-700"></div>
+
+                        <!-- Live Weather Telemetry (Open-Meteo) -->
+                        <div id="hero-weather" class="flex items-center gap-1.5 font-mono text-xs font-semibold text-slate-700 dark:text-slate-300" title="Thời tiết thời gian thực tại TP.HCM (Open-Meteo API)">
+                            <span id="weather-icon" class="text-sm">⛅</span>
+                            <span id="weather-temp">--°C</span>
+                        </div>
                     </div>
                     <h1
                         class="text-4xl sm:text-5xl md:text-7xl font-bold text-blue-700 dark:text-blue-400 leading-[1.1] mb-6 font-display tracking-tight min-h-[3.3em]">
@@ -909,73 +927,88 @@
         </section>
 
         <section
-            class="py-16 md:py-24 bg-slate-50/50 dark:bg-brand-darkBg/50 border-y-3 border-brand-primary/10 dark:border-brand-light/5 relative z-10"
+            class="py-12 md:py-16 bg-slate-50/50 dark:bg-brand-darkBg/50 border-y-3 border-brand-primary/10 dark:border-brand-light/5 relative z-10"
             id="skills">
             <div class="max-w-5xl mx-auto px-6 relative z-10">
-                <div class="flex items-center gap-3 mb-10 pb-4 border-b border-dashed border-slate-300 dark:border-slate-800">
+                <!-- Section Header with Wayfinding -->
+                <div class="flex items-center gap-3 mb-8 pb-4 border-b border-dashed border-slate-300 dark:border-slate-800">
                     <span class="font-mono text-sm font-bold text-blue-700 dark:text-blue-400" data-station="skills" data-i18n="skills.subtitle">02 // TOOLKIT</span>
                     <h2 class="text-3xl md:text-4xl font-bold font-display text-slate-900 dark:text-white"
                         data-i18n="skills.title">Toolkit</h2>
                 </div>
-                <div class="grid md:grid-cols-2 gap-8">
-                    <!-- Application -->
-                    <div class="p-6 md:p-8 bg-white dark:bg-brand-darkCard border-2 border-slate-200 dark:border-blue-400/20 rounded-xl shadow-sm reveal flex flex-col justify-between">
+
+                <div class="grid md:grid-cols-2 gap-6 md:gap-8 items-stretch reveal">
+                    <!-- 02.A // Application -->
+                    <div class="p-6 md:p-8 bg-white dark:bg-brand-darkCard border border-slate-200 dark:border-blue-400/20 rounded-2xl shadow-sm hover:border-blue-600/40 dark:hover:border-blue-400/40 transition-colors flex flex-col justify-between">
                         <div>
-                            <div class="flex items-center justify-between mb-4 pb-3 border-b border-dashed border-slate-200 dark:border-slate-800">
-                                <h3 class="text-lg md:text-xl font-bold font-display text-slate-900 dark:text-white flex items-center gap-2">
-                                    <span class="font-mono text-xs font-bold text-blue-700 dark:text-blue-400">02.A //</span>
+                            <div class="flex items-center justify-between pb-3.5 mb-4 border-b border-dashed border-slate-200 dark:border-slate-800">
+                                <h3 class="text-xl md:text-2xl font-bold font-display text-slate-900 dark:text-white flex items-center gap-2">
+                                    <span class="font-mono text-sm md:text-base font-bold text-blue-700 dark:text-blue-400">02.A //</span>
                                     <span data-i18n="skills.cat_application">Ứng dụng</span>
                                 </h3>
+                                <span class="font-mono text-xs md:text-sm font-semibold text-slate-500 dark:text-slate-400">4 technologies</span>
                             </div>
-                            <p class="text-sm text-slate-800 dark:text-slate-200 font-medium mb-6 leading-relaxed" data-i18n="skills.cat_application_desc">
+                            <p class="text-sm md:text-base text-slate-700 dark:text-slate-300 font-medium mb-6 leading-relaxed" data-i18n="skills.cat_application_desc">
                                 Các công nghệ mình sử dụng để phát triển giao diện và xử lý phía máy chủ cho ứng dụng web.
                             </p>
                         </div>
-                        <div class="flex flex-wrap gap-2.5">
-                            <span class="inline-flex items-center gap-2 px-3 py-1.5 bg-slate-50 dark:bg-brand-darkBg border border-slate-300 dark:border-blue-400/30 rounded-lg text-sm font-semibold text-slate-900 dark:text-slate-100 hover:border-blue-700 dark:hover:border-blue-400 transition-colors shadow-sm">
-                                <i class="devicon-typescript-plain colored text-base"></i> TypeScript
-                            </span>
-                            <span class="inline-flex items-center gap-2 px-3 py-1.5 bg-slate-50 dark:bg-brand-darkBg border border-slate-300 dark:border-blue-400/30 rounded-lg text-sm font-semibold text-slate-900 dark:text-slate-100 hover:border-blue-700 dark:hover:border-blue-400 transition-colors shadow-sm">
-                                <i class="devicon-react-original text-sky-500 text-base"></i> React
-                            </span>
-                            <span class="inline-flex items-center gap-2 px-3 py-1.5 bg-slate-50 dark:bg-brand-darkBg border border-slate-300 dark:border-blue-400/30 rounded-lg text-sm font-semibold text-slate-900 dark:text-slate-100 hover:border-blue-700 dark:hover:border-blue-400 transition-colors shadow-sm">
-                                <span class="material-symbols-outlined text-orange-500 text-base leading-none">local_fire_department</span> Hono
-                            </span>
-                            <span class="inline-flex items-center gap-2 px-3 py-1.5 bg-slate-50 dark:bg-brand-darkBg border border-slate-300 dark:border-blue-400/30 rounded-lg text-sm font-semibold text-slate-900 dark:text-slate-100 hover:border-blue-700 dark:hover:border-blue-400 transition-colors shadow-sm">
-                                <i class="devicon-nodejs-plain text-green-600 text-base"></i> Node.js
-                            </span>
+
+                        <div class="grid grid-cols-2 gap-3">
+                            <div class="flex items-center gap-3 px-3.5 py-3 sm:px-4 sm:py-3.5 rounded-xl bg-slate-50 dark:bg-brand-darkBg/60 border border-slate-200 dark:border-blue-400/20 hover:border-blue-600/50 dark:hover:border-blue-400/50 hover:bg-blue-50/40 dark:hover:bg-blue-950/20 transition-all">
+                                <i class="devicon-typescript-plain colored text-2xl shrink-0"></i>
+                                <span class="font-mono font-bold text-sm sm:text-base text-slate-900 dark:text-slate-100">TypeScript</span>
+                            </div>
+                            <div class="flex items-center gap-3 px-3.5 py-3 sm:px-4 sm:py-3.5 rounded-xl bg-slate-50 dark:bg-brand-darkBg/60 border border-slate-200 dark:border-blue-400/20 hover:border-blue-600/50 dark:hover:border-blue-400/50 hover:bg-blue-50/40 dark:hover:bg-blue-950/20 transition-all">
+                                <i class="devicon-react-original text-sky-500 text-2xl shrink-0"></i>
+                                <span class="font-mono font-bold text-sm sm:text-base text-slate-900 dark:text-slate-100">React</span>
+                            </div>
+                            <div class="flex items-center gap-3 px-3.5 py-3 sm:px-4 sm:py-3.5 rounded-xl bg-slate-50 dark:bg-brand-darkBg/60 border border-slate-200 dark:border-blue-400/20 hover:border-blue-600/50 dark:hover:border-blue-400/50 hover:bg-blue-50/40 dark:hover:bg-blue-950/20 transition-all">
+                                <span class="material-symbols-outlined text-orange-500 text-2xl leading-none shrink-0">local_fire_department</span>
+                                <span class="font-mono font-bold text-sm sm:text-base text-slate-900 dark:text-slate-100">Hono</span>
+                            </div>
+                            <div class="flex items-center gap-3 px-3.5 py-3 sm:px-4 sm:py-3.5 rounded-xl bg-slate-50 dark:bg-brand-darkBg/60 border border-slate-200 dark:border-blue-400/20 hover:border-blue-600/50 dark:hover:border-blue-400/50 hover:bg-blue-50/40 dark:hover:bg-blue-950/20 transition-all">
+                                <i class="devicon-nodejs-plain text-green-600 text-2xl shrink-0"></i>
+                                <span class="font-mono font-bold text-sm sm:text-base text-slate-900 dark:text-slate-100">Node.js</span>
+                            </div>
                         </div>
                     </div>
 
-                    <!-- Data & Infrastructure -->
-                    <div class="p-6 md:p-8 bg-white dark:bg-brand-darkCard border-2 border-slate-200 dark:border-blue-400/20 rounded-xl shadow-sm reveal flex flex-col justify-between">
+                    <!-- 02.B // Data & Infrastructure -->
+                    <div class="p-6 md:p-8 bg-white dark:bg-brand-darkCard border border-slate-200 dark:border-blue-400/20 rounded-2xl shadow-sm hover:border-blue-600/40 dark:hover:border-blue-400/40 transition-colors flex flex-col justify-between">
                         <div>
-                            <div class="flex items-center justify-between mb-4 pb-3 border-b border-dashed border-slate-200 dark:border-slate-800">
-                                <h3 class="text-lg md:text-xl font-bold font-display text-slate-900 dark:text-white flex items-center gap-2">
-                                    <span class="font-mono text-xs font-bold text-blue-700 dark:text-blue-400">02.B //</span>
+                            <div class="flex items-center justify-between pb-3.5 mb-4 border-b border-dashed border-slate-200 dark:border-slate-800">
+                                <h3 class="text-xl md:text-2xl font-bold font-display text-slate-900 dark:text-white flex items-center gap-2">
+                                    <span class="font-mono text-sm md:text-base font-bold text-blue-700 dark:text-blue-400">02.B //</span>
                                     <span data-i18n="skills.cat_data_infra">Dữ liệu & Hạ tầng</span>
                                 </h3>
+                                <span class="font-mono text-xs md:text-sm font-semibold text-slate-500 dark:text-slate-400">5 technologies</span>
                             </div>
-                            <p class="text-sm text-slate-800 dark:text-slate-200 font-medium mb-6 leading-relaxed" data-i18n="skills.cat_data_infra_desc">
+                            <p class="text-sm md:text-base text-slate-700 dark:text-slate-300 font-medium mb-6 leading-relaxed" data-i18n="skills.cat_data_infra_desc">
                                 Công nghệ cơ sở dữ liệu, triển khai và hạ tầng web.
                             </p>
                         </div>
-                        <div class="flex flex-wrap gap-2.5">
-                            <span class="inline-flex items-center gap-2 px-3 py-1.5 bg-slate-50 dark:bg-brand-darkBg border border-slate-300 dark:border-blue-400/30 rounded-lg text-sm font-semibold text-slate-900 dark:text-slate-100 hover:border-blue-700 dark:hover:border-blue-400 transition-colors shadow-sm">
-                                <i class="devicon-postgresql-plain text-blue-700 dark:text-blue-400 text-base"></i> PostgreSQL
-                            </span>
-                            <span class="inline-flex items-center gap-2 px-3 py-1.5 bg-slate-50 dark:bg-brand-darkBg border border-slate-300 dark:border-blue-400/30 rounded-lg text-sm font-semibold text-slate-900 dark:text-slate-100 hover:border-blue-700 dark:hover:border-blue-400 transition-colors shadow-sm">
-                                <i class="devicon-prisma-original text-slate-800 dark:text-slate-200 text-base"></i> Prisma
-                            </span>
-                            <span class="inline-flex items-center gap-2 px-3 py-1.5 bg-slate-50 dark:bg-brand-darkBg border border-slate-300 dark:border-blue-400/30 rounded-lg text-sm font-semibold text-slate-900 dark:text-slate-100 hover:border-blue-700 dark:hover:border-blue-400 transition-colors shadow-sm">
-                                <i class="devicon-cloudflare-plain text-orange-500 text-base"></i> Cloudflare
-                            </span>
-                            <span class="inline-flex items-center gap-2 px-3 py-1.5 bg-slate-50 dark:bg-brand-darkBg border border-slate-300 dark:border-blue-400/30 rounded-lg text-sm font-semibold text-slate-900 dark:text-slate-100 hover:border-blue-700 dark:hover:border-blue-400 transition-colors shadow-sm">
-                                <i class="devicon-docker-plain text-blue-500 text-base"></i> Docker
-                            </span>
-                            <span class="inline-flex items-center gap-2 px-3 py-1.5 bg-slate-50 dark:bg-brand-darkBg border border-slate-300 dark:border-blue-400/30 rounded-lg text-sm font-semibold text-slate-900 dark:text-slate-100 hover:border-blue-700 dark:hover:border-blue-400 transition-colors shadow-sm">
-                                <i class="devicon-linux-plain text-slate-800 dark:text-slate-200 text-base"></i> Linux
-                            </span>
+
+                        <div class="grid grid-cols-2 gap-3">
+                            <div class="flex items-center gap-3 px-3.5 py-3 sm:px-4 sm:py-3.5 rounded-xl bg-slate-50 dark:bg-brand-darkBg/60 border border-slate-200 dark:border-blue-400/20 hover:border-blue-600/50 dark:hover:border-blue-400/50 hover:bg-blue-50/40 dark:hover:bg-blue-950/20 transition-all">
+                                <i class="devicon-postgresql-plain text-blue-600 dark:text-blue-400 text-2xl shrink-0"></i>
+                                <span class="font-mono font-bold text-sm sm:text-base text-slate-900 dark:text-slate-100">PostgreSQL</span>
+                            </div>
+                            <div class="flex items-center gap-3 px-3.5 py-3 sm:px-4 sm:py-3.5 rounded-xl bg-slate-50 dark:bg-brand-darkBg/60 border border-slate-200 dark:border-blue-400/20 hover:border-blue-600/50 dark:hover:border-blue-400/50 hover:bg-blue-50/40 dark:hover:bg-blue-950/20 transition-all">
+                                <i class="devicon-prisma-original text-slate-800 dark:text-slate-200 text-2xl shrink-0"></i>
+                                <span class="font-mono font-bold text-sm sm:text-base text-slate-900 dark:text-slate-100">Prisma</span>
+                            </div>
+                            <div class="flex items-center gap-3 px-3.5 py-3 sm:px-4 sm:py-3.5 rounded-xl bg-slate-50 dark:bg-brand-darkBg/60 border border-slate-200 dark:border-blue-400/20 hover:border-blue-600/50 dark:hover:border-blue-400/50 hover:bg-blue-50/40 dark:hover:bg-blue-950/20 transition-all">
+                                <i class="devicon-cloudflare-plain text-orange-500 text-2xl shrink-0"></i>
+                                <span class="font-mono font-bold text-sm sm:text-base text-slate-900 dark:text-slate-100">Cloudflare</span>
+                            </div>
+                            <div class="flex items-center gap-3 px-3.5 py-3 sm:px-4 sm:py-3.5 rounded-xl bg-slate-50 dark:bg-brand-darkBg/60 border border-slate-200 dark:border-blue-400/20 hover:border-blue-600/50 dark:hover:border-blue-400/50 hover:bg-blue-50/40 dark:hover:bg-blue-950/20 transition-all">
+                                <i class="devicon-docker-plain text-blue-500 text-2xl shrink-0"></i>
+                                <span class="font-mono font-bold text-sm sm:text-base text-slate-900 dark:text-slate-100">Docker</span>
+                            </div>
+                            <div class="col-span-2 flex items-center gap-3 px-3.5 py-3 sm:px-4 sm:py-3.5 rounded-xl bg-slate-50 dark:bg-brand-darkBg/60 border border-slate-200 dark:border-blue-400/20 hover:border-blue-600/50 dark:hover:border-blue-400/50 hover:bg-blue-50/40 dark:hover:bg-blue-950/20 transition-all">
+                                <i class="devicon-linux-plain text-slate-900 dark:text-slate-100 text-2xl shrink-0"></i>
+                                <span class="font-mono font-bold text-sm sm:text-base text-slate-900 dark:text-slate-100">Linux</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1102,15 +1135,11 @@
 
                 <!-- Research Paper Block (Scholarly Open Layout, Responsive Typography) -->
                 <div class="reveal">
-                    <!-- Title & Meta Header Row -->
-                    <div class="flex flex-col items-start sm:flex-row sm:items-baseline justify-between gap-3 mb-4">
-                        <div class="space-y-1">
-                            <h3 class="text-2xl md:text-3xl font-bold font-display text-slate-900 dark:text-white tracking-tight leading-snug"
-                                data-i18n="research.paper_title">Cân bằng tải trong mạng SDN</h3>
-                            <span class="font-mono text-xs font-semibold text-slate-500 dark:text-slate-400 block">// SDN LOAD BALANCING</span>
-                        </div>
-                        <span class="self-start sm:self-auto font-mono text-xs font-bold text-blue-800 dark:text-blue-300 px-3 py-1 bg-blue-100/70 dark:bg-blue-950/60 border border-blue-300 dark:border-blue-800 rounded-md w-fit shrink-0"
-                            data-i18n="research.meta">Học tăng cường Actor–Critic · 2025–2026</span>
+                    <!-- Title & Header Row -->
+                    <div class="mb-4">
+                        <h3 class="text-2xl md:text-3xl font-bold font-display text-slate-900 dark:text-white tracking-tight leading-snug"
+                            data-i18n="research.paper_title">Cân bằng tải trong mạng SDN</h3>
+                        <span class="font-mono text-xs font-semibold text-slate-500 dark:text-slate-400 block mt-1">// SDN LOAD BALANCING</span>
                     </div>
 
                     <!-- Research Description -->
@@ -1713,6 +1742,37 @@
                 if (window.refreshMetroLine) window.refreshMetroLine();
             }
         }
+
+        async function loadLiveWeather() {
+            try {
+                const res = await fetch('https://api.open-meteo.com/v1/forecast?latitude=10.8231&longitude=106.6297&current=temperature_2m,weather_code,is_day&timezone=Asia%2FHo_Chi_Minh');
+                if (!res.ok) return;
+                const data = await res.json();
+                const temp = Math.round(data.current.temperature_2m);
+                const code = data.current.weather_code;
+                const isDay = data.current.is_day === 1;
+
+                // WMO Weather code to icon mapping
+                let icon = isDay ? '☀️' : '🌙';
+                if (code >= 1 && code <= 3) {
+                    icon = isDay ? '⛅' : '☁️';
+                } else if (code >= 45 && code <= 48) {
+                    icon = '🌫️';
+                } else if ((code >= 51 && code <= 67) || (code >= 80 && code <= 82)) {
+                    icon = '🌧️';
+                } else if (code >= 95 && code <= 99) {
+                    icon = '⛈️';
+                }
+
+                const iconEl = document.getElementById('weather-icon');
+                const tempEl = document.getElementById('weather-temp');
+                if (iconEl) iconEl.textContent = icon;
+                if (tempEl) tempEl.textContent = `${temp}°C`;
+            } catch (err) {
+                console.warn('Live weather telemetry offline:', err);
+            }
+        }
+        loadLiveWeather();
         loadLatestBlogs();
     </script>
 </body>

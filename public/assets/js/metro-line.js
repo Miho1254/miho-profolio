@@ -74,6 +74,20 @@
                 onResize();
             });
             ro.observe(mainEl);
+            const intro = document.getElementById('intro');
+            if (intro) ro.observe(intro);
+            document.querySelectorAll('[data-station]').forEach(el => ro.observe(el));
+        }
+
+        if (window.MutationObserver && mainEl) {
+            const mo = new MutationObserver(() => {
+                onResize();
+            });
+            mo.observe(mainEl, {
+                childList: true,
+                subtree: true,
+                characterData: true
+            });
         }
 
         // Initial scroll position sync
@@ -85,33 +99,23 @@
         const mainRect = main.getBoundingClientRect();
         const scrollY = window.scrollY || window.pageYOffset;
 
-        let offTop = 0;
-        let offLeft = 0;
-        let curr = el;
-        let foundMain = false;
-
-        while (curr && curr !== document.body && curr !== document.documentElement) {
-            if (curr === main) {
-                foundMain = true;
-                break;
+        // Check if there is an un-revealed ancestor with translateY(28px)
+        let transformOffset = 0;
+        let ancestor = el;
+        while (ancestor && ancestor !== main && ancestor !== document.body) {
+            if (ancestor.classList && ancestor.classList.contains('reveal') && !ancestor.classList.contains('active')) {
+                transformOffset += 28;
             }
-            offTop += curr.offsetTop;
-            offLeft += curr.offsetLeft;
-            curr = curr.offsetParent;
+            ancestor = ancestor.parentElement;
         }
 
-        if (foundMain) {
-            return {
-                xRaw: offLeft,
-                y: Math.round(offTop + (el.offsetHeight / 2)),
-                absoluteTop: (mainRect.top + scrollY) + offTop
-            };
-        }
+        const y = Math.round((elRect.top - mainRect.top) + (elRect.height / 2) - transformOffset);
+        const xRaw = Math.round(elRect.left - mainRect.left);
 
         return {
-            xRaw: Math.round(elRect.left - mainRect.left),
-            y: Math.round((elRect.top + scrollY) - (mainRect.top + scrollY) + (elRect.height / 2)),
-            absoluteTop: elRect.top + scrollY
+            xRaw: xRaw,
+            y: y,
+            absoluteTop: elRect.top + scrollY - transformOffset
         };
     }
 
