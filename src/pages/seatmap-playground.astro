@@ -1,0 +1,305 @@
+---
+const title = 'WSF Seat Allocator — Playground';
+---
+
+<html lang="vi">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#10141b" />
+    <title>{title}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+    <style>
+      :root{font-family:'DM Sans',sans-serif;color:#e8e9e7;background:#10141b;font-synthesis:none;text-rendering:optimizeLegibility;--bg:#10141b;--panel:#171c24;--panel2:#1d232d;--line:#2b323d;--muted:#8b929c;--lime:#c9f36a;--pink:#ed8ab8;--purple:#b49aff;--orange:#f5b75d}
+      *{box-sizing:border-box}body{margin:0;min-width:320px;background:radial-gradient(ellipse at 14% -16%,#253027 0,transparent 38%),var(--bg);font-size:14px}button,select{font:inherit}button{cursor:pointer} .shell{max-width:1510px;margin:auto;padding:28px 34px 36px}.topbar{height:40px;display:flex;align-items:center;justify-content:space-between;margin-bottom:40px}.brand{display:flex;gap:11px;align-items:center;font:700 13px 'Space Grotesk';letter-spacing:.04em}.brand-mark{width:28px;height:28px;border-radius:9px;background:var(--lime);color:#192016;display:grid;place-items:center;font-weight:700}.topmeta{display:flex;align-items:center;gap:16px;color:var(--muted);font:11px 'DM Mono',monospace}.live{color:var(--lime);display:flex;align-items:center;gap:7px}.live:before{content:'';width:6px;height:6px;border-radius:50%;background:var(--lime);box-shadow:0 0 10px #c9f36a80}
+      .intro{display:flex;justify-content:space-between;align-items:end;margin-bottom:24px}.eyebrow{color:var(--lime);font:11px 'DM Mono',monospace;letter-spacing:.13em;text-transform:uppercase;margin-bottom:12px}.intro h1{font:600 clamp(27px,3.4vw,42px)/1.08 'Space Grotesk';letter-spacing:-.045em;margin:0}.intro p{color:#a2a7af;margin:11px 0 0;max-width:630px;font-size:14px;line-height:1.65}.intro-chip{border:1px solid #3a4432;color:#c6d7aa;background:#1b241c;border-radius:8px;padding:9px 12px;font:10px 'DM Mono',monospace;white-space:nowrap;margin-bottom:4px}
+      .layout{display:grid;grid-template-columns:minmax(0,1fr) 326px;gap:17px;align-items:start}.maincol,.sidebar{display:grid;gap:16px}.card{border:1px solid var(--line);background:linear-gradient(145deg,#191f27,#161b22);border-radius:13px}.card-head{padding:17px 19px 13px;display:flex;justify-content:space-between;align-items:center}.card-title{font:600 14px 'Space Grotesk';letter-spacing:-.01em}.card-sub{font-size:11px;color:var(--muted);margin-top:4px}.tiny-label{color:var(--muted);font:10px 'DM Mono',monospace;letter-spacing:.04em}.seat-card{overflow:hidden}.seatmap-wrap{padding:0 18px 16px;overflow-x:auto}.screen{width:min(430px,75%);margin:6px auto 19px;text-align:center;position:relative;color:#7f8791;font:9px 'DM Mono',monospace;letter-spacing:.24em}.screen:before{content:'';position:absolute;top:-5px;left:4%;right:4%;height:17px;border-top:2px solid #78828e;border-radius:50%;filter:drop-shadow(0 -5px 11px #d5e2ff35)}.screen span{position:relative;top:8px;background:#191f27;padding:0 10px}.zones{display:grid;gap:10px;min-width:610px}:global(.zone-label){display:flex;align-items:center;gap:8px;color:#a9afb8;font:10px 'DM Mono',monospace;letter-spacing:.08em;text-transform:uppercase;margin:12px 0 7px}:global(.zone-label):after{content:'';height:1px;background:#2c333d;flex:1}:global(.seat-row){display:grid;grid-template-columns:22px repeat(14,minmax(20px,1fr));gap:5px;align-items:center;margin:6px auto;max-width:560px}:global(.row-label){font:10px 'DM Mono',monospace;color:#8d949e;text-align:center}:global(.seat){height:22px;border:1px solid #54604a;border-radius:5px 5px 7px 7px;background:#263323;color:#d2f49d;display:grid;place-items:center;padding:0;font:9px 'DM Mono',monospace;transition:transform .12s,border .12s,background .12s}:global(.seat.available):hover{transform:translateY(-2px);border-color:var(--lime)}:global(.seat.allocated){background:var(--lime);border-color:var(--lime);color:#182013;box-shadow:0 0 10px #c9f36a35}:global(.seat.couple){border-color:#78693e;background:#302b20;color:#e9c677}:global(.seat.vip){border-color:#594d76;background:#292438;color:#c6b9ee}:global(.seat.vip):after{content:'';height:3px;width:8px;border-radius:4px;background:#9782cf;position:absolute;margin-top:17px}.legend{border-top:1px solid var(--line);padding:12px 19px;display:flex;gap:18px;flex-wrap:wrap;color:#a2a8b0;font-size:10px}.legend-item{display:flex;align-items:center;gap:7px}.swatch{width:10px;height:10px;border-radius:3px;background:#263323;border:1px solid #54604a}.swatch.pair{background:#302b20;border-color:#78693e}.swatch.vips{background:#292438;border-color:#594d76}.swatch.taken{background:var(--lime);border-color:var(--lime)}
+      .controls{padding:17px 19px 18px}.control-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:15px}.control-grid{display:grid;grid-template-columns:minmax(150px,.85fr) 1.4fr auto;gap:17px;align-items:end}.field-label{font:10px 'DM Mono',monospace;color:var(--muted);display:block;margin-bottom:8px}.select-wrap{position:relative}.select-wrap:after{content:'⌄';position:absolute;right:12px;top:10px;color:#a9b1bb;pointer-events:none}.select{appearance:none;width:100%;padding:10px 12px;background:#202630;color:#eef0eb;border:1px solid #3a424d;border-radius:7px;outline:none}.demand{display:flex;gap:7px}:global(.demand-item){flex:1;min-width:0}:global(.demand-item input){width:100%;height:37px;padding:0 7px;background:#202630;color:#e8e9e7;border:1px solid #343c47;border-radius:6px;font:11px 'DM Mono',monospace}:global(.demand-item small){display:block;color:#858d97;font:9px 'DM Mono',monospace;text-align:center;margin-top:5px}.actions{display:flex;gap:8px}.btn{border-radius:7px;padding:10px 13px;font-size:11px;font-weight:700;white-space:nowrap;border:1px solid #454d58;color:#d8dce0;background:#222831;transition:.15s}.btn:hover{border-color:#78818e;background:#29313b}.btn.primary{background:var(--lime);border-color:var(--lime);color:#1a2113}.btn.primary:hover{background:#d7ff80}.btn.quiet{padding-left:10px;padding-right:10px}.disclaimer{margin-top:12px;font-size:10px;color:#78818c;line-height:1.5}.disclaimer b{font-weight:500;color:#aeb7c1}
+      .summary{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;padding:0 15px 15px}.metric{padding:12px 13px;background:#1b2129;border:1px solid #282f39;border-radius:8px;min-height:72px}.metric label{display:block;color:#9098a2;font:9px 'DM Mono',monospace;text-transform:uppercase;letter-spacing:.04em}.metric strong{display:block;font:600 21px 'Space Grotesk';margin-top:7px;letter-spacing:-.04em}.metric strong.green{color:var(--lime)}.metric strong.pink{color:var(--pink)}
+      .sidebar .card{padding:0}.stat-head{padding:17px 17px 13px;border-bottom:1px solid #2b323d}.section-kicker{font:10px 'DM Mono',monospace;color:var(--lime);letter-spacing:.08em;text-transform:uppercase;margin-bottom:7px}.capacity{padding:13px 17px 14px}.capacity-head{display:flex;justify-content:space-between;color:#aeb4bc;font-size:10px;margin-bottom:12px}.capacity-head span:last-child{font:10px 'DM Mono',monospace;color:#777f89}:global(.cap-row){display:grid;grid-template-columns:29px 1fr 37px;gap:8px;align-items:center;margin:11px 0}:global(.cap-name){font:11px 'DM Mono',monospace;color:#bdc2c8}:global(.bar){height:5px;background:#2a3039;border-radius:10px;overflow:hidden}:global(.bar i){display:block;height:100%;border-radius:10px;background:#a7cf59;transition:width .25s}:global(.cap-value){text-align:right;color:#c9cdd2;font:10px 'DM Mono',monospace}.capacity-foot{border-top:1px solid #2b323d;padding-top:12px;margin-top:13px;display:flex;justify-content:space-between;color:#929aa4;font-size:10px}.capacity-foot strong{color:#e1e4dc;font:11px 'DM Mono',monospace}.demand-note{margin:0 17px 15px;padding:10px;background:#20251e;border:1px solid #343d2e;border-radius:7px;color:#a9b49a;font-size:10px;line-height:1.5}.demand-note b{color:#d9e8c2;font-weight:600}.quality{padding:13px 17px 16px}.quality-line{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid #262d36;color:#a3aab3;font-size:11px}.quality-line:last-child{border:0}.quality-line strong{font:11px 'DM Mono',monospace;color:#e5e7e1}.quality-line strong.warn{color:var(--orange)}.log{max-height:208px;overflow:auto;padding:4px 16px 15px}:global(.log-item){display:grid;grid-template-columns:36px 1fr auto;gap:8px;align-items:start;padding:10px 0;border-bottom:1px solid #272e37}.log-item:last-child{border:0}:global(.log-n){font:9px 'DM Mono',monospace;color:#78818b;padding-top:2px}:global(.log-main){color:#dce0db;font-size:10px;line-height:1.5}.log-main span{color:#929aa4}:global(.log-score){color:#96b75a;font:9px 'DM Mono',monospace;padding-top:2px}:global(.empty){color:#7f8792;font-size:11px;padding:10px 0}.vip-note{margin:0 17px 16px;background:#211e2c;border:1px solid #383149;border-radius:7px;padding:10px;color:#b1a8c7;font-size:10px;line-height:1.5}.vip-note b{color:#ded5f3;font-weight:600}.footer{color:#66707b;font:9px 'DM Mono',monospace;margin-top:22px;display:flex;justify-content:space-between}
+      .intro h1{font-size:42px;letter-spacing:-.035em;text-wrap:balance}.control-grid{grid-template-columns:minmax(125px,.75fr) 1.35fr minmax(120px,.65fr) auto;gap:13px}.btn:disabled{opacity:.65;cursor:progress}.select:focus-visible,.btn:focus-visible,:global(.demand-item input:focus-visible){outline:2px solid var(--lime);outline-offset:2px}.capacity-foot{color:#aab0b8}.capacity-foot strong{color:#e1e4dc}.quality-line{color:#b4bac2;gap:12px}.quality-line strong{text-align:right}.inventory-legend{display:flex;gap:14px;padding:12px 16px 8px}.inventory-legend>span{font-size:10px;color:#d0d4d8;display:grid;grid-template-columns:9px 1fr;column-gap:6px;align-items:center}.inventory-legend small{grid-column:2;color:#9da5ae;font-size:9px;margin-top:2px}.dot{width:8px;height:8px;border-radius:50%;display:block}.dot.flexibility{background:#a8d35e}.dot.pack{background:#9d8be8}.inventory-table{padding:0 16px 14px}.inventory-head,:global(.inventory-line){display:grid;grid-template-columns:36px 1fr 1fr;gap:9px;align-items:center}.inventory-head{padding:8px 0 6px;color:#a5adb6;font:9px 'DM Mono',monospace}.inventory-head span:nth-child(2){color:#c5e38b}.inventory-head span:nth-child(3){color:#c2b6f5}:global(.inventory-line){min-height:32px;border-top:1px solid #282f39}:global(.inv-size){font:10px 'DM Mono',monospace;color:#d8dce1}:global(.inv-cell){display:grid;grid-template-columns:25px 1fr;align-items:center;gap:5px}:global(.inv-num){font:10px 'DM Mono',monospace;color:#e2e5e0}:global(.inv-track){height:4px;background:#2a3039;border-radius:9px;overflow:hidden}:global(.inv-track i){height:100%;display:block;border-radius:9px;background:#a8d35e}:global(.inv-cell.pack .inv-track i){background:#9d8be8}.mc-result{padding:13px 16px 12px;background:linear-gradient(125deg,#202820,#1b2128);border-bottom:1px solid #2b323d}.mc-hero{display:grid;grid-template-columns:1fr auto;align-items:center}.mc-hero span{grid-column:1/-1;color:#b4c397;font:9px 'DM Mono',monospace;letter-spacing:.06em}.mc-hero strong{font:600 35px/1 'Space Grotesk';letter-spacing:-.03em;color:var(--lime);margin:7px 0}.mc-hero small{font:10px 'DM Mono',monospace;color:#d0d5cb;text-align:right}.mc-kpis{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px}.mc-kpis div{padding:8px;background:#191f25;border:1px solid #2b323d;border-radius:6px}.mc-kpis span{display:block;color:#abb2ba;font-size:9px;line-height:1.4}.mc-kpis b{display:block;color:#edf0e9;font:11px 'DM Mono',monospace;margin-top:4px}.bench-table{padding:8px 14px 12px}.bench-head,:global(.bench-row){display:grid;grid-template-columns:18px minmax(0,1fr) 57px 43px;gap:5px;align-items:center}.bench-head{padding:4px 3px 7px;color:#9da5ae;font:8px 'DM Mono',monospace}:global(.bench-row){padding:8px 4px;border-top:1px solid #2a3039;color:#d6dadd;font:9px 'DM Mono',monospace}:global(.bench-row.best){background:#20271d;color:#e5f0d2}:global(.bench-row .bench-place){overflow:hidden;text-overflow:ellipsis;white-space:nowrap}:global(.bench-row .bench-fill){color:#c9ef82;text-align:right}:global(.bench-row .bench-reject){text-align:right;color:#c6cbd1}.orphan-meter{height:5px;background:#2b323d;border-radius:8px;overflow:hidden;margin:0 17px 10px}.orphan-meter i{display:block;height:100%;background:var(--lime);border-radius:8px;width:0}.log-main{color:#e1e4df}.log-main span{color:#adb4bd}.log-n{color:#9ea5af}.log-score{color:#b6d47b}.empty{color:#a2a9b2}.disclaimer{color:#a2a8b0}.demand-item small{color:#a0a7af}
+      @media(max-width:1050px){.layout{grid-template-columns:minmax(0,1fr) 290px}.control-grid{grid-template-columns:1fr}.actions{justify-content:flex-start}.demand{max-width:520px}}
+      @media(max-width:760px){.shell{padding:18px 14px 28px}.topbar{margin-bottom:27px}.topmeta .meta-hide{display:none}.intro{align-items:start;gap:15px;flex-direction:column;margin-bottom:18px}.intro-chip{margin:0}.layout{grid-template-columns:1fr}.sidebar{grid-template-columns:1fr}.summary{grid-template-columns:repeat(2,1fr)}.control-grid{gap:13px}.demand{gap:5px}:global(.seat-row){grid-template-columns:22px repeat(14,26px);max-width:none}:global(.seat){height:23px}.zones{min-width:500px}.screen{margin-bottom:17px}.footer{gap:12px;flex-direction:column}}
+    </style>
+  </head>
+  <body>
+    <div class="shell">
+      <header class="topbar">
+        <div class="brand"><span class="brand-mark">W</span><span>WORLDSIMP <span style="color:#77808b;font-weight:500">/ LAB</span></span></div>
+        <div class="topmeta"><span class="live">SIMULATION ACTIVE</span><span class="meta-hide">BUILD 0.1.0</span><span class="meta-hide">26 SEP 2026</span></div>
+      </header>
+      <section class="intro">
+        <div><div class="eyebrow">SEAT INVENTORY OPTIMIZATION</div><h1>Seatmap playground<span style="color:var(--lime)">.</span></h1><p>Thử nghiệm cách phân bổ ghế STANDARD theo hướng giữ sức khỏe inventory cho những booking tiếp theo.</p></div>
+        <div class="intro-chip">WSF · LOOKAHEAD ALLOCATOR</div>
+      </section>
+      <div class="layout">
+        <main class="maincol">
+          <section class="card seat-card">
+            <div class="card-head"><div><div class="card-title">Sơ đồ phòng chiếu</div><div class="card-sub">Ghế STANDARD hữu hạn · A gần màn hình, J xa màn hình</div></div><div class="tiny-label" id="seat-count">— SEATS</div></div>
+            <div class="seatmap-wrap"><div class="screen"><span>MÀN HÌNH</span></div><div id="seat-zones" class="zones"></div></div>
+            <div class="legend"><span class="legend-item"><i class="swatch"></i>STANDARD còn trống</span><span class="legend-item"><i class="swatch taken"></i>Đã phân bổ</span><span class="legend-item"><i class="swatch pair"></i>Ghế đôi · không tách</span><span class="legend-item"><i class="swatch vips"></i>VIP · inventory riêng</span></div>
+          </section>
+          <section class="card">
+            <div class="controls">
+              <div class="control-head"><div><div class="card-title">Tạo booking STANDARD</div><div class="card-sub">Chọn số vé, allocator sẽ tự chọn block có lợi nhất cho inventory.</div></div><div class="tiny-label">MAX 6 / ORDER</div></div>
+              <div class="control-grid">
+                <label><span class="field-label">SỐ VÉ TRONG ĐƠN</span><span class="select-wrap"><select class="select" id="booking-size"><option value="1">1 vé</option><option value="2" selected>2 vé</option><option value="3">3 vé</option><option value="4">4 vé</option><option value="5">5 vé</option><option value="6">6 vé</option></select></span></label>
+                <div><span class="field-label">NHU CẦU DỰ KIẾN · TRỌNG SỐ (%)</span><div class="demand" id="demand-inputs"></div></div>
+                <label><span class="field-label">ROLLOUT SAMPLES</span><span class="select-wrap"><select class="select" id="rollout-count"><option value="50">50 chuỗi</option><option value="100" selected>100 chuỗi</option><option value="250">250 chuỗi</option><option value="500">500 chuỗi</option></select></span></label>
+                <div class="actions"><button class="btn primary" id="allocate">Phân bổ booking ↗</button><button class="btn quiet" id="simulate">Chạy 10 đơn</button><button class="btn quiet" id="reset" aria-label="Reset simulation">↻</button></div>
+              </div>
+              <div class="disclaimer"><b>STANDARD:</b> hệ thống tự động phân bổ, vị trí có thể ở bất kỳ hàng nào trong khu STANDARD. Sơ đồ ghế chỉ phục vụ mô phỏng nội bộ.</div>
+            </div>
+            <div class="summary">
+              <div class="metric"><label>Đã phân bổ</label><strong class="green" id="allocated-count">0</strong></div>
+              <div class="metric"><label>Ghế STANDARD trống</label><strong id="remaining-count">—</strong></div>
+              <div class="metric"><label>Ghế lẻ / single demand</label><strong id="orphan-count">—</strong></div>
+              <div class="metric"><label>Fragmentation</label><strong id="fragment-count">—</strong></div>
+            </div>
+          </section>
+        </main>
+        <aside class="sidebar">
+          <section class="card">
+            <div class="stat-head"><div class="section-kicker">LIVE INVENTORY</div><div class="card-title">Còn xếp được bao nhiêu?</div><div class="card-sub">Hai cách nhìn inventory, đặt cạnh nhau để khỏi nhầm.</div></div>
+            <div class="inventory-legend"><span><i class="dot flexibility"></i>Valid placements <small>số vị trí đặt</small></span><span><i class="dot pack"></i>Pack capacity <small>đơn tối đa, không chồng lấn</small></span></div>
+            <div class="inventory-table"><div class="inventory-head"><span>SIZE</span><span>VỊ TRÍ HỢP LỆ</span><span>ĐƠN TỐI ĐA</span></div><div id="inventory-rows"></div><div class="capacity-foot"><span>Ghế STANDARD còn trống</span><strong id="capacity-total">—</strong></div></div>
+          </section>
+          <section class="card">
+            <div class="stat-head"><div class="section-kicker">MONTE CARLO BENCHMARK</div><div class="card-title">Candidate nào giữ fill rate tốt?</div><div class="card-sub">Cùng một bộ booking tương lai được dùng để so từng vị trí.</div></div>
+            <div class="mc-result"><div class="mc-hero"><span>BEST EXPECTED FINAL OCCUPANCY</span><strong id="mc-occupancy">—</strong><small id="mc-best-location">Chưa chạy rollout</small></div><div class="mc-kpis"><div><span>Ghế bị từ chối trước sellout</span><b id="mc-rejected">—</b></div><div><span>Đã so sánh</span><b id="mc-candidates">—</b></div></div></div>
+            <div class="bench-table"><div class="bench-head"><span>#</span><span>BLOCK</span><span>FINAL FILL</span><span>VÉ MẤT</span></div><div id="mc-leaderboard"><div class="empty">Tạo booking để benchmark candidate.</div></div></div>
+            <div class="vip-note" id="mc-policy">Mỗi rollout dừng khi hết ghế hoặc sau tối đa 120 booking mẫu. Chỉ tính đơn bị từ chối khi vẫn còn ghế.</div>
+          </section>
+          <section class="card">
+            <div class="stat-head"><div class="section-kicker">STATE QUALITY</div><div class="card-title">Sức khỏe inventory</div></div>
+            <div class="quality"><div class="quality-line"><span>Pack capacity giảm · weighted</span><strong id="loss-next">—</strong></div><div class="quality-line"><span>Ghế lẻ / booking đơn dự kiến</span><strong id="orphan-side">—</strong></div><div class="orphan-meter"><i id="orphan-meter-fill"></i></div><div class="quality-line"><span>Block trống liền lớn nhất</span><strong id="largest-block">—</strong></div><div class="quality-line"><span>Ghế đôi còn nguyên cặp</span><strong id="couples-left">—</strong></div></div>
+            <div class="vip-note"><b>VIP tách biệt:</b> 24 ghế cố định ở khu riêng, không thuộc pool STANDARD và không tham gia scoring.</div>
+          </section>
+          <section class="card">
+            <div class="stat-head"><div class="section-kicker">ALLOCATION TRACE</div><div class="card-title">Lịch sử phân bổ</div><div class="card-sub">Các booking gần nhất và quyết định của allocator</div></div>
+            <div class="log" id="allocation-log"><div class="empty">Chưa có booking. Tạo đơn để bắt đầu mô phỏng.</div></div>
+          </section>
+        </aside>
+      </div>
+      <footer class="footer"><span>DEMAND-WEIGHTED · FRAGMENTATION-AWARE · ONLINE ALLOCATION</span><span>DEMO INVENTORY · DỮ LIỆU CHỈ LƯU TRONG PHIÊN</span></footer>
+    </div>
+    <script>
+      const ROWS = 'ABCDEFGHIJ'.split('');
+      const COLS = 14;
+      const VIP_ROWS = ['VIP 2', 'VIP 1'];
+      const DEFAULT_DEMAND = [15, 50, 15, 12, 5, 3];
+      const PAIR_ROWS = new Set(['D', 'G']);
+      const TOTAL_ROLLOUT_REQUESTS = 120;
+      const SHORTLIST_SIZE = 8;
+      let seats = [];
+      let history = [];
+      let bookingNo = 0;
+      let lastOutcome = null;
+      let busy = false;
+
+      const demandRoot = document.querySelector('#demand-inputs');
+      DEFAULT_DEMAND.forEach((value, i) => {
+        const box = document.createElement('label'); box.className = 'demand-item';
+        box.innerHTML = `<input type="number" min="0" max="100" value="${value}" aria-label="Nhu cầu booking ${i + 1} vé"><small>${i + 1} VÉ</small>`;
+        demandRoot.append(box);
+      });
+      const demandInputs = [...demandRoot.querySelectorAll('input')];
+      const normDemand = () => { const raw = demandInputs.map(i => Math.max(0, Number(i.value) || 0)); const total = raw.reduce((a,b)=>a+b,0) || 1; return raw.map(v=>v/total); };
+      const avgBookingSize = demand => demand.reduce((sum, p, i) => sum + p * (i + 1), 0);
+      const expectedSingles = (free, demand) => free / Math.max(1, avgBookingSize(demand)) * demand[0];
+
+      function resetState() {
+        seats = ROWS.flatMap((row, ri) => Array.from({length:COLS}, (_,ci) => {
+          const col=ci+1, couple=PAIR_ROWS.has(row) && (col===7 || col===8);
+          return {id:`${row}-${String(col).padStart(2,'0')}`, row, rowIndex:ri, col, occupied:false, couple, coupleId:couple?`${row}-PAIR`:null};
+        }));
+        history = []; bookingNo = 0; lastOutcome = null; render();
+      }
+      function rowsOf(pool) { return ROWS.map(row => pool.filter(s=>s.row===row).sort((a,b)=>a.col-b.col)); }
+      function isValidBlock(line, start, size) {
+        const block=line.slice(start,start+size);
+        if(block.length!==size || block.some((s,j)=>s.occupied || (j && s.col!==block[j-1].col+1))) return false;
+        const ids=new Set(block.map(s=>s.id));
+        return block.every(s=>!s.couple || ids.has(`${s.row}-${String(s.col===7?8:7).padStart(2,'0')}`));
+      }
+      function candidatesFor(pool, size) {
+        const out=[];
+        for(const line of rowsOf(pool)) for(let i=0;i<=line.length-size;i++) if(isValidBlock(line,i,size)) out.push(line.slice(i,i+size));
+        return out;
+      }
+      function placements(pool) { return Array.from({length:6},(_,i)=>candidatesFor(pool,i+1).length); }
+      function packCapacity(pool,size) {
+        let packed=0;
+        for(const line of rowsOf(pool)) {
+          const dp=Array(line.length+1).fill(0);
+          for(let i=line.length-1;i>=0;i--) {
+            dp[i]=dp[i+1];
+            if(i+size<=line.length && isValidBlock(line,i,size)) dp[i]=Math.max(dp[i],1+dp[i+size]);
+          }
+          packed+=dp[0];
+        }
+        return packed;
+      }
+      function packCapacities(pool) { return Array.from({length:6},(_,i)=>packCapacity(pool,i+1)); }
+      function quality(pool) {
+        const free=pool.filter(s=>!s.occupied); let orphan=0, fragments=0, largest=0;
+        for(const line of rowsOf(pool)) {
+          let run=0;
+          for(const seat of line) {
+            if(!seat.occupied) run++;
+            else if(run){fragments++;largest=Math.max(largest,run);if(run===1)orphan++;run=0;}
+          }
+          if(run){fragments++;largest=Math.max(largest,run);if(run===1)orphan++;}
+        }
+        const intactCouples=pool.filter(s=>s.couple && s.col===7).filter(a=>{const b=pool.find(x=>x.row===a.row&&x.col===8);return b&&!a.occupied&&!b.occupied}).length;
+        return {free:free.length,orphan,fragments,largest,intactCouples};
+      }
+      function stateScore(pool, demand, basePacks) {
+        const packs=packCapacities(pool), q=quality(pool);
+        const weightedLoss=demand.reduce((sum,w,i)=>sum+w*(basePacks[i]-packs[i]),0);
+        const orphanExcess=Math.max(0,q.orphan-expectedSingles(q.free,demand));
+        return {score:weightedLoss*120 + orphanExcess*2.8 + q.fragments*.12 - q.intactCouples*.55, weightedLoss, packs, q, orphanExcess};
+      }
+      function heuristicCandidates(pool,size,demand) {
+        const options=candidatesFor(pool,size), basePacks=packCapacities(pool), midpoint=(COLS+1)/2;
+        return options.map(block=>{
+          const ids=new Set(block.map(s=>s.id));
+          const trial=pool.map(s=>ids.has(s.id)?{...s,occupied:true}:s);
+          const after=stateScore(trial,demand,basePacks);
+          const rowPriority=(ROWS.length-1-block[0].rowIndex)*1.2;
+          const centerDistance=Math.abs((block[0].col+block.at(-1).col)/2-midpoint);
+          const couplePreference=block.length===2 && block.every(s=>s.couple)?-.45:0;
+          const score=after.score+rowPriority+centerDistance*.008+couplePreference;
+          return {block,...after,score};
+        }).sort((a,b)=>a.score-b.score);
+      }
+      function rng(seed) {
+        let value=seed>>>0;
+        return ()=>{value^=value<<13;value^=value>>>17;value^=value<<5;return (value>>>0)/4294967296;};
+      }
+      function sampleSize(demand,random) {
+        const roll=random(); let cumulative=0;
+        for(let i=0;i<demand.length;i++){cumulative+=demand[i];if(roll<cumulative)return i+1;}
+        return demand.length;
+      }
+      function sampleSequences(count,demand,seed) {
+        const random=rng(seed);
+        return Array.from({length:count},()=>Array.from({length:TOTAL_ROLLOUT_REQUESTS},()=>sampleSize(demand,random)));
+      }
+      function rowRolloutScore(line,start,size) {
+        let run=0, fragments=0, singles=0;
+        for(let i=0;i<line.length;i++) {
+          const occupied=line[i].occupied || (i>=start && i<start+size);
+          if(!occupied)run++;
+          else if(run){fragments++;if(run===1)singles++;run=0;}
+        }
+        if(run){fragments++;if(run===1)singles++;}
+        return singles*4+fragments*.3;
+      }
+      function rolloutAllocate(pool,size) {
+        let best=null,bestScore=Infinity;
+        const midpoint=(COLS+1)/2;
+        for(const line of rowsOf(pool)) for(let i=0;i<=line.length-size;i++) {
+          if(!isValidBlock(line,i,size))continue;
+          const centerDistance=Math.abs((line[i].col+line[i+size-1].col)/2-midpoint);
+          const couplePreference=size===2 && line.slice(i,i+size).every(s=>s.couple)?-.2:0;
+          const score=rowRolloutScore(line,i,size)+(ROWS.length-1-line[0].rowIndex)*1.2+centerDistance*.03+couplePreference;
+          if(score<bestScore){bestScore=score;best={line,start:i,size};}
+        }
+        if(!best)return null;
+        const ids=new Set(best.line.slice(best.start,best.start+size).map(s=>s.id));
+        return pool.map(s=>ids.has(s.id)?{...s,occupied:true}:s);
+      }
+      function runRollout(startPool,firstBlock,sequences) {
+        const firstIds=new Set(firstBlock.map(s=>s.id));
+        let totalFinalOccupancy=0,totalRejectedSeats=0,totalRejectedBookings=0;
+        for(const sequence of sequences) {
+          let pool=startPool.map(s=>firstIds.has(s.id)?{...s,occupied:true}:s);
+          let rejectedSeats=0,rejectedBookings=0;
+          for(const size of sequence) {
+            if(pool.every(s=>s.occupied))break;
+            const next=rolloutAllocate(pool,size);
+            if(next)pool=next;else{rejectedBookings++;rejectedSeats+=size;}
+          }
+          const sold=pool.filter(s=>s.occupied).length;
+          totalFinalOccupancy+=sold/pool.length*100;
+          totalRejectedSeats+=rejectedSeats;totalRejectedBookings+=rejectedBookings;
+        }
+        return {occupancy:totalFinalOccupancy/sequences.length,rejectedSeats:totalRejectedSeats/sequences.length,rejectedBookings:totalRejectedBookings/sequences.length};
+      }
+      function setBusy(value) {
+        busy=value;
+        for(const id of ['allocate','simulate','reset'])document.querySelector(`#${id}`).disabled=value;
+        document.querySelector('#allocate').textContent=value?'Đang rollout…':'Phân bổ booking ↗';
+      }
+      async function allocate(size) {
+        if(busy)return false;
+        const demand=normDemand(),pool=seats.slice(),heuristic=heuristicCandidates(pool,size,demand);
+        if(!heuristic.length){addLog(`Booking ${size} vé không thể xếp thành block hợp lệ.`, 'Inventory không đủ');return false;}
+        setBusy(true); await new Promise(resolve=>setTimeout(resolve,20));
+        try {
+          const sampleCount=Number(document.querySelector('#rollout-count').value)||100;
+          const seed=(0xA341316C ^ (bookingNo+1)*2654435761 ^ sampleCount)>>>0;
+          const sequences=sampleSequences(sampleCount,demand,seed);
+          const byRow=new Map();
+          for(const candidate of heuristic)if(!byRow.has(candidate.block[0].row))byRow.set(candidate.block[0].row,candidate);
+          const shortlist=[...byRow.values()].sort((a,b)=>a.score-b.score).slice(0,SHORTLIST_SIZE);
+          for(const candidate of heuristic)if(shortlist.length<SHORTLIST_SIZE&&!shortlist.includes(candidate))shortlist.push(candidate);
+          const evaluated=shortlist.map(candidate=>({...candidate,rollout:runRollout(pool,candidate.block,sequences)}));
+          evaluated.sort((a,b)=>b.rollout.occupancy-a.rollout.occupancy || a.rollout.rejectedSeats-b.rollout.rejectedSeats || a.score-b.score);
+          const chosen=evaluated[0], runnerUp=evaluated[1]||evaluated[0];
+          const allIds=new Set(chosen.block.map(s=>s.id));
+          seats=seats.map(s=>allIds.has(s.id)?{...s,occupied:true}:s);
+          bookingNo++;
+          const location=`Hàng ${chosen.block[0].row} · ghế ${chosen.block[0].col}–${chosen.block.at(-1).col}`;
+          const leaderboard=evaluated.slice(0,3).map(candidate=>({location:`${candidate.block[0].row} · ${String(candidate.block[0].col).padStart(2,'0')}–${String(candidate.block.at(-1).col).padStart(2,'0')}`,occupancy:candidate.rollout.occupancy,rejected:candidate.rollout.rejectedSeats}));
+          lastOutcome={...chosen.rollout,loss:chosen.weightedLoss,runnerUpDelta:chosen.rollout.occupancy-runnerUp.rollout.occupancy,runnerUpRejectedDelta:chosen.rollout.rejectedSeats-runnerUp.rollout.rejectedSeats,location,leaderboard,candidates:evaluated.length,totalCandidates:heuristic.length,samples:sampleCount};
+          history.unshift({n:bookingNo,size,location,score:chosen.rollout.occupancy.toFixed(1),loss:chosen.weightedLoss.toFixed(2),rejected:chosen.rollout.rejectedSeats.toFixed(1)});history=history.slice(0,30);
+          render();return true;
+        } finally {setBusy(false);}
+      }
+      function addLog(title, detail){history.unshift({n:bookingNo+1,size:0,location:title,score:'—',loss:detail});history=history.slice(0,30);renderLog();}
+      function renderSeats() {
+        const root=document.querySelector('#seat-zones');root.innerHTML='';
+        const vipLabel=document.createElement('div');vipLabel.className='zone-label';vipLabel.innerHTML='KHU VIP <span style="color:#80739e">· 24 GHẾ RIÊNG</span>';root.append(vipLabel);
+        VIP_ROWS.forEach((row,ri)=>{const line=document.createElement('div');line.className='seat-row';line.style.gridTemplateColumns=`22px repeat(12,minmax(20px,1fr))`;line.innerHTML=`<span class="row-label">${ri===0?'V2':'V1'}</span>`+Array.from({length:12},(_,i)=>`<span class="seat vip" title="${row} · ${i+1}">${String(i+1).padStart(2,'0')}</span>`).join('');root.append(line)});
+        const stdLabel=document.createElement('div');stdLabel.className='zone-label';stdLabel.innerHTML='KHU STANDARD <span style="color:#85966b">· 140 GHẾ HỮU HẠN</span>';root.append(stdLabel);
+        for(const row of ROWS){const line=document.createElement('div');line.className='seat-row';const rowSeats=seats.filter(s=>s.row===row).sort((a,b)=>a.col-b.col);line.innerHTML=`<span class="row-label">${row}</span>`+rowSeats.map(s=>`<span class="seat ${s.occupied?'allocated':'available'} ${s.couple?'couple':''}" title="${s.id}${s.couple?' · ghế đôi':''}">${String(s.col).padStart(2,'0')}</span>`).join('');root.append(line)}
+        document.querySelector('#seat-count').textContent=`${seats.filter(s=>!s.occupied).length} / ${seats.length} STANDARD AVAILABLE`;
+      }
+      function renderInventory(placementValues,packValues) {
+        const maxPlacements=Math.max(1,...placementValues),maxPacks=Math.max(1,...packValues);
+        document.querySelector('#inventory-rows').innerHTML=placementValues.map((placement,i)=>`<div class="inventory-line"><span class="inv-size">${i+1} vé</span><span class="inv-cell"><b class="inv-num">${placement}</b><i class="inv-track"><i style="width:${placement/maxPlacements*100}%"></i></i></span><span class="inv-cell pack"><b class="inv-num">${packValues[i]}</b><i class="inv-track"><i style="width:${packValues[i]/maxPacks*100}%"></i></i></span></div>`).join('');
+      }
+      function renderStats() {
+        const demand=normDemand(), placementsNow=placements(seats), packsNow=packCapacities(seats), q=quality(seats), singles=expectedSingles(q.free,demand);
+        renderInventory(placementsNow,packsNow);
+        document.querySelector('#capacity-total').textContent=`${q.free} ghế`;
+        document.querySelector('#remaining-count').textContent=q.free;
+        document.querySelector('#allocated-count').textContent=bookingNo;
+        document.querySelector('#orphan-count').textContent=`${q.orphan} / ${singles.toFixed(1)}`;
+        document.querySelector('#fragment-count').textContent=q.fragments;
+        document.querySelector('#loss-next').textContent=lastOutcome?`${lastOutcome.loss?.toFixed?.(2)??'—'} units`:'—';
+        document.querySelector('#orphan-side').textContent=`${q.orphan} / ${singles.toFixed(1)} exp.`;
+        document.querySelector('#orphan-meter-fill').style.width=`${Math.min(100,q.orphan/Math.max(1,singles)*100)}%`;
+        document.querySelector('#orphan-meter-fill').style.background=q.orphan>singles?'var(--orange)':'var(--lime)';
+        document.querySelector('#largest-block').textContent=`${q.largest} ghế`;
+        document.querySelector('#couples-left').textContent=`${q.intactCouples} / 2 cặp`;
+        document.querySelector('#mc-occupancy').textContent=lastOutcome?`${lastOutcome.occupancy.toFixed(1)}%`:'—';
+        document.querySelector('#mc-best-location').textContent=lastOutcome?lastOutcome.location:'Chưa chạy rollout';
+        document.querySelector('#mc-rejected').textContent=lastOutcome?`${lastOutcome.rejectedSeats.toFixed(1)} ghế · ${lastOutcome.rejectedBookings.toFixed(1)} đơn`:'—';
+        document.querySelector('#mc-candidates').textContent=lastOutcome?`${lastOutcome.candidates} candidates · ${lastOutcome.samples} chuỗi`:'—';
+        document.querySelector('#mc-leaderboard').innerHTML=lastOutcome?lastOutcome.leaderboard.map((candidate,i)=>`<div class="bench-row ${i===0?'best':''}"><span>${i+1}</span><span class="bench-place">${candidate.location}</span><span class="bench-fill">${candidate.occupancy.toFixed(1)}%</span><span class="bench-reject">${candidate.rejected.toFixed(1)}</span></div>`).join(''):'<div class="empty">Tạo booking để benchmark candidate.</div>';
+      }
+      function renderLog(){const root=document.querySelector('#allocation-log');root.innerHTML=history.length?history.map(x=>`<div class="log-item"><span class="log-n">#${String(x.n).padStart(2,'0')}</span><div class="log-main">${x.size?`<b>${x.size} vé</b> · `:''}${x.location}<br><span>${x.size?`Expected occupancy ${x.score}% · rejected ${x.rejected} ghế`:x.loss}</span></div><span class="log-score">${x.size?`${x.score}%`:'INFO'}</span></div>`).join(''):'<div class="empty">Chưa có booking. Tạo đơn để bắt đầu mô phỏng.</div>'}
+      function render(){renderSeats();renderStats();renderLog()}
+      document.querySelector('#allocate').addEventListener('click',()=>allocate(Number(document.querySelector('#booking-size').value)));
+      document.querySelector('#simulate').addEventListener('click',async()=>{let done=0;for(let i=0;i<10;i++){const demand=normDemand(),random=Math.random();let roll=random,size=1;for(let j=0;j<demand.length;j++){roll-=demand[j];if(roll<=0){size=j+1;break}}if(!await allocate(size))break;done++}if(!done)render()});
+      document.querySelector('#reset').addEventListener('click',resetState);
+      demandInputs.forEach(input=>input.addEventListener('change',renderStats));
+      resetState();
+    </script>
+  </body>
+</html>
